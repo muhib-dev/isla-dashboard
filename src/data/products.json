@@ -1,0 +1,50 @@
+[
+  {
+    "id": "board-governance",
+    "name": "Board Governance & Leadership Toolkit",
+    "price": 599,
+    "summary": "Bylaws, board calendars, evaluation forms and meeting templates.",
+    "category": "Template Series",
+    "url": "https://theisla.org/shop/"
+  },
+  {
+    "id": "complete-series",
+    "name": "Complete Series: All Five Toolkits",
+    "price": 2299,
+    "summary": "Every Template Series toolkit in one bundle.",
+    "category": "Template Series",
+    "url": "https://theisla.org/shop/"
+  },
+  {
+    "id": "employee-hr",
+    "name": "Employee & HR Essentials Toolkit",
+    "price": 799,
+    "summary": "Handbook, contracts, onboarding and evaluation templates.",
+    "category": "Template Series",
+    "url": "https://theisla.org/shop/"
+  },
+  {
+    "id": "school-launch",
+    "name": "School Launch & Continuous Improvement Toolkit",
+    "price": 399,
+    "summary": "Planning templates for new schools and annual improvement cycles.",
+    "category": "Template Series",
+    "url": "https://theisla.org/shop/"
+  },
+  {
+    "id": "operations-safety",
+    "name": "School Operations, Safety & Readiness Toolkit",
+    "price": 599,
+    "summary": "Emergency plans, drills, facilities and operations checklists.",
+    "category": "Template Series",
+    "url": "https://theisla.org/shop/"
+  },
+  {
+    "id": "student-family",
+    "name": "Student, Family & School Culture Toolkit",
+    "price": 699,
+    "summary": "Family handbook, behavior policy and school-culture templates.",
+    "category": "Template Series",
+    "url": "https://theisla.org/shop/"
+  }
+]

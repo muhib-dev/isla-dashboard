@@ -1,0 +1,2635 @@
+[
+  {
+    "id": "al-noor-academy",
+    "name": "Al-Noor Academy",
+    "region": "southwest",
+    "address": {
+      "street": "4233 Oak Rd",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "78704",
+      "country": "US"
+    },
+    "phone": "(707) 555-0907",
+    "email": "office@alnooracademy.example.org",
+    "website": "https://al-noor-academy.example.org",
+    "founded": 2004,
+    "gradesFrom": "PK",
+    "gradesTo": "12",
+    "accreditation": [
+      "Cognia"
+    ],
+    "metrics": {
+      "enrollment": 342,
+      "teachers": 26,
+      "tuition": 8450,
+      "avgTeacherSalary": 41200,
+      "retentionRate": 0.84,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 278
+        },
+        {
+          "year": 2023,
+          "value": 296
+        },
+        {
+          "year": 2024,
+          "value": 316
+        },
+        {
+          "year": 2025,
+          "value": 335
+        },
+        {
+          "year": 2026,
+          "value": 342
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Amina Rahman",
+        "role": "Principal",
+        "email": "a.rahman@alnooracademy.example.org",
+        "since": 2018
+      },
+      {
+        "id": "l2",
+        "name": "Yusuf Haddad",
+        "role": "Board Chair",
+        "email": "board@alnooracademy.example.org",
+        "since": 2021
+      },
+      {
+        "id": "l3",
+        "name": "",
+        "role": "Vice Principal",
+        "email": "",
+        "since": null
+      }
+    ],
+    "schedule": {
+      "startTime": "07:50",
+      "endTime": "15:20",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": "Early release on Fridays at 12:45 for Jumu'ah."
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Local halal caterer",
+        "allHalal": true,
+        "freeReducedAvailable": true
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Basketball",
+        "Soccer"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2016
+    },
+    "verifiedAt": {
+      "overview": "2026-08-20",
+      "leadership": "2025-06-02",
+      "schedule": "2026-08-20",
+      "programs": "2025-03-14",
+      "contacts": "2026-01-10"
+    },
+    "updatedAt": "2026-08-20"
+  },
+  {
+    "id": "crescent-valley-school",
+    "name": "Crescent Valley School",
+    "region": "southwest",
+    "address": {
+      "street": "5548 Park Ave",
+      "city": "Phoenix",
+      "state": "AZ",
+      "postalCode": "67002",
+      "country": "US"
+    },
+    "phone": "(503) 555-0700",
+    "email": "office@crescentvalleyschool.example.org",
+    "website": "https://crescent-valley-school.example.org",
+    "founded": 2011,
+    "gradesFrom": "6",
+    "gradesTo": "12",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 383,
+      "teachers": 24,
+      "tuition": 8350,
+      "avgTeacherSalary": 41600,
+      "retentionRate": 0.75,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 344
+        },
+        {
+          "year": 2023,
+          "value": 361
+        },
+        {
+          "year": 2024,
+          "value": 387
+        },
+        {
+          "year": 2025,
+          "value": 409
+        },
+        {
+          "year": 2026,
+          "value": 383
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Idris Hussain",
+        "role": "Principal",
+        "email": "principal@crescentvalleyschool.example.org",
+        "since": 2015
+      },
+      {
+        "id": "l2",
+        "name": "Hamza Haddad",
+        "role": "Board Chair",
+        "email": "board@crescentvalleyschool.example.org",
+        "since": 2015
+      }
+    ],
+    "schedule": {
+      "startTime": "08:00",
+      "endTime": "15:15",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Local halal caterer",
+        "allHalal": true,
+        "freeReducedAvailable": true
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": []
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2023
+    },
+    "verifiedAt": {
+      "overview": "2026-06-19",
+      "leadership": "2026-09-03",
+      "schedule": "2026-05-15",
+      "programs": "2026-06-11",
+      "contacts": "2026-06-02"
+    },
+    "updatedAt": "2024-06-18"
+  },
+  {
+    "id": "bayan-preparatory",
+    "name": "Bayan Preparatory",
+    "region": "southwest",
+    "address": {
+      "street": "4146 Park St",
+      "city": "Houston",
+      "state": "TX",
+      "postalCode": "95135",
+      "country": "US"
+    },
+    "phone": "(275) 555-0476",
+    "email": "office@bayanpreparatory.example.org",
+    "website": "https://bayan-preparatory.example.org",
+    "founded": 2006,
+    "gradesFrom": "PK",
+    "gradesTo": "8",
+    "accreditation": [
+      "NEASC"
+    ],
+    "metrics": {
+      "enrollment": 379,
+      "teachers": 27,
+      "tuition": 7700,
+      "avgTeacherSalary": 40400,
+      "retentionRate": 0.8,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 302
+        },
+        {
+          "year": 2023,
+          "value": 311
+        },
+        {
+          "year": 2024,
+          "value": 335
+        },
+        {
+          "year": 2025,
+          "value": 352
+        },
+        {
+          "year": 2026,
+          "value": 379
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Khadija Qureshi",
+        "role": "Principal",
+        "email": "principal@bayanpreparatory.example.org",
+        "since": 2022
+      },
+      {
+        "id": "l2",
+        "name": "Ibrahim Yilmaz",
+        "role": "Board Chair",
+        "email": "board@bayanpreparatory.example.org",
+        "since": 2024
+      }
+    ],
+    "schedule": {
+      "startTime": "08:15",
+      "endTime": "15:00",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": false,
+        "provider": "",
+        "allHalal": false,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Basketball"
+      ]
+    },
+    "membership": {
+      "status": "non_member",
+      "memberSince": 2019
+    },
+    "verifiedAt": {
+      "overview": "2026-07-10",
+      "leadership": "2026-05-24",
+      "schedule": "2026-04-02",
+      "programs": "2026-04-12",
+      "contacts": "2026-08-02"
+    },
+    "updatedAt": "2025-03-19"
+  },
+  {
+    "id": "iqra-learning-center",
+    "name": "Iqra Learning Center",
+    "region": "southwest",
+    "address": {
+      "street": "8033 Cedar Rd",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "21106",
+      "country": "US"
+    },
+    "phone": "(337) 555-0189",
+    "email": "office@iqralearningcenter.example.org",
+    "website": "https://iqra-learning-center.example.org",
+    "founded": 2001,
+    "gradesFrom": "PK",
+    "gradesTo": "5",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 526,
+      "teachers": 38,
+      "tuition": 7350,
+      "avgTeacherSalary": 36400,
+      "retentionRate": 0.73,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 436
+        },
+        {
+          "year": 2023,
+          "value": 467
+        },
+        {
+          "year": 2024,
+          "value": 491
+        },
+        {
+          "year": 2025,
+          "value": 506
+        },
+        {
+          "year": 2026,
+          "value": 526
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Ismail Haddad",
+        "role": "Principal",
+        "email": "principal@iqralearningcenter.example.org",
+        "since": 2018
+      },
+      {
+        "id": "l2",
+        "name": "Noura Siddiqui",
+        "role": "Board Chair",
+        "email": "board@iqralearningcenter.example.org",
+        "since": 2021
+      }
+    ],
+    "schedule": {
+      "startTime": "07:45",
+      "endTime": "15:45",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Outside vendor",
+        "allHalal": true,
+        "freeReducedAvailable": true
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Basketball",
+        "Soccer",
+        "Track"
+      ]
+    },
+    "membership": {
+      "status": "grace",
+      "memberSince": 2011
+    },
+    "verifiedAt": {
+      "overview": "2026-05-17",
+      "leadership": "2025-08-07",
+      "schedule": "2024-09-08",
+      "programs": "2026-05-13",
+      "contacts": "2026-07-19"
+    },
+    "updatedAt": "2024-02-22"
+  },
+  {
+    "id": "hikmah-academy",
+    "name": "Hikmah Academy",
+    "region": "southwest",
+    "address": {
+      "street": "1600 Mill Blvd",
+      "city": "San Antonio",
+      "state": "TX",
+      "postalCode": "24843",
+      "country": "US"
+    },
+    "phone": "(388) 555-0518",
+    "email": "office@hikmahacademy.example.org",
+    "website": "https://hikmah-academy.example.org",
+    "founded": 1998,
+    "gradesFrom": "PK",
+    "gradesTo": "8",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 716,
+      "teachers": 55,
+      "tuition": 7750,
+      "avgTeacherSalary": 44800,
+      "retentionRate": 0.9,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 579
+        },
+        {
+          "year": 2023,
+          "value": 627
+        },
+        {
+          "year": 2024,
+          "value": 669
+        },
+        {
+          "year": 2025,
+          "value": 697
+        },
+        {
+          "year": 2026,
+          "value": 716
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Idris Siddiqui",
+        "role": "Principal",
+        "email": "principal@hikmahacademy.example.org",
+        "since": 2019
+      },
+      {
+        "id": "l2",
+        "name": "Bilal Nasser",
+        "role": "Board Chair",
+        "email": "board@hikmahacademy.example.org",
+        "since": 2021
+      }
+    ],
+    "schedule": {
+      "startTime": "08:15",
+      "endTime": "15:45",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Local halal caterer",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": false,
+      "athletics": [
+        "Basketball",
+        "Volleyball",
+        "Track"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2009
+    },
+    "verifiedAt": {
+      "overview": "2025-08-21",
+      "leadership": "2026-06-14",
+      "schedule": "2023-05-10",
+      "programs": "2025-02-17",
+      "contacts": "2024-06-22"
+    },
+    "updatedAt": "2025-06-06"
+  },
+  {
+    "id": "al-huda-school",
+    "name": "Al-Huda School",
+    "region": "northeast",
+    "address": {
+      "street": "4004 Cedar St",
+      "city": "Paterson",
+      "state": "NJ",
+      "postalCode": "28074",
+      "country": "US"
+    },
+    "phone": "(568) 555-0298",
+    "email": "office@alhudaschool.example.org",
+    "website": "https://al-huda-school.example.org",
+    "founded": 2003,
+    "gradesFrom": "K",
+    "gradesTo": "12",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 128,
+      "teachers": 13,
+      "tuition": 10350,
+      "avgTeacherSalary": 51200,
+      "retentionRate": 0.9,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 101
+        },
+        {
+          "year": 2023,
+          "value": 104
+        },
+        {
+          "year": 2024,
+          "value": 110
+        },
+        {
+          "year": 2025,
+          "value": 116
+        },
+        {
+          "year": 2026,
+          "value": 128
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Noura Malik",
+        "role": "Principal",
+        "email": "principal@alhudaschool.example.org",
+        "since": 2017
+      },
+      {
+        "id": "l2",
+        "name": "Noura Siddiqui",
+        "role": "Board Chair",
+        "email": "board@alhudaschool.example.org",
+        "since": 2024
+      }
+    ],
+    "schedule": {
+      "startTime": "08:00",
+      "endTime": "15:15",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Outside vendor",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": false,
+      "athletics": [
+        "Soccer",
+        "Track"
+      ]
+    },
+    "membership": {
+      "status": "non_member",
+      "memberSince": 2023
+    },
+    "verifiedAt": {
+      "overview": "2026-06-07",
+      "leadership": "2026-05-05",
+      "schedule": "2026-08-25",
+      "programs": "2026-05-05",
+      "contacts": "2026-07-08"
+    },
+    "updatedAt": "2024-05-09"
+  },
+  {
+    "id": "furqan-academy",
+    "name": "Furqan Academy",
+    "region": "northeast",
+    "address": {
+      "street": "3933 Cedar Ave",
+      "city": "Brooklyn",
+      "state": "NY",
+      "postalCode": "50555",
+      "country": "US"
+    },
+    "phone": "(621) 555-0430",
+    "email": "office@furqanacademy.example.org",
+    "website": "https://furqan-academy.example.org",
+    "founded": 2012,
+    "gradesFrom": "K",
+    "gradesTo": "12",
+    "accreditation": [
+      "Cognia"
+    ],
+    "metrics": {
+      "enrollment": 583,
+      "teachers": 39,
+      "tuition": 10150,
+      "avgTeacherSalary": 46400,
+      "retentionRate": 0.7,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 463
+        },
+        {
+          "year": 2023,
+          "value": 502
+        },
+        {
+          "year": 2024,
+          "value": 542
+        },
+        {
+          "year": 2025,
+          "value": 563
+        },
+        {
+          "year": 2026,
+          "value": 583
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Fatima Darwish",
+        "role": "Principal",
+        "email": "principal@furqanacademy.example.org",
+        "since": 2013
+      },
+      {
+        "id": "l2",
+        "name": "Idris Hassan",
+        "role": "Board Chair",
+        "email": "board@furqanacademy.example.org",
+        "since": 2016
+      }
+    ],
+    "schedule": {
+      "startTime": "07:45",
+      "endTime": "15:30",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Outside vendor",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Track"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2016
+    },
+    "verifiedAt": {
+      "overview": "2026-08-01",
+      "leadership": "2026-08-17",
+      "schedule": "2026-05-20",
+      "programs": "2026-07-25",
+      "contacts": "2026-07-25"
+    },
+    "updatedAt": "2024-11-04"
+  },
+  {
+    "id": "salam-day-school",
+    "name": "Salam Day School",
+    "region": "northeast",
+    "address": {
+      "street": "3819 Cedar Rd",
+      "city": "Boston",
+      "state": "MA",
+      "postalCode": "72625",
+      "country": "US"
+    },
+    "phone": "(694) 555-0384",
+    "email": "office@salamdayschool.example.org",
+    "website": "https://salam-day-school.example.org",
+    "founded": 2012,
+    "gradesFrom": "K",
+    "gradesTo": "8",
+    "accreditation": [
+      "MSA-CESS"
+    ],
+    "metrics": {
+      "enrollment": 633,
+      "teachers": 58,
+      "tuition": 9350,
+      "avgTeacherSalary": 45100,
+      "retentionRate": 0.91,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 525
+        },
+        {
+          "year": 2023,
+          "value": 568
+        },
+        {
+          "year": 2024,
+          "value": 588
+        },
+        {
+          "year": 2025,
+          "value": 614
+        },
+        {
+          "year": 2026,
+          "value": 633
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Bilal Sayed",
+        "role": "Principal",
+        "email": "principal@salamdayschool.example.org",
+        "since": 2013
+      },
+      {
+        "id": "l2",
+        "name": "Ismail Mansour",
+        "role": "Board Chair",
+        "email": "board@salamdayschool.example.org",
+        "since": 2022
+      }
+    ],
+    "schedule": {
+      "startTime": "08:15",
+      "endTime": "15:15",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": false,
+        "provider": "",
+        "allHalal": false,
+        "freeReducedAvailable": false
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": false,
+      "athletics": [
+        "Volleyball",
+        "Swimming"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2010
+    },
+    "verifiedAt": {
+      "overview": "2026-06-15",
+      "leadership": "2024-11-21",
+      "schedule": "2024-12-14",
+      "programs": "2026-08-24",
+      "contacts": "2025-03-22"
+    },
+    "updatedAt": "2024-11-04"
+  },
+  {
+    "id": "noor-ul-ilm-school",
+    "name": "Noor ul Ilm School",
+    "region": "northeast",
+    "address": {
+      "street": "2336 Mill Ave",
+      "city": "Philadelphia",
+      "state": "PA",
+      "postalCode": "42690",
+      "country": "US"
+    },
+    "phone": "(753) 555-0199",
+    "email": "office@noorulilmschool.example.org",
+    "website": "https://noor-ul-ilm-school.example.org",
+    "founded": 2016,
+    "gradesFrom": "PK",
+    "gradesTo": "8",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 859,
+      "teachers": 66,
+      "tuition": 8800,
+      "avgTeacherSalary": 42000,
+      "retentionRate": 0.73,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 763
+        },
+        {
+          "year": 2023,
+          "value": 817
+        },
+        {
+          "year": 2024,
+          "value": 835
+        },
+        {
+          "year": 2025,
+          "value": 869
+        },
+        {
+          "year": 2026,
+          "value": 859
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Hamza Bakr",
+        "role": "Principal",
+        "email": "principal@noorulilmschool.example.org",
+        "since": 2019
+      },
+      {
+        "id": "l2",
+        "name": "Maryam Rahman",
+        "role": "Board Chair",
+        "email": "board@noorulilmschool.example.org",
+        "since": 2018
+      }
+    ],
+    "schedule": {
+      "startTime": "08:00",
+      "endTime": "15:00",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Outside vendor",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Soccer",
+        "Volleyball"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2021
+    },
+    "verifiedAt": {
+      "overview": "2026-08-27",
+      "leadership": "2026-07-09",
+      "schedule": "2026-05-15",
+      "programs": "2026-04-18",
+      "contacts": "2026-06-11"
+    },
+    "updatedAt": "2025-06-23"
+  },
+  {
+    "id": "darul-arqam-academy",
+    "name": "Darul Arqam Academy",
+    "region": "midwest",
+    "address": {
+      "street": "9160 Maple Dr",
+      "city": "Chicago",
+      "state": "IL",
+      "postalCode": "84802",
+      "country": "US"
+    },
+    "phone": "(464) 555-0533",
+    "email": "office@darularqamacademy.example.org",
+    "website": "https://darul-arqam-academy.example.org",
+    "founded": 1993,
+    "gradesFrom": "PK",
+    "gradesTo": "5",
+    "accreditation": [
+      "CAIS"
+    ],
+    "metrics": {
+      "enrollment": 631,
+      "teachers": 39,
+      "tuition": 8100,
+      "avgTeacherSalary": 38000,
+      "retentionRate": 0.83,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 561
+        },
+        {
+          "year": 2023,
+          "value": 601
+        },
+        {
+          "year": 2024,
+          "value": 620
+        },
+        {
+          "year": 2025,
+          "value": 673
+        },
+        {
+          "year": 2026,
+          "value": 631
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Omar Yilmaz",
+        "role": "Principal",
+        "email": "principal@darularqamacademy.example.org",
+        "since": 2025
+      },
+      {
+        "id": "l2",
+        "name": "Omar Bakr",
+        "role": "Board Chair",
+        "email": "board@darularqamacademy.example.org",
+        "since": 2016
+      }
+    ],
+    "schedule": {
+      "startTime": "08:00",
+      "endTime": "15:30",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Local halal caterer",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Volleyball",
+        "Track"
+      ]
+    },
+    "membership": {
+      "status": "grace",
+      "memberSince": 2023
+    },
+    "verifiedAt": {
+      "overview": "2026-06-17",
+      "leadership": "2026-06-12",
+      "schedule": "2026-09-02",
+      "programs": "2026-09-16",
+      "contacts": "2026-07-26"
+    },
+    "updatedAt": "2025-08-20"
+  },
+  {
+    "id": "ihsan-academy",
+    "name": "Ihsan Academy",
+    "region": "midwest",
+    "address": {
+      "street": "5268 Oak Dr",
+      "city": "Dearborn",
+      "state": "MI",
+      "postalCode": "90617",
+      "country": "US"
+    },
+    "phone": "(714) 555-0914",
+    "email": "office@ihsanacademy.example.org",
+    "website": "https://ihsan-academy.example.org",
+    "founded": 2016,
+    "gradesFrom": "6",
+    "gradesTo": "12",
+    "accreditation": [
+      "CAIS"
+    ],
+    "metrics": {
+      "enrollment": 153,
+      "teachers": 15,
+      "tuition": 7500,
+      "avgTeacherSalary": 40700,
+      "retentionRate": 0.74,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 134
+        },
+        {
+          "year": 2023,
+          "value": 138
+        },
+        {
+          "year": 2024,
+          "value": 147
+        },
+        {
+          "year": 2025,
+          "value": 155
+        },
+        {
+          "year": 2026,
+          "value": 153
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Layla Abdullah",
+        "role": "Principal",
+        "email": "principal@ihsanacademy.example.org",
+        "since": 2013
+      },
+      {
+        "id": "l2",
+        "name": "Ibrahim Haddad",
+        "role": "Board Chair",
+        "email": "board@ihsanacademy.example.org",
+        "since": 2024
+      }
+    ],
+    "schedule": {
+      "startTime": "07:45",
+      "endTime": "15:30",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Outside vendor",
+        "allHalal": true,
+        "freeReducedAvailable": true
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Basketball"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2009
+    },
+    "verifiedAt": {
+      "overview": "2026-05-26",
+      "leadership": "2026-06-27",
+      "schedule": "2026-06-20",
+      "programs": "2026-06-15",
+      "contacts": "2026-08-07"
+    },
+    "updatedAt": "2026-07-22"
+  },
+  {
+    "id": "tawheed-prep",
+    "name": "Tawheed Prep",
+    "region": "midwest",
+    "address": {
+      "street": "2549 Crescent Dr",
+      "city": "Columbus",
+      "state": "OH",
+      "postalCode": "67983",
+      "country": "US"
+    },
+    "phone": "(895) 555-0571",
+    "email": "office@tawheedprep.example.org",
+    "website": "https://tawheed-prep.example.org",
+    "founded": 2010,
+    "gradesFrom": "K",
+    "gradesTo": "12",
+    "accreditation": [
+      "NEASC"
+    ],
+    "metrics": {
+      "enrollment": 414,
+      "teachers": 30,
+      "tuition": 8000,
+      "avgTeacherSalary": 43200,
+      "retentionRate": 0.91,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 371
+        },
+        {
+          "year": 2023,
+          "value": 386
+        },
+        {
+          "year": 2024,
+          "value": 402
+        },
+        {
+          "year": 2025,
+          "value": 424
+        },
+        {
+          "year": 2026,
+          "value": 414
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Noura Abdullah",
+        "role": "Principal",
+        "email": "principal@tawheedprep.example.org",
+        "since": 2015
+      },
+      {
+        "id": "l2",
+        "name": "Aisha Osman",
+        "role": "Board Chair",
+        "email": "board@tawheedprep.example.org",
+        "since": 2015
+      }
+    ],
+    "schedule": {
+      "startTime": "07:45",
+      "endTime": "15:45",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Local halal caterer",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": false,
+      "athletics": [
+        "Track",
+        "Swimming"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2010
+    },
+    "verifiedAt": {
+      "overview": "2026-08-22",
+      "leadership": "2026-07-02",
+      "schedule": "2026-06-16",
+      "programs": "2026-07-11",
+      "contacts": "2026-08-15"
+    },
+    "updatedAt": "2025-01-17"
+  },
+  {
+    "id": "minaret-school",
+    "name": "Minaret School",
+    "region": "midwest",
+    "address": {
+      "street": "4997 Cedar Dr",
+      "city": "Minneapolis",
+      "state": "MN",
+      "postalCode": "35261",
+      "country": "US"
+    },
+    "phone": "(917) 555-0491",
+    "email": "office@minaretschool.example.org",
+    "website": "https://minaret-school.example.org",
+    "founded": 2007,
+    "gradesFrom": "6",
+    "gradesTo": "12",
+    "accreditation": [
+      "MSA-CESS"
+    ],
+    "metrics": {
+      "enrollment": 638,
+      "teachers": 58,
+      "tuition": 6450,
+      "avgTeacherSalary": 34800,
+      "retentionRate": 0.71,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 530
+        },
+        {
+          "year": 2023,
+          "value": 546
+        },
+        {
+          "year": 2024,
+          "value": 564
+        },
+        {
+          "year": 2025,
+          "value": 592
+        },
+        {
+          "year": 2026,
+          "value": 638
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Idris Haddad",
+        "role": "Principal",
+        "email": "principal@minaretschool.example.org",
+        "since": 2020
+      },
+      {
+        "id": "l2",
+        "name": "Khadija Haddad",
+        "role": "Board Chair",
+        "email": "board@minaretschool.example.org",
+        "since": 2021
+      }
+    ],
+    "schedule": {
+      "startTime": "07:45",
+      "endTime": "15:00",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": false,
+        "provider": "",
+        "allHalal": false,
+        "freeReducedAvailable": false
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Soccer",
+        "Volleyball"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2022
+    },
+    "verifiedAt": {
+      "overview": "2026-05-02",
+      "leadership": "2026-08-02",
+      "schedule": "2026-05-16",
+      "programs": "2026-05-04",
+      "contacts": "2026-08-04"
+    },
+    "updatedAt": "2025-12-12"
+  },
+  {
+    "id": "rahmah-academy",
+    "name": "Rahmah Academy",
+    "region": "southeast",
+    "address": {
+      "street": "316 Mill Rd",
+      "city": "Atlanta",
+      "state": "GA",
+      "postalCode": "18661",
+      "country": "US"
+    },
+    "phone": "(848) 555-0297",
+    "email": "office@rahmahacademy.example.org",
+    "website": "https://rahmah-academy.example.org",
+    "founded": 1987,
+    "gradesFrom": "PK",
+    "gradesTo": "8",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 224,
+      "teachers": 19,
+      "tuition": 6200,
+      "avgTeacherSalary": 39500,
+      "retentionRate": 0.9,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 175
+        },
+        {
+          "year": 2023,
+          "value": 186
+        },
+        {
+          "year": 2024,
+          "value": 194
+        },
+        {
+          "year": 2025,
+          "value": 202
+        },
+        {
+          "year": 2026,
+          "value": 224
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Samir Bakr",
+        "role": "Principal",
+        "email": "principal@rahmahacademy.example.org",
+        "since": 2017
+      },
+      {
+        "id": "l2",
+        "name": "Kareem Haddad",
+        "role": "Board Chair",
+        "email": "board@rahmahacademy.example.org",
+        "since": 2024
+      }
+    ],
+    "schedule": {
+      "startTime": "08:00",
+      "endTime": "15:15",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Parent-run program",
+        "allHalal": true,
+        "freeReducedAvailable": true
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": []
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2009
+    },
+    "verifiedAt": {
+      "overview": "2024-06-25",
+      "leadership": "2026-06-13",
+      "schedule": "2025-08-21",
+      "programs": "2024-06-10",
+      "contacts": "2025-03-16"
+    },
+    "updatedAt": "2026-09-07"
+  },
+  {
+    "id": "al-fajr-school",
+    "name": "Al-Fajr School",
+    "region": "southeast",
+    "address": {
+      "street": "4361 Oak St",
+      "city": "Orlando",
+      "state": "FL",
+      "postalCode": "97991",
+      "country": "US"
+    },
+    "phone": "(819) 555-0119",
+    "email": "office@alfajrschool.example.org",
+    "website": "https://al-fajr-school.example.org",
+    "founded": 2008,
+    "gradesFrom": "6",
+    "gradesTo": "12",
+    "accreditation": [
+      "WASC"
+    ],
+    "metrics": {
+      "enrollment": 572,
+      "teachers": 41,
+      "tuition": 7050,
+      "avgTeacherSalary": 42500,
+      "retentionRate": 0.91,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 458
+        },
+        {
+          "year": 2023,
+          "value": 485
+        },
+        {
+          "year": 2024,
+          "value": 519
+        },
+        {
+          "year": 2025,
+          "value": 534
+        },
+        {
+          "year": 2026,
+          "value": 572
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Ibrahim Nasser",
+        "role": "Principal",
+        "email": "principal@alfajrschool.example.org",
+        "since": 2022
+      },
+      {
+        "id": "l2",
+        "name": "Khadija Yilmaz",
+        "role": "Board Chair",
+        "email": "board@alfajrschool.example.org",
+        "since": 2016
+      }
+    ],
+    "schedule": {
+      "startTime": "08:00",
+      "endTime": "15:45",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Local halal caterer",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Volleyball",
+        "Track",
+        "Swimming"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2022
+    },
+    "verifiedAt": {
+      "overview": "2024-02-13",
+      "leadership": "2023-05-16",
+      "schedule": "2023-02-23",
+      "programs": "2025-04-05",
+      "contacts": "2024-09-07"
+    },
+    "updatedAt": "2024-10-25"
+  },
+  {
+    "id": "andalusia-academy",
+    "name": "Andalusia Academy",
+    "region": "southeast",
+    "address": {
+      "street": "8681 Lake Dr",
+      "city": "Charlotte",
+      "state": "NC",
+      "postalCode": "91286",
+      "country": "US"
+    },
+    "phone": "(761) 555-0734",
+    "email": "office@andalusiaacademy.example.org",
+    "website": "https://andalusia-academy.example.org",
+    "founded": 2006,
+    "gradesFrom": "PK",
+    "gradesTo": "5",
+    "accreditation": [
+      "CAIS"
+    ],
+    "metrics": {
+      "enrollment": 421,
+      "teachers": 38,
+      "tuition": 6650,
+      "avgTeacherSalary": 38200,
+      "retentionRate": 0.72,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 373
+        },
+        {
+          "year": 2023,
+          "value": 397
+        },
+        {
+          "year": 2024,
+          "value": 417
+        },
+        {
+          "year": 2025,
+          "value": 429
+        },
+        {
+          "year": 2026,
+          "value": 421
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Hamza Sayed",
+        "role": "Principal",
+        "email": "principal@andalusiaacademy.example.org",
+        "since": 2016
+      },
+      {
+        "id": "l2",
+        "name": "Omar Darwish",
+        "role": "Board Chair",
+        "email": "board@andalusiaacademy.example.org",
+        "since": 2020
+      }
+    ],
+    "schedule": {
+      "startTime": "07:45",
+      "endTime": "15:15",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "In-house kitchen",
+        "allHalal": true,
+        "freeReducedAvailable": true
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": false,
+      "athletics": [
+        "Basketball",
+        "Soccer",
+        "Track"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2016
+    },
+    "verifiedAt": {
+      "overview": "2023-03-12",
+      "leadership": "2025-02-04",
+      "schedule": "2026-05-20",
+      "programs": "2024-05-19",
+      "contacts": "2026-08-26"
+    },
+    "updatedAt": "2025-06-12"
+  },
+  {
+    "id": "sabeel-academy",
+    "name": "Sabeel Academy",
+    "region": "southeast",
+    "address": {
+      "street": "9048 Oak Blvd",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "17790",
+      "country": "US"
+    },
+    "phone": "(430) 555-0795",
+    "email": "office@sabeelacademy.example.org",
+    "website": "https://sabeel-academy.example.org",
+    "founded": 1995,
+    "gradesFrom": "PK",
+    "gradesTo": "12",
+    "accreditation": [
+      "NEASC"
+    ],
+    "metrics": {
+      "enrollment": 686,
+      "teachers": 49,
+      "tuition": 9750,
+      "avgTeacherSalary": 40400,
+      "retentionRate": 0.79,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 565
+        },
+        {
+          "year": 2023,
+          "value": 612
+        },
+        {
+          "year": 2024,
+          "value": 631
+        },
+        {
+          "year": 2025,
+          "value": 655
+        },
+        {
+          "year": 2026,
+          "value": 686
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Bilal Malik",
+        "role": "Principal",
+        "email": "principal@sabeelacademy.example.org",
+        "since": 2020
+      },
+      {
+        "id": "l2",
+        "name": "Omar Malik",
+        "role": "Board Chair",
+        "email": "board@sabeelacademy.example.org",
+        "since": 2022
+      }
+    ],
+    "schedule": {
+      "startTime": "08:15",
+      "endTime": "15:30",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": false,
+        "provider": "",
+        "allHalal": false,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": false,
+      "athletics": [
+        "Basketball",
+        "Swimming"
+      ]
+    },
+    "membership": {
+      "status": "non_member",
+      "memberSince": 2015
+    },
+    "verifiedAt": {
+      "overview": "2026-05-15",
+      "leadership": "2026-07-11",
+      "schedule": "2026-08-24",
+      "programs": "2026-07-11",
+      "contacts": "2026-06-08"
+    },
+    "updatedAt": "2024-09-22"
+  },
+  {
+    "id": "madinah-prep",
+    "name": "Madinah Prep",
+    "region": "southeast",
+    "address": {
+      "street": "4613 Oak Dr",
+      "city": "Fairfax",
+      "state": "VA",
+      "postalCode": "10155",
+      "country": "US"
+    },
+    "phone": "(658) 555-0869",
+    "email": "office@madinahprep.example.org",
+    "website": "https://madinah-prep.example.org",
+    "founded": 2013,
+    "gradesFrom": "K",
+    "gradesTo": "12",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 271,
+      "teachers": 25,
+      "tuition": 9450,
+      "avgTeacherSalary": 40800,
+      "retentionRate": 0.81,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 223
+        },
+        {
+          "year": 2023,
+          "value": 230
+        },
+        {
+          "year": 2024,
+          "value": 247
+        },
+        {
+          "year": 2025,
+          "value": 268
+        },
+        {
+          "year": 2026,
+          "value": 271
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Samir Qureshi",
+        "role": "Principal",
+        "email": "principal@madinahprep.example.org",
+        "since": 2020
+      },
+      {
+        "id": "l2",
+        "name": "Amina Darwish",
+        "role": "Board Chair",
+        "email": "board@madinahprep.example.org",
+        "since": 2020
+      }
+    ],
+    "schedule": {
+      "startTime": "08:15",
+      "endTime": "15:00",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Local halal caterer",
+        "allHalal": true,
+        "freeReducedAvailable": true
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Soccer",
+        "Volleyball",
+        "Track"
+      ]
+    },
+    "membership": {
+      "status": "lapsed",
+      "memberSince": 2016
+    },
+    "verifiedAt": {
+      "overview": "2026-05-15",
+      "leadership": "2026-06-08",
+      "schedule": "2026-05-06",
+      "programs": "2026-05-12",
+      "contacts": "2026-08-11"
+    },
+    "updatedAt": "2025-10-02"
+  },
+  {
+    "id": "ilm-academy",
+    "name": "Ilm Academy",
+    "region": "west",
+    "address": {
+      "street": "5581 Park Ave",
+      "city": "Seattle",
+      "state": "WA",
+      "postalCode": "37138",
+      "country": "US"
+    },
+    "phone": "(277) 555-0679",
+    "email": "office@ilmacademy.example.org",
+    "website": "https://ilm-academy.example.org",
+    "founded": 2014,
+    "gradesFrom": "6",
+    "gradesTo": "12",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 527,
+      "teachers": 41,
+      "tuition": 11200,
+      "avgTeacherSalary": 46000,
+      "retentionRate": 0.74,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 472
+        },
+        {
+          "year": 2023,
+          "value": 512
+        },
+        {
+          "year": 2024,
+          "value": 542
+        },
+        {
+          "year": 2025,
+          "value": 554
+        },
+        {
+          "year": 2026,
+          "value": 527
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Amina Karim",
+        "role": "Principal",
+        "email": "principal@ilmacademy.example.org",
+        "since": 2021
+      },
+      {
+        "id": "l2",
+        "name": "Zainab Ali",
+        "role": "Board Chair",
+        "email": "board@ilmacademy.example.org",
+        "since": 2017
+      }
+    ],
+    "schedule": {
+      "startTime": "08:30",
+      "endTime": "15:00",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Local halal caterer",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": false,
+      "athletics": [
+        "Soccer",
+        "Swimming"
+      ]
+    },
+    "membership": {
+      "status": "grace",
+      "memberSince": 2023
+    },
+    "verifiedAt": {
+      "overview": "2026-08-17",
+      "leadership": "2023-06-17",
+      "schedule": "2026-07-14",
+      "programs": "2026-07-01",
+      "contacts": "2026-07-23"
+    },
+    "updatedAt": "2025-08-27"
+  },
+  {
+    "id": "pacific-crescent-school",
+    "name": "Pacific Crescent School",
+    "region": "west",
+    "address": {
+      "street": "933 Maple Rd",
+      "city": "San Jose",
+      "state": "CA",
+      "postalCode": "34406",
+      "country": "US"
+    },
+    "phone": "(916) 555-0236",
+    "email": "office@pacificcrescentschool.example.org",
+    "website": "https://pacific-crescent-school.example.org",
+    "founded": 1985,
+    "gradesFrom": "PK",
+    "gradesTo": "8",
+    "accreditation": [
+      "NEASC"
+    ],
+    "metrics": {
+      "enrollment": 683,
+      "teachers": 53,
+      "tuition": 10700,
+      "avgTeacherSalary": 52100,
+      "retentionRate": 0.75,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 551
+        },
+        {
+          "year": 2023,
+          "value": 587
+        },
+        {
+          "year": 2024,
+          "value": 614
+        },
+        {
+          "year": 2025,
+          "value": 656
+        },
+        {
+          "year": 2026,
+          "value": 683
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Ibrahim Nasser",
+        "role": "Principal",
+        "email": "principal@pacificcrescentschool.example.org",
+        "since": 2015
+      },
+      {
+        "id": "l2",
+        "name": "Hafsa Karim",
+        "role": "Board Chair",
+        "email": "board@pacificcrescentschool.example.org",
+        "since": 2018
+      }
+    ],
+    "schedule": {
+      "startTime": "08:30",
+      "endTime": "15:45",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Local halal caterer",
+        "allHalal": true,
+        "freeReducedAvailable": true
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": false,
+      "athletics": [
+        "Basketball",
+        "Volleyball",
+        "Track",
+        "Swimming"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2023
+    },
+    "verifiedAt": {
+      "overview": "2026-04-20",
+      "leadership": "2026-06-02",
+      "schedule": "2026-05-02",
+      "programs": "2026-07-11",
+      "contacts": "2026-08-17"
+    },
+    "updatedAt": "2024-01-06"
+  },
+  {
+    "id": "sakinah-school",
+    "name": "Sakinah School",
+    "region": "west",
+    "address": {
+      "street": "7470 Cedar Ave",
+      "city": "Los Angeles",
+      "state": "CA",
+      "postalCode": "35904",
+      "country": "US"
+    },
+    "phone": "(922) 555-0214",
+    "email": "office@sakinahschool.example.org",
+    "website": "https://sakinah-school.example.org",
+    "founded": 2001,
+    "gradesFrom": "K",
+    "gradesTo": "8",
+    "accreditation": [
+      "FCIS"
+    ],
+    "metrics": {
+      "enrollment": 859,
+      "teachers": 54,
+      "tuition": 9450,
+      "avgTeacherSalary": 44200,
+      "retentionRate": 0.77,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 751
+        },
+        {
+          "year": 2023,
+          "value": 777
+        },
+        {
+          "year": 2024,
+          "value": 826
+        },
+        {
+          "year": 2025,
+          "value": 871
+        },
+        {
+          "year": 2026,
+          "value": 859
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Fatima Abdullah",
+        "role": "Principal",
+        "email": "principal@sakinahschool.example.org",
+        "since": 2017
+      },
+      {
+        "id": "l2",
+        "name": "Fatima Darwish",
+        "role": "Board Chair",
+        "email": "board@sakinahschool.example.org",
+        "since": 2018
+      }
+    ],
+    "schedule": {
+      "startTime": "08:30",
+      "endTime": "15:00",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "In-house kitchen",
+        "allHalal": true,
+        "freeReducedAvailable": true
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": false,
+      "athletics": [
+        "Swimming"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2012
+    },
+    "verifiedAt": {
+      "overview": "2023-08-15",
+      "leadership": "2026-06-16",
+      "schedule": "2026-07-19",
+      "programs": "2023-10-15",
+      "contacts": "2026-07-09"
+    },
+    "updatedAt": "2026-06-16"
+  },
+  {
+    "id": "huda-academy",
+    "name": "Huda Academy",
+    "region": "west",
+    "address": {
+      "street": "4179 Park Blvd",
+      "city": "Denver",
+      "state": "CO",
+      "postalCode": "36287",
+      "country": "US"
+    },
+    "phone": "(949) 555-0804",
+    "email": "office@hudaacademy.example.org",
+    "website": "https://huda-academy.example.org",
+    "founded": 1993,
+    "gradesFrom": "K",
+    "gradesTo": "8",
+    "accreditation": [
+      "CAIS"
+    ],
+    "metrics": {
+      "enrollment": 94,
+      "teachers": 9,
+      "tuition": 10250,
+      "avgTeacherSalary": 50900,
+      "retentionRate": 0.86,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 79
+        },
+        {
+          "year": 2023,
+          "value": 82
+        },
+        {
+          "year": 2024,
+          "value": 87
+        },
+        {
+          "year": 2025,
+          "value": 91
+        },
+        {
+          "year": 2026,
+          "value": 94
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Ismail Nasser",
+        "role": "Principal",
+        "email": "principal@hudaacademy.example.org",
+        "since": 2012
+      },
+      {
+        "id": "l2",
+        "name": "Hamza Osman",
+        "role": "Board Chair",
+        "email": "board@hudaacademy.example.org",
+        "since": 2022
+      }
+    ],
+    "schedule": {
+      "startTime": "08:15",
+      "endTime": "15:15",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Outside vendor",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": false,
+      "athletics": [
+        "Track",
+        "Swimming"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2011
+    },
+    "verifiedAt": {
+      "overview": "2026-05-07",
+      "leadership": "2026-08-15",
+      "schedule": "2026-09-10",
+      "programs": "2026-09-06",
+      "contacts": "2026-08-12"
+    },
+    "updatedAt": "2024-03-14"
+  },
+  {
+    "id": "maple-crescent-school",
+    "name": "Maple Crescent School",
+    "region": "canada",
+    "address": {
+      "street": "8032 Maple St",
+      "city": "Toronto",
+      "state": "ON",
+      "postalCode": "L5A 8C9",
+      "country": "CA"
+    },
+    "phone": "(821) 555-0292",
+    "email": "office@maplecrescentschool.example.org",
+    "website": "https://maple-crescent-school.example.org",
+    "founded": 1997,
+    "gradesFrom": "PK",
+    "gradesTo": "8",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 644,
+      "teachers": 59,
+      "tuition": 9200,
+      "avgTeacherSalary": 48200,
+      "retentionRate": 0.86,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 555
+        },
+        {
+          "year": 2023,
+          "value": 571
+        },
+        {
+          "year": 2024,
+          "value": 611
+        },
+        {
+          "year": 2025,
+          "value": 631
+        },
+        {
+          "year": 2026,
+          "value": 644
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Idris Shah",
+        "role": "Principal",
+        "email": "principal@maplecrescentschool.example.org",
+        "since": 2017
+      },
+      {
+        "id": "l2",
+        "name": "Idris Qureshi",
+        "role": "Board Chair",
+        "email": "board@maplecrescentschool.example.org",
+        "since": 2019
+      }
+    ],
+    "schedule": {
+      "startTime": "08:00",
+      "endTime": "15:15",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": false,
+        "provider": "",
+        "allHalal": false,
+        "freeReducedAvailable": false
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Volleyball",
+        "Track"
+      ]
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2022
+    },
+    "verifiedAt": {
+      "overview": "2026-06-01",
+      "leadership": "2023-09-13",
+      "schedule": "2026-05-09",
+      "programs": "2026-07-05",
+      "contacts": "2026-07-20"
+    },
+    "updatedAt": "2025-10-03"
+  },
+  {
+    "id": "al-rashid-academy",
+    "name": "Al-Rashid Academy",
+    "region": "canada",
+    "address": {
+      "street": "2874 Mill Dr",
+      "city": "Mississauga",
+      "state": "ON",
+      "postalCode": "H7A 7C9",
+      "country": "CA"
+    },
+    "phone": "(830) 555-0996",
+    "email": "office@alrashidacademy.example.org",
+    "website": "https://al-rashid-academy.example.org",
+    "founded": 2015,
+    "gradesFrom": "PK",
+    "gradesTo": "12",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 180,
+      "teachers": 16,
+      "tuition": 8500,
+      "avgTeacherSalary": 40300,
+      "retentionRate": 0.91,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 155
+        },
+        {
+          "year": 2023,
+          "value": 158
+        },
+        {
+          "year": 2024,
+          "value": 171
+        },
+        {
+          "year": 2025,
+          "value": 176
+        },
+        {
+          "year": 2026,
+          "value": 180
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Yusuf Ali",
+        "role": "Principal",
+        "email": "principal@alrashidacademy.example.org",
+        "since": 2011
+      },
+      {
+        "id": "l2",
+        "name": "Khadija Sayed",
+        "role": "Board Chair",
+        "email": "board@alrashidacademy.example.org",
+        "since": 2023
+      }
+    ],
+    "schedule": {
+      "startTime": "08:00",
+      "endTime": "15:00",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Local halal caterer",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": true,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Soccer"
+      ]
+    },
+    "membership": {
+      "status": "lapsed",
+      "memberSince": 2016
+    },
+    "verifiedAt": {
+      "overview": "2026-05-12",
+      "leadership": "2026-07-09",
+      "schedule": "2026-09-08",
+      "programs": "2026-09-17",
+      "contacts": "2026-06-22"
+    },
+    "updatedAt": "2025-05-14"
+  },
+  {
+    "id": "prairie-light-school",
+    "name": "Prairie Light School",
+    "region": "canada",
+    "address": {
+      "street": "8686 Maple St",
+      "city": "Calgary",
+      "state": "AB",
+      "postalCode": "M5A 8J2",
+      "country": "CA"
+    },
+    "phone": "(860) 555-0329",
+    "email": "office@prairielightschool.example.org",
+    "website": "https://prairie-light-school.example.org",
+    "founded": 1994,
+    "gradesFrom": "6",
+    "gradesTo": "12",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 305,
+      "teachers": 25,
+      "tuition": 9750,
+      "avgTeacherSalary": 40500,
+      "retentionRate": 0.76,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 243
+        },
+        {
+          "year": 2023,
+          "value": 263
+        },
+        {
+          "year": 2024,
+          "value": 276
+        },
+        {
+          "year": 2025,
+          "value": 288
+        },
+        {
+          "year": 2026,
+          "value": 305
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Tariq Qureshi",
+        "role": "Principal",
+        "email": "principal@prairielightschool.example.org",
+        "since": 2022
+      },
+      {
+        "id": "l2",
+        "name": "Hafsa Hussain",
+        "role": "Board Chair",
+        "email": "board@prairielightschool.example.org",
+        "since": 2020
+      }
+    ],
+    "schedule": {
+      "startTime": "08:00",
+      "endTime": "15:30",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": true,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "In-house kitchen",
+        "allHalal": true,
+        "freeReducedAvailable": true
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Soccer",
+        "Swimming"
+      ]
+    },
+    "membership": {
+      "status": "lapsed",
+      "memberSince": 2014
+    },
+    "verifiedAt": {
+      "overview": "2024-12-09",
+      "leadership": "2026-04-12",
+      "schedule": "2026-08-13",
+      "programs": "2025-01-22",
+      "contacts": "2026-06-11"
+    },
+    "updatedAt": "2025-11-09"
+  },
+  {
+    "id": "nur-academy",
+    "name": "Nur Academy",
+    "region": "canada",
+    "address": {
+      "street": "6926 Mill Dr",
+      "city": "Montreal",
+      "state": "QC",
+      "postalCode": "M9B 7C5",
+      "country": "CA"
+    },
+    "phone": "(761) 555-0971",
+    "email": "office@nuracademy.example.org",
+    "website": "https://nur-academy.example.org",
+    "founded": 2001,
+    "gradesFrom": "6",
+    "gradesTo": "12",
+    "accreditation": [
+      "FCIS"
+    ],
+    "metrics": {
+      "enrollment": 630,
+      "teachers": 42,
+      "tuition": 9600,
+      "avgTeacherSalary": 43800,
+      "retentionRate": 0.91,
+      "enrollmentHistory": [
+        {
+          "year": 2022,
+          "value": 556
+        },
+        {
+          "year": 2023,
+          "value": 596
+        },
+        {
+          "year": 2024,
+          "value": 636
+        },
+        {
+          "year": 2025,
+          "value": 657
+        },
+        {
+          "year": 2026,
+          "value": 630
+        }
+      ]
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Yusuf Qureshi",
+        "role": "Principal",
+        "email": "principal@nuracademy.example.org",
+        "since": 2025
+      },
+      {
+        "id": "l2",
+        "name": "Bilal Nasser",
+        "role": "Board Chair",
+        "email": "board@nuracademy.example.org",
+        "since": 2020
+      }
+    ],
+    "schedule": {
+      "startTime": "08:15",
+      "endTime": "15:30",
+      "firstDay": "2026-08-17",
+      "lastDay": "2027-05-28",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": true,
+        "provider": "Parent-run program",
+        "allHalal": true,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": true,
+      "arabic": true,
+      "afterCare": true,
+      "athletics": [
+        "Soccer",
+        "Swimming"
+      ]
+    },
+    "membership": {
+      "status": "non_member",
+      "memberSince": 2013
+    },
+    "verifiedAt": {
+      "overview": "2026-07-05",
+      "leadership": "2026-08-10",
+      "schedule": "2026-08-16",
+      "programs": "2026-06-01",
+      "contacts": "2026-05-04"
+    },
+    "updatedAt": "2026-03-27"
+  }
+]

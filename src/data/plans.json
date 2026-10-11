@@ -1,0 +1,246 @@
+[
+  {
+    "schoolId": "al-noor-academy",
+    "tier": "301–400 students",
+    "annualDues": 900,
+    "renewsOn": "2026-11-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "9990",
+      "expires": "08/29"
+    }
+  },
+  {
+    "schoolId": "crescent-valley-school",
+    "tier": "301–400 students",
+    "annualDues": 900,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "3781",
+      "expires": "11/29"
+    }
+  },
+  {
+    "schoolId": "iqra-learning-center",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "8972",
+      "expires": "07/28"
+    }
+  },
+  {
+    "schoolId": "hikmah-academy",
+    "tier": "701–800 students",
+    "annualDues": 1500,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "6591",
+      "expires": "08/29"
+    }
+  },
+  {
+    "schoolId": "furqan-academy",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "salam-day-school",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "noor-ul-ilm-school",
+    "tier": "801–900 students",
+    "annualDues": 1650,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "7576",
+      "expires": "04/29"
+    }
+  },
+  {
+    "schoolId": "darul-arqam-academy",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "8508",
+      "expires": "10/30"
+    }
+  },
+  {
+    "schoolId": "ihsan-academy",
+    "tier": "101–200 students",
+    "annualDues": 600,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "6275",
+      "expires": "05/28"
+    }
+  },
+  {
+    "schoolId": "tawheed-prep",
+    "tier": "401–500 students",
+    "annualDues": 1050,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "5491",
+      "expires": "06/29"
+    }
+  },
+  {
+    "schoolId": "minaret-school",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "rahmah-academy",
+    "tier": "201–300 students",
+    "annualDues": 750,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "9301",
+      "expires": "10/30"
+    }
+  },
+  {
+    "schoolId": "al-fajr-school",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "5426",
+      "expires": "03/29"
+    }
+  },
+  {
+    "schoolId": "andalusia-academy",
+    "tier": "401–500 students",
+    "annualDues": 1050,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "madinah-prep",
+    "tier": "201–300 students",
+    "annualDues": 750,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "2024",
+      "expires": "06/29"
+    }
+  },
+  {
+    "schoolId": "ilm-academy",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "6734",
+      "expires": "03/27"
+    }
+  },
+  {
+    "schoolId": "pacific-crescent-school",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "1446",
+      "expires": "07/28"
+    }
+  },
+  {
+    "schoolId": "sakinah-school",
+    "tier": "801–900 students",
+    "annualDues": 1650,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "huda-academy",
+    "tier": "1–100 students",
+    "annualDues": 450,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "1960",
+      "expires": "06/28"
+    }
+  },
+  {
+    "schoolId": "maple-crescent-school",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "7689",
+      "expires": "09/28"
+    }
+  },
+  {
+    "schoolId": "al-rashid-academy",
+    "tier": "101–200 students",
+    "annualDues": 600,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "6462",
+      "expires": "08/28"
+    }
+  },
+  {
+    "schoolId": "prairie-light-school",
+    "tier": "301–400 students",
+    "annualDues": 900,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "4732",
+      "expires": "07/27"
+    }
+  }
+]
