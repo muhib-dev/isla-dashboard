@@ -45,6 +45,7 @@ export function createHttpClient({ baseUrl, token }: HttpClientOptions) {
   return {
     get: <T>(path: string, schema: z.ZodType<T>, query?: Query) => request("GET", path, schema, { query }),
     post: <T>(path: string, schema: z.ZodType<T>, body: unknown) => request("POST", path, schema, { body }),
+    put: <T>(path: string, schema: z.ZodType<T>, body: unknown) => request("PUT", path, schema, { body }),
     patch: <T>(path: string, schema: z.ZodType<T>, body: unknown) => request("PATCH", path, schema, { body }),
     /** GET that maps 404 to null. */
     find: async <T>(path: string, schema: z.ZodType<T>) => {

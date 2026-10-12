@@ -1,6 +1,8 @@
+import { tokenize } from "./search/normalize"
 import {
   PROFILE_SECTIONS,
   type Freshness,
+  type Region,
   type ProfileSection,
   type School,
   type SchoolSummary,
@@ -109,4 +111,26 @@ export function sectionValues<S extends ProfileSection>(school: School, section:
     },
   }
   return values[section]
+}
+
+/**
+ * Finds the school a public report is about: same normalised name, city and state.
+ * Returns null unless exactly one school matches, so a report never silently targets the wrong one.
+ */
+export function matchSchool(schools: Pick<School, "id" | "name" | "address">[], name: string, city: string, state: string): string | null {
+  const key = (s: string) => tokenize(s).join(" ")
+  const hits = schools.filter((s) => key(s.name) === key(name) && key(s.address.city) === key(city) && s.address.state.toUpperCase() === state.toUpperCase())
+  return hits.length === 1 ? hits[0].id : null
+}
+
+const REGION_OF_STATE: Record<string, Region> = {
+  ...Object.fromEntries("CT ME MA NH RI VT NJ NY PA".split(" ").map((c) => [c, "northeast" as const])),
+  ...Object.fromEntries("IL IN MI OH WI IA KS MN MO NE ND SD".split(" ").map((c) => [c, "midwest" as const])),
+  ...Object.fromEntries("DE DC FL GA MD NC SC VA WV AL KY MS TN AR LA PR VI".split(" ").map((c) => [c, "southeast" as const])),
+  ...Object.fromEntries("TX OK AZ NM".split(" ").map((c) => [c, "southwest" as const])),
+  ...Object.fromEntries("CO ID MT UT WY NV CA OR WA AK HI GU AS MP".split(" ").map((c) => [c, "west" as const])),
+}
+
+export function regionOf(state: string, country: "US" | "CA"): Region {
+  return country === "CA" ? "canada" : (REGION_OF_STATE[state.toUpperCase()] ?? "southeast")
 }

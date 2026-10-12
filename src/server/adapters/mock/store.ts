@@ -3,6 +3,7 @@ import { z } from "zod"
 import { InvoiceSchema, PlanSchema } from "@/features/billing/schema"
 import { JobSchema } from "@/features/jobs/schema"
 import { SchoolSchema } from "@/features/schools/schema"
+import type { SchoolReport } from "@/features/schools/submissions"
 import { ProductSchema } from "@/features/store/schema"
 import invoices from "@/data/invoices.json"
 import jobs from "@/data/jobs.json"
@@ -22,6 +23,9 @@ function seed() {
     plans: z.array(PlanSchema).parse(plans),
     invoices: z.array(InvoiceSchema).parse(invoices),
     products: z.array(ProductSchema).parse(products),
+    reports: [] as SchoolReport[],
+    /** Contact-form messages relayed to schools (mock: kept in memory, newest first). */
+    messages: [] as { id: string; schoolId: string; name: string; email: string; message: string; at: string }[],
   }
 }
 

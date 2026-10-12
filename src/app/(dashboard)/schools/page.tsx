@@ -3,11 +3,10 @@ import { Suspense } from "react"
 import { PageBody, PageHeader } from "@/components/layout/page-header"
 import { RoleNotice } from "@/components/shared/role-notice"
 import { TableSkeleton } from "@/components/shared/skeletons"
-import { Skeleton } from "@/components/ui/skeleton"
-import { SchoolFilters } from "@/features/schools/components/school-filters"
-import { SchoolsTable } from "@/features/schools/components/schools-table"
-import { listSchools } from "@/features/schools/queries"
-import { SchoolFilterSchema } from "@/features/schools/schema"
+import { AddSchoolDialog } from "@/features/schools/components/submission-forms"
+import { SchoolsExplorer } from "@/features/schools/components/schools-explorer"
+import { getSchoolSearchIndex } from "@/features/schools/queries"
+import { seedGeoContext } from "@/features/schools/search/geo-server"
 import { getSession } from "@/server/session"
 
 export const metadata: Metadata = { title: "Schools" }
@@ -15,10 +14,11 @@ export const metadata: Metadata = { title: "Schools" }
 export default function SchoolsPage({ searchParams }: PageProps<"/schools">) {
   return (
     <PageBody>
-      <PageHeader title="Schools" description="Every school in the ISLA directory. Open a school to update its profile." />
-      <Suspense fallback={<Skeleton className="h-10 w-full max-w-2xl" />}>
-        <SchoolFilters />
-      </Suspense>
+      <PageHeader
+        title="Schools"
+        description="Search every school in the ISLA directory by name, place or detail, on a list or a map."
+        actions={<AddSchoolDialog />}
+      />
       <Suspense fallback={<TableSkeleton />}>
         <Directory searchParams={searchParams} />
       </Suspense>
@@ -36,12 +36,6 @@ async function Directory({ searchParams }: Pick<PageProps<"/schools">, "searchPa
     )
   }
   const raw = await searchParams
-  const filter = SchoolFilterSchema.safeParse({
-    q: typeof raw.q === "string" ? raw.q : undefined,
-    region: raw.region,
-    status: raw.status,
-    freshness: raw.freshness,
-  })
-  const rows = await listSchools(filter.success ? filter.data : {})
-  return <SchoolsTable rows={rows} />
+  const [docs, geoSeed] = await Promise.all([getSchoolSearchIndex(true), seedGeoContext(typeof raw.q === "string" ? raw.q : undefined)])
+  return <SchoolsExplorer docs={docs} geoSeed={geoSeed} />
 }

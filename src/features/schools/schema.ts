@@ -13,6 +13,49 @@ export const REGION_LABELS: Record<Region, string> = {
   canada: "Canada",
 }
 
+export const SCHOOL_TYPES = ["standard", "preschool", "charter", "weekend", "afterschool", "coop", "hifdh", "other"] as const
+export const SchoolTypeSchema = z.enum(SCHOOL_TYPES)
+export type SchoolType = z.infer<typeof SchoolTypeSchema>
+export const SCHOOL_TYPE_LABELS: Record<SchoolType, string> = {
+  standard: "Full-time Islamic school",
+  preschool: "Preschool",
+  charter: "Charter",
+  weekend: "Weekend",
+  afterschool: "After-school",
+  coop: "Co-op",
+  hifdh: "Hifdh",
+  other: "Other",
+}
+
+/** Listing status: open and pending (new, unreviewed) schools show by default; closed ones are opt-in. */
+export const LISTING_STATUSES = ["open", "pending", "closed"] as const
+export const ListingStatusSchema = z.enum(LISTING_STATUSES)
+export type ListingStatus = z.infer<typeof ListingStatusSchema>
+
+/** Same feature checklist as the public ISLA directory. */
+export const FEATURE_LABELS = {
+  e_learning: "E-learning portal",
+  computer_lab: "Computer labs",
+  library: "Library",
+  uniform: "Uniform",
+  afterschool_clubs: "After-school clubs",
+  dorms: "Dorms",
+  scholarship: "Scholarships",
+  financial_aid: "Financial aid",
+  sports: "Sports",
+  hot_lunch: "Hot lunch",
+  science_lab: "Science lab",
+  sibling_discount: "Sibling discount",
+  alumni_association: "Alumni association",
+  staff_discount: "Staff discount",
+  debate_club: "Debate club",
+  science_olympiad: "Science Olympiad",
+  robotics_club: "Robotics club",
+} as const
+export const FEATURES = Object.keys(FEATURE_LABELS) as (keyof typeof FEATURE_LABELS)[]
+export const FeatureSchema = z.enum(FEATURES as [keyof typeof FEATURE_LABELS, ...(keyof typeof FEATURE_LABELS)[]])
+export type Feature = z.infer<typeof FeatureSchema>
+
 export const MembershipStatusSchema = z.enum(["active", "grace", "lapsed", "non_member"])
 export type MembershipStatus = z.infer<typeof MembershipStatusSchema>
 
@@ -22,12 +65,25 @@ export type ProfileSection = z.infer<typeof ProfileSectionSchema>
 
 const isoDate = z.iso.date()
 
+export const GEO_PRECISIONS = ["rooftop", "postal", "city", "none"] as const
+export const GeoSchema = z.object({
+  lat: z.number().min(-90).max(90),
+  lng: z.number().min(-180).max(180),
+  /** How exact the pin is. "city" pins are approximate and shown as such. */
+  precision: z.enum(GEO_PRECISIONS),
+  source: z.enum(["nominatim", "gazetteer", "manual"]),
+  updatedAt: isoDate,
+})
+export type Geo = z.infer<typeof GeoSchema>
+
 export const AddressSchema = z.object({
   street: z.string(),
   city: z.string(),
   state: z.string(),
   postalCode: z.string(),
   country: z.enum(["US", "CA"]),
+  /** Optional so older API payloads still parse; schools without it are listed as "not on map". */
+  geo: GeoSchema.nullish(),
 })
 
 export const LeaderSchema = z.object({
@@ -89,6 +145,11 @@ export const SchoolSchema = z.object({
   schedule: ScheduleSchema,
   programs: ProgramsSchema,
   membership: z.object({ status: MembershipStatusSchema, memberSince: z.number().int() }),
+  /** Defaults keep older API payloads parsing. */
+  type: SchoolTypeSchema.default("standard"),
+  listing: ListingStatusSchema.default("open"),
+  features: z.array(FeatureSchema).default([]),
+  social: z.object({ facebook: z.string(), instagram: z.string(), youtube: z.string(), x: z.string() }).partial().default({}),
   verifiedAt: z.record(ProfileSectionSchema, isoDate),
   updatedAt: isoDate,
 })

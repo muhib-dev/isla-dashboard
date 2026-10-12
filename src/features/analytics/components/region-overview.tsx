@@ -2,21 +2,23 @@ import { Stat } from "@/components/shared/stat"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { getNetworkOverview, getRegionStats } from "@/features/analytics/queries"
+import { getMapCoverage } from "@/features/schools/queries"
 import { REGION_LABELS } from "@/features/schools/schema"
 import { fmt } from "@/lib/format"
 import { MembershipByRegion } from "./membership-by-region"
 import { RegionChart } from "./region-chart"
 
 export async function RegionOverview() {
-  const [regions, overview] = await Promise.all([getRegionStats(), getNetworkOverview()])
+  const [regions, overview, coverage] = await Promise.all([getRegionStats(), getNetworkOverview(), getMapCoverage()])
   const m = overview.medians
 
   return (
     <div className="space-y-5">
-      <div className="grid gap-px overflow-hidden rounded-xl bg-border ring-1 ring-foreground/10 sm:grid-cols-2 xl:grid-cols-4 *:bg-card *:p-5">
+      <div className="grid gap-px overflow-hidden rounded-xl bg-border ring-1 ring-foreground/10 sm:grid-cols-2 xl:grid-cols-5 *:bg-card *:p-5">
         <Stat label="Network median tuition" value={fmt.currency(m.tuition)} hint={`Across ${overview.schools} schools`} />
         <Stat label="Network median teacher salary" value={fmt.currency(m.teacherSalary)} hint="Average salary per school" />
         <Stat label="Network median retention" value={fmt.percent(m.retention)} hint="Teachers returning year over year" />
+        <Stat label="Schools on the map" value={`${coverage.mapped} of ${coverage.total}`} hint={`${coverage.exact} at an exact address`} />
         <Stat label="Schools with a lunch program" value={fmt.percent(m.lunchProgramShare)} hint={`${fmt.number(overview.students)} students in total`} />
       </div>
 

@@ -44,8 +44,15 @@ different ones.
 | Repository method | Method & path | Request | Response schema |
 |---|---|---|---|
 | `schools.list(filter)` | `GET /schools?q=&region=&status=&freshness=` | query | `SchoolSummary[]` |
+| `schools.listAll()` | `GET /schools?view=full` (all pages; ~450 rows) | — | `School[]` |
 | `schools.get(id)` | `GET /schools/:id` (404 → null) | — | `School` |
 | `schools.updateSection(id, section, patch)` | `PATCH /schools/:id/{overview\|leadership\|schedule\|programs\|contacts}` | `SectionPatchSchemas[section]` | `School` |
+| `schools.createPending(input)` | `POST /schools/submissions` | `NewSchool` | `School` (`listing: "pending"`) |
+| `schools.submitReport(input)` | `POST /schools/reports` | `NewReport` + `kind` | `SchoolReport` |
+| `schools.listReports()` | `GET /schools/reports` | — | `SchoolReport[]` |
+| `schools.resolveReport(id, decision)` | `POST /schools/reports/:id/resolve` | `{ decision: "approved" \| "dismissed" }` | `SchoolReport` |
+| `schools.sendContactMessage(id, msg)` | `POST /schools/:id/contact` (204) | `{ name, email, message }` | — |
+| `schools.setGeo(id, geo)` | `PUT /schools/:id/geo` (body `Geo` or `null`) | `Geo \| null` | `School` |
 | `schools.requestUpdate(ids)` | `POST /schools/update-requests` | `{ ids: string[] }` | `{ sent: number }` |
 | `jobs.listBySchool(id)` | `GET /schools/:id/jobs` | — | `Job[]` |
 | `jobs.listOpen()` | `GET /jobs?status=open` | — | `Job[]` |
@@ -104,3 +111,42 @@ The authorization checks (`canManageSchool`) and every page keep working unchang
 - With serverless hosting, in-memory `'use cache'` entries don't persist between
   instances. Use `'use cache: remote'` for data that should be shared across
   instances.
+
+
+## School locations (`address.geo`)
+
+`School.address.geo` is optional: `{ lat, lng, precision: "rooftop" | "postal" | "city" | "none", source: "nominatim" | "gazetteer" | "manual", updatedAt }`.
+The directory map pins schools that have it and lists the rest as "not on map".
+`precision` drives the "approximate location" label, so the API should record how
+exact each pin is rather than always returning `rooftop`. Seed data is backfilled with
+`node scripts/backfill-geo.mjs` (city-level pins from `src/data/geo/places.json`);
+re-run it after `scripts/generate-mock-data.mjs`.
+`GET /schools?view=full` must return every school (`School[]`) for the search index.
+
+## Directory search data
+
+New optional `School` fields (defaults keep older payloads parsing): `type`
+(`standard|preschool|charter|weekend|afterschool|coop|hifdh|other`), `listing`
+(`open|pending|closed`), `features` (ids from `FEATURE_LABELS` in `features/schools/schema.ts`)
+and `social` (`facebook|instagram|youtube|x` handles). `metrics.tuition` of `0` means "not
+listed", as the profile "Add tuition" task already assumes.
+
+Offline lookups for ZIP / postal-code / place search are static files under `public/geo`
+(US ZIPs sharded by first two digits, Canadian FSAs, ~3,900 cities). They are built from
+GeoNames (CC BY 4.0) with `node scripts/build-geo-data.mjs <dir>`; see the script header
+for the download URLs. Set `GEOCODER_CONTACT` (an email or URL) to enable Nominatim lookups
+for place names and exact addresses; without it, pins fall back to ZIP / city centroids.
+
+## Public directory (`/directory`)
+
+Anonymous page, no session. It only ever receives `getPublicSearchIndex()`: open schools,
+with staff-only fields removed (`toPublicDoc` in `features/schools/search/doc.ts`). The API
+should enforce the same on its side if it ever serves this directly: no pending/closed
+schools, no leader names or emails, no salary/retention, no verification dates.
+
+Public forms (contact, add school, report) are rate-limited per client and carry a honeypot
+field; `src/server/rate-limit.ts` is in-memory, so use a shared store when running several
+instances. A new school is created with `listing: "pending"` plus a `"new"` report; staff
+approve or dismiss it under **Reports**. Closure and other reports never change a listing
+until staff approve them, and a report is linked to a school only when exactly one school
+matches its name, city and state.

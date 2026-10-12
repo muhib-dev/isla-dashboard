@@ -8,7 +8,14 @@
       "city": "Austin",
       "state": "TX",
       "postalCode": "78704",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 30.2672,
+        "lng": -97.7431,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(707) 555-0907",
     "email": "office@alnooracademy.example.org",
@@ -106,7 +113,20 @@
       "programs": "2025-03-14",
       "contacts": "2026-01-10"
     },
-    "updatedAt": "2026-08-20"
+    "updatedAt": "2026-08-20",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "e_learning",
+      "afterschool_clubs",
+      "financial_aid",
+      "sports",
+      "hot_lunch"
+    ],
+    "social": {
+      "facebook": "alnooracademy",
+      "instagram": "alnooracademy"
+    }
   },
   {
     "id": "crescent-valley-school",
@@ -117,7 +137,14 @@
       "city": "Phoenix",
       "state": "AZ",
       "postalCode": "67002",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 33.4484,
+        "lng": -112.074,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(503) 555-0700",
     "email": "office@crescentvalleyschool.example.org",
@@ -203,7 +230,18 @@
       "programs": "2026-06-11",
       "contacts": "2026-06-02"
     },
-    "updatedAt": "2024-06-18"
+    "updatedAt": "2024-06-18",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "uniform",
+      "financial_aid",
+      "hot_lunch",
+      "alumni_association",
+      "staff_discount",
+      "robotics_club"
+    ],
+    "social": {}
   },
   {
     "id": "bayan-preparatory",
@@ -214,7 +252,14 @@
       "city": "Houston",
       "state": "TX",
       "postalCode": "95135",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 29.7604,
+        "lng": -95.3698,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(275) 555-0476",
     "email": "office@bayanpreparatory.example.org",
@@ -304,7 +349,21 @@
       "programs": "2026-04-12",
       "contacts": "2026-08-02"
     },
-    "updatedAt": "2025-03-19"
+    "updatedAt": "2025-03-19",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "computer_lab",
+      "afterschool_clubs",
+      "financial_aid",
+      "sports",
+      "debate_club",
+      "science_olympiad"
+    ],
+    "social": {
+      "facebook": "bayanpreparatory",
+      "instagram": "bayanpreparatory"
+    }
   },
   {
     "id": "iqra-learning-center",
@@ -315,7 +374,14 @@
       "city": "Dallas",
       "state": "TX",
       "postalCode": "21106",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 32.7767,
+        "lng": -96.797,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(337) 555-0189",
     "email": "office@iqralearningcenter.example.org",
@@ -405,7 +471,18 @@
       "programs": "2026-05-13",
       "contacts": "2026-07-19"
     },
-    "updatedAt": "2024-02-22"
+    "updatedAt": "2024-02-22",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "e_learning",
+      "library",
+      "uniform",
+      "scholarship",
+      "sports",
+      "hot_lunch"
+    ],
+    "social": {}
   },
   {
     "id": "hikmah-academy",
@@ -416,7 +493,14 @@
       "city": "San Antonio",
       "state": "TX",
       "postalCode": "24843",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 29.4241,
+        "lng": -98.4936,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(388) 555-0518",
     "email": "office@hikmahacademy.example.org",
@@ -506,7 +590,22 @@
       "programs": "2025-02-17",
       "contacts": "2024-06-22"
     },
-    "updatedAt": "2025-06-06"
+    "updatedAt": "2025-06-06",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "library",
+      "uniform",
+      "scholarship",
+      "financial_aid",
+      "sports",
+      "hot_lunch",
+      "sibling_discount"
+    ],
+    "social": {
+      "facebook": "hikmahacademy",
+      "instagram": "hikmahacademy"
+    }
   },
   {
     "id": "al-huda-school",
@@ -517,7 +616,14 @@
       "city": "Paterson",
       "state": "NJ",
       "postalCode": "28074",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 40.9168,
+        "lng": -74.1718,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(568) 555-0298",
     "email": "office@alhudaschool.example.org",
@@ -606,7 +712,19 @@
       "programs": "2026-05-05",
       "contacts": "2026-07-08"
     },
-    "updatedAt": "2024-05-09"
+    "updatedAt": "2024-05-09",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "e_learning",
+      "afterschool_clubs",
+      "financial_aid",
+      "sports",
+      "hot_lunch",
+      "staff_discount",
+      "robotics_club"
+    ],
+    "social": {}
   },
   {
     "id": "furqan-academy",
@@ -617,7 +735,14 @@
       "city": "Brooklyn",
       "state": "NY",
       "postalCode": "50555",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 40.6782,
+        "lng": -73.9442,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(621) 555-0430",
     "email": "office@furqanacademy.example.org",
@@ -707,7 +832,17 @@
       "programs": "2026-07-25",
       "contacts": "2026-07-25"
     },
-    "updatedAt": "2024-11-04"
+    "updatedAt": "2024-11-04",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "uniform",
+      "sports",
+      "hot_lunch",
+      "debate_club",
+      "robotics_club"
+    ],
+    "social": {}
   },
   {
     "id": "salam-day-school",
@@ -718,7 +853,14 @@
       "city": "Boston",
       "state": "MA",
       "postalCode": "72625",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 42.3601,
+        "lng": -71.0589,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(694) 555-0384",
     "email": "office@salamdayschool.example.org",
@@ -809,7 +951,22 @@
       "programs": "2026-08-24",
       "contacts": "2025-03-22"
     },
-    "updatedAt": "2024-11-04"
+    "updatedAt": "2024-11-04",
+    "type": "weekend",
+    "listing": "open",
+    "features": [
+      "e_learning",
+      "scholarship",
+      "financial_aid",
+      "sports",
+      "hot_lunch",
+      "sibling_discount",
+      "science_olympiad"
+    ],
+    "social": {
+      "facebook": "salamdayschool",
+      "instagram": "salamdayschool"
+    }
   },
   {
     "id": "noor-ul-ilm-school",
@@ -820,7 +977,14 @@
       "city": "Philadelphia",
       "state": "PA",
       "postalCode": "42690",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 39.9526,
+        "lng": -75.1652,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(753) 555-0199",
     "email": "office@noorulilmschool.example.org",
@@ -909,7 +1073,23 @@
       "programs": "2026-04-18",
       "contacts": "2026-06-11"
     },
-    "updatedAt": "2025-06-23"
+    "updatedAt": "2025-06-23",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "computer_lab",
+      "uniform",
+      "dorms",
+      "sports",
+      "hot_lunch",
+      "sibling_discount",
+      "staff_discount"
+    ],
+    "social": {
+      "facebook": "noorulilmschool",
+      "instagram": "noorulilmschool",
+      "youtube": "noorulilmschool"
+    }
   },
   {
     "id": "darul-arqam-academy",
@@ -920,7 +1100,14 @@
       "city": "Chicago",
       "state": "IL",
       "postalCode": "84802",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 41.8781,
+        "lng": -87.6298,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(464) 555-0533",
     "email": "office@darularqamacademy.example.org",
@@ -1011,7 +1198,22 @@
       "programs": "2026-09-16",
       "contacts": "2026-07-26"
     },
-    "updatedAt": "2025-08-20"
+    "updatedAt": "2025-08-20",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "library",
+      "uniform",
+      "sports",
+      "hot_lunch",
+      "science_lab",
+      "staff_discount",
+      "robotics_club"
+    ],
+    "social": {
+      "facebook": "darularqamacademy",
+      "instagram": "darularqamacademy"
+    }
   },
   {
     "id": "ihsan-academy",
@@ -1022,7 +1224,14 @@
       "city": "Dearborn",
       "state": "MI",
       "postalCode": "90617",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 42.3223,
+        "lng": -83.1763,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(714) 555-0914",
     "email": "office@ihsanacademy.example.org",
@@ -1112,7 +1321,24 @@
       "programs": "2026-06-15",
       "contacts": "2026-08-07"
     },
-    "updatedAt": "2026-07-22"
+    "updatedAt": "2026-07-22",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "library",
+      "afterschool_clubs",
+      "financial_aid",
+      "sports",
+      "hot_lunch",
+      "science_lab",
+      "alumni_association",
+      "debate_club"
+    ],
+    "social": {
+      "facebook": "ihsanacademy",
+      "instagram": "ihsanacademy",
+      "youtube": "ihsanacademy"
+    }
   },
   {
     "id": "tawheed-prep",
@@ -1123,7 +1349,14 @@
       "city": "Columbus",
       "state": "OH",
       "postalCode": "67983",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 39.9612,
+        "lng": -82.9988,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(895) 555-0571",
     "email": "office@tawheedprep.example.org",
@@ -1214,7 +1447,19 @@
       "programs": "2026-07-11",
       "contacts": "2026-08-15"
     },
-    "updatedAt": "2025-01-17"
+    "updatedAt": "2025-01-17",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "library",
+      "dorms",
+      "sports",
+      "hot_lunch",
+      "sibling_discount",
+      "alumni_association",
+      "staff_discount"
+    ],
+    "social": {}
   },
   {
     "id": "minaret-school",
@@ -1225,7 +1470,14 @@
       "city": "Minneapolis",
       "state": "MN",
       "postalCode": "35261",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 44.9778,
+        "lng": -93.265,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(917) 555-0491",
     "email": "office@minaretschool.example.org",
@@ -1316,7 +1568,18 @@
       "programs": "2026-05-04",
       "contacts": "2026-08-04"
     },
-    "updatedAt": "2025-12-12"
+    "updatedAt": "2025-12-12",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "computer_lab",
+      "uniform",
+      "afterschool_clubs",
+      "sports",
+      "sibling_discount",
+      "robotics_club"
+    ],
+    "social": {}
   },
   {
     "id": "rahmah-academy",
@@ -1327,7 +1590,14 @@
       "city": "Atlanta",
       "state": "GA",
       "postalCode": "18661",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 33.749,
+        "lng": -84.388,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(848) 555-0297",
     "email": "office@rahmahacademy.example.org",
@@ -1413,7 +1683,20 @@
       "programs": "2024-06-10",
       "contacts": "2025-03-16"
     },
-    "updatedAt": "2026-09-07"
+    "updatedAt": "2026-09-07",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "e_learning",
+      "library",
+      "hot_lunch",
+      "science_lab",
+      "sibling_discount"
+    ],
+    "social": {
+      "facebook": "rahmahacademy",
+      "instagram": "rahmahacademy"
+    }
   },
   {
     "id": "al-fajr-school",
@@ -1424,7 +1707,14 @@
       "city": "Orlando",
       "state": "FL",
       "postalCode": "97991",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 28.5383,
+        "lng": -81.3792,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(819) 555-0119",
     "email": "office@alfajrschool.example.org",
@@ -1516,7 +1806,18 @@
       "programs": "2025-04-05",
       "contacts": "2024-09-07"
     },
-    "updatedAt": "2024-10-25"
+    "updatedAt": "2024-10-25",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "uniform",
+      "sports",
+      "hot_lunch",
+      "science_lab",
+      "alumni_association",
+      "debate_club"
+    ],
+    "social": {}
   },
   {
     "id": "andalusia-academy",
@@ -1527,7 +1828,14 @@
       "city": "Charlotte",
       "state": "NC",
       "postalCode": "91286",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 35.2271,
+        "lng": -80.8431,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(761) 555-0734",
     "email": "office@andalusiaacademy.example.org",
@@ -1619,7 +1927,22 @@
       "programs": "2024-05-19",
       "contacts": "2026-08-26"
     },
-    "updatedAt": "2025-06-12"
+    "updatedAt": "2025-06-12",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "e_learning",
+      "uniform",
+      "financial_aid",
+      "sports",
+      "hot_lunch",
+      "science_lab",
+      "science_olympiad"
+    ],
+    "social": {
+      "facebook": "andalusiaacademy",
+      "instagram": "andalusiaacademy"
+    }
   },
   {
     "id": "sabeel-academy",
@@ -1630,7 +1953,14 @@
       "city": "Nashville",
       "state": "TN",
       "postalCode": "17790",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 36.1627,
+        "lng": -86.7816,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(430) 555-0795",
     "email": "office@sabeelacademy.example.org",
@@ -1721,7 +2051,19 @@
       "programs": "2026-07-11",
       "contacts": "2026-06-08"
     },
-    "updatedAt": "2024-09-22"
+    "updatedAt": "2024-09-22",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "library",
+      "uniform",
+      "financial_aid",
+      "sports",
+      "hot_lunch",
+      "science_lab",
+      "robotics_club"
+    ],
+    "social": {}
   },
   {
     "id": "madinah-prep",
@@ -1732,7 +2074,14 @@
       "city": "Fairfax",
       "state": "VA",
       "postalCode": "10155",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 38.8462,
+        "lng": -77.3064,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(658) 555-0869",
     "email": "office@madinahprep.example.org",
@@ -1822,7 +2171,23 @@
       "programs": "2026-05-12",
       "contacts": "2026-08-11"
     },
-    "updatedAt": "2025-10-02"
+    "updatedAt": "2025-10-02",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "library",
+      "dorms",
+      "financial_aid",
+      "sports",
+      "hot_lunch",
+      "sibling_discount",
+      "staff_discount",
+      "debate_club"
+    ],
+    "social": {
+      "facebook": "madinahprep",
+      "instagram": "madinahprep"
+    }
   },
   {
     "id": "ilm-academy",
@@ -1833,7 +2198,14 @@
       "city": "Seattle",
       "state": "WA",
       "postalCode": "37138",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 47.6062,
+        "lng": -122.3321,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(277) 555-0679",
     "email": "office@ilmacademy.example.org",
@@ -1922,7 +2294,21 @@
       "programs": "2026-07-01",
       "contacts": "2026-07-23"
     },
-    "updatedAt": "2025-08-27"
+    "updatedAt": "2025-08-27",
+    "type": "hifdh",
+    "listing": "open",
+    "features": [
+      "computer_lab",
+      "dorms",
+      "scholarship",
+      "sports",
+      "hot_lunch",
+      "sibling_discount",
+      "debate_club",
+      "science_olympiad",
+      "robotics_club"
+    ],
+    "social": {}
   },
   {
     "id": "pacific-crescent-school",
@@ -1933,7 +2319,14 @@
       "city": "San Jose",
       "state": "CA",
       "postalCode": "34406",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 37.3382,
+        "lng": -121.8863,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(916) 555-0236",
     "email": "office@pacificcrescentschool.example.org",
@@ -2026,7 +2419,20 @@
       "programs": "2026-07-11",
       "contacts": "2026-08-17"
     },
-    "updatedAt": "2024-01-06"
+    "updatedAt": "2024-01-06",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "e_learning",
+      "computer_lab",
+      "uniform",
+      "sports",
+      "hot_lunch",
+      "sibling_discount",
+      "science_olympiad",
+      "robotics_club"
+    ],
+    "social": {}
   },
   {
     "id": "sakinah-school",
@@ -2037,7 +2443,14 @@
       "city": "Los Angeles",
       "state": "CA",
       "postalCode": "35904",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 34.0522,
+        "lng": -118.2437,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(922) 555-0214",
     "email": "office@sakinahschool.example.org",
@@ -2127,7 +2540,21 @@
       "programs": "2023-10-15",
       "contacts": "2026-07-09"
     },
-    "updatedAt": "2026-06-16"
+    "updatedAt": "2026-06-16",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "computer_lab",
+      "sports",
+      "hot_lunch",
+      "science_lab",
+      "staff_discount",
+      "robotics_club"
+    ],
+    "social": {
+      "facebook": "sakinahschool",
+      "instagram": "sakinahschool"
+    }
   },
   {
     "id": "huda-academy",
@@ -2138,7 +2565,14 @@
       "city": "Denver",
       "state": "CO",
       "postalCode": "36287",
-      "country": "US"
+      "country": "US",
+      "geo": {
+        "lat": 39.7392,
+        "lng": -104.9903,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(949) 555-0804",
     "email": "office@hudaacademy.example.org",
@@ -2229,7 +2663,22 @@
       "programs": "2026-09-06",
       "contacts": "2026-08-12"
     },
-    "updatedAt": "2024-03-14"
+    "updatedAt": "2024-03-14",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "computer_lab",
+      "library",
+      "dorms",
+      "sports",
+      "hot_lunch",
+      "sibling_discount",
+      "robotics_club"
+    ],
+    "social": {
+      "facebook": "hudaacademy",
+      "instagram": "hudaacademy"
+    }
   },
   {
     "id": "maple-crescent-school",
@@ -2240,7 +2689,14 @@
       "city": "Toronto",
       "state": "ON",
       "postalCode": "L5A 8C9",
-      "country": "CA"
+      "country": "CA",
+      "geo": {
+        "lat": 43.6532,
+        "lng": -79.3832,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(821) 555-0292",
     "email": "office@maplecrescentschool.example.org",
@@ -2329,7 +2785,21 @@
       "programs": "2026-07-05",
       "contacts": "2026-07-20"
     },
-    "updatedAt": "2025-10-03"
+    "updatedAt": "2025-10-03",
+    "type": "standard",
+    "listing": "pending",
+    "features": [
+      "computer_lab",
+      "afterschool_clubs",
+      "sports",
+      "sibling_discount",
+      "debate_club",
+      "robotics_club"
+    ],
+    "social": {
+      "facebook": "maplecrescentschool",
+      "instagram": "maplecrescentschool"
+    }
   },
   {
     "id": "al-rashid-academy",
@@ -2340,7 +2810,14 @@
       "city": "Mississauga",
       "state": "ON",
       "postalCode": "H7A 7C9",
-      "country": "CA"
+      "country": "CA",
+      "geo": {
+        "lat": 43.589,
+        "lng": -79.6441,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(830) 555-0996",
     "email": "office@alrashidacademy.example.org",
@@ -2428,7 +2905,23 @@
       "programs": "2026-09-17",
       "contacts": "2026-06-22"
     },
-    "updatedAt": "2025-05-14"
+    "updatedAt": "2025-05-14",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "e_learning",
+      "computer_lab",
+      "library",
+      "uniform",
+      "scholarship",
+      "sports",
+      "hot_lunch",
+      "science_lab",
+      "alumni_association",
+      "staff_discount",
+      "robotics_club"
+    ],
+    "social": {}
   },
   {
     "id": "prairie-light-school",
@@ -2439,7 +2932,14 @@
       "city": "Calgary",
       "state": "AB",
       "postalCode": "M5A 8J2",
-      "country": "CA"
+      "country": "CA",
+      "geo": {
+        "lat": 51.0447,
+        "lng": -114.0719,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(860) 555-0329",
     "email": "office@prairielightschool.example.org",
@@ -2528,7 +3028,18 @@
       "programs": "2025-01-22",
       "contacts": "2026-06-11"
     },
-    "updatedAt": "2025-11-09"
+    "updatedAt": "2025-11-09",
+    "type": "standard",
+    "listing": "closed",
+    "features": [
+      "uniform",
+      "sports",
+      "hot_lunch",
+      "alumni_association",
+      "staff_discount",
+      "debate_club"
+    ],
+    "social": {}
   },
   {
     "id": "nur-academy",
@@ -2539,7 +3050,14 @@
       "city": "Montreal",
       "state": "QC",
       "postalCode": "M9B 7C5",
-      "country": "CA"
+      "country": "CA",
+      "geo": {
+        "lat": 45.5017,
+        "lng": -73.5673,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
     },
     "phone": "(761) 555-0971",
     "email": "office@nuracademy.example.org",
@@ -2630,6 +3148,19 @@
       "programs": "2026-06-01",
       "contacts": "2026-05-04"
     },
-    "updatedAt": "2026-03-27"
+    "updatedAt": "2026-03-27",
+    "type": "preschool",
+    "listing": "open",
+    "features": [
+      "afterschool_clubs",
+      "scholarship",
+      "sports",
+      "hot_lunch",
+      "robotics_club"
+    ],
+    "social": {
+      "facebook": "nuracademy",
+      "instagram": "nuracademy"
+    }
   }
 ]

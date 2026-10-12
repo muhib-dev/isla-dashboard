@@ -7,6 +7,8 @@ import {
   BookOpenIcon,
   BriefcaseIcon,
   Building2Icon,
+  FlagIcon,
+  MapIcon,
   CreditCardIcon,
   HouseIcon,
   SchoolIcon,
@@ -36,6 +38,8 @@ const NAV: Record<Role, NavItem[]> = {
   isla: [
     { title: "Home", href: "/", icon: HouseIcon },
     { title: "Schools", href: "/schools", icon: Building2Icon },
+    { title: "Map", href: "/map", icon: MapIcon },
+    { title: "Reports", href: "/reports", icon: FlagIcon },
     { title: "Analytics", href: "/analytics", icon: BarChart3Icon },
     { title: "Jobs", href: "/jobs", icon: BriefcaseIcon },
     { title: "Knowledge", href: "/knowledge", icon: BookOpenIcon },

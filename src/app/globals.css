@@ -184,3 +184,11 @@
     font-variant-numeric: tabular-nums;
   }
 }
+/* Map: OSM tiles have no dark style, so invert them in dark mode. */
+.dark .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9);
+}
+.leaflet-container {
+  font: inherit;
+  background: var(--muted);
+}

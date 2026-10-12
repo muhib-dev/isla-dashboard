@@ -41,3 +41,9 @@ export async function getSession(): Promise<Session> {
 export function canManageSchool(session: Session, schoolId: string) {
   return session.role === "isla" || session.schoolId === schoolId
 }
+
+/** The signed-in session, or null for anonymous visitors (public pages use this to offer a dashboard link). */
+export async function getOptionalSession(): Promise<Session | null> {
+  const parsed = RoleSchema.safeParse((await cookies()).get(ROLE_COOKIE)?.value)
+  return parsed.success ? DEMO_SESSIONS[parsed.data] : null
+}
