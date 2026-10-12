@@ -1,7 +1,9 @@
 "use client"
 
 import { PlusIcon, XIcon } from "lucide-react"
+import { DatePicker } from "@/components/shared/date-picker"
 import { Field, ToggleRow } from "@/components/shared/field"
+import { TimePicker } from "@/components/shared/time-picker"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
@@ -112,16 +114,16 @@ export function ScheduleForm({ value, onChange, errors }: SectionFormProps<"sche
   return (
     <div className="grid gap-4 sm:grid-cols-2">
       <Field id="startTime" label="School starts" error={errors.startTime}>
-        <Input id="startTime" type="time" value={value.startTime} onChange={(e) => set("startTime", e.target.value)} />
+        <TimePicker id="startTime" value={value.startTime} onChange={(v) => set("startTime", v)} />
       </Field>
       <Field id="endTime" label="School ends" error={errors.endTime}>
-        <Input id="endTime" type="time" value={value.endTime} onChange={(e) => set("endTime", e.target.value)} />
+        <TimePicker id="endTime" value={value.endTime} onChange={(v) => set("endTime", v)} />
       </Field>
       <Field id="firstDay" label="First day of school" error={errors.firstDay}>
-        <Input id="firstDay" type="date" value={value.firstDay} onChange={(e) => set("firstDay", e.target.value)} />
+        <DatePicker id="firstDay" value={value.firstDay} onChange={(v) => set("firstDay", v)} />
       </Field>
       <Field id="lastDay" label="Last day of school" error={errors.lastDay}>
-        <Input id="lastDay" type="date" value={value.lastDay} onChange={(e) => set("lastDay", e.target.value)} />
+        <DatePicker id="lastDay" value={value.lastDay} onChange={(v) => set("lastDay", v)} />
       </Field>
       <div className="sm:col-span-2">
         <ToggleRow id="fridayEarlyRelease" label="Friday early release" description="For Jumu'ah prayer.">
