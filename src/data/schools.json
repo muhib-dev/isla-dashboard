@@ -241,7 +241,12 @@
       "staff_discount",
       "robotics_club"
     ],
-    "social": {}
+    "social": {},
+    "tuitionRange": {
+      "min": 8350,
+      "max": 9850
+    },
+    "enrollmentBand": "251-500"
   },
   {
     "id": "bayan-preparatory",
@@ -363,7 +368,12 @@
     "social": {
       "facebook": "bayanpreparatory",
       "instagram": "bayanpreparatory"
-    }
+    },
+    "tuitionRange": {
+      "min": 7700,
+      "max": 9200
+    },
+    "enrollmentBand": "251-500"
   },
   {
     "id": "iqra-learning-center",
@@ -3162,5 +3172,96 @@
       "facebook": "nuracademy",
       "instagram": "nuracademy"
     }
+  },
+  {
+    "id": "strive-islamic-micro-school",
+    "name": "Strive Islamic Micro School",
+    "region": "west",
+    "address": {
+      "street": "3155 Dwight Rd",
+      "city": "Elk Grove",
+      "state": "CA",
+      "postalCode": "95758",
+      "country": "US",
+      "geo": {
+        "lat": 38.4088,
+        "lng": -121.3716,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-12"
+      }
+    },
+    "phone": "916-900-6111",
+    "email": "",
+    "website": "https://massacramento.org/strive-school/",
+    "founded": 2025,
+    "gradesFrom": "K",
+    "gradesTo": "5",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 0,
+      "teachers": 0,
+      "tuition": 0,
+      "avgTeacherSalary": 0,
+      "retentionRate": 0,
+      "enrollmentHistory": []
+    },
+    "tuitionRange": {
+      "min": 0,
+      "max": 2000
+    },
+    "enrollmentBand": "1-100",
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Louiza Boulil",
+        "role": "Head of School",
+        "email": "",
+        "since": null
+      }
+    ],
+    "schedule": {
+      "startTime": "",
+      "endTime": "",
+      "firstDay": "",
+      "lastDay": "",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": false,
+        "provider": "",
+        "allHalal": false,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": false,
+      "arabic": false,
+      "afterCare": false,
+      "athletics": []
+    },
+    "membership": {
+      "status": "active",
+      "memberSince": 2025
+    },
+    "verifiedAt": {
+      "overview": "2026-10-12",
+      "leadership": "2026-10-12",
+      "schedule": "2026-10-12",
+      "programs": "2026-10-12",
+      "contacts": "2026-10-12"
+    },
+    "updatedAt": "2026-10-12",
+    "type": "standard",
+    "listing": "open",
+    "features": [
+      "Enrichment Classes",
+      "Islam-centered Subject Matter",
+      "Library",
+      "Small class sizes",
+      "uniform"
+    ],
+    "social": {}
   }
 ]

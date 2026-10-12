@@ -5,7 +5,8 @@ import { SchoolSchema } from "../schema"
 import { markDuplicates, toSearchDoc, type SchoolSearchDoc } from "./doc"
 import { distance, inBounds } from "./geo"
 import { gradeIndex, parseGradeQuery } from "./grades"
-import { computeFacetCounts, didYouMean, explainEmpty, EMPTY_STATE, parseSearchState, runSearch, serializeSearchState, type SearchState } from "./index"
+import { bandOf, normalizeFeature, SchoolSchema as RealSchoolSchema } from "../schema"
+import { computeFacetCounts, didYouMean, explainEmpty, EMPTY_STATE, parseSearchState, rangeExtents, runSearch, serializeSearchState, type SearchState } from "./index"
 import { normalize, editDistance } from "./normalize"
 import { parseQuery, parseRange } from "./parse-query"
 import { resolvePlace } from "./gazetteer"
@@ -477,6 +478,23 @@ describe("facets", () => {
     expect(ids("", { startAfter: 480 }, pool)).toEqual(["b"]) // unparseable start never matches a window
   })
 
+  it("first day of school range", () => {
+    const pool = [withDoc({ id: "a", firstDay: "2026-08-10" }), withDoc({ id: "b", firstDay: "2026-09-02" }), withDoc({ id: "c", firstDay: null })]
+    expect(ids("", { firstDay: { from: "2026-08-01", to: "2026-08-31" } }, pool)).toEqual(["a"])
+    expect(ids("", { firstDay: { from: "2026-09-02" } }, pool)).toEqual(["b"]) // inclusive, open-ended
+    expect(ids("", { firstDay: { to: "2026-08-10" } }, pool)).toEqual(["a"])
+    expect(ids("", { firstDay: {} }, pool)).toHaveLength(3) // empty range = inactive
+  })
+
+  it("range extents span every school's value and skip fields nobody has", () => {
+    const pool = [
+      withDoc({ id: "a", tuition: 4000, tuitionMax: 4000, salary: null }),
+      withDoc({ id: "b", tuition: 0, tuitionMax: 12000, salary: null }), // published range $0 – $12,000
+      withDoc({ id: "c", tuition: null, tuitionMax: null, salary: null }),
+    ]
+    expect(rangeExtents(pool, ["tuition", "salary"])).toEqual({ tuition: { min: 0, max: 12000 } })
+  })
+
   it("data-quality flags and stale sections (staff)", () => {
     expect(f({ dq: ["approx-coords"] }).length).toBeGreaterThan(0)
     expect(f({ dq: ["no-coords"] })).toEqual([])
@@ -507,7 +525,7 @@ describe("facets", () => {
   it("combines everything and still behaves", () => {
     const r = runSearch(docs, {
       ...EMPTY_STATE, q: "academy -noor state:TX", region: ["southwest"], status: ["active", "grace"], type: ["standard"],
-      grade: 5, features: ["sports"], ranges: { enrollment: { min: 100 }, tuition: { max: 20000, unknown: true } },
+      grade: 5, features: ["sports"], enrollBand: ["101-250", "251-500", "500+"], ranges: { tuition: { max: 20000, unknown: true } },
       sort: "enrollment",
     })
     expect(r.rows.every((x) => x.doc.state === "TX" && x.doc.region === "southwest")).toBe(true)
@@ -529,7 +547,7 @@ describe("facets", () => {
   })
 
   it("chip removal for every facet returns a state without that facet", () => {
-    const state: SearchState = { ...EMPTY_STATE, region: ["west"], type: ["standard"], yes: ["quran"], no: ["arabic"], features: ["library"], agency: ["Cognia"], dq: ["stale"], staleSection: ["programs"], country: ["US"], listing: ["closed"], ranges: { tuition: { max: 9000 } }, fridayEarly: true, startAfter: 420, startBefore: 540, grade: 3, gradeTo: 6, accredited: "yes", bounds: { south: 0, west: 0, north: 1, east: 1 } }
+    const state: SearchState = { ...EMPTY_STATE, region: ["west"], type: ["standard"], yes: ["quran"], no: ["arabic"], features: ["library"], agency: ["Cognia"], dq: ["stale"], staleSection: ["programs"], country: ["US"], listing: ["closed"], ranges: { tuition: { max: 9000 } }, fridayEarly: true, startAfter: 420, startBefore: 540, firstDay: { from: "2026-08-01" }, grade: 3, gradeTo: 6, accredited: "yes", bounds: { south: 0, west: 0, north: 1, east: 1 } }
     const r = runSearch(docs, state)
     for (const chip of r.chips) {
       const before = JSON.stringify(serializeSearchState(r.state).toString())
@@ -546,8 +564,8 @@ describe("url state: facets", () => {
       q: "noor", country: ["US", "CA"], type: ["weekend", "hifdh"], listing: ["open", "closed"],
       grade: 0, gradeTo: 8, gradeMode: "overlaps", accredited: "yes", agency: ["Cognia", "ISLA"], agencyAll: true,
       yes: ["quran"], no: ["arabic"], features: ["library", "dorms"], featuresAny: true,
-      ranges: { tuition: { min: 5000, max: 9000, unknown: true }, enrollment: { min: 100 }, retention: { max: 90 } },
-      fridayEarly: true, startAfter: 420, startBefore: 540, dq: ["stale", "duplicate"], staleSection: ["programs"],
+      enrollBand: ["1-100", "500+"], ranges: { tuition: { min: 5000, max: 9000, unknown: true }, founded: { min: 1990 }, retention: { max: 90 } },
+      fridayEarly: true, startAfter: 420, startBefore: 540, firstDay: { from: "2026-08-01", to: "2026-08-31" }, dq: ["stale", "duplicate"], staleSection: ["programs"],
       bounds: { south: 25, west: -107, north: 37, east: -93 }, sort: "tuition",
     }
     expect(parseSearchState(serializeSearchState(s))).toEqual(s)
@@ -570,10 +588,76 @@ describe("url state: facets", () => {
     expect(s.staleSection).toEqual(["programs"])
     expect(s.bounds).toBeNull()
     expect(s.agency[0]).toHaveLength(60)
+    expect(parseSearchState(new URLSearchParams("fd=2026-13-40..")).firstDay).toBeNull()
+    expect(parseSearchState(new URLSearchParams("fd=2026-09-01..2026-08-01")).firstDay).toEqual({ from: "2026-08-01", to: "2026-09-01" })
   })
 
   it("empty range params and any/all flags without multiple values are omitted", () => {
     const qs = serializeSearchState({ ...EMPTY_STATE, ranges: { tuition: {} }, agency: ["A"], agencyAll: true, features: ["library"], featuresAny: true }).toString()
     expect(qs).not.toMatch(/tuition|agall|fany/)
+  })
+})
+
+describe("real directory data", () => {
+  it("normalizes directory features and drops unknown ones", () => {
+    expect(normalizeFeature("computer labs")).toBe("computer_lab")
+    expect(normalizeFeature("Science Olympiad")).toBe("science_olympiad")
+    expect(normalizeFeature("afterschool clubs")).toBe("afterschool_clubs")
+    expect(normalizeFeature("scholarship")).toBe("scholarship")
+    expect(normalizeFeature("uniform")).toBe("uniform")
+    expect(normalizeFeature(2)).toBe("computer_lab")
+    expect(normalizeFeature(17)).toBe("robotics_club")
+    expect(normalizeFeature(18)).toBeNull()
+    expect(normalizeFeature("Small class sizes")).toBeNull()
+    const parsed = RealSchoolSchema.parse({ ...schoolsJson[0], features: ["Library", "uniform", "Enrichment Classes", 9, "library"] })
+    expect(parsed.features).toEqual(["library", "uniform", "sports"])
+  })
+
+  it("buckets exact counts into bands", () => {
+    expect([0, 1, 100, 101, 250, 251, 500, 501].map(bandOf)).toEqual([null, "1-100", "1-100", "101-250", "101-250", "251-500", "251-500", "500+"])
+  })
+
+  it("tuition ranges match by overlap, in filters and the tuition: operator", () => {
+    const pool = [
+      withDoc({ id: "range", tuition: 0, tuitionMax: 2000 }),
+      withDoc({ id: "single", tuition: 9000, tuitionMax: 9000 }),
+      withDoc({ id: "none", tuition: null, tuitionMax: null }),
+    ]
+    expect(ids("", { ranges: { tuition: { min: 1500, max: 5000 } } }, pool)).toEqual(["range"])
+    expect(ids("", { ranges: { tuition: { min: 2500 } } }, pool)).toEqual(["single"])
+    expect(ids("tuition:<1000", {}, pool)).toEqual(["range"])
+    expect(ids("tuition:>2000", {}, pool)).toEqual(["single"]) // exclusive bound: $2,000 itself doesn't count
+  })
+
+  it("enrollment band facet, counts, chips and the enrolled: operator", () => {
+    const pool = [
+      withDoc({ id: "small", enrollmentExact: null, enrollmentBand: "1-100" }),
+      withDoc({ id: "mid", enrollmentExact: 180, enrollmentBand: "101-250" }),
+      withDoc({ id: "big", enrollmentExact: null, enrollmentBand: "500+" }),
+      withDoc({ id: "unknown", enrollmentExact: null, enrollmentBand: null }),
+    ]
+    expect(ids("", { enrollBand: ["1-100", "500+"] }, pool).sort()).toEqual(["big", "small"])
+    expect(computeFacetCounts(pool, { ...EMPTY_STATE, enrollBand: ["1-100"] }).enrollBand).toMatchObject({ "1-100": 1, "101-250": 1, "251-500": 0, "500+": 1 })
+    const r = runSearch(pool, { ...EMPTY_STATE, enrollBand: ["1-100"] })
+    const chip = r.chips.find((c) => c.id === "eb:1-100")!
+    expect(chip.label).toBe("Students: 1–100")
+    expect(chip.without.enrollBand).toEqual([])
+    expect(ids("enrolled:>200", {}, pool).sort()).toEqual(["big"]) // 180 is exact; 1–100 can't reach 200
+    expect(ids("enrolled:<150", {}, pool).sort()).toEqual(["small"])
+  })
+
+  it("sorts by size using exact counts, else the band", () => {
+    const pool = [
+      withDoc({ id: "small", enrollmentExact: null, enrollmentBand: "1-100" }),
+      withDoc({ id: "mid", enrollmentExact: 180, enrollmentBand: "101-250" }),
+      withDoc({ id: "big", enrollmentExact: null, enrollmentBand: "500+" }),
+      withDoc({ id: "unknown", enrollmentExact: null, enrollmentBand: null }),
+    ]
+    expect(runSearch(pool, { ...EMPTY_STATE, sort: "enrollment" }).rows.map((r) => r.doc.id)).toEqual(["big", "mid", "small", "unknown"])
+  })
+
+  it("eb URL param round-trips and rejects junk", () => {
+    expect(serializeSearchState({ ...EMPTY_STATE, enrollBand: ["1-100", "500+"] }).toString()).toBe("eb=1-100%2C500%2B")
+    expect(parseSearchState(new URLSearchParams("eb=1-100,bogus,1-100")).enrollBand).toEqual(["1-100"])
   })
 })

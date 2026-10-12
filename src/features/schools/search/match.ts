@@ -1,6 +1,6 @@
 import { STOPWORDS } from "./aliases"
-import type { SchoolSearchDoc } from "./doc"
-import { inRange, type FieldFilter, type ParsedQuery, type TextAtom } from "./parse-query"
+import { enrollmentSpan, type SchoolSearchDoc } from "./doc"
+import { inRange, type FieldFilter, type ParsedQuery, type Range, type TextAtom } from "./parse-query"
 import { editDistance, maxTypos } from "./normalize"
 import { servesAll } from "./grades"
 
@@ -65,6 +65,13 @@ export function scoreAtom(doc: SchoolSearchDoc, atom: TextAtom, fuzzy = true): n
   return total / tokens.length
 }
 
+/** True when some value in [lo, hi] satisfies `r`. */
+function overlaps(lo: number, hi: number, r: Range): boolean {
+  if (r.min !== undefined && (r.minExclusive ? hi <= r.min : hi < r.min)) return false
+  if (r.max !== undefined && (r.maxExclusive ? lo >= r.max : lo > r.max)) return false
+  return true
+}
+
 function matchField(doc: SchoolSearchDoc, f: FieldFilter): boolean {
   switch (f.key) {
     case "state": return f.codes.includes(doc.state.toUpperCase())
@@ -72,8 +79,13 @@ function matchField(doc: SchoolSearchDoc, f: FieldFilter): boolean {
     case "zip": return doc.postalNorm.startsWith(f.prefix)
     case "grade": return doc.gradeFrom !== null && doc.gradeTo !== null && servesAll({ from: doc.gradeFrom, to: doc.gradeTo }, f)
     case "range": {
-      const v = f.field === "tuition" ? doc.tuition : f.field === "enrolled" ? doc.enrollment : doc.founded
-      return v !== null && inRange(v, f.range)
+      // Published tuition ranges and enrollment bands match when any part of them is in range.
+      if (f.field === "tuition") return doc.tuition !== null && overlaps(doc.tuition, doc.tuitionMax ?? doc.tuition, f.range)
+      if (f.field === "enrolled") {
+        const span = enrollmentSpan(doc)
+        return span !== null && overlaps(span.min, span.max ?? Infinity, f.range)
+      }
+      return inRange(doc.founded, f.range)
     }
     case "accredited":
       if (f.mode === "yes") return doc.accreditation.length > 0

@@ -9,11 +9,12 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { requestProfileUpdates } from "@/features/schools/actions"
-import { gradeSpan } from "@/features/schools/lib"
-import { REGION_LABELS, type Freshness, type SchoolSummary } from "@/features/schools/schema"
+import { gradeSpan, studentsLabel } from "@/features/schools/lib"
+import { REGION_LABELS, type EnrollmentBand, type Freshness, type SchoolSummary } from "@/features/schools/schema"
 import { fmt } from "@/lib/format"
 
-type Row = SchoolSummary & { freshness: Freshness }
+/** Band fields come from search docs; plain summaries fall back to the exact count. */
+type Row = SchoolSummary & { freshness: Freshness; enrollmentExact?: number | null; enrollmentBand?: EnrollmentBand | null }
 
 export function SchoolsTable({ rows }: { rows: Row[] }) {
   const router = useRouter()
@@ -104,7 +105,7 @@ export function SchoolsTable({ rows }: { rows: Row[] }) {
                   </p>
                 </TableCell>
                 <TableCell className="hidden text-muted-foreground md:table-cell">{REGION_LABELS[row.region]}</TableCell>
-                <TableCell className="tabular hidden text-right lg:table-cell">{fmt.number(row.enrollment)}</TableCell>
+                <TableCell className="tabular hidden text-right lg:table-cell">{row.enrollmentBand !== undefined ? studentsLabel(row.enrollmentExact ?? null, row.enrollmentBand) : fmt.number(row.enrollment)}</TableCell>
                 <TableCell className="hidden sm:table-cell">
                   <MembershipStatusDot status={row.membership.status} />
                 </TableCell>

@@ -6,6 +6,9 @@ import { REGIONS } from "@/features/schools/schema"
 import type { AnalyticsRepository } from "@/server/repositories/types"
 import { latency, tables } from "./store"
 
+/** 0 means "not reported" (e.g. schools imported from the public directory), so medians skip it. */
+const known = (v: number) => v > 0
+
 export function createMockAnalyticsRepository(latencyMs: number): AnalyticsRepository {
   return {
     async compare(schoolId, peers) {
@@ -56,10 +59,10 @@ export function createMockAnalyticsRepository(latencyMs: number): AnalyticsRepos
             non_member: list.filter((s) => s.membership.status === "non_member").length,
           },
           students: list.reduce((n, s) => n + s.metrics.enrollment, 0),
-          medianEnrollment: median(list.map((s) => s.metrics.enrollment)),
-          medianTuition: median(list.map((s) => s.metrics.tuition)),
-          medianTeacherSalary: median(list.map((s) => s.metrics.avgTeacherSalary)),
-          medianRetention: median(list.map((s) => s.metrics.retentionRate)),
+          medianEnrollment: median(list.map((s) => s.metrics.enrollment).filter(known)),
+          medianTuition: median(list.map((s) => s.metrics.tuition).filter(known)),
+          medianTeacherSalary: median(list.map((s) => s.metrics.avgTeacherSalary).filter(known)),
+          medianRetention: median(list.map((s) => s.metrics.retentionRate).filter(known)),
           lunchProgramShare: list.length ? list.filter((s) => s.programs.lunch.offered).length / list.length : 0,
         }
       })

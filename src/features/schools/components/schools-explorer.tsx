@@ -1,21 +1,22 @@
 "use client"
 
-import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { usePathname, useSearchParams } from "next/navigation"
 import { toast } from "sonner"
-import { ArrowDownUpIcon, BookmarkIcon, ColumnsIcon, DownloadIcon, HelpCircleIcon, ListIcon, LocateFixedIcon, LocateIcon, MapIcon, MoreHorizontalIcon, SlidersHorizontalIcon, XIcon } from "lucide-react"
+import { ArrowDownUpIcon, BookmarkIcon, DownloadIcon, HelpCircleIcon, LocateFixedIcon, LocateIcon, MoreHorizontalIcon, SlidersHorizontalIcon, XIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { lookupPlaceAction } from "@/features/schools/geo-actions"
-import { setSchoolLocationAction } from "@/features/schools/submission-actions"
 import {
   computeFacetCounts,
   didYouMean,
   EMPTY_STATE,
   explainEmpty,
+  RANGE_FIELDS,
+  rangeExtents,
   parseSearchState,
   runSearch,
   serializeSearchState,
@@ -28,18 +29,15 @@ import {
   type MapView,
   type SearchState,
   type SortKey,
-  type View,
 } from "@/features/schools/search"
 import type { SchoolSearchDoc } from "@/features/schools/search/doc"
-import type { ResultRow } from "@/features/schools/search"
 import { lookupCode, lookupPlace } from "@/features/schools/search/geo-client"
 import type { Bounds } from "@/features/schools/search/geo"
 import { downloadCsv, resultsToCsv } from "@/features/schools/csv"
 import { FilterPanel } from "./filter-panel"
 import { SavedSearchesDialog } from "./saved-searches-menu"
 import { SchoolDetailSheet } from "./school-detail-sheet"
-import { SchoolResultList } from "./school-result-list"
-import { preloadMap, SchoolsMapLoader } from "./schools-map-loader"
+import { SchoolsMapLoader } from "./schools-map-loader"
 import { SchoolsTable } from "./schools-table"
 import { SearchBar } from "./search-bar"
 import { ZeroResults } from "./zero-results"
@@ -72,21 +70,23 @@ const OPERATOR_HELP: [string, string][] = [
 
 const MAX_URL_QS = 1800
 
-/** `map` mode is the dedicated map page: map only, no list or table, no sort/view controls. */
+/**
+ * `list` mode (staff dashboard) shows the filterable data table and no map.
+ * `map` mode (public map page) shows the map only, no list, sort or CSV.
+ */
 export function SchoolsExplorer({
   docs,
   geoSeed,
-  mode = "directory",
+  mode = "list",
   audience = "staff",
 }: {
   docs: SchoolSearchDoc[]
   geoSeed: GeoContext
-  mode?: "directory" | "map"
-  /** "public" hides everything staff-only: the table with its actions, CSV, pin editing, staff filters. */
+  mode?: "list" | "map"
+  /** "public" hides everything staff-only: CSV and staff-only filters and sorts. */
   audience?: "staff" | "public"
 }) {
   const staff = audience === "staff"
-  const router = useRouter()
   const pathname = usePathname()
   const params = useSearchParams()
   const paramString = params.toString()
@@ -151,12 +151,11 @@ export function SchoolsExplorer({
   }, [qInput, urlState, navigate])
 
   const patch = (p: Partial<SearchState>, mode: "push" | "replace" = "push") => navigate({ ...state, ...p }, mode)
-  const clearAll = () => navigate({ ...EMPTY_STATE, view: state.view })
+  const clearAll = () => navigate(EMPTY_STATE)
   const onChip = (chip: Chip) => navigate(chip.without)
 
-  // --- selection / hover shared by list and map
+  // --- map selection / hover
   const [selectedId, setSelectedId] = useState<string | null>(null)
-  const [hoverId, setHoverId] = useState<string | null>(null)
   const [fitSignal, setFitSignal] = useState(0)
   const selectedRow = result.rows.find((r) => r.doc.id === selectedId) ?? null
 
@@ -187,36 +186,13 @@ export function SchoolsExplorer({
     )
   }
 
-  // --- staff: drag a pin to the exact spot
-  const [editingPin, setEditingPin] = useState<{ id: string; name: string; lat: number; lng: number; status: SchoolSearchDoc["membership"]["status"] } | null>(null)
-  const [savingPin, startSavingPin] = useTransition()
-  function startPinEdit(row: ResultRow) {
-    const m = state.map
-    setEditingPin({ id: row.doc.id, name: row.doc.name, lat: row.doc.lat ?? m?.lat ?? 39.5, lng: row.doc.lng ?? m?.lng ?? -96, status: row.doc.membership.status })
-    setSelectedId(null)
-    setFitSignal((n) => n + 1)
-  }
-  function savePin() {
-    if (!editingPin) return
-    startSavingPin(async () => {
-      const r = await setSchoolLocationAction(editingPin.id, editingPin.lat, editingPin.lng)
-      if (r.ok) {
-        toast.success(`Saved the location of ${editingPin.name}`)
-        setEditingPin(null)
-        router.refresh() // pull the new coordinates into the cached index
-      } else toast.error(r.error)
-    })
-  }
-
   const [panelOpen, setPanelOpen] = useState(false)
-  // Warm the map chunk while the user is still on the list.
-  useEffect(() => { preloadMap() }, [])
   const [savedOpen, setSavedOpen] = useState(false)
   const [tipsOpen, setTipsOpen] = useState(false)
+  const extents = useMemo(() => rangeExtents(docs, RANGE_FIELDS), [docs])
   const counts = useMemo(() => (panelOpen ? computeFacetCounts(docs, state, ctx) : null), [panelOpen, docs, state, ctx])
 
   const mapOnly = mode === "map"
-  const view: View = mapOnly ? "map" : (state.view ?? "split")
   const atoms = useMemo(() => result.parsed.items.flat(), [result.parsed])
   const empty = result.rows.length === 0 && result.pending.length === 0
   const fixes = useMemo(() => (empty ? explainEmpty(docs, result, ctx) : []), [empty, docs, result, ctx])
@@ -235,8 +211,8 @@ export function SchoolsExplorer({
   return (
     <div className="space-y-4">
       {/* One compact row; everything secondary lives in the ⋯ menu. */}
-      <div className="flex flex-wrap items-center gap-2">
-        <div className="min-w-56 flex-1 sm:max-w-md">
+      <div className="flex flex-wrap items-center justify-end gap-2">
+        <div className="w-full sm:w-auto">
           <SearchBar
             value={qInput}
             onChange={setQInput}
@@ -270,17 +246,10 @@ export function SchoolsExplorer({
           </>
         )}
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <Button variant="outline" onClick={() => setPanelOpen(true)}>
             <SlidersHorizontalIcon /> Filters{filterCount > 0 && <span className="tabular ml-1 rounded-full bg-primary px-1.5 text-xs text-primary-foreground">{filterCount}</span>}
           </Button>
-          {!mapOnly && <div role="group" aria-label="View" className="inline-flex rounded-lg ring-1 ring-foreground/10">
-            {([["list", ListIcon, "List"], ["split", ColumnsIcon, "Split"], ["map", MapIcon, "Map"]] as const).map(([v, Icon, label]) => (
-              <Button key={v} variant={view === v ? "secondary" : "ghost"} size="sm" aria-pressed={view === v} aria-label={label} onClick={() => patch({ view: v })} className="rounded-lg">
-                <Icon /> <span className="hidden lg:inline">{label}</span>
-              </Button>
-            ))}
-          </div>}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon" aria-label="More options"><MoreHorizontalIcon /></Button>
@@ -300,7 +269,7 @@ export function SchoolsExplorer({
               )}
               <DropdownMenuItem onSelect={() => setSavedOpen(true)}><BookmarkIcon /> Saved searches</DropdownMenuItem>
               <DropdownMenuItem onSelect={() => setTipsOpen(true)}><HelpCircleIcon /> Search tips</DropdownMenuItem>
-              {view !== "list" && !empty && <DropdownMenuItem onSelect={() => setFitSignal((n) => n + 1)}><LocateFixedIcon /> Fit map to results</DropdownMenuItem>}
+              {mapOnly && !empty && <DropdownMenuItem onSelect={() => setFitSignal((n) => n + 1)}><LocateFixedIcon /> Fit map to results</DropdownMenuItem>}
               {staff && !mapOnly && result.rows.length > 0 && (
                 <>
                   <DropdownMenuSeparator />
@@ -343,23 +312,13 @@ export function SchoolsExplorer({
         <p role="status" className="text-xs text-warning-foreground">This search is very long and its link may not open everywhere. Use “Saved” to keep it.</p>
       )}
 
-      {editingPin && (
-        <div role="status" className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-primary/10 px-4 py-3 text-sm ring-1 ring-primary/30">
-          <span>Drag the pin for <strong>{editingPin.name}</strong>, or click the map, to set its exact location.</span>
-          <span className="flex gap-2">
-            <Button size="sm" onClick={savePin} disabled={savingPin}>{savingPin ? "Saving…" : "Save location"}</Button>
-            <Button size="sm" variant="outline" onClick={() => setEditingPin(null)} disabled={savingPin}>Cancel</Button>
-          </span>
-        </div>
-      )}
-
       <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
         <p aria-live="polite" className="tabular">
           {result.pending.length > 0 ? "Finding that place…" : (
             <>
               {result.rows.length} {result.rows.length === 1 ? "school" : "schools"}
-              {unmapped > 0 && ` · ${unmapped} not on map`}
-              {approx > 0 && ` · ${approx} approximate`}
+              {mapOnly && unmapped > 0 && ` · ${unmapped} not on map`}
+              {mapOnly && approx > 0 && ` · ${approx} approximate`}
               {result.unlocated.length > 0 && ` · ${result.unlocated.length} without a location left out`}
             </>
           )}
@@ -374,37 +333,26 @@ export function SchoolsExplorer({
 
       {empty ? (
         <ZeroResults fixes={fixes} suggestion={suggestion} notes={result.notes} onApply={onChip} onSuggest={(q) => navigate({ ...state, q })} onClear={clearAll} />
-      ) : view === "list" ? (
-        staff ? (
-          <SchoolsTable rows={result.rows.map((r) => r.doc)} />
-        ) : (
-          <SchoolResultList rows={result.rows} atoms={atoms} unit={unit} selectedId={selectedId} hoverId={hoverId} onSelect={setSelectedId} onHover={setHoverId} />
-        )
-      ) : (
-        <div className={view === "split" ? "grid gap-4 md:grid-cols-[minmax(300px,2fr)_3fr]" : ""}>
-          {view === "split" && (
-            <div className="order-2 max-h-[70vh] overflow-y-auto md:order-1">
-              <SchoolResultList rows={result.rows} atoms={atoms} unit={unit} selectedId={selectedId} hoverId={hoverId} onSelect={setSelectedId} onHover={setHoverId} />
-            </div>
-          )}
-          <div className={mapOnly ? "h-[calc(100svh-19rem)] min-h-[28rem]" : "order-1 h-[60vh] md:sticky md:top-4 md:order-2 md:h-[70vh]"}>
-            <SchoolsMapLoader
-              rows={result.rows}
-              center={result.center}
-              selectedId={selectedId}
-              hoverId={hoverId}
-              initialView={state.map}
-              onSelect={setSelectedId}
-              onViewChange={onViewChange}
-              fitSignal={fitSignal}
-              autoFit={!state.bounds}
-              boundsActive={!!state.bounds}
-              onSearchArea={searchArea}
-              editing={editingPin}
-              onEditMove={(lat, lng) => setEditingPin((p) => (p ? { ...p, lat, lng } : p))}
-            />
-          </div>
+      ) : mapOnly ? (
+        <div className="h-[calc(100svh-19rem)] min-h-[28rem]">
+          <SchoolsMapLoader
+            rows={result.rows}
+            center={result.center}
+            selectedId={selectedId}
+            hoverId={null}
+            initialView={state.map}
+            onSelect={setSelectedId}
+            onViewChange={onViewChange}
+            fitSignal={fitSignal}
+            autoFit={!state.bounds}
+            boundsActive={!!state.bounds}
+            onSearchArea={searchArea}
+            editing={null}
+            onEditMove={() => {}}
+          />
         </div>
+      ) : (
+        <SchoolsTable rows={result.rows.map((r) => r.doc)} />
       )}
 
       <SchoolDetailSheet
@@ -412,7 +360,6 @@ export function SchoolsExplorer({
         unit={unit}
         audience={audience}
         onClose={() => setSelectedId(null)}
-        onAdjustPin={staff ? startPinEdit : undefined}
       />
 
       <Sheet open={panelOpen} onOpenChange={setPanelOpen}>
@@ -421,7 +368,7 @@ export function SchoolsExplorer({
             <SheetTitle>Filters</SheetTitle>
             <SheetDescription>{result.rows.length} {result.rows.length === 1 ? "school matches" : "schools match"}. Counts show what each option would give.</SheetDescription>
           </SheetHeader>
-          {counts && <FilterPanel audience={audience} state={state} counts={counts} onChange={(p) => patch(p, "replace")} />}
+          {counts && <FilterPanel audience={audience} state={state} counts={counts} extents={extents} onChange={(p) => patch(p, "replace")} />}
           <SheetFooter className="sticky bottom-0 flex-row justify-between border-t bg-background">
             <Button variant="ghost" onClick={clearAll}>Clear all</Button>
             <Button onClick={() => setPanelOpen(false)}>Show {result.rows.length} {result.rows.length === 1 ? "school" : "schools"}</Button>

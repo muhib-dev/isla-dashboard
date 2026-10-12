@@ -1,6 +1,6 @@
 import type { Freshness, GeoPrecisionLike, School, SchoolSummary } from "./types"
 import { completeness, freshnessOf, oldestVerified, toSummary } from "../lib"
-import { PROFILE_SECTIONS, type Feature, type ListingStatus, type ProfileSection, type SchoolType } from "../schema"
+import { bandOf, ENROLLMENT_BAND_BOUNDS, PROFILE_SECTIONS, type EnrollmentBand, type Feature, type ListingStatus, type ProfileSection, type SchoolType } from "../schema"
 import { gradeSpanOf } from "./grades"
 import { normalize, tokenize } from "./normalize"
 import { stateName } from "./states"
@@ -23,7 +23,13 @@ export type SchoolSearchDoc = SchoolSummary & {
   stateNameTokens: string[]
   gradeFrom: number | null
   gradeTo: number | null
+  /** Low end of the published tuition (or the single figure). */
   tuition: number | null
+  /** High end; equals `tuition` when only one figure is known. */
+  tuitionMax: number | null
+  /** Exact student count, or null when only a band is published (or nothing). */
+  enrollmentExact: number | null
+  enrollmentBand: EnrollmentBand | null
   founded: number
   accreditation: string[]
   accredTokens: string[]
@@ -38,20 +44,30 @@ export type SchoolSearchDoc = SchoolSummary & {
   schoolType: SchoolType
   listing: ListingStatus
   features: Feature[]
-  teachers: number
+  teachers: number | null
   /** 0–1. Staff-only metrics are null for other viewers. */
   retention: number | null
   salary: number | null
   fridayEarly: boolean
   /** Minutes after midnight; null if unparseable. */
   startMinutes: number | null
+  /** First day of the school year, YYYY-MM-DD; null if missing. */
+  firstDay: string | null
   /** Staff-only data-quality signals (empty for other viewers). */
   dq: DataQualityFlag[]
   staleSections: ProfileSection[]
 }
 
+/** Exact student count when known, otherwise the band's bounds (max null = open-ended). */
+export function enrollmentSpan(doc: SchoolSearchDoc): { min: number; max: number | null } | null {
+  if (doc.enrollmentExact !== null) return { min: doc.enrollmentExact, max: doc.enrollmentExact }
+  return doc.enrollmentBand ? ENROLLMENT_BAND_BOUNDS[doc.enrollmentBand] : null
+}
+
 export const DQ_FLAGS = ["no-coords", "approx-coords", "no-email", "no-phone", "no-website", "stale", "incomplete", "duplicate"] as const
 export type DataQualityFlag = (typeof DQ_FLAGS)[number]
+
+const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/
 
 function minutes(hhmm: string): number | null {
   const m = /^(\d{1,2}):(\d{2})$/.exec(hhmm)
@@ -113,7 +129,11 @@ export function toSearchDoc(school: School, now: number, opts: { staffFields: bo
     stateNameTokens: tokenize(stateName(school.address.state)),
     gradeFrom: span?.from ?? null,
     gradeTo: span?.to ?? null,
-    tuition: school.metrics.tuition > 0 ? school.metrics.tuition : null,
+    // A published range can legitimately start at $0; a lone 0 means "not listed".
+    tuition: school.tuitionRange ? school.tuitionRange.min : school.metrics.tuition > 0 ? school.metrics.tuition : null,
+    tuitionMax: school.tuitionRange ? school.tuitionRange.max : school.metrics.tuition > 0 ? school.metrics.tuition : null,
+    enrollmentExact: !school.enrollmentBand && school.metrics.enrollment > 0 ? school.metrics.enrollment : null,
+    enrollmentBand: school.enrollmentBand ?? bandOf(school.metrics.enrollment),
     founded: school.founded,
     accreditation: school.accreditation,
     accredTokens: school.accreditation.flatMap(tokenize),
@@ -127,11 +147,12 @@ export function toSearchDoc(school: School, now: number, opts: { staffFields: bo
     schoolType: school.type,
     listing: school.listing,
     features: school.features,
-    teachers: school.metrics.teachers,
-    retention: opts.staffFields ? school.metrics.retentionRate : null,
+    teachers: school.metrics.teachers > 0 ? school.metrics.teachers : null,
+    retention: opts.staffFields && school.metrics.retentionRate > 0 ? school.metrics.retentionRate : null,
     salary: opts.staffFields && school.metrics.avgTeacherSalary > 0 ? school.metrics.avgTeacherSalary : null,
     fridayEarly: school.schedule.fridayEarlyRelease,
     startMinutes: minutes(school.schedule.startTime),
+    firstDay: ISO_DAY.test(school.schedule.firstDay) ? school.schedule.firstDay : null,
     dq: opts.staffFields ? dataQuality(school, geo?.precision ?? "none", now) : [],
     staleSections: opts.staffFields ? PROFILE_SECTIONS.filter((s) => freshnessOf(school.verifiedAt[s], now) === "stale") : [],
   }

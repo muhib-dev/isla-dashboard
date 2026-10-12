@@ -1,5 +1,5 @@
 import { canon } from "./aliases"
-import type { SchoolSearchDoc } from "./doc"
+import { enrollmentSpan, type SchoolSearchDoc } from "./doc"
 import { allPlaces, geoKey, parseCode, resolvePlace, type GeoContext, type GeoHit, type Place } from "./gazetteer"
 import { distance, clampRadius, inBounds, type Unit } from "./geo"
 import { editDistance, maxTypos } from "./normalize"
@@ -7,9 +7,9 @@ import { facetCounts, passesFacets, type FacetCounts } from "./facets"
 import { matchQuery } from "./match"
 import { parseQuery, removePart, type ParsedQuery } from "./parse-query"
 import { stateCode, STATES } from "./states"
-import { FEATURE_LABELS, SCHOOL_TYPE_LABELS } from "../schema"
+import { ENROLLMENT_BAND_LABELS, FEATURE_LABELS, SCHOOL_TYPE_LABELS } from "../schema"
 import { DQ_LABELS, FRESHNESS_LABELS, MEMBERSHIP_LABELS, PROGRAM_LABELS, RANGE_LABELS, REGION_NAMES } from "./labels"
-import { EMPTY_STATE, type RangeField, type RangeFilter, type SearchState, type SortKey } from "./state"
+import { EMPTY_STATE, type DateRange, type RangeField, type RangeFilter, type SearchState, type SortKey } from "./state"
 
 export type ResultRow = { doc: SchoolSearchDoc; score: number; distance: number | null }
 
@@ -47,6 +47,11 @@ export function applyQueryIntent(state: SearchState): SearchState {
   return { ...state, q: "", state: [...state.state, code] }
 }
 
+const sizeKey = (doc: SchoolSearchDoc) => {
+  const s = enrollmentSpan(doc)
+  return s ? (s.max ?? s.min) : null
+}
+
 function compare(sort: SortKey, a: ResultRow, b: ResultRow): number {
   const nullsLast = (x: number | null, y: number | null, dir: 1 | -1) =>
     x === null && y === null ? 0 : x === null ? 1 : y === null ? -1 : (x - y) * dir
@@ -55,7 +60,8 @@ function compare(sort: SortKey, a: ResultRow, b: ResultRow): number {
     case "relevance": c = b.score - a.score; break
     case "distance": c = nullsLast(a.distance, b.distance, 1); break
     case "name": c = a.doc.name.localeCompare(b.doc.name); break
-    case "enrollment": c = nullsLast(a.doc.enrollment, b.doc.enrollment, -1); break
+    // Exact count, else the band's upper end (open-ended "500+" sorts as its floor).
+    case "enrollment": c = nullsLast(sizeKey(a.doc), sizeKey(b.doc), -1); break
     case "tuition": c = nullsLast(a.doc.tuition, b.doc.tuition, 1); break
     case "founded": c = nullsLast(a.doc.founded, b.doc.founded, 1); break
     case "verified": c = b.doc.oldestVerifiedAt.localeCompare(a.doc.oldestVerifiedAt); break
@@ -143,6 +149,13 @@ function rangeLabel(field: RangeField, r: RangeFilter): string {
   return `${label}: ${body}${r.unknown ? " (+ unknown)" : ""}`
 }
 
+const dayLabel = (d: string) => new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })
+
+export function dateRangeLabel(r: DateRange): string {
+  if (r.from && r.to) return r.from === r.to ? dayLabel(r.from) : `${dayLabel(r.from)} – ${dayLabel(r.to)}`
+  return r.from ? `on or after ${dayLabel(r.from)}` : `on or before ${dayLabel(r.to!)}`
+}
+
 const gl = (g: number) => (g === 0 ? "K" : g < 0 ? "PK" : String(g))
 
 function buildChips(state: SearchState, parsed: ParsedQuery, center: SearchResult["center"], centerFrom: "operator" | "intent" | "state"): Chip[] {
@@ -168,6 +181,7 @@ function buildChips(state: SearchState, parsed: ParsedQuery, center: SearchResul
   for (const t of state.yes) add(`yes:${t}`, PROGRAM_LABELS[t], { yes: without(state.yes, t) })
   for (const t of state.no) add(`no:${t}`, `No ${PROGRAM_LABELS[t].toLowerCase()}`, { no: without(state.no, t) })
   for (const f of state.features) add(`feature:${f}`, FEATURE_LABELS[f], { features: without(state.features, f) })
+  for (const b of state.enrollBand) add(`eb:${b}`, `Students: ${ENROLLMENT_BAND_LABELS[b]}`, { enrollBand: without(state.enrollBand, b) })
   for (const [field, r] of Object.entries(state.ranges) as [RangeField, RangeFilter][]) {
     if (r.min === undefined && r.max === undefined) continue
     const rest = { ...state.ranges }
@@ -177,6 +191,7 @@ function buildChips(state: SearchState, parsed: ParsedQuery, center: SearchResul
   if (state.fridayEarly !== null) add("fe", state.fridayEarly ? "Friday early release" : "No Friday early release", { fridayEarly: null })
   if (state.startAfter !== null) add("sa", `Starts after ${minutesLabel(state.startAfter)}`, { startAfter: null })
   if (state.startBefore !== null) add("sb", `Starts before ${minutesLabel(state.startBefore)}`, { startBefore: null })
+  if (state.firstDay && (state.firstDay.from || state.firstDay.to)) add("fd", `First day: ${dateRangeLabel(state.firstDay)}`, { firstDay: null })
   for (const f of state.dq) add(`dq:${f}`, DQ_LABELS[f], { dq: without(state.dq, f) })
   for (const s of state.staleSection) add(`vs:${s}`, `${cap(s)} out of date`, { staleSection: without(state.staleSection, s) })
   if (state.bounds) add("bounds", "Within map area", { bounds: null })
@@ -239,7 +254,7 @@ export function computeFacetCounts(docs: SchoolSearchDoc[], state: SearchState, 
 
 export { EMPTY_STATE }
 export * from "./labels"
-export { FACET_GROUPS, type FacetCounts, type FacetGroupKey } from "./facets"
+export { FACET_GROUPS, rangeExtents, type FacetCounts, type FacetGroupKey } from "./facets"
 export * from "./state"
 export { parseQuery } from "./parse-query"
 export { highlight } from "./match"

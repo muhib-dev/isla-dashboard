@@ -11,6 +11,8 @@ export type Session = {
   role: Role
   /** The school a school admin manages. ISLA staff manage every school. */
   schoolId: string | null
+  /** Shown in the top bar: the school a school admin works for, or ISLA itself for staff. */
+  organization: string
   user: { name: string; title: string; initials: string }
 }
 
@@ -18,11 +20,13 @@ const DEMO_SESSIONS: Record<Role, Session> = {
   school: {
     role: "school",
     schoolId: "al-noor-academy",
+    organization: "Al-Noor Academy",
     user: { name: "Amina Rahman", title: "Principal · Al-Noor Academy", initials: "AR" },
   },
   isla: {
     role: "isla",
     schoolId: null,
+    organization: "Islamic Schools League of America",
     user: { name: "Sana Qureshi", title: "ISLA Program Staff", initials: "SQ" },
   },
 }

@@ -6,10 +6,9 @@ import { FreshnessDot, MembershipStatusDot } from "@/components/shared/status"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet"
-import { gradeSpan } from "@/features/schools/lib"
+import { gradeSpan, studentsLabel, tuitionLabel } from "@/features/schools/lib"
 import { FEATURE_LABELS, REGION_LABELS, SCHOOL_TYPE_LABELS } from "@/features/schools/schema"
 import type { ResultRow } from "@/features/schools/search"
-import { fmt } from "@/lib/format"
 import { ContactSchoolForm } from "./submission-forms"
 
 export function SchoolDetailSheet({
@@ -53,9 +52,9 @@ export function SchoolDetailSheet({
               <dt className="text-muted-foreground">Grades</dt>
               <dd>{gradeSpan(doc.gradesFrom, doc.gradesTo)}</dd>
               <dt className="text-muted-foreground">Students</dt>
-              <dd className="tabular">{fmt.number(doc.enrollment)}</dd>
+              <dd className="tabular">{studentsLabel(doc.enrollmentExact, doc.enrollmentBand)}</dd>
               <dt className="text-muted-foreground">Tuition</dt>
-              <dd className="tabular">{doc.tuition === null ? "Not listed" : fmt.currency(doc.tuition)}</dd>
+              <dd className="tabular">{tuitionLabel(doc.tuition, doc.tuitionMax)}</dd>
               <dt className="text-muted-foreground">Founded</dt>
               <dd className="tabular">{doc.founded}</dd>
               <dt className="text-muted-foreground">Accreditation</dt>

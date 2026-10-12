@@ -1,6 +1,8 @@
 import { tokenize } from "./search/normalize"
 import {
+  ENROLLMENT_BAND_LABELS,
   PROFILE_SECTIONS,
+  type EnrollmentBand,
   type Freshness,
   type Region,
   type ProfileSection,
@@ -29,6 +31,19 @@ export function freshnessOf(isoDate: string, now: number): Freshness {
 
 export function oldestVerified(school: Pick<School, "verifiedAt">): string {
   return PROFILE_SECTIONS.map((s) => school.verifiedAt[s]).sort()[0]
+}
+
+/** "342", or the published band ("1–100") when there's no exact count. */
+export function studentsLabel(exact: number | null, band: EnrollmentBand | null): string {
+  if (exact !== null) return new Intl.NumberFormat("en-US").format(exact)
+  return band ? ENROLLMENT_BAND_LABELS[band] : "Not listed"
+}
+
+/** "$8,450", "$0 – $2,000", or "Not listed". */
+export function tuitionLabel(min: number | null, max: number | null): string {
+  if (min === null) return "Not listed"
+  const usd = (n: number) => `$${n.toLocaleString("en-US")}`
+  return max === null || max === min ? usd(min) : `${usd(min)} – ${usd(max)}`
 }
 
 export function gradeSpan(from: string, to: string) {

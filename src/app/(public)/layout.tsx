@@ -13,7 +13,6 @@ export default function PublicLayout({ children }: LayoutProps<"/">) {
         <span className="font-semibold">ISLA School Directory</span>
         <nav className="flex items-center gap-4 text-sm text-muted-foreground sm:gap-5">
           <Link href="/map" className="hover:text-foreground">Map</Link>
-          <Link href="/directory" className="hover:text-foreground">Map + list</Link>
           <a href={externalLinks.site} className="hidden hover:text-foreground sm:inline">theisla.org</a>
           {/* Only signed-in users see this; reads the session cookie, so it streams in separately. */}
           <Suspense fallback={null}>

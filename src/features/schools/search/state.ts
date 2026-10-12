@@ -1,4 +1,5 @@
 import {
+  ENROLLMENT_BANDS,
   FEATURES,
   FRESHNESS,
   LISTING_STATUSES,
@@ -6,6 +7,7 @@ import {
   PROFILE_SECTIONS,
   REGIONS,
   SCHOOL_TYPES,
+  type EnrollmentBand,
   type Feature,
   type Freshness,
   type ListingStatus,
@@ -26,10 +28,12 @@ export type SortKey = (typeof SORT_KEYS)[number]
 export const VIEWS = ["list", "map", "split"] as const
 export type View = (typeof VIEWS)[number]
 
-export const RANGE_FIELDS = ["tuition", "enrollment", "founded", "teachers", "retention", "salary"] as const
+export const RANGE_FIELDS = ["tuition", "founded", "teachers", "retention", "salary"] as const
 export type RangeField = (typeof RANGE_FIELDS)[number]
 /** `unknown: true` keeps schools that have no value for the field. Retention is in percent. */
 export type RangeFilter = { min?: number; max?: number; unknown?: boolean }
+/** Inclusive YYYY-MM-DD bounds; either end may be open. */
+export type DateRange = { from?: string; to?: string }
 export type GradeMode = "covers" | "overlaps"
 
 export type Center = { lat: number; lng: number; label?: string }
@@ -58,10 +62,14 @@ export type SearchState = {
   features: Feature[]
   /** false (default) = school must have every selected feature. */
   featuresAny: boolean
+  /** Published enrollment bands ("1-100", …); any of them matches. */
+  enrollBand: EnrollmentBand[]
   ranges: Partial<Record<RangeField, RangeFilter>>
   fridayEarly: boolean | null
   startAfter: number | null
   startBefore: number | null
+  /** First day of the school year falls in this range. */
+  firstDay: DateRange | null
   dq: DataQualityFlag[]
   staleSection: ProfileSection[]
   bounds: Bounds | null
@@ -79,7 +87,7 @@ export const EMPTY_STATE: SearchState = {
   q: "", region: [], state: [], country: [], status: [], freshness: [], type: [], listing: [],
   grade: null, gradeTo: null, gradeMode: "covers",
   accredited: null, agency: [], agencyAll: false, yes: [], no: [], features: [], featuresAny: false,
-  ranges: {}, fridayEarly: null, startAfter: null, startBefore: null, dq: [], staleSection: [],
+  enrollBand: [], ranges: {}, fridayEarly: null, startAfter: null, startBefore: null, firstDay: null, dq: [], staleSection: [],
   bounds: null, sort: null, view: null, center: null, radius: DEFAULT_RADIUS, unit: "mi", map: null,
 }
 
@@ -117,7 +125,20 @@ function parseRangeParam(v: string | undefined): RangeFilter | null {
   return { ...(min !== undefined && { min }), ...(max !== undefined && { max }), ...(unknown && { unknown }) }
 }
 
-const RANGE_PARAM: Record<RangeField, string> = { tuition: "tuition", enrollment: "enr", founded: "found", teachers: "tch", retention: "ret", salary: "sal" }
+const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/
+const isDay = (v: string) => ISO_DAY.test(v) && !Number.isNaN(Date.parse(`${v}T00:00:00Z`))
+
+/** "2026-08-01..2026-08-31", "2026-08-01..", "..2026-08-31". */
+function parseDateRange(v: string | undefined): DateRange | null {
+  const m = /^([\d-]*)\.\.([\d-]*)$/.exec(v ?? "")
+  if (!m || (!m[1] && !m[2])) return null
+  if ((m[1] && !isDay(m[1])) || (m[2] && !isDay(m[2]))) return null
+  let [from, to] = [m[1] || undefined, m[2] || undefined]
+  if (from && to && from > to) [from, to] = [to, from]
+  return { ...(from && { from }), ...(to && { to }) }
+}
+
+const RANGE_PARAM: Record<RangeField, string> = { tuition: "tuition", founded: "found", teachers: "tch", retention: "ret", salary: "sal" }
 const MAX_MINUTES = 24 * 60 - 1
 
 /**
@@ -149,6 +170,7 @@ export function parseSearchState(p: Params): SearchState {
   s.no = oneOf(PROGRAM_TAGS, csv(get(p, "pn"))).filter((t) => !s.yes.includes(t))
   s.features = oneOf(FEATURES, csv(get(p, "ft")))
   s.featuresAny = get(p, "fany") === "1"
+  s.enrollBand = oneOf(ENROLLMENT_BANDS, csv(get(p, "eb")))
 
   for (const f of RANGE_FIELDS) {
     const r = parseRangeParam(get(p, RANGE_PARAM[f]))
@@ -159,6 +181,7 @@ export function parseSearchState(p: Params): SearchState {
   const clampMin = (v: number | null) => (v === null ? null : Math.min(MAX_MINUTES, Math.max(0, Math.round(v))))
   s.startAfter = clampMin(num(get(p, "sa")))
   s.startBefore = clampMin(num(get(p, "sb")))
+  s.firstDay = parseDateRange(get(p, "fd"))
   s.dq = oneOf(DQ_FLAGS, csv(get(p, "dq")))
   s.staleSection = oneOf(PROFILE_SECTIONS, csv(get(p, "vs")))
 
@@ -209,6 +232,7 @@ export function serializeSearchState(s: SearchState): URLSearchParams {
   list("pn", s.no)
   list("ft", s.features)
   if (s.features.length > 1 && s.featuresAny) out.set("fany", "1")
+  list("eb", s.enrollBand)
   for (const f of RANGE_FIELDS) {
     const r = s.ranges[f]
     if (r && (r.min !== undefined || r.max !== undefined)) out.set(RANGE_PARAM[f], `${r.min ?? ""}..${r.max ?? ""}${r.unknown ? ",u" : ""}`)
@@ -216,6 +240,7 @@ export function serializeSearchState(s: SearchState): URLSearchParams {
   if (s.fridayEarly !== null) out.set("fe", s.fridayEarly ? "1" : "0")
   if (s.startAfter !== null) out.set("sa", String(s.startAfter))
   if (s.startBefore !== null) out.set("sb", String(s.startBefore))
+  if (s.firstDay && (s.firstDay.from || s.firstDay.to)) out.set("fd", `${s.firstDay.from ?? ""}..${s.firstDay.to ?? ""}`)
   list("dq", s.dq)
   list("vs", s.staleSection)
   if (s.bounds) out.set("b", [s.bounds.south, s.bounds.west, s.bounds.north, s.bounds.east].map((n) => round(n)).join(","))

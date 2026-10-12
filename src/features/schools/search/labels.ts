@@ -27,12 +27,14 @@ export const DQ_LABELS: Record<DataQualityFlag, string> = {
 
 export const RANGE_LABELS: Record<RangeField, { label: string; unit: "$" | "%" | "" }> = {
   tuition: { label: "Tuition", unit: "$" },
-  enrollment: { label: "Students", unit: "" },
   founded: { label: "Founded", unit: "" },
   teachers: { label: "Teachers", unit: "" },
   retention: { label: "Retention", unit: "%" },
   salary: { label: "Avg teacher salary", unit: "$" },
 }
+
+/** Slider step for each numeric filter; slider ends are rounded out to it. */
+export const RANGE_STEP: Record<RangeField, number> = { tuition: 250, founded: 1, teachers: 1, retention: 1, salary: 1000 }
 
 export const REGION_NAMES = { northeast: "Northeast", southeast: "Southeast", midwest: "Midwest", southwest: "Southwest", west: "West", canada: "Canada" } as const
 export const MEMBERSHIP_LABELS = { active: "Active", grace: "Grace period", lapsed: "Lapsed", non_member: "Not a member" } as const

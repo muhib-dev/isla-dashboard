@@ -1,4 +1,4 @@
-import { FEATURES, LISTING_STATUSES, REGIONS, SCHOOL_TYPES, PROFILE_SECTIONS, FRESHNESS } from "../schema"
+import { ENROLLMENT_BANDS, FEATURES, LISTING_STATUSES, REGIONS, SCHOOL_TYPES, PROFILE_SECTIONS, FRESHNESS } from "../schema"
 import { DQ_FLAGS, type SchoolSearchDoc } from "./doc"
 import { servesAll } from "./grades"
 import { PROGRAM_TAGS } from "./labels"
@@ -8,12 +8,37 @@ import type { RangeField, RangeFilter, SearchState } from "./state"
 export function rangeValue(doc: SchoolSearchDoc, field: RangeField): number | null {
   switch (field) {
     case "tuition": return doc.tuition
-    case "enrollment": return doc.enrollment
     case "founded": return doc.founded
     case "teachers": return doc.teachers
     case "retention": return doc.retention === null ? null : Math.round(doc.retention * 1000) / 10
     case "salary": return doc.salary
   }
+}
+
+/** Smallest and largest value of each numeric field across `docs`; null when no school has one. */
+export function rangeExtents(docs: SchoolSearchDoc[], fields: readonly RangeField[]): Partial<Record<RangeField, { min: number; max: number }>> {
+  const out: Partial<Record<RangeField, { min: number; max: number }>> = {}
+  for (const f of fields) {
+    let min = Infinity
+    let max = -Infinity
+    for (const d of docs) {
+      const v = rangeValue(d, f)
+      if (v === null) continue
+      if (v < min) min = v
+      const top = f === "tuition" ? (d.tuitionMax ?? v) : v
+      if (top > max) max = top
+    }
+    if (min <= max) out[f] = { min, max }
+  }
+  return out
+}
+
+/** A published tuition range matches when it overlaps the wanted one. */
+function passesTuition(doc: SchoolSearchDoc, r: RangeFilter): boolean {
+  if (r.min === undefined && r.max === undefined) return true
+  if (doc.tuition === null) return !!r.unknown
+  const hi = doc.tuitionMax ?? doc.tuition
+  return (r.min === undefined || hi >= r.min) && (r.max === undefined || doc.tuition <= r.max)
 }
 
 function passesRange(v: number | null, r: RangeFilter): boolean {
@@ -60,20 +85,25 @@ export function passesFacets(doc: SchoolSearchDoc, s: SearchState): boolean {
     if (!ok) return false
   }
 
+  if (s.enrollBand.length && !(doc.enrollmentBand && s.enrollBand.includes(doc.enrollmentBand))) return false
   for (const [field, r] of Object.entries(s.ranges) as [RangeField, RangeFilter][]) {
-    if (!passesRange(rangeValue(doc, field), r)) return false
+    if (!(field === "tuition" ? passesTuition(doc, r) : passesRange(rangeValue(doc, field), r))) return false
   }
 
   if (s.fridayEarly !== null && doc.fridayEarly !== s.fridayEarly) return false
   if (s.startAfter !== null && (doc.startMinutes === null || doc.startMinutes < s.startAfter)) return false
   if (s.startBefore !== null && (doc.startMinutes === null || doc.startMinutes > s.startBefore)) return false
+  if (s.firstDay && (s.firstDay.from || s.firstDay.to)) {
+    const d = doc.firstDay
+    if (d === null || (s.firstDay.from && d < s.firstDay.from) || (s.firstDay.to && d > s.firstDay.to)) return false
+  }
 
   for (const f of s.dq) if (!doc.dq.includes(f)) return false
   if (s.staleSection.length && !s.staleSection.some((x) => doc.staleSections.includes(x))) return false
   return true
 }
 
-export type FacetGroupKey = "region" | "state" | "country" | "status" | "freshness" | "type" | "listing" | "agency" | "features" | "programs" | "dq" | "staleSection"
+export type FacetGroupKey = "enrollBand" | "region" | "state" | "country" | "status" | "freshness" | "type" | "listing" | "agency" | "features" | "programs" | "dq" | "staleSection"
 
 type Group = {
   /** State with this facet cleared, so each option's count reflects "if I picked this instead". */
@@ -85,6 +115,7 @@ type Group = {
 const dedupe = (v: string[]) => [...new Set(v)].sort((a, b) => a.localeCompare(b))
 
 export const FACET_GROUPS: Record<FacetGroupKey, Group> = {
+  enrollBand: { clear: (s) => ({ ...s, enrollBand: [] }), options: () => [...ENROLLMENT_BANDS], has: (d, v) => d.enrollmentBand === v },
   region: { clear: (s) => ({ ...s, region: [] }), options: () => [...REGIONS], has: (d, v) => d.region === v },
   state: { clear: (s) => ({ ...s, state: [] }), options: (docs) => dedupe(docs.map((d) => d.state.toUpperCase())), has: (d, v) => d.state.toUpperCase() === v },
   country: { clear: (s) => ({ ...s, country: [] }), options: () => ["US", "CA"], has: (d, v) => d.country === v },

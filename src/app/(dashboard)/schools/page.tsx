@@ -16,7 +16,7 @@ export default function SchoolsPage({ searchParams }: PageProps<"/schools">) {
     <PageBody>
       <PageHeader
         title="Schools"
-        description="Search every school in the ISLA directory by name, place or detail, on a list or a map."
+        description="Search every school in the ISLA directory by name, place or detail, and narrow it down with filters."
         actions={<AddSchoolDialog />}
       />
       <Suspense fallback={<TableSkeleton />}>
@@ -37,5 +37,5 @@ async function Directory({ searchParams }: Pick<PageProps<"/schools">, "searchPa
   }
   const raw = await searchParams
   const [docs, geoSeed] = await Promise.all([getSchoolSearchIndex(true), seedGeoContext(typeof raw.q === "string" ? raw.q : undefined)])
-  return <SchoolsExplorer docs={docs} geoSeed={geoSeed} />
+  return <SchoolsExplorer docs={docs} geoSeed={geoSeed} mode="list" />
 }

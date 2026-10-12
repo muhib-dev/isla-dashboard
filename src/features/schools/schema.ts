@@ -56,6 +56,45 @@ export const FEATURES = Object.keys(FEATURE_LABELS) as (keyof typeof FEATURE_LAB
 export const FeatureSchema = z.enum(FEATURES as [keyof typeof FEATURE_LABELS, ...(keyof typeof FEATURE_LABELS)[]])
 export type Feature = z.infer<typeof FeatureSchema>
 
+const squash = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "")
+const FEATURE_LOOKUP = new Map<string, Feature>(
+  FEATURES.flatMap((f) => [[squash(f), f], [squash(FEATURE_LABELS[f]), f], [squash(FEATURE_LABELS[f]).replace(/s$/, ""), f]] as [string, Feature][]),
+)
+
+/**
+ * Maps a directory feature to our key: the key itself, its label in any case/spacing
+ * ("computer labs", "Science Olympiad"), or the directory's numeric id (1–17, same order
+ * as FEATURE_LABELS). Anything else ("Small class sizes") isn't a searchable feature: null.
+ */
+export function normalizeFeature(input: string | number): Feature | null {
+  if (typeof input === "number") return Number.isInteger(input) ? (FEATURES[input - 1] ?? null) : null
+  const k = squash(input)
+  return FEATURE_LOOKUP.get(k) ?? FEATURE_LOOKUP.get(k.replace(/s$/, "")) ?? null
+}
+
+/** Unknown features are dropped rather than failing the whole record. */
+const FeatureListSchema = z
+  .array(z.union([z.string(), z.number()]))
+  .transform((list) => [...new Set(list.map(normalizeFeature).filter((f): f is Feature => f !== null))])
+
+/** The directory reports enrollment as one of these bands, not an exact count. */
+export const ENROLLMENT_BANDS = ["1-100", "101-250", "251-500", "500+"] as const
+export const EnrollmentBandSchema = z.enum(ENROLLMENT_BANDS)
+export type EnrollmentBand = z.infer<typeof EnrollmentBandSchema>
+export const ENROLLMENT_BAND_BOUNDS: Record<EnrollmentBand, { min: number; max: number | null }> = {
+  "1-100": { min: 1, max: 100 },
+  "101-250": { min: 101, max: 250 },
+  "251-500": { min: 251, max: 500 },
+  "500+": { min: 501, max: null },
+}
+export const ENROLLMENT_BAND_LABELS: Record<EnrollmentBand, string> = { "1-100": "1–100", "101-250": "101–250", "251-500": "251–500", "500+": "500+" }
+
+/** Band for an exact count; null for 0 (unknown). */
+export function bandOf(n: number): EnrollmentBand | null {
+  if (n <= 0) return null
+  return ENROLLMENT_BANDS.find((b) => ENROLLMENT_BAND_BOUNDS[b].max === null || n <= ENROLLMENT_BAND_BOUNDS[b].max!) ?? null
+}
+
 export const MembershipStatusSchema = z.enum(["active", "grace", "lapsed", "non_member"])
 export type MembershipStatus = z.infer<typeof MembershipStatusSchema>
 
@@ -98,8 +137,9 @@ export type Leader = z.infer<typeof LeaderSchema>
 export const ScheduleSchema = z.object({
   startTime: z.string(),
   endTime: z.string(),
-  firstDay: isoDate,
-  lastDay: isoDate,
+  /** "" when the school hasn't published its calendar (the public directory doesn't carry it). */
+  firstDay: isoDate.or(z.literal("")),
+  lastDay: isoDate.or(z.literal("")),
   fridayEarlyRelease: z.boolean(),
   note: z.string(),
 })
@@ -148,7 +188,11 @@ export const SchoolSchema = z.object({
   /** Defaults keep older API payloads parsing. */
   type: SchoolTypeSchema.default("standard"),
   listing: ListingStatusSchema.default("open"),
-  features: z.array(FeatureSchema).default([]),
+  features: FeatureListSchema.default([]),
+  /** Published tuition range ("$0 – $2,000"). When absent, metrics.tuition is the only figure. */
+  tuitionRange: z.object({ min: z.number().nonnegative(), max: z.number().nonnegative() }).refine((r) => r.min <= r.max, "min must not exceed max").optional(),
+  /** Published enrollment band. When absent it's derived from metrics.enrollment. */
+  enrollmentBand: EnrollmentBandSchema.optional(),
   social: z.object({ facebook: z.string(), instagram: z.string(), youtube: z.string(), x: z.string() }).partial().default({}),
   verifiedAt: z.record(ProfileSectionSchema, isoDate),
   updatedAt: isoDate,
@@ -201,6 +245,8 @@ export const SectionPatchSchemas = {
   schedule: ScheduleSchema.extend({
     startTime: z.string().regex(/^\d{2}:\d{2}$/, "Use HH:MM"),
     endTime: z.string().regex(/^\d{2}:\d{2}$/, "Use HH:MM"),
+    firstDay: isoDate,
+    lastDay: isoDate,
   }),
   programs: ProgramsSchema,
   contacts: z.object({

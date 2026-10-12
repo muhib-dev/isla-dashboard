@@ -1,16 +1,21 @@
 "use client"
 
 import { useState } from "react"
+import { CalendarIcon, XIcon } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Input } from "@/components/ui/input"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { cn } from "@/lib/utils"
-import { FEATURE_LABELS, FEATURES, LISTING_STATUSES, PROFILE_SECTIONS, REGIONS, SCHOOL_TYPE_LABELS, SCHOOL_TYPES, type ProfileSection } from "@/features/schools/schema"
+import { ENROLLMENT_BAND_LABELS, ENROLLMENT_BANDS, FEATURE_LABELS, FEATURES, LISTING_STATUSES, PROFILE_SECTIONS, REGIONS, SCHOOL_TYPE_LABELS, SCHOOL_TYPES, type ProfileSection } from "@/features/schools/schema"
 import { DQ_FLAGS } from "@/features/schools/search/doc"
 import { gradeLabel } from "@/features/schools/search/grades"
 import {
+  dateRangeLabel,
   DQ_LABELS,
   FRESHNESS_LABELS,
   MEMBERSHIP_LABELS,
@@ -18,7 +23,9 @@ import {
   PROGRAM_TAGS,
   RANGE_FIELDS,
   RANGE_LABELS,
+  RANGE_STEP,
   REGION_NAMES,
+  type DateRange,
   type FacetCounts,
   type ProgramTag,
   type RangeField,
@@ -94,47 +101,130 @@ function Tri({ label, value, onChange, count }: { label: string; value: "any" | 
   )
 }
 
-function RangeRow({ field, value, onChange }: { field: RangeField; value: RangeFilter | undefined; onChange: (r: RangeFilter | null) => void }) {
+function RangeRow({ field, extent, value, onChange }: { field: RangeField; extent: { min: number; max: number }; value: RangeFilter | undefined; onChange: (r: RangeFilter | null) => void }) {
   const { label, unit } = RANGE_LABELS[field]
-  const [min, setMin] = useState(value?.min?.toString() ?? "")
-  const [max, setMax] = useState(value?.max?.toString() ?? "")
-
-  function commit(nextMin = min, nextMax = max, unknown = value?.unknown) {
-    const parse = (s: string) => (s.trim() === "" || !Number.isFinite(Number(s)) || Number(s) < 0 ? undefined : Number(s))
-    let a = parse(nextMin)
-    let b = parse(nextMax)
-    if (a !== undefined && b !== undefined && a > b) [a, b] = [b, a] // swap instead of returning nothing
-    if (a === undefined && b === undefined) return onChange(null)
-    onChange({ ...(a !== undefined && { min: a }), ...(b !== undefined && { max: b }), ...(unknown && { unknown: true }) })
+  const step = RANGE_STEP[field]
+  // Round the ends out to the step so every school's value is reachable.
+  const lo = Math.floor(extent.min / step) * step
+  const hi = Math.max(lo + step, Math.ceil(extent.max / step) * step)
+  const clamp = (n: number) => Math.min(hi, Math.max(lo, n))
+  const fromValue = (): [number, number] => [clamp(value?.min ?? lo), clamp(value?.max ?? hi)]
+  const [draft, setDraft] = useState(fromValue)
+  // Follow outside changes (chip removed, "Clear all") without remounting, which would drop keyboard focus.
+  const valueKey = `${value?.min ?? ""}:${value?.max ?? ""}`
+  const [seenKey, setSeenKey] = useState(valueKey)
+  if (seenKey !== valueKey) {
+    setSeenKey(valueKey)
+    setDraft(fromValue())
   }
-  const onKey = (e: React.KeyboardEvent) => { if (e.key === "Enter") commit() }
+  const active = value?.min !== undefined || value?.max !== undefined
+  const fmt = (n: number) => (unit === "$" ? `$${n.toLocaleString("en-US")}` : unit === "%" ? `${n}%` : String(n))
+  const [a, b] = draft
+  const summary = a <= lo && b >= hi ? "Any" : a <= lo ? `up to ${fmt(b)}` : b >= hi ? `${fmt(a)}+` : `${fmt(a)} – ${fmt(b)}`
+
+  // A thumb parked at either end means "no limit" on that side.
+  function commit([min, max]: number[], unknown = value?.unknown) {
+    const r: RangeFilter = { ...(min > lo && { min }), ...(max < hi && { max }) }
+    if (r.min === undefined && r.max === undefined) return onChange(null)
+    onChange({ ...r, ...(unknown && { unknown: true }) })
+  }
 
   return (
-    <div className="space-y-1">
-      <div className="flex items-center gap-2">
-        <Label className="w-28 shrink-0 text-sm font-normal">{label}</Label>
-        <Input inputMode="decimal" aria-label={`${label} minimum`} placeholder={unit === "$" ? "$ min" : unit === "%" ? "% min" : "min"} value={min} onChange={(e) => setMin(e.target.value)} onBlur={() => commit()} onKeyDown={onKey} className="h-8" />
-        <span className="text-muted-foreground">–</span>
-        <Input inputMode="decimal" aria-label={`${label} maximum`} placeholder={unit === "$" ? "$ max" : unit === "%" ? "% max" : "max"} value={max} onChange={(e) => setMax(e.target.value)} onBlur={() => commit()} onKeyDown={onKey} className="h-8" />
+    <div className="space-y-2.5">
+      <div className="flex items-baseline justify-between gap-2 text-sm">
+        <span>{label}</span>
+        <span className={cn("tabular text-xs", active ? "font-medium text-foreground" : "text-muted-foreground")}>{summary}</span>
       </div>
-      {(value?.min !== undefined || value?.max !== undefined) && (
-        <label className="ml-[7.5rem] flex items-center gap-2 text-xs text-muted-foreground">
-          <Checkbox checked={!!value?.unknown} onCheckedChange={(c) => commit(min, max, c === true)} /> Include schools with no value
+      <Slider
+        min={lo}
+        max={hi}
+        step={step}
+        value={draft}
+        onValueChange={(v) => setDraft([v[0], v[1]])}
+        onValueCommit={(v) => commit(v)}
+        thumbLabels={[`${label} minimum`, `${label} maximum`]}
+      />
+      {active && (
+        <label className="flex items-center gap-2 text-xs text-muted-foreground">
+          <Checkbox checked={!!value?.unknown} onCheckedChange={(c) => commit(draft, c === true)} /> Include schools with no value
         </label>
       )}
     </div>
   )
 }
 
-function minutesToTime(m: number | null) {
-  return m === null ? "" : `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`
-}
-function timeToMinutes(t: string): number | null {
-  const m = /^(\d{2}):(\d{2})$/.exec(t)
-  return m ? Number(m[1]) * 60 + Number(m[2]) : null
+const pad = (n: number) => String(n).padStart(2, "0")
+const toDay = (d: Date) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
+const fromDay = (s: string | undefined) => {
+  if (!s) return undefined
+  const [y, m, d] = s.split("-").map(Number)
+  return new Date(y, m - 1, d)
 }
 
-export function FilterPanel({ state, counts, onChange, audience = "staff" }: { audience?: "staff" | "public"; state: SearchState; counts: FacetCounts; onChange: (patch: Partial<SearchState>) => void }) {
+function FirstDayPicker({ value, onChange }: { value: DateRange | null; onChange: (r: DateRange | null) => void }) {
+  const selected = value ? { from: fromDay(value.from), to: fromDay(value.to) } : undefined
+  // School years start in late summer, so open on August unless a range is already picked.
+  const month = selected?.from ?? new Date(new Date().getFullYear(), 7, 1)
+  return (
+    <div className="space-y-1.5">
+      <Label className="text-sm font-normal">First day of school</Label>
+      <div className="flex gap-2">
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button type="button" variant="outline" className={cn("flex-1 justify-start font-normal", !value && "text-muted-foreground")}>
+              <CalendarIcon /> {value ? dateRangeLabel(value) : "Any date"}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-0" align="start">
+            <Calendar
+              mode="range"
+              resetOnSelect
+              selected={selected}
+              defaultMonth={month}
+              captionLayout="dropdown"
+              onSelect={(r) => onChange(r?.from ? { from: toDay(r.from), ...(r.to && { to: toDay(r.to) }) } : null)}
+            />
+          </PopoverContent>
+        </Popover>
+        {value && (
+          <Button type="button" variant="ghost" size="icon" aria-label="Clear first day of school" onClick={() => onChange(null)}>
+            <XIcon />
+          </Button>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// Start-time choices: every 15 minutes from 6:00 to 10:00 AM.
+const START_TIMES = Array.from({ length: 17 }, (_, i) => 6 * 60 + i * 15)
+const timeLabel = (m: number) => `${Math.floor(m / 60) % 12 || 12}:${pad(m % 60)} ${m < 720 ? "AM" : "PM"}`
+
+function StartTimeSelect({ label, value, onChange }: { label: string; value: number | null; onChange: (m: number | null) => void }) {
+  // Keep a hand-typed URL value selectable even if it isn't on the 15-minute grid.
+  const options = value === null || START_TIMES.includes(value) ? START_TIMES : [...START_TIMES, value].sort((x, y) => x - y)
+  return (
+    <div className="flex items-center justify-between gap-2 text-sm">
+      <Label className="font-normal">{label}</Label>
+      <Select value={value === null ? NONE : String(value)} onValueChange={(v) => onChange(v === NONE ? null : Number(v))}>
+        <SelectTrigger className="w-32" aria-label={label}><SelectValue /></SelectTrigger>
+        <SelectContent>
+          <SelectItem value={NONE}>Any time</SelectItem>
+          {options.map((m) => <SelectItem key={m} value={String(m)}>{timeLabel(m)}</SelectItem>)}
+        </SelectContent>
+      </Select>
+    </div>
+  )
+}
+
+export function FilterPanel({ state, counts, extents, onChange, audience = "staff" }: {
+  audience?: "staff" | "public"
+  state: SearchState
+  counts: FacetCounts
+  /** Lowest/highest value of each numeric field across all schools; sets each slider's ends. */
+  extents: Partial<Record<RangeField, { min: number; max: number }>>
+  onChange: (patch: Partial<SearchState>) => void
+}) {
   const staff = audience === "staff"
   const states = Object.keys(counts.state)
   const agencies = Object.keys(counts.agency)
@@ -232,20 +322,19 @@ export function FilterPanel({ state, counts, onChange, audience = "staff" }: { a
         )}
       </Section>
 
-      <Section title="Numbers" hint="Leave blank for no limit. Schools missing a value are left out unless you include them.">
-        {RANGE_FIELDS.filter((f) => staff || (f !== "retention" && f !== "salary")).map((f) => <RangeRow key={`${f}:${state.ranges[f]?.min ?? ""}:${state.ranges[f]?.max ?? ""}`} field={f} value={state.ranges[f]} onChange={(r) => setRange(f, r)} />)}
+      <Section title="Numbers" hint="Drag the ends to set a range. Schools missing a value are left out unless you include them.">
+        <p className="text-xs font-medium text-muted-foreground">Students</p>
+        <CheckList idPrefix="eb" options={withCount([...ENROLLMENT_BANDS], (v) => ENROLLMENT_BAND_LABELS[v as keyof typeof ENROLLMENT_BAND_LABELS], counts.enrollBand)} selected={state.enrollBand} onChange={(v) => onChange({ enrollBand: v as SearchState["enrollBand"] })} />
+        {RANGE_FIELDS.filter((f) => (staff || (f !== "retention" && f !== "salary")) && extents[f]).map((f) => (
+          <RangeRow key={f} field={f} extent={extents[f]!} value={state.ranges[f]} onChange={(r) => setRange(f, r)} />
+        ))}
       </Section>
 
       <Section title="Schedule">
         <Tri label="Friday early release" value={state.fridayEarly === null ? "any" : state.fridayEarly ? "yes" : "no"} onChange={(v) => onChange({ fridayEarly: v === "any" ? null : v === "yes" })} />
-        <div className="flex items-center gap-2 text-sm">
-          <Label className="font-normal">School starts after</Label>
-          <Input type="time" className="h-8 w-28" value={minutesToTime(state.startAfter)} onChange={(e) => onChange({ startAfter: timeToMinutes(e.target.value) })} aria-label="Starts after" />
-        </div>
-        <div className="flex items-center gap-2 text-sm">
-          <Label className="font-normal">School starts before</Label>
-          <Input type="time" className="h-8 w-28" value={minutesToTime(state.startBefore)} onChange={(e) => onChange({ startBefore: timeToMinutes(e.target.value) })} aria-label="Starts before" />
-        </div>
+        <FirstDayPicker value={state.firstDay} onChange={(firstDay) => onChange({ firstDay })} />
+        <StartTimeSelect label="School starts after" value={state.startAfter} onChange={(startAfter) => onChange({ startAfter })} />
+        <StartTimeSelect label="School starts before" value={state.startBefore} onChange={(startBefore) => onChange({ startBefore })} />
       </Section>
 
       {staff && <Section title="Data quality" hint="Staff only. Find profiles that need attention.">
