@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState, useTransition } from "react"
-import { PlusIcon } from "lucide-react"
-import { toast } from "sonner"
-import { Field } from "@/components/shared/field"
-import { Button } from "@/components/ui/button"
+import { useState, useTransition } from "react";
+import { PlusIcon } from "lucide-react";
+import { toast } from "sonner";
+import { Field } from "@/components/shared/field";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -13,33 +13,45 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { postJob } from "@/features/jobs/actions"
-import { JOB_CATEGORY_LABELS, type NewJob } from "@/features/jobs/schema"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { postJob } from "@/features/jobs/actions";
+import { JOB_CATEGORY_LABELS, type NewJob } from "@/features/jobs/schema";
 
-const EMPTY: NewJob = { title: "", category: "teaching", type: "full_time" }
+const EMPTY: NewJob = { title: "", category: "teaching", type: "full_time" };
 
-export function PostJobDialog({ schoolId, schoolName }: { schoolId: string; schoolName: string }) {
-  const [open, setOpen] = useState(false)
-  const [value, setValue] = useState<NewJob>(EMPTY)
-  const [errors, setErrors] = useState<Record<string, string[]>>({})
-  const [pending, startTransition] = useTransition()
+export function PostJobDialog({
+  schoolId,
+  schoolName,
+}: {
+  schoolId: string;
+  schoolName: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState<NewJob>(EMPTY);
+  const [errors, setErrors] = useState<Record<string, string[]>>({});
+  const [pending, startTransition] = useTransition();
 
   function onSubmit(event: React.FormEvent) {
-    event.preventDefault()
+    event.preventDefault();
     startTransition(async () => {
-      const result = await postJob(schoolId, value)
+      const result = await postJob(schoolId, value);
       if (result.ok) {
-        toast.success("Job posted to the ISLA Job Portal")
-        setOpen(false)
-        setValue(EMPTY)
-        setErrors({})
+        toast.success("Job posted to the ISLA Job Portal");
+        setOpen(false);
+        setValue(EMPTY);
+        setErrors({});
       } else {
-        setErrors(result.fieldErrors ?? {})
+        setErrors(result.fieldErrors ?? {});
       }
-    })
+    });
   }
 
   return (
@@ -54,7 +66,8 @@ export function PostJobDialog({ schoolId, schoolName }: { schoolId: string; scho
           <DialogHeader>
             <DialogTitle>Post a job</DialogTitle>
             <DialogDescription>
-              Listed on the ISLA Job Portal under {schoolName}. Location and contact details come from your school profile.
+              Listed on the ISLA Job Portal under {schoolName}. Location and
+              contact details come from your school profile.
             </DialogDescription>
           </DialogHeader>
           <Field id="title" label="Job title" error={errors.title}>
@@ -68,7 +81,12 @@ export function PostJobDialog({ schoolId, schoolName }: { schoolId: string; scho
           </Field>
           <div className="grid grid-cols-2 gap-4">
             <Field id="category" label="Category">
-              <Select value={value.category} onValueChange={(v) => setValue({ ...value, category: v as NewJob["category"] })}>
+              <Select
+                value={value.category}
+                onValueChange={(v) =>
+                  setValue({ ...value, category: v as NewJob["category"] })
+                }
+              >
                 <SelectTrigger id="category" className="w-full">
                   <SelectValue />
                 </SelectTrigger>
@@ -82,7 +100,12 @@ export function PostJobDialog({ schoolId, schoolName }: { schoolId: string; scho
               </Select>
             </Field>
             <Field id="type" label="Type">
-              <Select value={value.type} onValueChange={(v) => setValue({ ...value, type: v as NewJob["type"] })}>
+              <Select
+                value={value.type}
+                onValueChange={(v) =>
+                  setValue({ ...value, type: v as NewJob["type"] })
+                }
+              >
                 <SelectTrigger id="type" className="w-full">
                   <SelectValue />
                 </SelectTrigger>
@@ -94,7 +117,11 @@ export function PostJobDialog({ schoolId, schoolName }: { schoolId: string; scho
             </Field>
           </div>
           <DialogFooter>
-            <Button type="button" variant="ghost" onClick={() => setOpen(false)}>
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() => setOpen(false)}
+            >
               Cancel
             </Button>
             <Button type="submit" disabled={pending}>
@@ -104,5 +131,5 @@ export function PostJobDialog({ schoolId, schoolName }: { schoolId: string; scho
         </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

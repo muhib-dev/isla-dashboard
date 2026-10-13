@@ -1,11 +1,11 @@
-import type { Metadata } from "next"
-import { ArrowUpRightIcon } from "lucide-react"
-import { PageBody, PageHeader } from "@/components/layout/page-header"
-import { Button } from "@/components/ui/button"
-import { externalLinks } from "@/config/links"
-import { ProductGrid } from "@/features/store/components/product-grid"
+import type { Metadata } from "next";
+import { ArrowUpRightIcon } from "lucide-react";
+import { PageBody, PageHeader } from "@/components/layout/page-header";
+import { Button } from "@/components/ui/button";
+import { externalLinks } from "@/config/links";
+import { ProductGrid } from "@/features/store/components/product-grid";
 
-export const metadata: Metadata = { title: "ISLA Store" }
+export const metadata: Metadata = { title: "ISLA Store" };
 
 /** Fully cached: the catalog doesn't depend on the viewer, so this page is prerendered. */
 export default function StorePage() {
@@ -24,5 +24,5 @@ export default function StorePage() {
       />
       <ProductGrid />
     </PageBody>
-  )
+  );
 }

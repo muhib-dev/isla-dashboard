@@ -196,7 +196,12 @@ function SectionBody({
               "School hours",
               `${fmt.time(s.startTime)} – ${fmt.time(s.endTime)}`,
             ],
-            ["School year", s.firstDay && s.lastDay ? `${fmt.date(s.firstDay)} – ${fmt.date(s.lastDay)}` : "Not listed"],
+            [
+              "School year",
+              s.firstDay && s.lastDay
+                ? `${fmt.date(s.firstDay)} – ${fmt.date(s.lastDay)}`
+                : "Not listed",
+            ],
             [
               "Friday early release",
               <YesNo key="f" value={s.fridayEarlyRelease} />,

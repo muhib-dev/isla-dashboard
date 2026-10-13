@@ -23,14 +23,25 @@ const GROUPS: string[][] = [
   // Arabic definite article and its common romanizations.
   ["al", "ul", "el", "al-", "l"],
   ["dar", "darul", "daar", "darus"],
-]
+];
 
-const CANON = new Map<string, string>()
-for (const [head, ...rest] of GROUPS) for (const t of rest) CANON.set(t, head)
+const CANON = new Map<string, string>();
+for (const [head, ...rest] of GROUPS) for (const t of rest) CANON.set(t, head);
 
 export function canon(token: string): string {
-  return CANON.get(token) ?? token
+  return CANON.get(token) ?? token;
 }
 
 /** Words that appear in most school names; matched but ranked low. */
-export const STOPWORDS = new Set(["the", "of", "and", "school", "academy", "islamic", "al", "prep", "for", "a"])
+export const STOPWORDS = new Set([
+  "the",
+  "of",
+  "and",
+  "school",
+  "academy",
+  "islamic",
+  "al",
+  "prep",
+  "for",
+  "a",
+]);

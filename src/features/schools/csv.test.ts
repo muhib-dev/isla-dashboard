@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest"
-import { csvCell } from "./csv"
+import { describe, expect, it } from "vitest";
+import { csvCell } from "./csv";
 
 describe("csvCell", () => {
   it.each([
@@ -15,5 +15,5 @@ describe("csvCell", () => {
     ["+1 555", "'+1 555"],
     ["@cmd", "'@cmd"],
     ["-cmd|' /C calc'", "'-cmd|' /C calc'"],
-  ])("%j → %j", (input, out) => expect(csvCell(input)).toBe(out))
-})
+  ])("%j → %j", (input, out) => expect(csvCell(input)).toBe(out));
+});

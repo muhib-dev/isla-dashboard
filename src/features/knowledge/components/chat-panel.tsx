@@ -1,57 +1,70 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState, useTransition } from "react"
-import { ArrowUpIcon, FileTextIcon } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
-import { askKnowledge } from "@/features/knowledge/actions"
-import type { KnowledgeSource } from "@/features/knowledge/schema"
+import { useEffect, useRef, useState, useTransition } from "react";
+import { ArrowUpIcon, FileTextIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { askKnowledge } from "@/features/knowledge/actions";
+import type { KnowledgeSource } from "@/features/knowledge/schema";
 
 type Message =
   | { id: number; role: "user"; text: string }
-  | { id: number; role: "assistant"; text: string; sources: KnowledgeSource[] }
+  | { id: number; role: "assistant"; text: string; sources: KnowledgeSource[] };
 
 const SUGGESTIONS = [
   "What do schools in my region pay teachers?",
   "How common are lunch programs near us?",
   "What should our emergency plan include?",
   "How do we onboard new teachers?",
-]
+];
 
 const KIND_LABEL: Record<KnowledgeSource["kind"], string> = {
   research: "Research",
   toolkit: "Toolkit",
   data: "School data",
   webinar: "Webinar",
-}
+};
 
 export function ChatPanel() {
-  const [messages, setMessages] = useState<Message[]>([])
-  const [draft, setDraft] = useState("")
-  const [pending, startTransition] = useTransition()
-  const endRef = useRef<HTMLDivElement>(null)
-  const nextId = useRef(0)
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [draft, setDraft] = useState("");
+  const [pending, startTransition] = useTransition();
+  const endRef = useRef<HTMLDivElement>(null);
+  const nextId = useRef(0);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" })
-  }, [messages, pending])
+    endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [messages, pending]);
 
   function ask(question: string) {
-    const text = question.trim()
-    if (!text || pending) return
-    setDraft("")
-    setMessages((m) => [...m, { id: nextId.current++, role: "user", text }])
+    const text = question.trim();
+    if (!text || pending) return;
+    setDraft("");
+    setMessages((m) => [...m, { id: nextId.current++, role: "user", text }]);
     startTransition(async () => {
       try {
-        const answer = await askKnowledge(text)
-        setMessages((m) => [...m, { id: nextId.current++, role: "assistant", text: answer.answer, sources: answer.sources }])
+        const answer = await askKnowledge(text);
+        setMessages((m) => [
+          ...m,
+          {
+            id: nextId.current++,
+            role: "assistant",
+            text: answer.answer,
+            sources: answer.sources,
+          },
+        ]);
       } catch {
         setMessages((m) => [
           ...m,
-          { id: nextId.current++, role: "assistant", text: "Something went wrong. Please try again.", sources: [] },
-        ])
+          {
+            id: nextId.current++,
+            role: "assistant",
+            text: "Something went wrong. Please try again.",
+            sources: [],
+          },
+        ]);
       }
-    })
+    });
   }
 
   return (
@@ -59,8 +72,12 @@ export function ChatPanel() {
       <div className="flex-1 space-y-6 overflow-y-auto p-4 md:p-6">
         {messages.length === 0 ? (
           <div className="mx-auto flex max-w-lg flex-col items-center py-10 text-center">
-            <p className="font-medium">Ask about ISLA research, toolkits and school data</p>
-            <p className="mt-1 text-sm text-muted-foreground">Answers cite the sources they draw on.</p>
+            <p className="font-medium">
+              Ask about ISLA research, toolkits and school data
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Answers cite the sources they draw on.
+            </p>
             <div className="mt-6 grid w-full gap-2 sm:grid-cols-2">
               {SUGGESTIONS.map((s) => (
                 <button
@@ -96,7 +113,9 @@ export function ChatPanel() {
                           className="inline-flex items-center gap-1.5 rounded-md border bg-background px-2 py-1 text-xs hover:bg-muted"
                         >
                           <FileTextIcon className="size-3 text-muted-foreground" />
-                          <span className="text-muted-foreground">{KIND_LABEL[source.kind]}</span>
+                          <span className="text-muted-foreground">
+                            {KIND_LABEL[source.kind]}
+                          </span>
                           <span>{source.title}</span>
                         </a>
                       </li>
@@ -110,7 +129,11 @@ export function ChatPanel() {
         {pending && (
           <div className="flex gap-1" aria-label="Thinking">
             {[0, 1, 2].map((i) => (
-              <span key={i} className="size-1.5 animate-pulse rounded-full bg-muted-foreground/60" style={{ animationDelay: `${i * 150}ms` }} />
+              <span
+                key={i}
+                className="size-1.5 animate-pulse rounded-full bg-muted-foreground/60"
+                style={{ animationDelay: `${i * 150}ms` }}
+              />
             ))}
           </div>
         )}
@@ -119,8 +142,8 @@ export function ChatPanel() {
 
       <form
         onSubmit={(e) => {
-          e.preventDefault()
-          ask(draft)
+          e.preventDefault();
+          ask(draft);
         }}
         className="border-t p-3"
       >
@@ -130,8 +153,8 @@ export function ChatPanel() {
             onChange={(e) => setDraft(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault()
-                ask(draft)
+                e.preventDefault();
+                ask(draft);
               }
             }}
             placeholder="Ask a question…"
@@ -151,5 +174,5 @@ export function ChatPanel() {
         </div>
       </form>
     </div>
-  )
+  );
 }
