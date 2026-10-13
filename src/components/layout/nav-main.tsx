@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   BarChart3Icon,
   BookOpenIcon,
@@ -14,17 +14,17 @@ import {
   SchoolIcon,
   ShoppingBagIcon,
   type LucideIcon,
-} from "lucide-react"
+} from "lucide-react";
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-type Role = "school" | "isla"
-type NavItem = { title: string; href: string; icon: LucideIcon }
+type Role = "school" | "isla";
+type NavItem = { title: string; href: string; icon: LucideIcon };
 
 const NAV: Record<Role, NavItem[]> = {
   school: [
@@ -45,21 +45,27 @@ const NAV: Record<Role, NavItem[]> = {
     { title: "Knowledge", href: "/knowledge", icon: BookOpenIcon },
     { title: "Billing", href: "/billing", icon: CreditCardIcon },
   ],
-}
+};
 
 function isActive(pathname: string, href: string) {
-  return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`)
+  return href === "/"
+    ? pathname === "/"
+    : pathname === href || pathname.startsWith(`${href}/`);
 }
 
 export function NavMain({ role }: { role: Role }) {
-  const pathname = usePathname()
+  const pathname = usePathname();
   return (
     <SidebarGroup>
       <SidebarGroupContent>
         <SidebarMenu>
           {NAV[role].map((item) => (
             <SidebarMenuItem key={item.href}>
-              <SidebarMenuButton asChild isActive={isActive(pathname, item.href)} tooltip={item.title}>
+              <SidebarMenuButton
+                asChild
+                isActive={isActive(pathname, item.href)}
+                tooltip={item.title}
+              >
                 <Link href={item.href}>
                   <item.icon />
                   <span>{item.title}</span>
@@ -70,20 +76,23 @@ export function NavMain({ role }: { role: Role }) {
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
-  )
+  );
 }
 
 export function NavStore() {
-  const pathname = usePathname()
+  const pathname = usePathname();
   return (
     <SidebarMenuItem>
-      <SidebarMenuButton asChild isActive={isActive(pathname, "/store")} tooltip="Store">
+      <SidebarMenuButton
+        asChild
+        isActive={isActive(pathname, "/store")}
+        tooltip="Store"
+      >
         <Link href="/store">
           <ShoppingBagIcon />
           <span>ISLA Store</span>
         </Link>
       </SidebarMenuButton>
     </SidebarMenuItem>
-  )
+  );
 }
-

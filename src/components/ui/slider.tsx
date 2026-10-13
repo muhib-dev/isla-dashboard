@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { cn } from "cn"
-import { Slider as SliderPrimitive } from "radix-ui"
+import * as React from "react";
+import { cn } from "cn";
+import { Slider as SliderPrimitive } from "radix-ui";
 
 function Slider({
   className,
@@ -14,7 +14,7 @@ function Slider({
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root> & {
   /** Accessible name for each thumb, e.g. ["Tuition minimum", "Tuition maximum"]. */
-  thumbLabels?: string[]
+  thumbLabels?: string[];
 }) {
   const _values = React.useMemo(
     () =>
@@ -23,8 +23,8 @@ function Slider({
         : Array.isArray(defaultValue)
           ? defaultValue
           : [min, max],
-    [value, defaultValue, min, max]
-  )
+    [value, defaultValue, min, max],
+  );
 
   return (
     <SliderPrimitive.Root
@@ -35,7 +35,7 @@ function Slider({
       max={max}
       className={cn(
         "relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col",
-        className
+        className,
       )}
       {...props}
     >
@@ -57,7 +57,7 @@ function Slider({
         />
       ))}
     </SliderPrimitive.Root>
-  )
+  );
 }
 
-export { Slider }
+export { Slider };

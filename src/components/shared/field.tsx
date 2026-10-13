@@ -1,5 +1,5 @@
-import { Label } from "@/components/ui/label"
-import { cn } from "@/lib/utils"
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
 export function Field({
   id,
@@ -9,15 +9,18 @@ export function Field({
   className,
   children,
 }: {
-  id: string
-  label: React.ReactNode
-  hint?: React.ReactNode
-  error?: string[]
-  className?: string
-  children: React.ReactNode
+  id: string;
+  label: React.ReactNode;
+  hint?: React.ReactNode;
+  error?: string[];
+  className?: string;
+  children: React.ReactNode;
 }) {
   return (
-    <div className={cn("grid gap-1.5", className)} data-invalid={Boolean(error?.length) || undefined}>
+    <div
+      className={cn("grid gap-1.5", className)}
+      data-invalid={Boolean(error?.length) || undefined}
+    >
       <Label htmlFor={id} className="text-sm">
         {label}
       </Label>
@@ -28,7 +31,7 @@ export function Field({
         <p className="text-sm text-muted-foreground">{hint}</p>
       ) : null}
     </div>
-  )
+  );
 }
 
 /** Label + description on the left, control on the right. For on/off settings. */
@@ -38,10 +41,10 @@ export function ToggleRow({
   description,
   children,
 }: {
-  id: string
-  label: React.ReactNode
-  description?: React.ReactNode
-  children: React.ReactNode
+  id: string;
+  label: React.ReactNode;
+  description?: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <div className="flex items-start justify-between gap-6 py-3">
@@ -49,9 +52,11 @@ export function ToggleRow({
         <Label htmlFor={id} className="text-sm">
           {label}
         </Label>
-        {description && <p className="text-sm text-muted-foreground">{description}</p>}
+        {description && (
+          <p className="text-sm text-muted-foreground">{description}</p>
+        )}
       </div>
       {children}
     </div>
-  )
+  );
 }

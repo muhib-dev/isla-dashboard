@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function PageSkeleton() {
   return (
@@ -13,7 +13,7 @@ export function PageSkeleton() {
         <Skeleton className="h-56 rounded-xl" />
       </div>
     </div>
-  )
+  );
 }
 
 export function TableSkeleton({ rows = 8 }: { rows?: number }) {
@@ -23,5 +23,5 @@ export function TableSkeleton({ rows = 8 }: { rows?: number }) {
         <Skeleton key={i} className="h-9 w-full" />
       ))}
     </div>
-  )
+  );
 }
