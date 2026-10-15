@@ -1,7 +1,21 @@
 "use client";
 
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { ChevronsUpDownIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Command,
+  CommandEmpty,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -43,21 +57,11 @@ export function PeerFilterControls({
       data-pending={pending || undefined}
     >
       {schools && (
-        <Select
-          value={value.school ?? ""}
-          onValueChange={(v) => update("school", v)}
-        >
-          <SelectTrigger className="col-span-2 w-full sm:w-auto sm:min-w-48" aria-label="School">
-            <SelectValue placeholder="Choose a school" />
-          </SelectTrigger>
-          <SelectContent>
-            {schools.map((s) => (
-              <SelectItem key={s.id} value={s.id}>
-                {s.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <SchoolCombobox
+          schools={schools}
+          value={value.school}
+          onChange={(v) => update("school", v)}
+        />
       )}
       <span className="col-span-2 text-sm text-muted-foreground">compared with</span>
       <Select value={value.region} onValueChange={(v) => update("region", v)}>
@@ -86,5 +90,63 @@ export function PeerFilterControls({
         </SelectContent>
       </Select>
     </div>
+  );
+}
+
+function SchoolCombobox({
+  schools,
+  value,
+  onChange,
+}: {
+  schools: { id: string; name: string }[];
+  value?: string;
+  onChange: (id: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const selected = schools.find((s) => s.id === value);
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          role="combobox"
+          aria-expanded={open}
+          aria-label="School"
+          className="col-span-2 h-10 w-full justify-between font-normal sm:w-auto sm:min-w-48"
+        >
+          <span className={selected ? "truncate" : "truncate text-muted-foreground"}>
+            {selected?.name ?? "Choose a school"}
+          </span>
+          <ChevronsUpDownIcon className="text-muted-foreground" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-(--radix-popover-trigger-width) min-w-64 p-0" align="start">
+        <Command
+          filter={(_, search, keywords) =>
+            keywords?.join(" ").toLowerCase().includes(search.toLowerCase()) ? 1 : 0
+          }
+        >
+          <CommandInput placeholder="Search schools…" />
+          <CommandList>
+            <CommandEmpty>No school found.</CommandEmpty>
+            {schools.map((s) => (
+              <CommandItem
+                key={s.id}
+                value={s.id}
+                keywords={[s.name]}
+                data-checked={s.id === value}
+                onSelect={() => {
+                  onChange(s.id);
+                  setOpen(false);
+                }}
+              >
+                <span className="truncate">{s.name}</span>
+              </CommandItem>
+            ))}
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   );
 }
