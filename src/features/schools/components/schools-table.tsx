@@ -72,18 +72,15 @@ export function SchoolsTable({ rows }: { rows: Row[] }) {
 
   return (
     <div className="space-y-3">
-      <div className="flex min-h-10 items-center justify-between gap-3 text-sm text-muted-foreground">
-        <span className="tabular">
-          {visibleSelected.length
-            ? `${visibleSelected.length} selected`
-            : `${rows.length} schools`}
-        </span>
-        {visibleSelected.length > 0 && (
+      {/* The explorer above already shows the result count; this bar only appears for a selection. */}
+      {visibleSelected.length > 0 && (
+        <div className="flex min-h-10 flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground">
+          <span className="tabular">{visibleSelected.length} selected</span>
           <Button onClick={sendRequests} disabled={pending}>
             {pending ? "Sending…" : "Ask to review profile"}
           </Button>
-        )}
-      </div>
+        </div>
+      )}
 
       <div className="overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10">
         <Table>

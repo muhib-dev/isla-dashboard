@@ -183,7 +183,7 @@ async function OfferDetail({
                 <TableHead className="pl-4">School</TableHead>
                 <TableHead className="hidden md:table-cell">Contact</TableHead>
                 <TableHead className="hidden sm:table-cell">Claimed</TableHead>
-                <TableHead>Status</TableHead>
+                <TableHead className="hidden sm:table-cell">Status</TableHead>
                 <TableHead className="pr-4 text-right">
                   <span className="sr-only">Actions</span>
                 </TableHead>
@@ -192,7 +192,7 @@ async function OfferDetail({
             <TableBody>
               {claims.map((claim) => (
                 <TableRow key={claim.id}>
-                  <TableCell className="pl-4">
+                  <TableCell className="pl-4 whitespace-normal">
                     {claim.schoolId ? (
                       <Link
                         href={`/schools/${claim.schoolId}`}
@@ -206,6 +206,9 @@ async function OfferDetail({
                     <p className="text-sm text-muted-foreground">
                       {claim.schoolPlace}
                     </p>
+                    <div className="mt-1 text-sm sm:hidden">
+                      <ClaimStatusDot status={claim.status} />
+                    </div>
                   </TableCell>
                   <TableCell className="hidden md:table-cell">
                     <p>{claim.contactName}</p>
@@ -219,12 +222,8 @@ async function OfferDetail({
                   <TableCell className="tabular hidden text-muted-foreground sm:table-cell">
                     {fmt.date(claim.claimedAt)}
                   </TableCell>
-                  <TableCell>
-                    {claim.status === "redeemed" ? (
-                      <StatusDot tone="success">Redeemed</StatusDot>
-                    ) : (
-                      <StatusDot tone="brand">Claimed</StatusDot>
-                    )}
+                  <TableCell className="hidden sm:table-cell">
+                    <ClaimStatusDot status={claim.status} />
                   </TableCell>
                   <TableCell className="pr-4 text-right">
                     <ClaimStatusButton claimId={claim.id} status={claim.status} />
@@ -236,5 +235,13 @@ async function OfferDetail({
         </Card>
       )}
     </>
+  );
+}
+
+function ClaimStatusDot({ status }: { status: "claimed" | "redeemed" }) {
+  return status === "redeemed" ? (
+    <StatusDot tone="success">Redeemed</StatusDot>
+  ) : (
+    <StatusDot tone="brand">Claimed</StatusDot>
   );
 }

@@ -23,6 +23,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { navButtonClass, navGroupClass, navLabelClass } from "./nav-styles";
 
@@ -90,8 +91,17 @@ function isActive(pathname: string, href: string) {
     : pathname === href || pathname.startsWith(`${href}/`);
 }
 
+/** On phones the sidebar is a sheet; close it once a link is tapped. */
+function useCloseMobile() {
+  const { isMobile, setOpenMobile } = useSidebar();
+  return () => {
+    if (isMobile) setOpenMobile(false);
+  };
+}
+
 export function NavMain({ role }: { role: Role }) {
   const pathname = usePathname();
+  const closeMobile = useCloseMobile();
   return NAV[role].map((section) => (
     <SidebarGroup key={section.label} className={navGroupClass}>
       <SidebarGroupLabel className={navLabelClass}>
@@ -107,7 +117,7 @@ export function NavMain({ role }: { role: Role }) {
                 tooltip={item.title}
                 className={navButtonClass}
               >
-                <Link href={item.href}>
+                <Link href={item.href} onClick={closeMobile}>
                   <item.icon />
                   <span>{item.title}</span>
                 </Link>
@@ -122,6 +132,7 @@ export function NavMain({ role }: { role: Role }) {
 
 export function NavStore() {
   const pathname = usePathname();
+  const closeMobile = useCloseMobile();
   return (
     <SidebarMenuItem>
       <SidebarMenuButton
@@ -130,7 +141,7 @@ export function NavStore() {
         tooltip="Store"
         className={navButtonClass}
       >
-        <Link href="/store">
+        <Link href="/store" onClick={closeMobile}>
           <ShoppingBagIcon />
           <span>ISLA Store</span>
         </Link>

@@ -52,7 +52,7 @@ export async function HomeOffersCard({ schoolId }: { schoolId: string }) {
           </ul>
         </CardContent>
       )}
-      <CardFooter className="gap-2 border-t py-3">
+      <CardFooter className="flex-wrap gap-2 border-t py-3">
         {claimed.length > 0 && (
           <Button asChild variant="outline">
             <Link href="/offers">View claimed offers</Link>

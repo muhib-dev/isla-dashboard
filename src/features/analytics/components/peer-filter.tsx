@@ -39,7 +39,7 @@ export function PeerFilterControls({
 
   return (
     <div
-      className="flex flex-wrap items-center gap-2 data-pending:opacity-70"
+      className="grid grid-cols-2 items-center gap-2 data-pending:opacity-70 sm:flex sm:flex-wrap"
       data-pending={pending || undefined}
     >
       {schools && (
@@ -47,7 +47,7 @@ export function PeerFilterControls({
           value={value.school ?? ""}
           onValueChange={(v) => update("school", v)}
         >
-          <SelectTrigger className="min-w-48" aria-label="School">
+          <SelectTrigger className="col-span-2 w-full sm:w-auto sm:min-w-48" aria-label="School">
             <SelectValue placeholder="Choose a school" />
           </SelectTrigger>
           <SelectContent>
@@ -59,9 +59,9 @@ export function PeerFilterControls({
           </SelectContent>
         </Select>
       )}
-      <span className="text-sm text-muted-foreground">compared with</span>
+      <span className="col-span-2 text-sm text-muted-foreground">compared with</span>
       <Select value={value.region} onValueChange={(v) => update("region", v)}>
-        <SelectTrigger className="min-w-36" aria-label="Peer region">
+        <SelectTrigger className="w-full sm:w-auto sm:min-w-36" aria-label="Peer region">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -74,7 +74,7 @@ export function PeerFilterControls({
         </SelectContent>
       </Select>
       <Select value={value.size} onValueChange={(v) => update("size", v)}>
-        <SelectTrigger className="min-w-40" aria-label="Peer school size">
+        <SelectTrigger className="w-full sm:w-auto sm:min-w-40" aria-label="Peer school size">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

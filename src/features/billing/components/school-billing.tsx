@@ -142,8 +142,8 @@ export async function SchoolBilling({ schoolId }: { schoolId: string }) {
           <Table>
             <TableHeader>
               <TableRow className="hover:bg-transparent">
-                <TableHead className="pl-4">Date</TableHead>
-                <TableHead>Description</TableHead>
+                <TableHead className="hidden pl-4 sm:table-cell">Date</TableHead>
+                <TableHead className="pl-4 sm:pl-2">Description</TableHead>
                 <TableHead className="hidden md:table-cell">Type</TableHead>
                 <TableHead className="text-right">Amount</TableHead>
                 <TableHead className="hidden sm:table-cell">Status</TableHead>
@@ -153,13 +153,16 @@ export async function SchoolBilling({ schoolId }: { schoolId: string }) {
             <TableBody>
               {invoices.map((invoice) => (
                 <TableRow key={invoice.id}>
-                  <TableCell className="tabular pl-4 whitespace-nowrap text-muted-foreground">
+                  <TableCell className="tabular hidden pl-4 whitespace-nowrap text-muted-foreground sm:table-cell">
                     {fmt.date(invoice.issuedOn)}
                   </TableCell>
-                  <TableCell className="max-w-[16rem] whitespace-normal">
+                  <TableCell className="max-w-[16rem] pl-4 whitespace-normal sm:pl-2">
                     <p>{invoice.description}</p>
                     <p className="text-sm text-muted-foreground">
-                      {invoice.number}
+                      <span className="tabular sm:hidden">
+                        {fmt.date(invoice.issuedOn)} ·{" "}
+                      </span>
+                      <span className="whitespace-nowrap">{invoice.number}</span>
                     </p>
                   </TableCell>
                   <TableCell className="hidden text-muted-foreground md:table-cell">

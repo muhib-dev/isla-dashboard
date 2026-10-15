@@ -14,7 +14,7 @@ export function Stat({
   return (
     <div className={cn("space-y-1.5", className)}>
       <p className="text-sm font-medium text-muted-foreground">{label}</p>
-      <p className="tabular text-3xl font-semibold tracking-tight">{value}</p>
+      <p className="tabular text-2xl font-semibold tracking-tight sm:text-3xl">{value}</p>
       {hint && <p className="text-sm text-muted-foreground">{hint}</p>}
     </div>
   );
@@ -34,7 +34,9 @@ export function StatGroup({
     <div
       className={cn(
         "grid gap-px overflow-hidden rounded-xl bg-border ring-1 ring-foreground/10 *:bg-card *:p-5",
-        columns === 4 ? "grid-cols-2 lg:grid-cols-4" : "grid-cols-3",
+        columns === 4
+          ? "grid-cols-2 lg:grid-cols-4"
+          : "grid-cols-3 max-sm:*:px-4",
         className,
       )}
     >

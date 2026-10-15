@@ -40,7 +40,7 @@ export function JobsTable({
             <TableHead className="pl-4">Position</TableHead>
             <TableHead className="hidden md:table-cell">Category</TableHead>
             <TableHead className="hidden sm:table-cell">Posted</TableHead>
-            <TableHead className="text-right">Applicants</TableHead>
+            <TableHead className="hidden text-right sm:table-cell">Applicants</TableHead>
             <TableHead className="pr-4">Status</TableHead>
           </TableRow>
         </TableHeader>
@@ -49,7 +49,7 @@ export function JobsTable({
             const [tone, label] = STATUS[job.status];
             return (
               <TableRow key={job.id}>
-                <TableCell className="pl-4">
+                <TableCell className="pl-4 whitespace-normal">
                   <p className="font-medium">{job.title}</p>
                   <p className="text-sm text-muted-foreground">
                     {showSchool && job.schoolName
@@ -57,6 +57,11 @@ export function JobsTable({
                       : job.type === "full_time"
                         ? "Full-time"
                         : "Part-time"}
+                    <span className="tabular sm:hidden">
+                      {" "}
+                      · {job.applicants}{" "}
+                      {job.applicants === 1 ? "applicant" : "applicants"}
+                    </span>
                   </p>
                 </TableCell>
                 <TableCell className="hidden text-muted-foreground md:table-cell">
@@ -65,7 +70,7 @@ export function JobsTable({
                 <TableCell className="tabular hidden text-muted-foreground sm:table-cell">
                   {fmt.date(job.postedOn)}
                 </TableCell>
-                <TableCell className="tabular text-right">
+                <TableCell className="tabular hidden text-right sm:table-cell">
                   {job.applicants}
                 </TableCell>
                 <TableCell className="pr-4">

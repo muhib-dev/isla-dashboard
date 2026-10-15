@@ -32,7 +32,7 @@ export function OffersTable({ rows }: { rows: OfferRow[] }) {
             <TableHead className="hidden lg:table-cell">Category</TableHead>
             <TableHead className="hidden md:table-cell">Redeem window</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead className="text-right">Claims</TableHead>
+            <TableHead className="hidden text-right sm:table-cell">Claims</TableHead>
             <TableHead className="w-12 pr-4">
               <span className="sr-only">Actions</span>
             </TableHead>
@@ -41,7 +41,7 @@ export function OffersTable({ rows }: { rows: OfferRow[] }) {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
-              <TableCell className="pl-4">
+              <TableCell className="pl-4 whitespace-normal">
                 <div className="flex items-center gap-3">
                   <PartnerMark
                     initials={row.partner.initials}
@@ -56,6 +56,9 @@ export function OffersTable({ rows }: { rows: OfferRow[] }) {
                     </Link>
                     <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
                       {row.partner.name} · {row.value.label}
+                      <span className="tabular sm:hidden">
+                        · {row.claims} {row.claims === 1 ? "claim" : "claims"}
+                      </span>
                       {row.featured && (
                         <StarIcon
                           className="size-3.5 text-primary"
@@ -79,7 +82,7 @@ export function OffersTable({ rows }: { rows: OfferRow[] }) {
                   startsOn={row.startsOn}
                 />
               </TableCell>
-              <TableCell className="tabular text-right">
+              <TableCell className="tabular hidden text-right sm:table-cell">
                 <p className="font-medium">{row.claims}</p>
                 {row.claims > 0 && (
                   <p className="text-sm text-muted-foreground">

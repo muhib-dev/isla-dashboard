@@ -9,9 +9,11 @@ import { getOptionalSession } from "@/server/session"
 export default function PublicLayout({ children }: LayoutProps<"/">) {
   return (
     <div className="flex min-h-svh flex-col">
-      <header className="flex h-14 items-center justify-between gap-4 border-b px-4 md:px-8">
-        <span className="font-semibold">ISLA School Hub</span>
-        <nav className="flex items-center gap-4 text-sm text-muted-foreground sm:gap-5">
+      <header className="flex h-14 items-center justify-between gap-3 border-b px-4 md:px-8">
+        <span className="shrink-0 font-semibold whitespace-nowrap">
+          ISLA<span className="hidden sm:inline"> School Hub</span>
+        </span>
+        <nav className="flex min-w-0 items-center gap-3 text-sm whitespace-nowrap text-muted-foreground sm:gap-5">
           <Link href="/map" className="hover:text-foreground">Map</Link>
           <Link href="/promo-offers" className="hover:text-foreground">Promotions</Link>
           <a href={externalLinks.site} className="hidden hover:text-foreground sm:inline">theisla.org</a>
@@ -35,7 +37,9 @@ async function DashboardLink() {
   return (
     <Button asChild size="sm">
       <Link href={session.role === "isla" ? "/schools" : "/"}>
-        <ArrowLeftIcon /> Back to dashboard
+        <ArrowLeftIcon />
+        <span className="sm:hidden">Dashboard</span>
+        <span className="hidden sm:inline">Back to dashboard</span>
       </Link>
     </Button>
   )
