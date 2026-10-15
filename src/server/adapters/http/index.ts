@@ -8,6 +8,7 @@ import {
 import { InvoiceSchema, OrgBillingSummarySchema, PlanSchema } from "@/features/billing/schema"
 import { JobSchema } from "@/features/jobs/schema"
 import { KnowledgeAnswerSchema } from "@/features/knowledge/schema"
+import { ClaimSchema, OfferSchema } from "@/features/offers/schema"
 import { SchoolSchema, SchoolSummarySchema } from "@/features/schools/schema"
 import { SchoolReportSchema } from "@/features/schools/submissions"
 import { ProductSchema } from "@/features/store/schema"
@@ -60,6 +61,17 @@ export function createHttpRepositories(options: HttpClientOptions): Repositories
     },
     knowledge: {
       ask: (input) => api.post("/knowledge/ask", KnowledgeAnswerSchema, input),
+    },
+    offers: {
+      listOffers: () => api.get("/offers", z.array(OfferSchema)),
+      getOffer: (id) => api.find(`/offers/${encodeURIComponent(id)}`, OfferSchema),
+      createOffer: (input) => api.post("/offers", OfferSchema, input),
+      updateOffer: (id, input) => api.put(`/offers/${encodeURIComponent(id)}`, OfferSchema, input),
+      patchOffer: (id, patch) => api.patch(`/offers/${encodeURIComponent(id)}`, OfferSchema, patch),
+      listClaims: (filter) => api.get("/offers/claims", z.array(ClaimSchema), filter),
+      claim: (offerId, input) => api.post(`/offers/${encodeURIComponent(offerId)}/claims`, ClaimSchema, input),
+      setClaimStatus: (id, status) =>
+        api.patch(`/offers/claims/${encodeURIComponent(id)}`, ClaimSchema, { status }),
     },
   }
 }

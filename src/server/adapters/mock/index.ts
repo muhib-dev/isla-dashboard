@@ -5,6 +5,7 @@ import { createMockBillingRepository } from "./billing"
 import { createMockStoreRepository } from "./catalog"
 import { createMockJobRepository } from "./jobs"
 import { createMockKnowledgeRepository } from "./knowledge"
+import { createMockOfferRepository } from "./offers"
 import { createMockSchoolRepository } from "./schools"
 
 export function createMockRepositories({ latencyMs }: { latencyMs: number }): Repositories {
@@ -15,5 +16,6 @@ export function createMockRepositories({ latencyMs }: { latencyMs: number }): Re
     analytics: createMockAnalyticsRepository(latencyMs),
     store: createMockStoreRepository(latencyMs),
     knowledge: createMockKnowledgeRepository(latencyMs),
+    offers: createMockOfferRepository(latencyMs),
   }
 }

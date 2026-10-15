@@ -1,0 +1,66 @@
+[
+  {
+    "id": "offer_wiser_pd",
+    "partner": { "name": "WISER USA", "website": "https://wiser-usa.org", "initials": "WU" },
+    "title": "WISER USA – Get $100 Off Weekend School Training!",
+    "summary": "Invite WISER to provide a customized PD training for your Islamic weekend school.",
+    "details": "WISER School Membership has many benefits, but as Allah is The Most Generous, we wanted to offer your Islamic Weekend School a Generous Offer too! With a WISER School Membership, you can invite us to provide a customized PD Training for your school. Create your School Membership and email us at info@wiser-usa.org. We'll be happy to discuss how WISER can help professionalize your school.",
+    "image": "https://theisla.org/wp-content/uploads/2026/10/ISLA-Promo-Offer-WISER-1-791x1024.png",
+    "category": "pd_training",
+    "value": { "kind": "amount", "label": "$100 off" },
+    "redemption": {
+      "method": "email",
+      "email": "info@wiser-usa.org",
+      "url": "https://wiser-usa.org",
+      "instructions": "Create your WISER School Membership, then email info@wiser-usa.org to schedule your customized PD training. Mention the ISLA offer."
+    },
+    "startsOn": "2026-10-01",
+    "endsOn": "2026-10-31",
+    "membersOnly": false,
+    "featured": true,
+    "status": "active",
+    "createdAt": "2026-09-20"
+  },
+  {
+    "id": "offer_hidayah_workshops",
+    "partner": { "name": "Hidayah Services", "website": "https://hidayahservices.com", "initials": "HS" },
+    "title": "Workshops for Schools, Masajid & Community Centers",
+    "summary": "Interactive workshops that help Muslim students navigate the college admissions process with confidence.",
+    "details": "Hidayah Services provides interactive workshops that help Muslim students navigate the college admissions process with confidence. Our workshops provide comprehensive resources and practical strategies covering essential areas of college admissions, including college applications, essay writing, interview preparation, resume building, and financial aid. With extensive experience guiding Muslim students through the college application process, our team brings a perspective that understands the unique considerations Muslim students and families may have as they prepare for higher education. Explore our workshop topics and learn more about bringing a session to your community.",
+    "image": "https://theisla.org/wp-content/uploads/2026/08/WORKSHOPS-Flyer-Instagram-Post-45-819x1024.png",
+    "category": "college_prep",
+    "value": { "kind": "perk", "label": "Workshops" },
+    "redemption": {
+      "method": "link",
+      "url": "https://hidayahservices.com/workshops-2/",
+      "instructions": "Explore the workshop topics on the Hidayah Services site and request a session for your school, masjid or community center."
+    },
+    "startsOn": "2026-08-27",
+    "endsOn": "2026-12-31",
+    "membersOnly": false,
+    "featured": false,
+    "status": "active",
+    "createdAt": "2026-08-20"
+  },
+  {
+    "id": "offer_iqraa_bookfair",
+    "partner": { "name": "Iqraa Bookshop", "website": "https://iqraabookshop.com", "initials": "IB" },
+    "title": "Iqraa Bookshop — Islamic & Arabic Books | Free Digital Islamic Bookfairs for Schools",
+    "summary": "A fully branded online bookfair with no upfront cost. Your school earns 15% commission on every sale.",
+    "details": "Iqraa Bookshop is an online Islamic and Arabic educational bookstore serving schools, teachers, and families. Through our Digital Bookfair program, schools get a fully branded online bookfair, no upfront cost, no inventory to manage, and earn 15% commission on every sale from their community. Vendors and publishers can also partner with us to reach the Islamic school market directly. Interested in a bookfair for your school? Reach out to get started.",
+    "image": "https://theisla.org/wp-content/uploads/2026/07/book-fair-iqraa-post-1024x1024.png",
+    "category": "books",
+    "value": { "kind": "free", "label": "Free + 15% back" },
+    "redemption": {
+      "method": "link",
+      "url": "https://iqraabookshop.com",
+      "instructions": "Reach out to Iqraa Bookshop through their site to set up your school's digital bookfair."
+    },
+    "startsOn": "2027-08-01",
+    "endsOn": "2027-08-15",
+    "membersOnly": false,
+    "featured": false,
+    "status": "active",
+    "createdAt": "2026-07-28"
+  }
+]

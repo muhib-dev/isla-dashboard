@@ -10,9 +10,10 @@ export default function PublicLayout({ children }: LayoutProps<"/">) {
   return (
     <div className="flex min-h-svh flex-col">
       <header className="flex h-14 items-center justify-between gap-4 border-b px-4 md:px-8">
-        <span className="font-semibold">ISLA School Directory</span>
+        <span className="font-semibold">ISLA School Hub</span>
         <nav className="flex items-center gap-4 text-sm text-muted-foreground sm:gap-5">
           <Link href="/map" className="hover:text-foreground">Map</Link>
+          <Link href="/promo-offers" className="hover:text-foreground">Promotions</Link>
           <a href={externalLinks.site} className="hidden hover:text-foreground sm:inline">theisla.org</a>
           {/* Only signed-in users see this; reads the session cookie, so it streams in separately. */}
           <Suspense fallback={null}>

@@ -13,6 +13,7 @@ import {
   HouseIcon,
   SchoolIcon,
   ShoppingBagIcon,
+  TicketPercentIcon,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -30,8 +31,10 @@ const NAV: Record<Role, NavItem[]> = {
   school: [
     { title: "Home", href: "/", icon: HouseIcon },
     { title: "School profile", href: "/profile", icon: SchoolIcon },
+    { title: "Map", href: "/map", icon: MapIcon },
     { title: "Analytics", href: "/analytics", icon: BarChart3Icon },
     { title: "Jobs", href: "/jobs", icon: BriefcaseIcon },
+    { title: "Promotions", href: "/promo-offers", icon: TicketPercentIcon },
     { title: "Knowledge", href: "/knowledge", icon: BookOpenIcon },
     { title: "Billing", href: "/billing", icon: CreditCardIcon },
   ],
@@ -42,6 +45,7 @@ const NAV: Record<Role, NavItem[]> = {
     { title: "Reports", href: "/reports", icon: FlagIcon },
     { title: "Analytics", href: "/analytics", icon: BarChart3Icon },
     { title: "Jobs", href: "/jobs", icon: BriefcaseIcon },
+    { title: "Promotions", href: "/offers", icon: TicketPercentIcon },
     { title: "Knowledge", href: "/knowledge", icon: BookOpenIcon },
     { title: "Billing", href: "/billing", icon: CreditCardIcon },
   ],

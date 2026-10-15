@@ -73,7 +73,7 @@ function useSubmit(run: () => Promise<ActionResult>) {
 }
 
 /** Real users never see or tab to this; bots fill every input. */
-function Honeypot({
+export function Honeypot({
   value,
   onChange,
 }: {

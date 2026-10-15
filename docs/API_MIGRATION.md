@@ -66,6 +66,14 @@ different ones.
 | `analytics.overview()` | `GET /analytics/overview` | — | `NetworkOverview` |
 | `store.listProducts()` | `GET /store/products` | — | `Product[]` |
 | `knowledge.ask(input)` | `POST /knowledge/ask` | `{ question, schoolId }` | `KnowledgeAnswer` |
+| `offers.listOffers()` | `GET /offers` | — | `Offer[]` |
+| `offers.getOffer(id)` | `GET /offers/:id` (404 → null) | — | `Offer` |
+| `offers.createOffer(input)` | `POST /offers` (created as `status: "draft"`) | `OfferInput` | `Offer` |
+| `offers.updateOffer(id, input)` | `PUT /offers/:id` | `OfferInput` | `Offer` |
+| `offers.patchOffer(id, patch)` | `PATCH /offers/:id` | `{ status?, featured? }` | `Offer` |
+| `offers.listClaims(filter)` | `GET /offers/claims?schoolId=&offerId=` | query | `Claim[]` |
+| `offers.claim(offerId, input)` | `POST /offers/:id/claims` (idempotent per school, or per email when anonymous) | `ClaimInput` (`NewClaim` + `schoolId \| null` + `schoolName`) | `Claim` |
+| `offers.setClaimStatus(id, status)` | `PATCH /offers/claims/:id` | `{ status: "claimed" \| "redeemed" }` | `Claim` |
 
 Analytics responses carry precomputed statistics so the UI does no aggregation:
 
@@ -150,3 +158,20 @@ instances. A new school is created with `listing: "pending"` plus a `"new"` repo
 approve or dismiss it under **Reports**. Closure and other reports never change a listing
 until staff approve them, and a report is linked to a school only when exactly one school
 matches its name, city and state.
+
+## Promo offers (`/promo-offers` public, `/offers` dashboard)
+
+`/promo-offers` is public (no sign-in) and replaces theisla.org/promo-offers. "Avail this offer"
+records a claim and shows the redemption steps. A signed-in school admin claims for their school
+(`schoolId` set); anyone else enters a school or organization name (`schoolId: null`), and those
+claims are rate-limited with a honeypot like the other public forms. In the dashboard, schools only
+see what they claimed (`/offers`); staff manage offers and track claims there.
+
+Claim rules (`claimBlocker` in `features/offers/lib.ts`): the offer must be published and inside its
+redeem window, and `membersOnly` offers need a signed-in school with an `active` or `grace`
+membership. Claiming twice (same school, or same email when anonymous) returns the existing claim.
+The API should enforce the same.
+
+`redemption.code` is a secret until claimed: the public list strips it (`redactRedemption`), so a
+public `GET /offers` should omit it too. Flyer images (`Offer.image`) are served through
+`next/image`; only `theisla.org/wp-content/uploads/**` is optimized (see `next.config.ts`).

@@ -21,6 +21,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { getSchoolBilling } from "@/features/billing/queries";
 import { getSchoolJobs } from "@/features/jobs/queries";
+import { HomeOffersCard } from "@/features/offers/components/home-offers-card";
 import { gradeSpan } from "@/features/schools/lib";
 import { getSchool, getSchoolHealth } from "@/features/schools/queries";
 import { REGION_LABELS } from "@/features/schools/schema";
@@ -160,6 +161,8 @@ export async function SchoolHome({ schoolId }: { schoolId: string }) {
           </Link>
         ))}
       </div>
+
+      <HomeOffersCard schoolId={schoolId} />
     </>
   );
 }

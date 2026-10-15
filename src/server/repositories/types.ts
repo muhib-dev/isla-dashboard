@@ -7,6 +7,7 @@ import type {
 import type { Invoice, OrgBillingSummary, Plan } from "@/features/billing/schema"
 import type { Job, NewJob } from "@/features/jobs/schema"
 import type { KnowledgeAnswer, KnowledgeQuestion } from "@/features/knowledge/schema"
+import type { Claim, ClaimInput, ClaimStatus, Offer, OfferInput, OfferStatus } from "@/features/offers/schema"
 import type {
   Geo,
   ProfileSection,
@@ -71,6 +72,22 @@ export interface KnowledgeRepository {
   ask(input: KnowledgeQuestion): Promise<KnowledgeAnswer>
 }
 
+export interface OfferRepository {
+  listOffers(): Promise<Offer[]>
+  getOffer(id: string): Promise<Offer | null>
+  /** New offers start as drafts; staff publish them with `patchOffer`. */
+  createOffer(input: OfferInput): Promise<Offer>
+  updateOffer(id: string, input: OfferInput): Promise<Offer>
+  patchOffer(id: string, patch: Partial<{ status: OfferStatus; featured: boolean }>): Promise<Offer>
+  listClaims(filter: { schoolId?: string; offerId?: string }): Promise<Claim[]>
+  /**
+   * Records a claim. `schoolId` is null for anonymous claims from the public page.
+   * Claiming twice (same school, or same email when anonymous) returns the existing claim.
+   */
+  claim(offerId: string, input: ClaimInput): Promise<Claim>
+  setClaimStatus(id: string, status: ClaimStatus): Promise<Claim>
+}
+
 export interface Repositories {
   schools: SchoolRepository
   jobs: JobRepository
@@ -78,4 +95,5 @@ export interface Repositories {
   analytics: AnalyticsRepository
   store: StoreRepository
   knowledge: KnowledgeRepository
+  offers: OfferRepository
 }
