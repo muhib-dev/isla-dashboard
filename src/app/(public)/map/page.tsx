@@ -36,8 +36,8 @@ export default function PublicMapPage({ searchParams }: PageProps<"/map">) {
 /** Mirrors the explorer's split: list panel left, map right. */
 function MapSkeleton() {
   return (
-    <div className="flex flex-col md:h-[calc(100svh_-_var(--app-header,56px))] md:flex-row">
-      <div className="space-y-3 border-b bg-card p-5 md:w-[400px] md:border-r md:border-b-0">
+    <div className="flex flex-col md:h-[calc(100svh-var(--app-header,56px))] md:flex-row">
+      <div className="space-y-3 border-b bg-card p-5 md:w-100 md:border-r md:border-b-0">
         <Skeleton className="h-8 w-40" />
         <Skeleton className="h-10 w-full" />
         <Skeleton className="h-8 w-64" />
