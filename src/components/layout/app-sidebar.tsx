@@ -19,11 +19,12 @@ import {
 } from "@/components/ui/sidebar"
 import { getSession } from "@/server/session"
 import { NavMain, NavStore } from "./nav-main"
+import { navButtonClass, navGroupClass, navLabelClass } from "./nav-styles"
 
 export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader>
+      <SidebarHeader className="px-3 pt-4 pb-3 group-data-[collapsible=icon]:px-2">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
@@ -39,20 +40,20 @@ export function AppSidebar() {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent>
+      <SidebarContent className="gap-2">
         <Suspense fallback={<NavSkeleton />}>
           <RoleNav />
         </Suspense>
 
-        <SidebarGroup className="mt-auto">
-          <SidebarGroupLabel>ISLA</SidebarGroupLabel>
+        <SidebarGroup className={`mt-auto pb-3 ${navGroupClass}`}>
+          <SidebarGroupLabel className={navLabelClass}>ISLA</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="gap-0.5">
               <Suspense fallback={<SidebarMenuSkeleton showIcon />}>
                 <NavStore />
               </Suspense>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip="theisla.org">
+                <SidebarMenuButton asChild tooltip="theisla.org" className={navButtonClass}>
                   <a href={externalLinks.site} target="_blank" rel="noreferrer">
                     <ArrowUpRightIcon />
                     <span>theisla.org</span>
@@ -64,8 +65,8 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter>
-        <p className="px-2 pb-1 text-xs leading-snug text-muted-foreground group-data-[collapsible=icon]:hidden">
+      <SidebarFooter className="border-t border-sidebar-border px-4 py-3 group-data-[collapsible=icon]:hidden">
+        <p className="text-xs leading-snug text-muted-foreground">
           Prototype with sample data. Schools and people are fictional.
         </p>
       </SidebarFooter>
@@ -81,8 +82,8 @@ async function RoleNav() {
 
 function NavSkeleton() {
   return (
-    <SidebarGroup>
-      <SidebarMenu>
+    <SidebarGroup className={navGroupClass}>
+      <SidebarMenu className="gap-0.5">
         {Array.from({ length: 6 }, (_, i) => (
           <SidebarMenuItem key={i}>
             <SidebarMenuSkeleton showIcon width={`${55 + ((i * 17) % 35)}%`} />

@@ -112,7 +112,7 @@
   --member-lapsed: oklch(0.55 0.17 20);
   --member-none: oklch(0.7 0.012 258);
   --radius: 0.5rem;
-  --sidebar: oklch(0.982 0.004 258);
+  --sidebar: oklch(1 0 0);
   --sidebar-foreground: oklch(0.3 0.03 258);
   --sidebar-primary: var(--brand-700);
   --sidebar-primary-foreground: oklch(0.985 0.005 258);

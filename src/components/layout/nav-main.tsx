@@ -19,35 +19,68 @@ import {
 import {
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { navButtonClass, navGroupClass, navLabelClass } from "./nav-styles";
 
 type Role = "school" | "isla";
 type NavItem = { title: string; href: string; icon: LucideIcon };
+type NavSection = { label: string; items: NavItem[] };
 
-const NAV: Record<Role, NavItem[]> = {
+const NAV: Record<Role, NavSection[]> = {
   school: [
-    { title: "Home", href: "/", icon: HouseIcon },
-    { title: "School profile", href: "/profile", icon: SchoolIcon },
-    { title: "Map", href: "/map", icon: MapIcon },
-    { title: "Analytics", href: "/analytics", icon: BarChart3Icon },
-    { title: "Jobs", href: "/jobs", icon: BriefcaseIcon },
-    { title: "Promotions", href: "/promo-offers", icon: TicketPercentIcon },
-    { title: "Knowledge", href: "/knowledge", icon: BookOpenIcon },
-    { title: "Billing", href: "/billing", icon: CreditCardIcon },
+    {
+      label: "Overview",
+      items: [
+        { title: "Home", href: "/", icon: HouseIcon },
+        { title: "Analytics", href: "/analytics", icon: BarChart3Icon },
+        { title: "Map", href: "/map", icon: MapIcon },
+      ],
+    },
+    {
+      label: "Your school",
+      items: [
+        { title: "My school", href: "/profile", icon: SchoolIcon },
+        { title: "Jobs", href: "/jobs", icon: BriefcaseIcon },
+        { title: "Promotions", href: "/promo-offers", icon: TicketPercentIcon },
+      ],
+    },
+    {
+      label: "Resources & billing",
+      items: [
+        { title: "Knowledge", href: "/knowledge", icon: BookOpenIcon },
+        { title: "Billing", href: "/billing", icon: CreditCardIcon },
+      ],
+    },
   ],
   isla: [
-    { title: "Home", href: "/", icon: HouseIcon },
-    { title: "Schools", href: "/schools", icon: Building2Icon },
-    { title: "Map", href: "/map", icon: MapIcon },
-    { title: "Reports", href: "/reports", icon: FlagIcon },
-    { title: "Analytics", href: "/analytics", icon: BarChart3Icon },
-    { title: "Jobs", href: "/jobs", icon: BriefcaseIcon },
-    { title: "Promotions", href: "/offers", icon: TicketPercentIcon },
-    { title: "Knowledge", href: "/knowledge", icon: BookOpenIcon },
-    { title: "Billing", href: "/billing", icon: CreditCardIcon },
+    {
+      label: "Overview",
+      items: [
+        { title: "Home", href: "/", icon: HouseIcon },
+        { title: "Analytics", href: "/analytics", icon: BarChart3Icon },
+        { title: "Map", href: "/map", icon: MapIcon },
+      ],
+    },
+    {
+      label: "Members",
+      items: [
+        { title: "Schools", href: "/schools", icon: Building2Icon },
+        { title: "Reports", href: "/reports", icon: FlagIcon },
+        { title: "Billing", href: "/billing", icon: CreditCardIcon },
+      ],
+    },
+    {
+      label: "Content",
+      items: [
+        { title: "Jobs", href: "/jobs", icon: BriefcaseIcon },
+        { title: "Promotions", href: "/offers", icon: TicketPercentIcon },
+        { title: "Knowledge", href: "/knowledge", icon: BookOpenIcon },
+      ],
+    },
   ],
 };
 
@@ -59,16 +92,20 @@ function isActive(pathname: string, href: string) {
 
 export function NavMain({ role }: { role: Role }) {
   const pathname = usePathname();
-  return (
-    <SidebarGroup>
+  return NAV[role].map((section) => (
+    <SidebarGroup key={section.label} className={navGroupClass}>
+      <SidebarGroupLabel className={navLabelClass}>
+        {section.label}
+      </SidebarGroupLabel>
       <SidebarGroupContent>
-        <SidebarMenu>
-          {NAV[role].map((item) => (
+        <SidebarMenu className="gap-0.5">
+          {section.items.map((item) => (
             <SidebarMenuItem key={item.href}>
               <SidebarMenuButton
                 asChild
                 isActive={isActive(pathname, item.href)}
                 tooltip={item.title}
+                className={navButtonClass}
               >
                 <Link href={item.href}>
                   <item.icon />
@@ -80,7 +117,7 @@ export function NavMain({ role }: { role: Role }) {
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
-  );
+  ));
 }
 
 export function NavStore() {
@@ -91,6 +128,7 @@ export function NavStore() {
         asChild
         isActive={isActive(pathname, "/store")}
         tooltip="Store"
+        className={navButtonClass}
       >
         <Link href="/store">
           <ShoppingBagIcon />
