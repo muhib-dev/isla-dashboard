@@ -1,5 +1,5 @@
-import "server-only"
-import { z } from "zod"
+import "server-only";
+import { z } from "zod";
 
 const EnvSchema = z
   .object({
@@ -19,6 +19,6 @@ const EnvSchema = z
   .refine((env) => env.DATA_SOURCE !== "http" || env.ISLA_API_URL, {
     message: "ISLA_API_URL is required when DATA_SOURCE=http",
     path: ["ISLA_API_URL"],
-  })
+  });
 
-export const env = EnvSchema.parse(process.env)
+export const env = EnvSchema.parse(process.env);

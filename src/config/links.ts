@@ -1,4 +1,5 @@
-const ISLA_SITE = process.env.NEXT_PUBLIC_ISLA_SITE_URL ?? "https://theisla.org"
+const ISLA_SITE =
+  process.env.NEXT_PUBLIC_ISLA_SITE_URL ?? "https://theisla.org";
 
 export const externalLinks = {
   site: ISLA_SITE,
@@ -6,4 +7,4 @@ export const externalLinks = {
   store: `${ISLA_SITE}/shop/`,
   membership: `${ISLA_SITE}/membership/`,
   research: `${ISLA_SITE}/`,
-} as const
+} as const;
