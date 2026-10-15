@@ -112,7 +112,11 @@ export async function SchoolBilling({ schoolId }: { schoolId: string }) {
             </CardContent>
             <CardContent>
               <PaymentProviderButton
-                label={plan.paymentMethod ? "Update card" : "Add card"}
+                label={
+                  plan.paymentMethod
+                    ? "Update Payment Method"
+                    : "Add Payment Method"
+                }
                 message="This opens the secure payment form once billing is connected."
               />
             </CardContent>
