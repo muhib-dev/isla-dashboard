@@ -231,6 +231,10 @@ export const MetricsSchema = z.object({
   enrollmentHistory: z.array(
     z.object({ year: z.number().int(), value: z.number().int() }),
   ),
+  /** Teacher retention per school year (0–1). Optional: not every source reports it. */
+  retentionHistory: z
+    .array(z.object({ year: z.number().int(), value: z.number().min(0).max(1) }))
+    .optional(),
 });
 export type SchoolMetrics = z.infer<typeof MetricsSchema>;
 

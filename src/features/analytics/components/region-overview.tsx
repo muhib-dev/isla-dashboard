@@ -1,4 +1,4 @@
-import { Stat } from "@/components/shared/stat";
+import { KpiGrid, KpiTile } from "@/components/shared/kpi-tile";
 import {
   Card,
   CardContent,
@@ -21,7 +21,10 @@ import {
 import { getMapCoverage } from "@/features/schools/queries";
 import { REGION_LABELS } from "@/features/schools/schema";
 import { fmt } from "@/lib/format";
-import { MembershipByRegion } from "./membership-by-region";
+import {
+  MembershipLegend,
+  RegionMembershipList,
+} from "@/features/home/components/home-bits";
 import { RegionChart } from "./region-chart";
 
 export async function RegionOverview() {
@@ -33,65 +36,78 @@ export async function RegionOverview() {
   const m = overview.medians;
 
   return (
-    <div className="space-y-5">
-      <div className="grid gap-px overflow-hidden rounded-xl bg-border ring-1 ring-foreground/10 sm:grid-cols-2 xl:grid-cols-5 *:bg-card *:p-5">
-        <Stat
-          label="Network median tuition"
-          value={fmt.currency(m.tuition)}
-          hint={`Across ${overview.schools} schools`}
-        />
-        <Stat
-          label="Network median teacher salary"
-          value={fmt.currency(m.teacherSalary)}
-          hint="Average salary per school"
-        />
-        <Stat
-          label="Network median retention"
-          value={fmt.percent(m.retention)}
-          hint="Teachers returning year over year"
-        />
-        <Stat
-          label="Schools on the map"
-          value={`${coverage.mapped} of ${coverage.total}`}
-          hint={`${coverage.exact} at an exact address`}
-        />
-        <Stat
-          label="Schools with a lunch program"
-          value={fmt.percent(m.lunchProgramShare)}
-          hint={`${fmt.number(overview.students)} students in total`}
-        />
+    <section className="space-y-4" aria-labelledby="region-overview-heading">
+      <div className="space-y-0.5">
+        <h2 id="region-overview-heading" className="text-h3 font-semibold">
+          Across the network
+        </h2>
+        <p className="text-[15px] text-muted-foreground">
+          {overview.schools} schools · {fmt.number(overview.students)} students
+        </p>
       </div>
 
-      <div className="grid gap-5 xl:grid-cols-5">
-        <Card className="xl:col-span-3">
-          <CardHeader className="border-b">
+      <KpiGrid className="xl:grid-cols-5">
+        <KpiTile
+          label="Median tuition"
+          value={fmt.currency(m.tuition)}
+          footer={<span>Across {overview.schools} schools</span>}
+        />
+        <KpiTile
+          label="Median teacher salary"
+          value={fmt.currency(m.teacherSalary)}
+          footer={<span>Average salary per school</span>}
+        />
+        <KpiTile
+          label="Median retention"
+          value={fmt.percent(m.retention)}
+          footer={<span>Teachers returning year over year</span>}
+        />
+        <KpiTile
+          label="Schools on the map"
+          value={`${coverage.mapped} of ${coverage.total}`}
+          footer={<span>{coverage.exact} at an exact address</span>}
+        />
+        <KpiTile
+          label="With a lunch program"
+          value={fmt.percent(m.lunchProgramShare)}
+          footer={<span>{fmt.number(overview.students)} students in total</span>}
+        />
+      </KpiGrid>
+
+      <div className="grid gap-4 xl:grid-cols-[1.6fr_1fr]">
+        <Card>
+          <CardHeader>
             <CardTitle>Regions compared</CardTitle>
             <CardDescription>
-              Median per region. The vertical line marks the network median.
+              Median per region against the network median.
             </CardDescription>
           </CardHeader>
-          <CardContent className="pt-2">
+          <CardContent className="flex flex-1 flex-col">
             <RegionChart data={regions} network={m} />
           </CardContent>
         </Card>
-        <Card className="xl:col-span-2">
-          <CardHeader className="border-b">
+        <Card>
+          <CardHeader>
             <CardTitle>Membership by region</CardTitle>
             <CardDescription>
-              Share of schools in each region by membership status.
+              Share of schools in each region by status.
             </CardDescription>
           </CardHeader>
-          <CardContent className="pt-2">
-            <MembershipByRegion data={regions} />
+          <CardContent className="space-y-5">
+            <MembershipLegend />
+            <RegionMembershipList regions={regions} />
           </CardContent>
         </Card>
       </div>
 
-      <Card className="py-0">
+      <Card className="gap-0 py-0">
+        <CardHeader className="border-b px-6 py-4 [.border-b]:pb-4">
+          <CardTitle>Regions in detail</CardTitle>
+        </CardHeader>
         <Table>
           <TableHeader>
-            <TableRow className="hover:bg-transparent">
-              <TableHead className="pl-4">Region</TableHead>
+            <TableRow>
+              <TableHead className="pl-6">Region</TableHead>
               <TableHead className="text-right">Schools</TableHead>
               <TableHead className="hidden text-right sm:table-cell">
                 Students
@@ -103,7 +119,7 @@ export async function RegionOverview() {
               <TableHead className="hidden text-right md:table-cell">
                 Retention
               </TableHead>
-              <TableHead className="hidden pr-4 text-right lg:table-cell">
+              <TableHead className="hidden pr-6 text-right lg:table-cell">
                 Lunch program
               </TableHead>
             </TableRow>
@@ -111,7 +127,7 @@ export async function RegionOverview() {
           <TableBody className="tabular">
             {regions.map((r) => (
               <TableRow key={r.region}>
-                <TableCell className="pl-4 font-medium">
+                <TableCell className="pl-6 font-medium">
                   {REGION_LABELS[r.region]}
                 </TableCell>
                 <TableCell className="text-right">{r.schools}</TableCell>
@@ -127,7 +143,7 @@ export async function RegionOverview() {
                 <TableCell className="hidden text-right md:table-cell">
                   {fmt.percent(r.medianRetention)}
                 </TableCell>
-                <TableCell className="hidden pr-4 text-right lg:table-cell">
+                <TableCell className="hidden pr-6 text-right lg:table-cell">
                   {fmt.percent(r.lunchProgramShare)}
                 </TableCell>
               </TableRow>
@@ -135,6 +151,6 @@ export async function RegionOverview() {
           </TableBody>
         </Table>
       </Card>
-    </div>
+    </section>
   );
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { PlusIcon } from "lucide-react";
 import { PageBody, PageHeader } from "@/components/layout/page-header";
 import { RoleNotice } from "@/components/shared/role-notice";
 import { TableSkeleton } from "@/components/shared/skeletons";
+import { Button } from "@/components/ui/button";
 import { AddSchoolDialog } from "@/features/schools/components/submission-forms";
 import { SchoolsExplorer } from "@/features/schools/components/schools-explorer";
 import { getSchoolSearchIndex } from "@/features/schools/queries";
@@ -16,8 +18,16 @@ export default function SchoolsPage({ searchParams }: PageProps<"/schools">) {
     <PageBody>
       <PageHeader
         title="Schools"
-        description="Search every school in the ISLA directory by name, place or detail, and narrow it down with filters."
-        actions={<AddSchoolDialog />}
+        description="Every member and prospective school in the ISLA network."
+        actions={
+          <AddSchoolDialog
+            trigger={
+              <Button>
+                <PlusIcon /> Add school
+              </Button>
+            }
+          />
+        }
       />
       <Suspense fallback={<TableSkeleton />}>
         <Directory searchParams={searchParams} />

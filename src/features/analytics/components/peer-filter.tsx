@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useId, useState, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ChevronsUpDownIcon } from "lucide-react";
+import { ChevronsUpDownIcon, UsersIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -11,6 +11,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { Label } from "@/components/ui/label";
 import {
   Popover,
   PopoverContent,
@@ -42,6 +43,7 @@ export function PeerFilterControls({
   const pathname = usePathname();
   const params = useSearchParams();
   const [pending, startTransition] = useTransition();
+  const id = useId();
 
   function update(key: string, next: string) {
     const search = new URLSearchParams(params);
@@ -53,7 +55,7 @@ export function PeerFilterControls({
 
   return (
     <div
-      className="grid grid-cols-2 items-center gap-2 data-pending:opacity-70 sm:flex sm:flex-wrap"
+      className="flex flex-wrap items-center gap-2 data-pending:opacity-70"
       data-pending={pending || undefined}
     >
       {schools && (
@@ -63,32 +65,53 @@ export function PeerFilterControls({
           onChange={(v) => update("school", v)}
         />
       )}
-      <span className="col-span-2 text-sm text-muted-foreground">compared with</span>
-      <Select value={value.region} onValueChange={(v) => update("region", v)}>
-        <SelectTrigger className="w-full sm:w-auto sm:min-w-36" aria-label="Peer region">
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All regions</SelectItem>
-          {REGIONS.map((r) => (
-            <SelectItem key={r} value={r}>
-              {REGION_LABELS[r]}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-      <Select value={value.size} onValueChange={(v) => update("size", v)}>
-        <SelectTrigger className="w-full sm:w-auto sm:min-w-40" aria-label="Peer school size">
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          {SIZE_BANDS.map((band) => (
-            <SelectItem key={band} value={band}>
-              {SIZE_BAND_LABELS[band]}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline">
+            <UsersIcon className="size-4.5" aria-hidden />
+            Edit peer group
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent align="end" className="w-72 space-y-4 p-4">
+          <div className="space-y-0.5">
+            <p className="font-semibold">Peer group</p>
+            <p className="text-caption text-muted-foreground">
+              The schools these numbers are compared with.
+            </p>
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor={`${id}-region`}>Region</Label>
+            <Select value={value.region} onValueChange={(v) => update("region", v)}>
+              <SelectTrigger id={`${id}-region`} className="w-full" aria-label="Peer region">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All regions</SelectItem>
+                {REGIONS.map((r) => (
+                  <SelectItem key={r} value={r}>
+                    {REGION_LABELS[r]}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor={`${id}-size`}>School size</Label>
+            <Select value={value.size} onValueChange={(v) => update("size", v)}>
+              <SelectTrigger id={`${id}-size`} className="w-full" aria-label="Peer school size">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {SIZE_BANDS.map((band) => (
+                  <SelectItem key={band} value={band}>
+                    {SIZE_BAND_LABELS[band]}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </PopoverContent>
+      </Popover>
     </div>
   );
 }
@@ -113,7 +136,7 @@ function SchoolCombobox({
           role="combobox"
           aria-expanded={open}
           aria-label="School"
-          className="col-span-2 h-10 w-full justify-between font-normal sm:w-auto sm:min-w-48"
+          className="w-40 justify-between font-normal sm:w-60"
         >
           <span className={selected ? "truncate" : "truncate text-muted-foreground"}>
             {selected?.name ?? "Choose a school"}

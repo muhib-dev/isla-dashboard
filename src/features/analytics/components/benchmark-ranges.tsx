@@ -94,9 +94,9 @@ function BenchmarkRow({
     <li className="grid gap-x-8 gap-y-3 lg:grid-cols-[13rem_1fr_12rem] lg:items-center">
       <div>
         <p className="font-medium">{meta.label}</p>
-        <p className="tabular text-sm text-muted-foreground">
+        <p className="tabular text-[13px] text-muted-foreground">
           {fmt(value)}{" "}
-          <span className="text-muted-foreground/80">
+          <span>
             vs median {fmt(dist.median)}
           </span>
         </p>
@@ -104,17 +104,17 @@ function BenchmarkRow({
 
       <div className="pt-6 pb-5">
         <div className="relative h-3">
-          <div className="absolute inset-0 rounded-full bg-muted" />
+          <div className="absolute inset-0 rounded-full bg-surface-2" />
           <div
-            className="absolute inset-y-0 rounded-full bg-brand-100 dark:bg-brand-800"
+            className="absolute inset-y-0 rounded-full bg-chart-median/12"
             style={span(dist.min, dist.max)}
           />
           <div
-            className="absolute inset-y-0 rounded-full bg-brand-200 dark:bg-brand-600"
+            className="absolute inset-y-0 rounded-full bg-chart-median/30"
             style={span(dist.p25, dist.p75)}
           />
           <div
-            className="absolute -inset-y-1 w-0.75 -translate-x-1/2 rounded-full bg-chart-2"
+            className="absolute -inset-y-1 w-0.75 -translate-x-1/2 rounded-full bg-chart-median"
             style={{ left: x(dist.median) }}
             aria-hidden
           />
@@ -122,7 +122,7 @@ function BenchmarkRow({
             <TooltipTrigger asChild>
               <button
                 type="button"
-                className="absolute top-1/2 size-4.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-card bg-chart-1 shadow-sm ring-1 ring-chart-1/40 outline-none focus-visible:ring-4"
+                className="absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-chart-1 ring-2 ring-card outline-none focus-visible:ring-4 focus-visible:ring-ring/50"
                 style={{ left: x(value) }}
                 aria-label={`${schoolName}: ${fmt(value)}`}
               />
@@ -132,13 +132,13 @@ function BenchmarkRow({
             </TooltipContent>
           </Tooltip>
           <span
-            className="tabular absolute -top-6 -translate-x-1/2 text-sm font-semibold whitespace-nowrap text-chart-1"
+            className="tabular absolute -top-6 -translate-x-1/2 text-[13px] font-semibold whitespace-nowrap text-chart-1"
             style={{ left: x(value) }}
           >
             {fmt(value)}
           </span>
         </div>
-        <div className="tabular relative mt-2 h-4 text-xs text-muted-foreground">
+        <div className="tabular relative mt-2 h-4 text-xs text-chart-axis">
           <span
             className="absolute -translate-x-1/2 whitespace-nowrap"
             style={{ left: x(dist.min) }}
@@ -154,10 +154,10 @@ function BenchmarkRow({
         </div>
       </div>
 
-      <p className="text-sm lg:text-right">
+      <p className="text-[13px] lg:text-right">
         <span
           className={cn(
-            "font-semibold",
+            "font-medium",
             favorable === true && "text-success",
             favorable === false && "text-foreground",
           )}
@@ -172,28 +172,28 @@ function BenchmarkRow({
 
 function Legend({ schoolName }: { schoolName: string }) {
   return (
-    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-caption font-medium text-muted-foreground">
       <span className="inline-flex items-center gap-2">
         <span
-          className="size-3.5 rounded-full border-2 border-card bg-chart-1 ring-1 ring-chart-1/40"
+          className="size-2.5 rounded-full bg-chart-1"
           aria-hidden
         />
         {schoolName}
       </span>
       <span className="inline-flex items-center gap-2">
-        <span className="h-4 w-0.75 rounded-full bg-chart-2" aria-hidden />
+        <span className="h-3 w-0.5 rounded-full bg-chart-median" aria-hidden />
         Peer median
       </span>
       <span className="inline-flex items-center gap-2">
         <span
-          className="h-2.5 w-6 rounded-full bg-brand-200 dark:bg-brand-600"
+          className="h-2.5 w-5 rounded-full bg-chart-median/30"
           aria-hidden
         />
         Middle 50% of peers
       </span>
       <span className="inline-flex items-center gap-2">
         <span
-          className="h-2.5 w-6 rounded-full bg-brand-100 dark:bg-brand-800"
+          className="h-2.5 w-5 rounded-full bg-chart-median/12"
           aria-hidden
         />
         Full peer range

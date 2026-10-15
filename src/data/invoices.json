@@ -8,7 +8,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-19"
   },
   {
     "id": "inv_1042",
@@ -19,7 +20,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-25"
   },
   {
     "id": "inv_1043",
@@ -30,7 +32,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-22"
   },
   {
     "id": "inv_1044",
@@ -41,7 +44,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-10-13"
   },
   {
     "id": "inv_1045",
@@ -52,7 +56,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-12"
   },
   {
     "id": "inv_1046",
@@ -63,7 +68,8 @@
     "kind": "store",
     "description": "Employee & HR Essentials Toolkit",
     "amount": 799,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-02-24"
   },
   {
     "id": "inv_1047",
@@ -74,7 +80,8 @@
     "kind": "event",
     "description": "Leadership Retreat 2025 · 2 registrations",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-10-25"
   },
   {
     "id": "inv_1048",
@@ -85,7 +92,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-01"
   },
   {
     "id": "inv_1049",
@@ -96,7 +104,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-26"
   },
   {
     "id": "inv_1050",
@@ -107,7 +116,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-02"
   },
   {
     "id": "inv_1051",
@@ -118,7 +128,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-09"
   },
   {
     "id": "inv_1052",
@@ -129,7 +140,8 @@
     "kind": "store",
     "description": "School Operations, Safety & Readiness Toolkit",
     "amount": 599,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-04-30"
   },
   {
     "id": "inv_1053",
@@ -140,7 +152,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-09-07"
   },
   {
     "id": "inv_1054",
@@ -151,7 +164,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-01"
   },
   {
     "id": "inv_1055",
@@ -162,7 +176,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-07"
   },
   {
     "id": "inv_1056",
@@ -173,14 +188,15 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-27"
   },
   {
     "id": "inv_1057",
     "number": "ISLA-2026-1057",
     "schoolId": "iqra-learning-center",
     "issuedOn": "2026-08-01",
-    "dueOn": "2026-08-31",
+    "dueOn": "2026-09-04",
     "kind": "membership",
     "description": "School membership 2026–27 · 501–600 students",
     "amount": 1200,
@@ -195,7 +211,8 @@
     "kind": "event",
     "description": "Leadership Retreat 2025 · 2 registrations",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-10-31"
   },
   {
     "id": "inv_1059",
@@ -206,7 +223,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 701–800 students",
     "amount": 1500,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-10-08"
   },
   {
     "id": "inv_1060",
@@ -217,7 +235,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 701–800 students",
     "amount": 1500,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-29"
   },
   {
     "id": "inv_1061",
@@ -228,7 +247,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 701–800 students",
     "amount": 1500,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-11-07"
   },
   {
     "id": "inv_1062",
@@ -239,7 +259,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 701–800 students",
     "amount": 1500,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-09-11"
   },
   {
     "id": "inv_1063",
@@ -250,7 +271,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 701–800 students",
     "amount": 1500,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-02"
   },
   {
     "id": "inv_1064",
@@ -261,7 +283,8 @@
     "kind": "store",
     "description": "Employee & HR Essentials Toolkit",
     "amount": 799,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-03-02"
   },
   {
     "id": "inv_1065",
@@ -272,7 +295,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-18"
   },
   {
     "id": "inv_1066",
@@ -283,7 +307,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-14"
   },
   {
     "id": "inv_1067",
@@ -294,7 +319,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-25"
   },
   {
     "id": "inv_1068",
@@ -305,7 +331,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-11"
   },
   {
     "id": "inv_1069",
@@ -316,7 +343,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-17"
   },
   {
     "id": "inv_1070",
@@ -327,7 +355,8 @@
     "kind": "store",
     "description": "Complete Series: All Five Toolkits",
     "amount": 2299,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-03-24"
   },
   {
     "id": "inv_1071",
@@ -338,7 +367,8 @@
     "kind": "event",
     "description": "Leadership Retreat 2025 · 2 registrations",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-10-20"
   },
   {
     "id": "inv_1072",
@@ -349,7 +379,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-09-11"
   },
   {
     "id": "inv_1073",
@@ -360,7 +391,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-08"
   },
   {
     "id": "inv_1074",
@@ -371,7 +403,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-05"
   },
   {
     "id": "inv_1075",
@@ -382,7 +415,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-24"
   },
   {
     "id": "inv_1076",
@@ -393,7 +427,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-15"
   },
   {
     "id": "inv_1077",
@@ -404,7 +439,8 @@
     "kind": "store",
     "description": "School Operations, Safety & Readiness Toolkit",
     "amount": 599,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-11-21"
   },
   {
     "id": "inv_1078",
@@ -415,7 +451,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 801–900 students",
     "amount": 1650,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-20"
   },
   {
     "id": "inv_1079",
@@ -426,7 +463,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 801–900 students",
     "amount": 1650,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-13"
   },
   {
     "id": "inv_1080",
@@ -437,7 +475,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 801–900 students",
     "amount": 1650,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-02"
   },
   {
     "id": "inv_1081",
@@ -448,7 +487,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 801–900 students",
     "amount": 1650,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-05"
   },
   {
     "id": "inv_1082",
@@ -459,7 +499,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 801–900 students",
     "amount": 1650,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-25"
   },
   {
     "id": "inv_1083",
@@ -470,7 +511,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-22"
   },
   {
     "id": "inv_1084",
@@ -481,7 +523,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-06"
   },
   {
     "id": "inv_1085",
@@ -492,14 +535,15 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-09-24"
   },
   {
     "id": "inv_1086",
     "number": "ISLA-2026-1086",
     "schoolId": "darul-arqam-academy",
     "issuedOn": "2026-08-01",
-    "dueOn": "2026-08-31",
+    "dueOn": "2026-09-09",
     "kind": "membership",
     "description": "School membership 2026–27 · 601–700 students",
     "amount": 1350,
@@ -514,7 +558,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 101–200 students",
     "amount": 600,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-02"
   },
   {
     "id": "inv_1088",
@@ -525,7 +570,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 101–200 students",
     "amount": 600,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-14"
   },
   {
     "id": "inv_1089",
@@ -536,7 +582,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 101–200 students",
     "amount": 600,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-06"
   },
   {
     "id": "inv_1090",
@@ -547,7 +594,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 101–200 students",
     "amount": 600,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-02"
   },
   {
     "id": "inv_1091",
@@ -558,7 +606,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 101–200 students",
     "amount": 600,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-02"
   },
   {
     "id": "inv_1092",
@@ -569,7 +618,8 @@
     "kind": "store",
     "description": "Employee & HR Essentials Toolkit",
     "amount": 799,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-04-16"
   },
   {
     "id": "inv_1093",
@@ -580,7 +630,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 401–500 students",
     "amount": 1050,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-16"
   },
   {
     "id": "inv_1094",
@@ -591,7 +642,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 401–500 students",
     "amount": 1050,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-01"
   },
   {
     "id": "inv_1095",
@@ -602,7 +654,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 401–500 students",
     "amount": 1050,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-05"
   },
   {
     "id": "inv_1096",
@@ -613,7 +666,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 401–500 students",
     "amount": 1050,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-01"
   },
   {
     "id": "inv_1097",
@@ -624,7 +678,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 401–500 students",
     "amount": 1050,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-09-20"
   },
   {
     "id": "inv_1098",
@@ -635,7 +690,8 @@
     "kind": "store",
     "description": "Student, Family & School Culture Toolkit",
     "amount": 699,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-03-17"
   },
   {
     "id": "inv_1099",
@@ -646,7 +702,8 @@
     "kind": "event",
     "description": "Leadership Retreat 2025 · 2 registrations",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-11-01"
   },
   {
     "id": "inv_1100",
@@ -657,7 +714,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-09"
   },
   {
     "id": "inv_1101",
@@ -668,7 +726,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-02"
   },
   {
     "id": "inv_1102",
@@ -679,7 +738,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-17"
   },
   {
     "id": "inv_1103",
@@ -690,7 +750,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-11-01"
   },
   {
     "id": "inv_1104",
@@ -701,7 +762,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-09-15"
   },
   {
     "id": "inv_1105",
@@ -712,7 +774,8 @@
     "kind": "event",
     "description": "Leadership Retreat 2025 · 2 registrations",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-10-21"
   },
   {
     "id": "inv_1106",
@@ -723,7 +786,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 201–300 students",
     "amount": 750,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-01"
   },
   {
     "id": "inv_1107",
@@ -734,7 +798,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 201–300 students",
     "amount": 750,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-18"
   },
   {
     "id": "inv_1108",
@@ -745,7 +810,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 201–300 students",
     "amount": 750,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-07"
   },
   {
     "id": "inv_1109",
@@ -756,7 +822,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 201–300 students",
     "amount": 750,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-09-26"
   },
   {
     "id": "inv_1110",
@@ -767,7 +834,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 201–300 students",
     "amount": 750,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-20"
   },
   {
     "id": "inv_1111",
@@ -778,7 +846,8 @@
     "kind": "store",
     "description": "School Launch & Continuous Improvement Toolkit",
     "amount": 399,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-03-11"
   },
   {
     "id": "inv_1112",
@@ -789,7 +858,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-29"
   },
   {
     "id": "inv_1113",
@@ -800,7 +870,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-12"
   },
   {
     "id": "inv_1114",
@@ -811,7 +882,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-06"
   },
   {
     "id": "inv_1115",
@@ -822,7 +894,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-13"
   },
   {
     "id": "inv_1116",
@@ -833,7 +906,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-03"
   },
   {
     "id": "inv_1117",
@@ -844,7 +918,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 401–500 students",
     "amount": 1050,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-15"
   },
   {
     "id": "inv_1118",
@@ -855,7 +930,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 401–500 students",
     "amount": 1050,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-11"
   },
   {
     "id": "inv_1119",
@@ -866,7 +942,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 401–500 students",
     "amount": 1050,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-28"
   },
   {
     "id": "inv_1120",
@@ -877,7 +954,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 401–500 students",
     "amount": 1050,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-10-03"
   },
   {
     "id": "inv_1121",
@@ -888,7 +966,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 401–500 students",
     "amount": 1050,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-06"
   },
   {
     "id": "inv_1122",
@@ -899,7 +978,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 201–300 students",
     "amount": 750,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-03"
   },
   {
     "id": "inv_1123",
@@ -910,7 +990,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 201–300 students",
     "amount": 750,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-02"
   },
   {
     "id": "inv_1124",
@@ -921,7 +1002,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 201–300 students",
     "amount": 750,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-22"
   },
   {
     "id": "inv_1125",
@@ -932,14 +1014,15 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 201–300 students",
     "amount": 750,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-23"
   },
   {
     "id": "inv_1126",
     "number": "ISLA-2026-1126",
     "schoolId": "madinah-prep",
     "issuedOn": "2026-08-01",
-    "dueOn": "2026-08-31",
+    "dueOn": "2026-08-28",
     "kind": "membership",
     "description": "School membership 2026–27 · 201–300 students",
     "amount": 750,
@@ -954,7 +1037,8 @@
     "kind": "store",
     "description": "Complete Series: All Five Toolkits",
     "amount": 2299,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-04-04"
   },
   {
     "id": "inv_1128",
@@ -965,7 +1049,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-07"
   },
   {
     "id": "inv_1129",
@@ -976,7 +1061,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-18"
   },
   {
     "id": "inv_1130",
@@ -987,14 +1073,15 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 501–600 students",
     "amount": 1200,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-06"
   },
   {
     "id": "inv_1131",
     "number": "ISLA-2026-1131",
     "schoolId": "ilm-academy",
     "issuedOn": "2026-08-01",
-    "dueOn": "2026-08-31",
+    "dueOn": "2026-09-12",
     "kind": "membership",
     "description": "School membership 2026–27 · 501–600 students",
     "amount": 1200,
@@ -1009,7 +1096,8 @@
     "kind": "event",
     "description": "Leadership Retreat 2025 · 2 registrations",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-10-22"
   },
   {
     "id": "inv_1133",
@@ -1020,7 +1108,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-24"
   },
   {
     "id": "inv_1134",
@@ -1031,7 +1120,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-27"
   },
   {
     "id": "inv_1135",
@@ -1042,7 +1132,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-28"
   },
   {
     "id": "inv_1136",
@@ -1053,7 +1144,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-09-29"
   },
   {
     "id": "inv_1137",
@@ -1064,7 +1156,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 801–900 students",
     "amount": 1650,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-04"
   },
   {
     "id": "inv_1138",
@@ -1075,7 +1168,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 801–900 students",
     "amount": 1650,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-04"
   },
   {
     "id": "inv_1139",
@@ -1086,7 +1180,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 801–900 students",
     "amount": 1650,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-09-27"
   },
   {
     "id": "inv_1140",
@@ -1097,7 +1192,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 801–900 students",
     "amount": 1650,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-26"
   },
   {
     "id": "inv_1141",
@@ -1108,7 +1204,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 801–900 students",
     "amount": 1650,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-09"
   },
   {
     "id": "inv_1142",
@@ -1119,7 +1216,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 1–100 students",
     "amount": 450,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-12"
   },
   {
     "id": "inv_1143",
@@ -1130,7 +1228,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 1–100 students",
     "amount": 450,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-04"
   },
   {
     "id": "inv_1144",
@@ -1141,7 +1240,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 1–100 students",
     "amount": 450,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-21"
   },
   {
     "id": "inv_1145",
@@ -1152,7 +1252,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 1–100 students",
     "amount": 450,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-12"
   },
   {
     "id": "inv_1146",
@@ -1163,7 +1264,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 1–100 students",
     "amount": 450,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-19"
   },
   {
     "id": "inv_1147",
@@ -1174,7 +1276,8 @@
     "kind": "event",
     "description": "Leadership Retreat 2025 · 2 registrations",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-10-25"
   },
   {
     "id": "inv_1148",
@@ -1185,7 +1288,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-16"
   },
   {
     "id": "inv_1149",
@@ -1196,7 +1300,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-01"
   },
   {
     "id": "inv_1150",
@@ -1207,7 +1312,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-24"
   },
   {
     "id": "inv_1151",
@@ -1218,7 +1324,8 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-30"
   },
   {
     "id": "inv_1152",
@@ -1229,7 +1336,8 @@
     "kind": "membership",
     "description": "School membership 2026–27 · 601–700 students",
     "amount": 1350,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2026-08-21"
   },
   {
     "id": "inv_1153",
@@ -1240,7 +1348,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 101–200 students",
     "amount": 600,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-09"
   },
   {
     "id": "inv_1154",
@@ -1251,7 +1360,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 101–200 students",
     "amount": 600,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-20"
   },
   {
     "id": "inv_1155",
@@ -1262,7 +1372,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 101–200 students",
     "amount": 600,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-21"
   },
   {
     "id": "inv_1156",
@@ -1273,14 +1384,15 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 101–200 students",
     "amount": 600,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-28"
   },
   {
     "id": "inv_1157",
     "number": "ISLA-2026-1157",
     "schoolId": "al-rashid-academy",
     "issuedOn": "2026-08-01",
-    "dueOn": "2026-08-31",
+    "dueOn": "2026-08-24",
     "kind": "membership",
     "description": "School membership 2026–27 · 101–200 students",
     "amount": 600,
@@ -1295,7 +1407,8 @@
     "kind": "membership",
     "description": "School membership 2022–23 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2022-08-28"
   },
   {
     "id": "inv_1159",
@@ -1306,7 +1419,8 @@
     "kind": "membership",
     "description": "School membership 2023–24 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2023-08-15"
   },
   {
     "id": "inv_1160",
@@ -1317,7 +1431,8 @@
     "kind": "membership",
     "description": "School membership 2024–25 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-08-20"
   },
   {
     "id": "inv_1161",
@@ -1328,14 +1443,15 @@
     "kind": "membership",
     "description": "School membership 2025–26 · 301–400 students",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-08-21"
   },
   {
     "id": "inv_1162",
     "number": "ISLA-2026-1162",
     "schoolId": "prairie-light-school",
     "issuedOn": "2026-08-01",
-    "dueOn": "2026-08-31",
+    "dueOn": "2026-08-19",
     "kind": "membership",
     "description": "School membership 2026–27 · 301–400 students",
     "amount": 900,
@@ -1350,7 +1466,8 @@
     "kind": "store",
     "description": "School Launch & Continuous Improvement Toolkit",
     "amount": 399,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2024-02-04"
   },
   {
     "id": "inv_1164",
@@ -1361,6 +1478,3346 @@
     "kind": "event",
     "description": "Leadership Retreat 2025 · 2 registrations",
     "amount": 900,
-    "status": "paid"
+    "status": "paid",
+    "paidOn": "2025-10-21"
+  },
+  {
+    "id": "inv_1165",
+    "number": "ISLA-2022-1165",
+    "schoolId": "al-bayan-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2022-08-29"
+  },
+  {
+    "id": "inv_1166",
+    "number": "ISLA-2023-1166",
+    "schoolId": "al-bayan-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2023-08-07"
+  },
+  {
+    "id": "inv_1167",
+    "number": "ISLA-2024-1167",
+    "schoolId": "al-bayan-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2024-10-10"
+  },
+  {
+    "id": "inv_1168",
+    "number": "ISLA-2025-1168",
+    "schoolId": "al-bayan-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2025-08-01"
+  },
+  {
+    "id": "inv_1169",
+    "number": "ISLA-2026-1169",
+    "schoolId": "al-bayan-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2026-08-07"
+  },
+  {
+    "id": "inv_1170",
+    "number": "ISLA-2022-1170",
+    "schoolId": "riverbend-islamic-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2022-09-09"
+  },
+  {
+    "id": "inv_1171",
+    "number": "ISLA-2023-1171",
+    "schoolId": "riverbend-islamic-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2023-08-25"
+  },
+  {
+    "id": "inv_1172",
+    "number": "ISLA-2024-1172",
+    "schoolId": "riverbend-islamic-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2024-08-07"
+  },
+  {
+    "id": "inv_1173",
+    "number": "ISLA-2025-1173",
+    "schoolId": "riverbend-islamic-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2025-08-24"
+  },
+  {
+    "id": "inv_1174",
+    "number": "ISLA-2026-1174",
+    "schoolId": "riverbend-islamic-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2026-10-14"
+  },
+  {
+    "id": "inv_1175",
+    "number": "ISLA-S-1175",
+    "schoolId": "riverbend-islamic-school",
+    "issuedOn": "2025-03-20",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Employee & HR Essentials Toolkit",
+    "amount": 799,
+    "status": "paid",
+    "paidOn": "2025-04-02"
+  },
+  {
+    "id": "inv_1176",
+    "number": "ISLA-2022-1176",
+    "schoolId": "nasr-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2022-08-07"
+  },
+  {
+    "id": "inv_1177",
+    "number": "ISLA-2023-1177",
+    "schoolId": "nasr-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2023-08-22"
+  },
+  {
+    "id": "inv_1178",
+    "number": "ISLA-2024-1178",
+    "schoolId": "nasr-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2024-08-29"
+  },
+  {
+    "id": "inv_1179",
+    "number": "ISLA-2025-1179",
+    "schoolId": "nasr-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2025-08-17"
+  },
+  {
+    "id": "inv_1180",
+    "number": "ISLA-2026-1180",
+    "schoolId": "nasr-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-09-15",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 701–800 students",
+    "amount": 1500,
+    "status": "open"
+  },
+  {
+    "id": "inv_1181",
+    "number": "ISLA-S-1181",
+    "schoolId": "nasr-academy",
+    "issuedOn": "2025-07-14",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Board Governance & Leadership Toolkit",
+    "amount": 599,
+    "status": "paid",
+    "paidOn": "2025-07-25"
+  },
+  {
+    "id": "inv_1182",
+    "number": "ISLA-2022-1182",
+    "schoolId": "oasis-learning-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2022-09-14"
+  },
+  {
+    "id": "inv_1183",
+    "number": "ISLA-2023-1183",
+    "schoolId": "oasis-learning-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2023-08-05"
+  },
+  {
+    "id": "inv_1184",
+    "number": "ISLA-2024-1184",
+    "schoolId": "oasis-learning-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2024-08-22"
+  },
+  {
+    "id": "inv_1185",
+    "number": "ISLA-2025-1185",
+    "schoolId": "oasis-learning-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2025-08-03"
+  },
+  {
+    "id": "inv_1186",
+    "number": "ISLA-2026-1186",
+    "schoolId": "oasis-learning-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-15",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 201–300 students",
+    "amount": 750,
+    "status": "overdue"
+  },
+  {
+    "id": "inv_1187",
+    "number": "ISLA-S-1187",
+    "schoolId": "oasis-learning-academy",
+    "issuedOn": "2025-06-12",
+    "dueOn": null,
+    "kind": "store",
+    "description": "School Launch & Continuous Improvement Toolkit",
+    "amount": 399,
+    "status": "paid",
+    "paidOn": "2025-06-15"
+  },
+  {
+    "id": "inv_1188",
+    "number": "ISLA-2022-1188",
+    "schoolId": "hudson-valley-islamic-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2022-08-19"
+  },
+  {
+    "id": "inv_1189",
+    "number": "ISLA-2023-1189",
+    "schoolId": "hudson-valley-islamic-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2023-08-11"
+  },
+  {
+    "id": "inv_1190",
+    "number": "ISLA-2024-1190",
+    "schoolId": "hudson-valley-islamic-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2024-08-03"
+  },
+  {
+    "id": "inv_1191",
+    "number": "ISLA-2025-1191",
+    "schoolId": "hudson-valley-islamic-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2025-08-28"
+  },
+  {
+    "id": "inv_1192",
+    "number": "ISLA-2026-1192",
+    "schoolId": "hudson-valley-islamic-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-09-18",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 801–900 students",
+    "amount": 1650,
+    "status": "open"
+  },
+  {
+    "id": "inv_1193",
+    "number": "ISLA-S-1193",
+    "schoolId": "hudson-valley-islamic-academy",
+    "issuedOn": "2026-02-21",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Student, Family & School Culture Toolkit",
+    "amount": 699,
+    "status": "paid",
+    "paidOn": "2026-03-03"
+  },
+  {
+    "id": "inv_1194",
+    "number": "ISLA-2023-1194",
+    "schoolId": "garden-state-prep",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2023-08-05"
+  },
+  {
+    "id": "inv_1195",
+    "number": "ISLA-2024-1195",
+    "schoolId": "garden-state-prep",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2024-08-15"
+  },
+  {
+    "id": "inv_1196",
+    "number": "ISLA-2025-1196",
+    "schoolId": "garden-state-prep",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2025-08-11"
+  },
+  {
+    "id": "inv_1197",
+    "number": "ISLA-2026-1197",
+    "schoolId": "garden-state-prep",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2026-08-24"
+  },
+  {
+    "id": "inv_1198",
+    "number": "ISLA-E-1198",
+    "schoolId": "garden-state-prep",
+    "issuedOn": "2025-10-20",
+    "dueOn": null,
+    "kind": "event",
+    "description": "Leadership Retreat 2025 · 3 registrations",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-10-29"
+  },
+  {
+    "id": "inv_1199",
+    "number": "ISLA-2022-1199",
+    "schoolId": "liberty-crescent-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2022-08-29"
+  },
+  {
+    "id": "inv_1200",
+    "number": "ISLA-2023-1200",
+    "schoolId": "liberty-crescent-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2023-10-18"
+  },
+  {
+    "id": "inv_1201",
+    "number": "ISLA-2024-1201",
+    "schoolId": "liberty-crescent-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2024-08-03"
+  },
+  {
+    "id": "inv_1202",
+    "number": "ISLA-2025-1202",
+    "schoolId": "liberty-crescent-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-08-09"
+  },
+  {
+    "id": "inv_1203",
+    "number": "ISLA-2026-1203",
+    "schoolId": "liberty-crescent-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2026-08-19"
+  },
+  {
+    "id": "inv_1204",
+    "number": "ISLA-S-1204",
+    "schoolId": "liberty-crescent-school",
+    "issuedOn": "2025-09-22",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Complete Series: All Five Toolkits",
+    "amount": 2299,
+    "status": "paid",
+    "paidOn": "2025-09-25"
+  },
+  {
+    "id": "inv_1205",
+    "number": "ISLA-2023-1205",
+    "schoolId": "lakefront-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2023-10-05"
+  },
+  {
+    "id": "inv_1206",
+    "number": "ISLA-2024-1206",
+    "schoolId": "lakefront-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2024-08-17"
+  },
+  {
+    "id": "inv_1207",
+    "number": "ISLA-2025-1207",
+    "schoolId": "lakefront-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2025-08-06"
+  },
+  {
+    "id": "inv_1208",
+    "number": "ISLA-2026-1208",
+    "schoolId": "lakefront-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2026-08-08"
+  },
+  {
+    "id": "inv_1209",
+    "number": "ISLA-2022-1209",
+    "schoolId": "pioneer-valley-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2022-08-20"
+  },
+  {
+    "id": "inv_1210",
+    "number": "ISLA-2023-1210",
+    "schoolId": "pioneer-valley-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2023-08-09"
+  },
+  {
+    "id": "inv_1211",
+    "number": "ISLA-2024-1211",
+    "schoolId": "pioneer-valley-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2024-09-05"
+  },
+  {
+    "id": "inv_1212",
+    "number": "ISLA-2025-1212",
+    "schoolId": "pioneer-valley-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2025-08-26"
+  },
+  {
+    "id": "inv_1213",
+    "number": "ISLA-2026-1213",
+    "schoolId": "pioneer-valley-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2026-08-16"
+  },
+  {
+    "id": "inv_1214",
+    "number": "ISLA-2022-1214",
+    "schoolId": "charter-oak-islamic-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2022-08-18"
+  },
+  {
+    "id": "inv_1215",
+    "number": "ISLA-2023-1215",
+    "schoolId": "charter-oak-islamic-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2023-08-08"
+  },
+  {
+    "id": "inv_1216",
+    "number": "ISLA-2024-1216",
+    "schoolId": "charter-oak-islamic-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2024-09-11"
+  },
+  {
+    "id": "inv_1217",
+    "number": "ISLA-2025-1217",
+    "schoolId": "charter-oak-islamic-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2025-08-14"
+  },
+  {
+    "id": "inv_1218",
+    "number": "ISLA-2026-1218",
+    "schoolId": "charter-oak-islamic-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2026-08-13"
+  },
+  {
+    "id": "inv_1219",
+    "number": "ISLA-S-1219",
+    "schoolId": "charter-oak-islamic-school",
+    "issuedOn": "2026-05-21",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Complete Series: All Five Toolkits",
+    "amount": 2299,
+    "status": "paid",
+    "paidOn": "2026-05-31"
+  },
+  {
+    "id": "inv_1220",
+    "number": "ISLA-E-1220",
+    "schoolId": "charter-oak-islamic-school",
+    "issuedOn": "2025-10-20",
+    "dueOn": null,
+    "kind": "event",
+    "description": "Leadership Retreat 2025 · 3 registrations",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-11-02"
+  },
+  {
+    "id": "inv_1221",
+    "number": "ISLA-2022-1221",
+    "schoolId": "ocean-state-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2022-10-25"
+  },
+  {
+    "id": "inv_1222",
+    "number": "ISLA-2023-1222",
+    "schoolId": "ocean-state-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-11-13"
+  },
+  {
+    "id": "inv_1223",
+    "number": "ISLA-2024-1223",
+    "schoolId": "ocean-state-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-08-25"
+  },
+  {
+    "id": "inv_1224",
+    "number": "ISLA-2025-1224",
+    "schoolId": "ocean-state-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-08-28"
+  },
+  {
+    "id": "inv_1225",
+    "number": "ISLA-2026-1225",
+    "schoolId": "ocean-state-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2026-09-16"
+  },
+  {
+    "id": "inv_1226",
+    "number": "ISLA-S-1226",
+    "schoolId": "ocean-state-academy",
+    "issuedOn": "2026-07-20",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Board Governance & Leadership Toolkit",
+    "amount": 599,
+    "status": "refunded"
+  },
+  {
+    "id": "inv_1227",
+    "number": "ISLA-2022-1227",
+    "schoolId": "three-rivers-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2022-08-07"
+  },
+  {
+    "id": "inv_1228",
+    "number": "ISLA-2023-1228",
+    "schoolId": "three-rivers-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2023-08-22"
+  },
+  {
+    "id": "inv_1229",
+    "number": "ISLA-2024-1229",
+    "schoolId": "three-rivers-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2024-08-21"
+  },
+  {
+    "id": "inv_1230",
+    "number": "ISLA-2025-1230",
+    "schoolId": "three-rivers-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-08-02"
+  },
+  {
+    "id": "inv_1231",
+    "number": "ISLA-2026-1231",
+    "schoolId": "three-rivers-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-09-21",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 601–700 students",
+    "amount": 1350,
+    "status": "open"
+  },
+  {
+    "id": "inv_1232",
+    "number": "ISLA-2022-1232",
+    "schoolId": "chesapeake-crescent-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 901–1000 students",
+    "amount": 1800,
+    "status": "paid",
+    "paidOn": "2022-08-11"
+  },
+  {
+    "id": "inv_1233",
+    "number": "ISLA-2023-1233",
+    "schoolId": "chesapeake-crescent-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 901–1000 students",
+    "amount": 1800,
+    "status": "paid",
+    "paidOn": "2023-08-21"
+  },
+  {
+    "id": "inv_1234",
+    "number": "ISLA-2024-1234",
+    "schoolId": "chesapeake-crescent-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 901–1000 students",
+    "amount": 1800,
+    "status": "paid",
+    "paidOn": "2024-08-30"
+  },
+  {
+    "id": "inv_1235",
+    "number": "ISLA-2025-1235",
+    "schoolId": "chesapeake-crescent-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 901–1000 students",
+    "amount": 1800,
+    "status": "paid",
+    "paidOn": "2025-08-10"
+  },
+  {
+    "id": "inv_1236",
+    "number": "ISLA-2026-1236",
+    "schoolId": "chesapeake-crescent-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 901–1000 students",
+    "amount": 1800,
+    "status": "paid",
+    "paidOn": "2026-08-05"
+  },
+  {
+    "id": "inv_1237",
+    "number": "ISLA-2022-1237",
+    "schoolId": "capitol-prep-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2022-08-26"
+  },
+  {
+    "id": "inv_1238",
+    "number": "ISLA-2023-1238",
+    "schoolId": "capitol-prep-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2023-08-20"
+  },
+  {
+    "id": "inv_1239",
+    "number": "ISLA-2024-1239",
+    "schoolId": "capitol-prep-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2024-08-24"
+  },
+  {
+    "id": "inv_1240",
+    "number": "ISLA-2025-1240",
+    "schoolId": "capitol-prep-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2025-08-15"
+  },
+  {
+    "id": "inv_1241",
+    "number": "ISLA-2026-1241",
+    "schoolId": "capitol-prep-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2026-08-22"
+  },
+  {
+    "id": "inv_1242",
+    "number": "ISLA-S-1242",
+    "schoolId": "capitol-prep-academy",
+    "issuedOn": "2024-08-23",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Complete Series: All Five Toolkits",
+    "amount": 2299,
+    "status": "refunded"
+  },
+  {
+    "id": "inv_1243",
+    "number": "ISLA-2022-1243",
+    "schoolId": "james-river-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2022-08-17"
+  },
+  {
+    "id": "inv_1244",
+    "number": "ISLA-2023-1244",
+    "schoolId": "james-river-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2023-08-10"
+  },
+  {
+    "id": "inv_1245",
+    "number": "ISLA-2024-1245",
+    "schoolId": "james-river-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2024-08-05"
+  },
+  {
+    "id": "inv_1246",
+    "number": "ISLA-2025-1246",
+    "schoolId": "james-river-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2025-08-09"
+  },
+  {
+    "id": "inv_1247",
+    "number": "ISLA-2026-1247",
+    "schoolId": "james-river-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2026-08-17"
+  },
+  {
+    "id": "inv_1248",
+    "number": "ISLA-S-1248",
+    "schoolId": "james-river-academy",
+    "issuedOn": "2024-03-23",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Complete Series: All Five Toolkits",
+    "amount": 2299,
+    "status": "paid",
+    "paidOn": "2024-04-05"
+  },
+  {
+    "id": "inv_1249",
+    "number": "ISLA-2023-1249",
+    "schoolId": "magnolia-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2023-08-21"
+  },
+  {
+    "id": "inv_1250",
+    "number": "ISLA-2024-1250",
+    "schoolId": "magnolia-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2024-08-03"
+  },
+  {
+    "id": "inv_1251",
+    "number": "ISLA-2025-1251",
+    "schoolId": "magnolia-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2025-08-04"
+  },
+  {
+    "id": "inv_1252",
+    "number": "ISLA-2026-1252",
+    "schoolId": "magnolia-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2026-08-04"
+  },
+  {
+    "id": "inv_1253",
+    "number": "ISLA-2022-1253",
+    "schoolId": "gulf-coast-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2022-08-19"
+  },
+  {
+    "id": "inv_1254",
+    "number": "ISLA-2023-1254",
+    "schoolId": "gulf-coast-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2023-09-11"
+  },
+  {
+    "id": "inv_1255",
+    "number": "ISLA-2024-1255",
+    "schoolId": "gulf-coast-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2024-08-29"
+  },
+  {
+    "id": "inv_1256",
+    "number": "ISLA-2025-1256",
+    "schoolId": "gulf-coast-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2025-08-14"
+  },
+  {
+    "id": "inv_1257",
+    "number": "ISLA-2026-1257",
+    "schoolId": "gulf-coast-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2026-08-03"
+  },
+  {
+    "id": "inv_1258",
+    "number": "ISLA-S-1258",
+    "schoolId": "gulf-coast-academy",
+    "issuedOn": "2025-09-28",
+    "dueOn": null,
+    "kind": "store",
+    "description": "School Launch & Continuous Improvement Toolkit",
+    "amount": 399,
+    "status": "paid",
+    "paidOn": "2025-10-10"
+  },
+  {
+    "id": "inv_1259",
+    "number": "ISLA-2022-1259",
+    "schoolId": "first-coast-islamic-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2022-08-26"
+  },
+  {
+    "id": "inv_1260",
+    "number": "ISLA-2023-1260",
+    "schoolId": "first-coast-islamic-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2023-08-14"
+  },
+  {
+    "id": "inv_1261",
+    "number": "ISLA-2024-1261",
+    "schoolId": "first-coast-islamic-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2024-08-29"
+  },
+  {
+    "id": "inv_1262",
+    "number": "ISLA-2025-1262",
+    "schoolId": "first-coast-islamic-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2025-08-23"
+  },
+  {
+    "id": "inv_1263",
+    "number": "ISLA-2026-1263",
+    "schoolId": "first-coast-islamic-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-09-24",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 301–400 students",
+    "amount": 900,
+    "status": "open"
+  },
+  {
+    "id": "inv_1264",
+    "number": "ISLA-2022-1264",
+    "schoolId": "triangle-prep",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2022-08-19"
+  },
+  {
+    "id": "inv_1265",
+    "number": "ISLA-2023-1265",
+    "schoolId": "triangle-prep",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2023-08-27"
+  },
+  {
+    "id": "inv_1266",
+    "number": "ISLA-2024-1266",
+    "schoolId": "triangle-prep",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2024-08-09"
+  },
+  {
+    "id": "inv_1267",
+    "number": "ISLA-2025-1267",
+    "schoolId": "triangle-prep",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-08-22"
+  },
+  {
+    "id": "inv_1268",
+    "number": "ISLA-2026-1268",
+    "schoolId": "triangle-prep",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2026-08-09"
+  },
+  {
+    "id": "inv_1269",
+    "number": "ISLA-S-1269",
+    "schoolId": "triangle-prep",
+    "issuedOn": "2024-09-13",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Student, Family & School Culture Toolkit",
+    "amount": 699,
+    "status": "paid",
+    "paidOn": "2024-09-18"
+  },
+  {
+    "id": "inv_1270",
+    "number": "ISLA-2022-1270",
+    "schoolId": "bluff-city-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2022-08-12"
+  },
+  {
+    "id": "inv_1271",
+    "number": "ISLA-2023-1271",
+    "schoolId": "bluff-city-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2023-08-08"
+  },
+  {
+    "id": "inv_1272",
+    "number": "ISLA-2024-1272",
+    "schoolId": "bluff-city-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2024-08-06"
+  },
+  {
+    "id": "inv_1273",
+    "number": "ISLA-2025-1273",
+    "schoolId": "bluff-city-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2025-08-28"
+  },
+  {
+    "id": "inv_1274",
+    "number": "ISLA-2026-1274",
+    "schoolId": "bluff-city-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2026-08-04"
+  },
+  {
+    "id": "inv_1275",
+    "number": "ISLA-S-1275",
+    "schoolId": "bluff-city-academy",
+    "issuedOn": "2024-03-03",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Employee & HR Essentials Toolkit",
+    "amount": 799,
+    "status": "paid",
+    "paidOn": "2024-03-06"
+  },
+  {
+    "id": "inv_1276",
+    "number": "ISLA-2022-1276",
+    "schoolId": "bluegrass-crescent-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2022-08-14"
+  },
+  {
+    "id": "inv_1277",
+    "number": "ISLA-2023-1277",
+    "schoolId": "bluegrass-crescent-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2023-08-21"
+  },
+  {
+    "id": "inv_1278",
+    "number": "ISLA-2024-1278",
+    "schoolId": "bluegrass-crescent-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2024-10-13"
+  },
+  {
+    "id": "inv_1279",
+    "number": "ISLA-2025-1279",
+    "schoolId": "bluegrass-crescent-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2025-08-13"
+  },
+  {
+    "id": "inv_1280",
+    "number": "ISLA-2026-1280",
+    "schoolId": "bluegrass-crescent-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2026-08-05"
+  },
+  {
+    "id": "inv_1281",
+    "number": "ISLA-2022-1281",
+    "schoolId": "crescent-city-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2022-08-22"
+  },
+  {
+    "id": "inv_1282",
+    "number": "ISLA-2023-1282",
+    "schoolId": "crescent-city-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2023-09-11"
+  },
+  {
+    "id": "inv_1283",
+    "number": "ISLA-2024-1283",
+    "schoolId": "crescent-city-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2024-08-18"
+  },
+  {
+    "id": "inv_1284",
+    "number": "ISLA-2025-1284",
+    "schoolId": "crescent-city-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2025-08-06"
+  },
+  {
+    "id": "inv_1285",
+    "number": "ISLA-2026-1285",
+    "schoolId": "crescent-city-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2026-08-08"
+  },
+  {
+    "id": "inv_1286",
+    "number": "ISLA-S-1286",
+    "schoolId": "crescent-city-academy",
+    "issuedOn": "2026-08-06",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Employee & HR Essentials Toolkit",
+    "amount": 799,
+    "status": "paid",
+    "paidOn": "2026-08-13"
+  },
+  {
+    "id": "inv_1287",
+    "number": "ISLA-2022-1287",
+    "schoolId": "motor-city-islamic-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2022-10-18"
+  },
+  {
+    "id": "inv_1288",
+    "number": "ISLA-2023-1288",
+    "schoolId": "motor-city-islamic-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-08-03"
+  },
+  {
+    "id": "inv_1289",
+    "number": "ISLA-2024-1289",
+    "schoolId": "motor-city-islamic-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-08-08"
+  },
+  {
+    "id": "inv_1290",
+    "number": "ISLA-2025-1290",
+    "schoolId": "motor-city-islamic-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-08-13"
+  },
+  {
+    "id": "inv_1291",
+    "number": "ISLA-2026-1291",
+    "schoolId": "motor-city-islamic-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2026-09-07"
+  },
+  {
+    "id": "inv_1292",
+    "number": "ISLA-S-1292",
+    "schoolId": "motor-city-islamic-academy",
+    "issuedOn": "2025-02-23",
+    "dueOn": null,
+    "kind": "store",
+    "description": "School Operations, Safety & Readiness Toolkit",
+    "amount": 599,
+    "status": "paid",
+    "paidOn": "2025-02-24"
+  },
+  {
+    "id": "inv_1293",
+    "number": "ISLA-2022-1293",
+    "schoolId": "lake-erie-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2022-08-21"
+  },
+  {
+    "id": "inv_1294",
+    "number": "ISLA-2023-1294",
+    "schoolId": "lake-erie-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2023-08-20"
+  },
+  {
+    "id": "inv_1295",
+    "number": "ISLA-2024-1295",
+    "schoolId": "lake-erie-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2024-08-08"
+  },
+  {
+    "id": "inv_1296",
+    "number": "ISLA-2025-1296",
+    "schoolId": "lake-erie-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-08-07"
+  },
+  {
+    "id": "inv_1297",
+    "number": "ISLA-2026-1297",
+    "schoolId": "lake-erie-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-09-26",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 601–700 students",
+    "amount": 1350,
+    "status": "open"
+  },
+  {
+    "id": "inv_1298",
+    "number": "ISLA-S-1298",
+    "schoolId": "lake-erie-school",
+    "issuedOn": "2025-04-24",
+    "dueOn": null,
+    "kind": "store",
+    "description": "School Launch & Continuous Improvement Toolkit",
+    "amount": 399,
+    "status": "paid",
+    "paidOn": "2025-05-01"
+  },
+  {
+    "id": "inv_1299",
+    "number": "ISLA-2022-1299",
+    "schoolId": "queen-city-prep",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2022-08-29"
+  },
+  {
+    "id": "inv_1300",
+    "number": "ISLA-2023-1300",
+    "schoolId": "queen-city-prep",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2023-08-21"
+  },
+  {
+    "id": "inv_1301",
+    "number": "ISLA-2024-1301",
+    "schoolId": "queen-city-prep",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2024-08-26"
+  },
+  {
+    "id": "inv_1302",
+    "number": "ISLA-2025-1302",
+    "schoolId": "queen-city-prep",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-08-26"
+  },
+  {
+    "id": "inv_1303",
+    "number": "ISLA-2026-1303",
+    "schoolId": "queen-city-prep",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2026-08-30"
+  },
+  {
+    "id": "inv_1304",
+    "number": "ISLA-S-1304",
+    "schoolId": "queen-city-prep",
+    "issuedOn": "2024-02-16",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Student, Family & School Culture Toolkit",
+    "amount": 699,
+    "status": "paid",
+    "paidOn": "2024-02-22"
+  },
+  {
+    "id": "inv_1305",
+    "number": "ISLA-2022-1305",
+    "schoolId": "circle-city-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2022-08-26"
+  },
+  {
+    "id": "inv_1306",
+    "number": "ISLA-2023-1306",
+    "schoolId": "circle-city-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2023-08-13"
+  },
+  {
+    "id": "inv_1307",
+    "number": "ISLA-2024-1307",
+    "schoolId": "circle-city-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2024-08-14"
+  },
+  {
+    "id": "inv_1308",
+    "number": "ISLA-2025-1308",
+    "schoolId": "circle-city-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2025-08-22"
+  },
+  {
+    "id": "inv_1309",
+    "number": "ISLA-2026-1309",
+    "schoolId": "circle-city-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2026-08-25"
+  },
+  {
+    "id": "inv_1310",
+    "number": "ISLA-2022-1310",
+    "schoolId": "brew-city-islamic-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2022-08-13"
+  },
+  {
+    "id": "inv_1311",
+    "number": "ISLA-2023-1311",
+    "schoolId": "brew-city-islamic-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-08-12"
+  },
+  {
+    "id": "inv_1312",
+    "number": "ISLA-2024-1312",
+    "schoolId": "brew-city-islamic-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-08-29"
+  },
+  {
+    "id": "inv_1313",
+    "number": "ISLA-2025-1313",
+    "schoolId": "brew-city-islamic-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-08-17"
+  },
+  {
+    "id": "inv_1314",
+    "number": "ISLA-2026-1314",
+    "schoolId": "brew-city-islamic-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-09-29",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "open"
+  },
+  {
+    "id": "inv_1315",
+    "number": "ISLA-S-1315",
+    "schoolId": "brew-city-islamic-school",
+    "issuedOn": "2026-05-18",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Employee & HR Essentials Toolkit",
+    "amount": 799,
+    "status": "paid",
+    "paidOn": "2026-05-26"
+  },
+  {
+    "id": "inv_1316",
+    "number": "ISLA-2022-1316",
+    "schoolId": "gateway-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2022-09-09"
+  },
+  {
+    "id": "inv_1317",
+    "number": "ISLA-2023-1317",
+    "schoolId": "gateway-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2023-08-10"
+  },
+  {
+    "id": "inv_1318",
+    "number": "ISLA-2024-1318",
+    "schoolId": "gateway-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2024-08-12"
+  },
+  {
+    "id": "inv_1319",
+    "number": "ISLA-2025-1319",
+    "schoolId": "gateway-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2025-08-12"
+  },
+  {
+    "id": "inv_1320",
+    "number": "ISLA-2026-1320",
+    "schoolId": "gateway-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 301–400 students",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2026-08-07"
+  },
+  {
+    "id": "inv_1321",
+    "number": "ISLA-S-1321",
+    "schoolId": "gateway-academy",
+    "issuedOn": "2025-03-14",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Student, Family & School Culture Toolkit",
+    "amount": 699,
+    "status": "paid",
+    "paidOn": "2025-03-25"
+  },
+  {
+    "id": "inv_1322",
+    "number": "ISLA-E-1322",
+    "schoolId": "gateway-academy",
+    "issuedOn": "2025-10-20",
+    "dueOn": null,
+    "kind": "event",
+    "description": "Leadership Retreat 2025 · 3 registrations",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-10-28"
+  },
+  {
+    "id": "inv_1323",
+    "number": "ISLA-2022-1323",
+    "schoolId": "heartland-crescent-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2022-08-27"
+  },
+  {
+    "id": "inv_1324",
+    "number": "ISLA-2023-1324",
+    "schoolId": "heartland-crescent-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2023-10-01"
+  },
+  {
+    "id": "inv_1325",
+    "number": "ISLA-2024-1325",
+    "schoolId": "heartland-crescent-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2024-08-28"
+  },
+  {
+    "id": "inv_1326",
+    "number": "ISLA-2025-1326",
+    "schoolId": "heartland-crescent-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2025-09-24"
+  },
+  {
+    "id": "inv_1327",
+    "number": "ISLA-2026-1327",
+    "schoolId": "heartland-crescent-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2026-10-05"
+  },
+  {
+    "id": "inv_1328",
+    "number": "ISLA-2022-1328",
+    "schoolId": "lincoln-land-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2022-08-18"
+  },
+  {
+    "id": "inv_1329",
+    "number": "ISLA-2023-1329",
+    "schoolId": "lincoln-land-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-08-16"
+  },
+  {
+    "id": "inv_1330",
+    "number": "ISLA-2024-1330",
+    "schoolId": "lincoln-land-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-08-10"
+  },
+  {
+    "id": "inv_1331",
+    "number": "ISLA-2025-1331",
+    "schoolId": "lincoln-land-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-08-05"
+  },
+  {
+    "id": "inv_1332",
+    "number": "ISLA-2026-1332",
+    "schoolId": "lincoln-land-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-12",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "overdue"
+  },
+  {
+    "id": "inv_1333",
+    "number": "ISLA-2022-1333",
+    "schoolId": "rose-city-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2022-08-06"
+  },
+  {
+    "id": "inv_1334",
+    "number": "ISLA-2023-1334",
+    "schoolId": "rose-city-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2023-08-10"
+  },
+  {
+    "id": "inv_1335",
+    "number": "ISLA-2024-1335",
+    "schoolId": "rose-city-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2024-08-11"
+  },
+  {
+    "id": "inv_1336",
+    "number": "ISLA-2025-1336",
+    "schoolId": "rose-city-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2025-08-10"
+  },
+  {
+    "id": "inv_1337",
+    "number": "ISLA-2026-1337",
+    "schoolId": "rose-city-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 801–900 students",
+    "amount": 1650,
+    "status": "paid",
+    "paidOn": "2026-08-01"
+  },
+  {
+    "id": "inv_1338",
+    "number": "ISLA-E-1338",
+    "schoolId": "rose-city-academy",
+    "issuedOn": "2025-10-20",
+    "dueOn": null,
+    "kind": "event",
+    "description": "Leadership Retreat 2025 · 3 registrations",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-10-25"
+  },
+  {
+    "id": "inv_1339",
+    "number": "ISLA-2022-1339",
+    "schoolId": "river-city-prep",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2022-08-15"
+  },
+  {
+    "id": "inv_1340",
+    "number": "ISLA-2023-1340",
+    "schoolId": "river-city-prep",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2023-08-11"
+  },
+  {
+    "id": "inv_1341",
+    "number": "ISLA-2024-1341",
+    "schoolId": "river-city-prep",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2024-08-30"
+  },
+  {
+    "id": "inv_1342",
+    "number": "ISLA-2025-1342",
+    "schoolId": "river-city-prep",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2025-08-08"
+  },
+  {
+    "id": "inv_1343",
+    "number": "ISLA-2026-1343",
+    "schoolId": "river-city-prep",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-10-01",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 101–200 students",
+    "amount": 600,
+    "status": "open"
+  },
+  {
+    "id": "inv_1344",
+    "number": "ISLA-S-1344",
+    "schoolId": "river-city-prep",
+    "issuedOn": "2025-03-05",
+    "dueOn": null,
+    "kind": "store",
+    "description": "School Launch & Continuous Improvement Toolkit",
+    "amount": 399,
+    "status": "paid",
+    "paidOn": "2025-03-06"
+  },
+  {
+    "id": "inv_1345",
+    "number": "ISLA-2022-1345",
+    "schoolId": "pacific-light-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2022-08-03"
+  },
+  {
+    "id": "inv_1346",
+    "number": "ISLA-2023-1346",
+    "schoolId": "pacific-light-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2023-08-25"
+  },
+  {
+    "id": "inv_1347",
+    "number": "ISLA-2024-1347",
+    "schoolId": "pacific-light-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2024-08-21"
+  },
+  {
+    "id": "inv_1348",
+    "number": "ISLA-2025-1348",
+    "schoolId": "pacific-light-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2025-09-27"
+  },
+  {
+    "id": "inv_1349",
+    "number": "ISLA-2026-1349",
+    "schoolId": "pacific-light-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-08",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 101–200 students",
+    "amount": 600,
+    "status": "overdue"
+  },
+  {
+    "id": "inv_1350",
+    "number": "ISLA-S-1350",
+    "schoolId": "pacific-light-academy",
+    "issuedOn": "2025-06-01",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Student, Family & School Culture Toolkit",
+    "amount": 699,
+    "status": "paid",
+    "paidOn": "2025-06-08"
+  },
+  {
+    "id": "inv_1351",
+    "number": "ISLA-2022-1351",
+    "schoolId": "wasatch-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2022-08-06"
+  },
+  {
+    "id": "inv_1352",
+    "number": "ISLA-2023-1352",
+    "schoolId": "wasatch-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-08-08"
+  },
+  {
+    "id": "inv_1353",
+    "number": "ISLA-2024-1353",
+    "schoolId": "wasatch-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-11-04"
+  },
+  {
+    "id": "inv_1354",
+    "number": "ISLA-2025-1354",
+    "schoolId": "wasatch-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-09-19"
+  },
+  {
+    "id": "inv_1355",
+    "number": "ISLA-2026-1355",
+    "schoolId": "wasatch-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2026-08-29"
+  },
+  {
+    "id": "inv_1356",
+    "number": "ISLA-E-1356",
+    "schoolId": "wasatch-academy",
+    "issuedOn": "2025-10-20",
+    "dueOn": null,
+    "kind": "event",
+    "description": "Leadership Retreat 2025 · 4 registrations",
+    "amount": 1800,
+    "status": "paid",
+    "paidOn": "2025-10-31"
+  },
+  {
+    "id": "inv_1357",
+    "number": "ISLA-2022-1357",
+    "schoolId": "aloha-crescent-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2022-08-15"
+  },
+  {
+    "id": "inv_1358",
+    "number": "ISLA-2023-1358",
+    "schoolId": "aloha-crescent-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-08-11"
+  },
+  {
+    "id": "inv_1359",
+    "number": "ISLA-2024-1359",
+    "schoolId": "aloha-crescent-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-08-29"
+  },
+  {
+    "id": "inv_1360",
+    "number": "ISLA-2025-1360",
+    "schoolId": "aloha-crescent-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-08-29"
+  },
+  {
+    "id": "inv_1361",
+    "number": "ISLA-2026-1361",
+    "schoolId": "aloha-crescent-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-10-04",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "open"
+  },
+  {
+    "id": "inv_1362",
+    "number": "ISLA-2023-1362",
+    "schoolId": "northern-lights-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-08-14"
+  },
+  {
+    "id": "inv_1363",
+    "number": "ISLA-2024-1363",
+    "schoolId": "northern-lights-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-08-04"
+  },
+  {
+    "id": "inv_1364",
+    "number": "ISLA-2025-1364",
+    "schoolId": "northern-lights-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-10-14"
+  },
+  {
+    "id": "inv_1365",
+    "number": "ISLA-2026-1365",
+    "schoolId": "northern-lights-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2026-08-16"
+  },
+  {
+    "id": "inv_1366",
+    "number": "ISLA-S-1366",
+    "schoolId": "northern-lights-school",
+    "issuedOn": "2025-05-05",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Board Governance & Leadership Toolkit",
+    "amount": 599,
+    "status": "refunded"
+  },
+  {
+    "id": "inv_1367",
+    "number": "ISLA-E-1367",
+    "schoolId": "northern-lights-school",
+    "issuedOn": "2025-10-20",
+    "dueOn": null,
+    "kind": "event",
+    "description": "Leadership Retreat 2025 · 4 registrations",
+    "amount": 1800,
+    "status": "paid",
+    "paidOn": "2025-10-28"
+  },
+  {
+    "id": "inv_1368",
+    "number": "ISLA-2022-1368",
+    "schoolId": "peel-crescent-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2022-09-14"
+  },
+  {
+    "id": "inv_1369",
+    "number": "ISLA-2023-1369",
+    "schoolId": "peel-crescent-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2023-08-27"
+  },
+  {
+    "id": "inv_1370",
+    "number": "ISLA-2024-1370",
+    "schoolId": "peel-crescent-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2024-08-03"
+  },
+  {
+    "id": "inv_1371",
+    "number": "ISLA-2025-1371",
+    "schoolId": "peel-crescent-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2025-09-15"
+  },
+  {
+    "id": "inv_1372",
+    "number": "ISLA-2026-1372",
+    "schoolId": "peel-crescent-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 701–800 students",
+    "amount": 1500,
+    "status": "paid",
+    "paidOn": "2026-10-14"
+  },
+  {
+    "id": "inv_1373",
+    "number": "ISLA-2022-1373",
+    "schoolId": "unionville-islamic-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2022-08-10"
+  },
+  {
+    "id": "inv_1374",
+    "number": "ISLA-2023-1374",
+    "schoolId": "unionville-islamic-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2023-08-28"
+  },
+  {
+    "id": "inv_1375",
+    "number": "ISLA-2024-1375",
+    "schoolId": "unionville-islamic-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2024-10-28"
+  },
+  {
+    "id": "inv_1376",
+    "number": "ISLA-2025-1376",
+    "schoolId": "unionville-islamic-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-08-08"
+  },
+  {
+    "id": "inv_1377",
+    "number": "ISLA-2026-1377",
+    "schoolId": "unionville-islamic-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 601–700 students",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2026-08-19"
+  },
+  {
+    "id": "inv_1378",
+    "number": "ISLA-S-1378",
+    "schoolId": "unionville-islamic-school",
+    "issuedOn": "2025-04-22",
+    "dueOn": null,
+    "kind": "store",
+    "description": "School Operations, Safety & Readiness Toolkit",
+    "amount": 599,
+    "status": "paid",
+    "paidOn": "2025-04-28"
+  },
+  {
+    "id": "inv_1379",
+    "number": "ISLA-2022-1379",
+    "schoolId": "steeltown-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2022-08-08"
+  },
+  {
+    "id": "inv_1380",
+    "number": "ISLA-2023-1380",
+    "schoolId": "steeltown-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-10-25"
+  },
+  {
+    "id": "inv_1381",
+    "number": "ISLA-2024-1381",
+    "schoolId": "steeltown-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-10-14"
+  },
+  {
+    "id": "inv_1382",
+    "number": "ISLA-2025-1382",
+    "schoolId": "steeltown-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-08-01"
+  },
+  {
+    "id": "inv_1383",
+    "number": "ISLA-2026-1383",
+    "schoolId": "steeltown-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2026-08-21"
+  },
+  {
+    "id": "inv_1384",
+    "number": "ISLA-S-1384",
+    "schoolId": "steeltown-academy",
+    "issuedOn": "2025-06-25",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Student, Family & School Culture Toolkit",
+    "amount": 699,
+    "status": "paid",
+    "paidOn": "2025-07-04"
+  },
+  {
+    "id": "inv_1385",
+    "number": "ISLA-2022-1385",
+    "schoolId": "forest-city-prep",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2022-08-19"
+  },
+  {
+    "id": "inv_1386",
+    "number": "ISLA-2023-1386",
+    "schoolId": "forest-city-prep",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2023-08-14"
+  },
+  {
+    "id": "inv_1387",
+    "number": "ISLA-2024-1387",
+    "schoolId": "forest-city-prep",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2024-08-10"
+  },
+  {
+    "id": "inv_1388",
+    "number": "ISLA-2025-1388",
+    "schoolId": "forest-city-prep",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2025-08-18"
+  },
+  {
+    "id": "inv_1389",
+    "number": "ISLA-2026-1389",
+    "schoolId": "forest-city-prep",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-05",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 201–300 students",
+    "amount": 750,
+    "status": "overdue"
+  },
+  {
+    "id": "inv_1390",
+    "number": "ISLA-E-1390",
+    "schoolId": "forest-city-prep",
+    "issuedOn": "2025-10-20",
+    "dueOn": null,
+    "kind": "event",
+    "description": "Leadership Retreat 2025 · 2 registrations",
+    "amount": 900,
+    "status": "paid",
+    "paidOn": "2025-10-24"
+  },
+  {
+    "id": "inv_1391",
+    "number": "ISLA-2022-1391",
+    "schoolId": "capital-crescent-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2022-08-29"
+  },
+  {
+    "id": "inv_1392",
+    "number": "ISLA-2023-1392",
+    "schoolId": "capital-crescent-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-09-19"
+  },
+  {
+    "id": "inv_1393",
+    "number": "ISLA-2024-1393",
+    "schoolId": "capital-crescent-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-08-22"
+  },
+  {
+    "id": "inv_1394",
+    "number": "ISLA-2025-1394",
+    "schoolId": "capital-crescent-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-08-19"
+  },
+  {
+    "id": "inv_1395",
+    "number": "ISLA-2026-1395",
+    "schoolId": "capital-crescent-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2026-08-27"
+  },
+  {
+    "id": "inv_1396",
+    "number": "ISLA-S-1396",
+    "schoolId": "capital-crescent-school",
+    "issuedOn": "2024-09-22",
+    "dueOn": null,
+    "kind": "store",
+    "description": "School Operations, Safety & Readiness Toolkit",
+    "amount": 599,
+    "status": "paid",
+    "paidOn": "2024-09-25"
+  },
+  {
+    "id": "inv_1397",
+    "number": "ISLA-2022-1397",
+    "schoolId": "vieux-port-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2022-08-15"
+  },
+  {
+    "id": "inv_1398",
+    "number": "ISLA-2023-1398",
+    "schoolId": "vieux-port-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-08-17"
+  },
+  {
+    "id": "inv_1399",
+    "number": "ISLA-2024-1399",
+    "schoolId": "vieux-port-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-08-01"
+  },
+  {
+    "id": "inv_1400",
+    "number": "ISLA-2025-1400",
+    "schoolId": "vieux-port-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-11-06"
+  },
+  {
+    "id": "inv_1401",
+    "number": "ISLA-2026-1401",
+    "schoolId": "vieux-port-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2026-08-21"
+  },
+  {
+    "id": "inv_1402",
+    "number": "ISLA-S-1402",
+    "schoolId": "vieux-port-academy",
+    "issuedOn": "2026-05-08",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Complete Series: All Five Toolkits",
+    "amount": 2299,
+    "status": "paid",
+    "paidOn": "2026-05-14"
+  },
+  {
+    "id": "inv_1403",
+    "number": "ISLA-E-1403",
+    "schoolId": "vieux-port-academy",
+    "issuedOn": "2025-10-20",
+    "dueOn": null,
+    "kind": "event",
+    "description": "Leadership Retreat 2025 · 3 registrations",
+    "amount": 1350,
+    "status": "paid",
+    "paidOn": "2025-10-24"
+  },
+  {
+    "id": "inv_1404",
+    "number": "ISLA-2022-1404",
+    "schoolId": "river-valley-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2022-08-30"
+  },
+  {
+    "id": "inv_1405",
+    "number": "ISLA-2023-1405",
+    "schoolId": "river-valley-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2023-08-10"
+  },
+  {
+    "id": "inv_1406",
+    "number": "ISLA-2024-1406",
+    "schoolId": "river-valley-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2024-08-18"
+  },
+  {
+    "id": "inv_1407",
+    "number": "ISLA-2025-1407",
+    "schoolId": "river-valley-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2025-09-10"
+  },
+  {
+    "id": "inv_1408",
+    "number": "ISLA-2026-1408",
+    "schoolId": "river-valley-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-10-06",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 101–200 students",
+    "amount": 600,
+    "status": "open"
+  },
+  {
+    "id": "inv_1409",
+    "number": "ISLA-S-1409",
+    "schoolId": "river-valley-school",
+    "issuedOn": "2025-03-02",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Employee & HR Essentials Toolkit",
+    "amount": 799,
+    "status": "paid",
+    "paidOn": "2025-03-02"
+  },
+  {
+    "id": "inv_1410",
+    "number": "ISLA-2022-1410",
+    "schoolId": "coastal-crescent-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2022-08-20"
+  },
+  {
+    "id": "inv_1411",
+    "number": "ISLA-2023-1411",
+    "schoolId": "coastal-crescent-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2023-08-17"
+  },
+  {
+    "id": "inv_1412",
+    "number": "ISLA-2024-1412",
+    "schoolId": "coastal-crescent-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2024-08-04"
+  },
+  {
+    "id": "inv_1413",
+    "number": "ISLA-2025-1413",
+    "schoolId": "coastal-crescent-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2025-08-22"
+  },
+  {
+    "id": "inv_1414",
+    "number": "ISLA-2026-1414",
+    "schoolId": "coastal-crescent-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 401–500 students",
+    "amount": 1050,
+    "status": "paid",
+    "paidOn": "2026-08-06"
+  },
+  {
+    "id": "inv_1415",
+    "number": "ISLA-E-1415",
+    "schoolId": "coastal-crescent-academy",
+    "issuedOn": "2025-10-20",
+    "dueOn": null,
+    "kind": "event",
+    "description": "Leadership Retreat 2025 · 1 registration",
+    "amount": 450,
+    "status": "paid",
+    "paidOn": "2025-10-26"
+  },
+  {
+    "id": "inv_1416",
+    "number": "ISLA-2022-1416",
+    "schoolId": "fraser-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2022-08-01"
+  },
+  {
+    "id": "inv_1417",
+    "number": "ISLA-2023-1417",
+    "schoolId": "fraser-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2023-08-30"
+  },
+  {
+    "id": "inv_1418",
+    "number": "ISLA-2024-1418",
+    "schoolId": "fraser-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2024-08-16"
+  },
+  {
+    "id": "inv_1419",
+    "number": "ISLA-2025-1419",
+    "schoolId": "fraser-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 201–300 students",
+    "amount": 750,
+    "status": "paid",
+    "paidOn": "2025-08-13"
+  },
+  {
+    "id": "inv_1420",
+    "number": "ISLA-2026-1420",
+    "schoolId": "fraser-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-10-08",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 201–300 students",
+    "amount": 750,
+    "status": "open"
+  },
+  {
+    "id": "inv_1421",
+    "number": "ISLA-S-1421",
+    "schoolId": "fraser-academy",
+    "issuedOn": "2025-01-09",
+    "dueOn": null,
+    "kind": "store",
+    "description": "Student, Family & School Culture Toolkit",
+    "amount": 699,
+    "status": "paid",
+    "paidOn": "2025-01-21"
+  },
+  {
+    "id": "inv_1422",
+    "number": "ISLA-2022-1422",
+    "schoolId": "red-river-islamic-school",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2022-08-07"
+  },
+  {
+    "id": "inv_1423",
+    "number": "ISLA-2023-1423",
+    "schoolId": "red-river-islamic-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-08-03"
+  },
+  {
+    "id": "inv_1424",
+    "number": "ISLA-2024-1424",
+    "schoolId": "red-river-islamic-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-08-30"
+  },
+  {
+    "id": "inv_1425",
+    "number": "ISLA-2025-1425",
+    "schoolId": "red-river-islamic-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-08-12"
+  },
+  {
+    "id": "inv_1426",
+    "number": "ISLA-2026-1426",
+    "schoolId": "red-river-islamic-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-02",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "overdue"
+  },
+  {
+    "id": "inv_1427",
+    "number": "ISLA-E-1427",
+    "schoolId": "red-river-islamic-school",
+    "issuedOn": "2025-10-20",
+    "dueOn": null,
+    "kind": "event",
+    "description": "Leadership Retreat 2025 · 1 registration",
+    "amount": 450,
+    "status": "paid",
+    "paidOn": "2025-10-27"
+  },
+  {
+    "id": "inv_1428",
+    "number": "ISLA-2022-1428",
+    "schoolId": "bridge-city-academy",
+    "issuedOn": "2022-08-01",
+    "dueOn": "2022-08-31",
+    "kind": "membership",
+    "description": "School membership 2022–23 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2022-08-21"
+  },
+  {
+    "id": "inv_1429",
+    "number": "ISLA-2023-1429",
+    "schoolId": "bridge-city-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2023-09-26"
+  },
+  {
+    "id": "inv_1430",
+    "number": "ISLA-2024-1430",
+    "schoolId": "bridge-city-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2024-08-08"
+  },
+  {
+    "id": "inv_1431",
+    "number": "ISLA-2025-1431",
+    "schoolId": "bridge-city-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2025-08-25"
+  },
+  {
+    "id": "inv_1432",
+    "number": "ISLA-2026-1432",
+    "schoolId": "bridge-city-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2026-08-07"
+  },
+  {
+    "id": "inv_1433",
+    "number": "ISLA-2023-1433",
+    "schoolId": "queen-city-crescent-school",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2023-08-22"
+  },
+  {
+    "id": "inv_1434",
+    "number": "ISLA-2024-1434",
+    "schoolId": "queen-city-crescent-school",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2024-08-16"
+  },
+  {
+    "id": "inv_1435",
+    "number": "ISLA-2025-1435",
+    "schoolId": "queen-city-crescent-school",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 101–200 students",
+    "amount": 600,
+    "status": "paid",
+    "paidOn": "2025-10-27"
+  },
+  {
+    "id": "inv_1436",
+    "number": "ISLA-2026-1436",
+    "schoolId": "queen-city-crescent-school",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-10-10",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 101–200 students",
+    "amount": 600,
+    "status": "open"
+  },
+  {
+    "id": "inv_1437",
+    "number": "ISLA-S-1437",
+    "schoolId": "queen-city-crescent-school",
+    "issuedOn": "2025-03-14",
+    "dueOn": null,
+    "kind": "store",
+    "description": "School Launch & Continuous Improvement Toolkit",
+    "amount": 399,
+    "status": "paid",
+    "paidOn": "2025-03-14"
+  },
+  {
+    "id": "inv_1438",
+    "number": "ISLA-2023-1438",
+    "schoolId": "harbourview-academy",
+    "issuedOn": "2023-08-01",
+    "dueOn": "2023-08-31",
+    "kind": "membership",
+    "description": "School membership 2023–24 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2023-08-03"
+  },
+  {
+    "id": "inv_1439",
+    "number": "ISLA-2024-1439",
+    "schoolId": "harbourview-academy",
+    "issuedOn": "2024-08-01",
+    "dueOn": "2024-08-31",
+    "kind": "membership",
+    "description": "School membership 2024–25 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2024-08-06"
+  },
+  {
+    "id": "inv_1440",
+    "number": "ISLA-2025-1440",
+    "schoolId": "harbourview-academy",
+    "issuedOn": "2025-08-01",
+    "dueOn": "2025-08-31",
+    "kind": "membership",
+    "description": "School membership 2025–26 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2025-08-21"
+  },
+  {
+    "id": "inv_1441",
+    "number": "ISLA-2026-1441",
+    "schoolId": "harbourview-academy",
+    "issuedOn": "2026-08-01",
+    "dueOn": "2026-08-31",
+    "kind": "membership",
+    "description": "School membership 2026–27 · 501–600 students",
+    "amount": 1200,
+    "status": "paid",
+    "paidOn": "2026-08-09"
+  },
+  {
+    "id": "inv_demo_1",
+    "number": "ISLA-E-2087",
+    "schoolId": "al-noor-academy",
+    "issuedOn": "2026-08-02",
+    "dueOn": "2026-09-01",
+    "kind": "event",
+    "description": "Leadership Conference 2026 · 4 delegates",
+    "amount": 3200,
+    "status": "overdue"
+  },
+  {
+    "id": "inv_demo_2",
+    "number": "ISLA-S-2104",
+    "schoolId": "al-noor-academy",
+    "issuedOn": "2026-09-18",
+    "dueOn": "2026-10-18",
+    "kind": "store",
+    "description": "Featured job · Middle School Math Teacher",
+    "amount": 450,
+    "status": "open"
+  },
+  {
+    "id": "inv_demo_3",
+    "number": "ISLA-S-2061",
+    "schoolId": "al-noor-academy",
+    "issuedOn": "2026-06-04",
+    "dueOn": "2026-07-04",
+    "kind": "store",
+    "description": "Promotion · Spring open day",
+    "amount": 680,
+    "status": "paid",
+    "paidOn": "2026-06-20"
   }
 ]

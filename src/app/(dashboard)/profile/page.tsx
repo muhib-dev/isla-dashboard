@@ -33,7 +33,7 @@ async function Profile({
         ISLA staff manage profiles from the{" "}
         <Link
           href="/schools"
-          className="text-primary underline-offset-4 hover:underline"
+          className="text-link underline-offset-4 hover:underline"
         >
           Schools
         </Link>{" "}

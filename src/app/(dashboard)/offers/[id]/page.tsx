@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { UsersIcon } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { PageBody, PageHeader } from "@/components/layout/page-header";
 import { RoleNotice } from "@/components/shared/role-notice";
 import { TableSkeleton } from "@/components/shared/skeletons";
-import { Stat, StatGroup } from "@/components/shared/stat";
+import { KpiGrid, KpiTile } from "@/components/shared/kpi-tile";
 import { StatusDot } from "@/components/shared/status";
 import {
   Breadcrumb,
@@ -29,10 +30,12 @@ import {
   OfferRowActions,
 } from "@/features/offers/components/offer-actions";
 import {
+  FeaturedBadge,
   OfferPhaseDot,
   ValueTag,
   redeemWindow,
 } from "@/features/offers/components/offer-bits";
+import { OfferEmpty } from "@/features/offers/components/offer-empty";
 import { getOfferDetail } from "@/features/offers/queries";
 import {
   OFFER_CATEGORY_LABELS,
@@ -107,26 +110,33 @@ async function OfferDetail({
         }
       />
 
-      <StatGroup columns={3}>
-        <Stat label="Claims" value={claims.length} />
-        <Stat
+      <KpiGrid className="sm:grid-cols-3 xl:grid-cols-3">
+        <KpiTile label="Claims" value={claims.length} />
+        <KpiTile
           label="Redeemed"
           value={redeemed}
-          hint={claims.length ? `${fmt.percent(redeemed / claims.length)} of claims` : undefined}
+          footer={
+            claims.length
+              ? `${fmt.percent(redeemed / claims.length)} of claims`
+              : undefined
+          }
         />
-        <Stat
+        <KpiTile
           label="Days left"
           value={offer.daysLeft >= 0 ? offer.daysLeft : "Ended"}
-          hint={`Until ${fmt.date(offer.endsOn)}`}
+          footer={`Until ${fmt.date(offer.endsOn)}`}
         />
-      </StatGroup>
+      </KpiGrid>
 
       <Card>
-        <CardHeader className="flex flex-row items-start justify-between gap-4">
+        <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-x-4 gap-y-2">
           <CardTitle>Offer details</CardTitle>
-          <ValueTag label={offer.value.label} />
+          <div className="flex items-center gap-2">
+            {offer.featured && <FeaturedBadge />}
+            <ValueTag label={offer.value.label} />
+          </div>
         </CardHeader>
-        <CardContent className="grid gap-6 text-sm md:grid-cols-2">
+        <CardContent className="grid gap-6 text-[15px] md:grid-cols-2">
           <div className="space-y-2">
             <p className="text-pretty">{offer.summary}</p>
             {offer.details && (
@@ -139,7 +149,7 @@ async function OfferDetail({
             {redemption.code && (
               <>
                 <dt className="text-muted-foreground">Code</dt>
-                <dd className="font-mono font-semibold">{redemption.code}</dd>
+                <dd className="font-medium tracking-wider">{redemption.code}</dd>
               </>
             )}
             {redemption.email && (
@@ -156,7 +166,7 @@ async function OfferDetail({
                     href={redemption.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="underline-offset-4 hover:underline"
+                    className="text-link underline-offset-4 hover:underline"
                   >
                     {redemption.url}
                   </a>
@@ -172,19 +182,28 @@ async function OfferDetail({
       </Card>
 
       {claims.length === 0 ? (
-        <Card className="py-14 text-center text-sm text-muted-foreground">
-          No schools have claimed this offer yet.
-        </Card>
+        <OfferEmpty
+          icon={UsersIcon}
+          title="No claims yet"
+          hint="Schools that claim this offer show up here with their contact details."
+        />
       ) : (
-        <Card className="py-0">
+        <div className="overflow-hidden rounded-lg border bg-card">
+          <div className="border-b px-5 py-4">
+            <h2 className="text-h3 font-semibold">Claims</h2>
+            <p className="text-[15px] text-muted-foreground">
+              Schools that claimed this offer. Mark each one redeemed once the
+              partner confirms.
+            </p>
+          </div>
           <Table>
             <TableHeader>
               <TableRow className="hover:bg-transparent">
-                <TableHead className="pl-4">School</TableHead>
+                <TableHead className="pl-5">School</TableHead>
                 <TableHead className="hidden md:table-cell">Contact</TableHead>
                 <TableHead className="hidden sm:table-cell">Claimed</TableHead>
                 <TableHead className="hidden sm:table-cell">Status</TableHead>
-                <TableHead className="pr-4 text-right">
+                <TableHead className="pr-5 text-right">
                   <span className="sr-only">Actions</span>
                 </TableHead>
               </TableRow>
@@ -192,7 +211,7 @@ async function OfferDetail({
             <TableBody>
               {claims.map((claim) => (
                 <TableRow key={claim.id}>
-                  <TableCell className="pl-4 whitespace-normal">
+                  <TableCell className="pl-5 whitespace-normal">
                     {claim.schoolId ? (
                       <Link
                         href={`/schools/${claim.schoolId}`}
@@ -203,10 +222,10 @@ async function OfferDetail({
                     ) : (
                       <p className="font-medium">{claim.schoolName}</p>
                     )}
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-[13px] text-muted-foreground">
                       {claim.schoolPlace}
                     </p>
-                    <div className="mt-1 text-sm sm:hidden">
+                    <div className="mt-1 sm:hidden">
                       <ClaimStatusDot status={claim.status} />
                     </div>
                   </TableCell>
@@ -214,7 +233,7 @@ async function OfferDetail({
                     <p>{claim.contactName}</p>
                     <a
                       href={`mailto:${claim.contactEmail}`}
-                      className="text-sm text-muted-foreground hover:underline"
+                      className="text-[13px] text-muted-foreground hover:underline"
                     >
                       {claim.contactEmail}
                     </a>
@@ -225,14 +244,18 @@ async function OfferDetail({
                   <TableCell className="hidden sm:table-cell">
                     <ClaimStatusDot status={claim.status} />
                   </TableCell>
-                  <TableCell className="pr-4 text-right">
+                  <TableCell className="pr-5 text-right">
                     <ClaimStatusButton claimId={claim.id} status={claim.status} />
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
-        </Card>
+          <div className="border-t px-5 py-3 text-[15px] text-muted-foreground">
+            {claims.length} {claims.length === 1 ? "claim" : "claims"} ·{" "}
+            {redeemed} redeemed
+          </div>
+        </div>
       )}
     </>
   );

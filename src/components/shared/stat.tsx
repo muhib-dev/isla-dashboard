@@ -13,14 +13,14 @@ export function Stat({
 }) {
   return (
     <div className={cn("space-y-1.5", className)}>
-      <p className="text-sm font-medium text-muted-foreground">{label}</p>
-      <p className="tabular text-2xl font-semibold tracking-tight sm:text-3xl">{value}</p>
-      {hint && <p className="text-sm text-muted-foreground">{hint}</p>}
+      <p className="text-[15px] font-medium text-muted-foreground">{label}</p>
+      <p className="tabular text-2xl font-semibold tracking-[-0.015em] sm:text-h1">{value}</p>
+      {hint && <p className="text-caption text-muted-foreground">{hint}</p>}
     </div>
   );
 }
 
-/** Stats in one bordered surface, separated by hairlines (gap-px over the border color). */
+/** KPI tiles: one bordered card per stat, on the 16px grid gutter. */
 export function StatGroup({
   children,
   columns = 4,
@@ -33,7 +33,7 @@ export function StatGroup({
   return (
     <div
       className={cn(
-        "grid gap-px overflow-hidden rounded-xl bg-border ring-1 ring-foreground/10 *:bg-card *:p-5",
+        "grid gap-4 *:rounded-lg *:border *:bg-card *:px-5 *:py-4",
         columns === 4
           ? "grid-cols-2 lg:grid-cols-4"
           : "grid-cols-3 max-sm:*:px-4",

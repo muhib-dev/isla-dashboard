@@ -242,5 +242,565 @@
       "last4": "4732",
       "expires": "07/27"
     }
+  },
+  {
+    "schoolId": "al-bayan-academy",
+    "tier": "401–500 students",
+    "annualDues": 1050,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "2208",
+      "expires": "07/29"
+    }
+  },
+  {
+    "schoolId": "riverbend-islamic-school",
+    "tier": "801–900 students",
+    "annualDues": 1650,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "6928",
+      "expires": "09/29"
+    }
+  },
+  {
+    "schoolId": "nasr-academy",
+    "tier": "701–800 students",
+    "annualDues": 1500,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "9845",
+      "expires": "07/28"
+    }
+  },
+  {
+    "schoolId": "oasis-learning-academy",
+    "tier": "201–300 students",
+    "annualDues": 750,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "9860",
+      "expires": "10/29"
+    }
+  },
+  {
+    "schoolId": "hudson-valley-islamic-academy",
+    "tier": "801–900 students",
+    "annualDues": 1650,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "garden-state-prep",
+    "tier": "301–400 students",
+    "annualDues": 900,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "4335",
+      "expires": "06/30"
+    }
+  },
+  {
+    "schoolId": "liberty-crescent-school",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "9502",
+      "expires": "08/30"
+    }
+  },
+  {
+    "schoolId": "lakefront-academy",
+    "tier": "701–800 students",
+    "annualDues": 1500,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "7168",
+      "expires": "12/28"
+    }
+  },
+  {
+    "schoolId": "pioneer-valley-school",
+    "tier": "301–400 students",
+    "annualDues": 900,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "7385",
+      "expires": "11/28"
+    }
+  },
+  {
+    "schoolId": "charter-oak-islamic-school",
+    "tier": "301–400 students",
+    "annualDues": 900,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "8522",
+      "expires": "05/28"
+    }
+  },
+  {
+    "schoolId": "ocean-state-academy",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "5272",
+      "expires": "02/28"
+    }
+  },
+  {
+    "schoolId": "three-rivers-academy",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "chesapeake-crescent-school",
+    "tier": "901–1000 students",
+    "annualDues": 1800,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "2816",
+      "expires": "06/27"
+    }
+  },
+  {
+    "schoolId": "capitol-prep-academy",
+    "tier": "301–400 students",
+    "annualDues": 900,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "6563",
+      "expires": "04/29"
+    }
+  },
+  {
+    "schoolId": "james-river-academy",
+    "tier": "701–800 students",
+    "annualDues": 1500,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "magnolia-school",
+    "tier": "201–300 students",
+    "annualDues": 750,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "5575",
+      "expires": "09/28"
+    }
+  },
+  {
+    "schoolId": "gulf-coast-academy",
+    "tier": "801–900 students",
+    "annualDues": 1650,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "4946",
+      "expires": "05/30"
+    }
+  },
+  {
+    "schoolId": "first-coast-islamic-school",
+    "tier": "301–400 students",
+    "annualDues": 900,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "8392",
+      "expires": "03/30"
+    }
+  },
+  {
+    "schoolId": "triangle-prep",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "3213",
+      "expires": "09/29"
+    }
+  },
+  {
+    "schoolId": "bluff-city-academy",
+    "tier": "201–300 students",
+    "annualDues": 750,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "5872",
+      "expires": "01/29"
+    }
+  },
+  {
+    "schoolId": "bluegrass-crescent-school",
+    "tier": "401–500 students",
+    "annualDues": 1050,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "1969",
+      "expires": "01/30"
+    }
+  },
+  {
+    "schoolId": "crescent-city-academy",
+    "tier": "801–900 students",
+    "annualDues": 1650,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "3543",
+      "expires": "03/28"
+    }
+  },
+  {
+    "schoolId": "motor-city-islamic-academy",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "5755",
+      "expires": "08/30"
+    }
+  },
+  {
+    "schoolId": "lake-erie-school",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "queen-city-prep",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "4885",
+      "expires": "11/29"
+    }
+  },
+  {
+    "schoolId": "circle-city-academy",
+    "tier": "401–500 students",
+    "annualDues": 1050,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "6250",
+      "expires": "11/29"
+    }
+  },
+  {
+    "schoolId": "brew-city-islamic-school",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "4249",
+      "expires": "02/29"
+    }
+  },
+  {
+    "schoolId": "gateway-academy",
+    "tier": "301–400 students",
+    "annualDues": 900,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "3453",
+      "expires": "10/29"
+    }
+  },
+  {
+    "schoolId": "heartland-crescent-school",
+    "tier": "401–500 students",
+    "annualDues": 1050,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "4007",
+      "expires": "08/28"
+    }
+  },
+  {
+    "schoolId": "lincoln-land-academy",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "5023",
+      "expires": "05/28"
+    }
+  },
+  {
+    "schoolId": "rose-city-academy",
+    "tier": "801–900 students",
+    "annualDues": 1650,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "9612",
+      "expires": "05/29"
+    }
+  },
+  {
+    "schoolId": "river-city-prep",
+    "tier": "101–200 students",
+    "annualDues": 600,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "5669",
+      "expires": "10/27"
+    }
+  },
+  {
+    "schoolId": "pacific-light-academy",
+    "tier": "101–200 students",
+    "annualDues": 600,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "8410",
+      "expires": "12/28"
+    }
+  },
+  {
+    "schoolId": "wasatch-academy",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "7263",
+      "expires": "04/28"
+    }
+  },
+  {
+    "schoolId": "aloha-crescent-school",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "5598",
+      "expires": "01/29"
+    }
+  },
+  {
+    "schoolId": "northern-lights-school",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "6722",
+      "expires": "11/27"
+    }
+  },
+  {
+    "schoolId": "peel-crescent-academy",
+    "tier": "701–800 students",
+    "annualDues": 1500,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "3945",
+      "expires": "03/28"
+    }
+  },
+  {
+    "schoolId": "unionville-islamic-school",
+    "tier": "601–700 students",
+    "annualDues": 1350,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "steeltown-academy",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "forest-city-prep",
+    "tier": "201–300 students",
+    "annualDues": 750,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "1072",
+      "expires": "12/29"
+    }
+  },
+  {
+    "schoolId": "capital-crescent-school",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "6231",
+      "expires": "06/28"
+    }
+  },
+  {
+    "schoolId": "vieux-port-academy",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "2030",
+      "expires": "11/28"
+    }
+  },
+  {
+    "schoolId": "river-valley-school",
+    "tier": "101–200 students",
+    "annualDues": 600,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "9281",
+      "expires": "03/28"
+    }
+  },
+  {
+    "schoolId": "coastal-crescent-academy",
+    "tier": "401–500 students",
+    "annualDues": 1050,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "7497",
+      "expires": "02/28"
+    }
+  },
+  {
+    "schoolId": "fraser-academy",
+    "tier": "201–300 students",
+    "annualDues": 750,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "9592",
+      "expires": "08/29"
+    }
+  },
+  {
+    "schoolId": "red-river-islamic-school",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Mastercard",
+      "last4": "3818",
+      "expires": "02/29"
+    }
+  },
+  {
+    "schoolId": "bridge-city-academy",
+    "tier": "101–200 students",
+    "annualDues": 600,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": null
+  },
+  {
+    "schoolId": "queen-city-crescent-school",
+    "tier": "101–200 students",
+    "annualDues": 600,
+    "renewsOn": "2027-08-01",
+    "autoRenew": true,
+    "paymentMethod": {
+      "brand": "Amex",
+      "last4": "6149",
+      "expires": "05/28"
+    }
+  },
+  {
+    "schoolId": "harbourview-academy",
+    "tier": "501–600 students",
+    "annualDues": 1200,
+    "renewsOn": "2027-08-01",
+    "autoRenew": false,
+    "paymentMethod": {
+      "brand": "Visa",
+      "last4": "2635",
+      "expires": "04/29"
+    }
   }
 ]

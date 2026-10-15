@@ -1,15 +1,11 @@
-import Image from "next/image"
-import Link from "next/link"
 import { Suspense } from "react"
-import { ArrowUpRightIcon } from "lucide-react"
+import { LifeBuoyIcon } from "lucide-react"
 import { externalLinks } from "@/config/links"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -17,67 +13,73 @@ import {
   SidebarMenuSkeleton,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { getSession } from "@/server/session"
-import { NavMain, NavStore } from "./nav-main"
-import { navButtonClass, navGroupClass, navLabelClass } from "./nav-styles"
+import { getSchoolBilling } from "@/features/billing/queries"
+import { getSession, type Session } from "@/server/session"
+import { NavMain } from "./nav-main"
+import { navButtonClass, navGroupClass } from "./nav-styles"
+import { WorkspaceSwitcher, type Workspace } from "./workspace-switcher"
 
 export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="px-3 pt-4 pb-3 group-data-[collapsible=icon]:px-2">
+      <SidebarHeader className="h-[60px] justify-center border-b border-sidebar-border px-3 group-data-[collapsible=icon]:px-2">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <Link href="/">
-                <Image src="/isla-emblem.png" alt="ISLA" width={32} height={32} className="size-8 shrink-0" priority />
-                <span className="grid leading-tight">
-                  <span className="text-sm font-semibold tracking-tight">ISLA</span>
-                  <span className="text-sm text-muted-foreground">School Hub</span>
-                </span>
-              </Link>
-            </SidebarMenuButton>
+            <Suspense fallback={<SidebarMenuSkeleton showIcon />}>
+              <SessionWorkspace />
+            </Suspense>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent className="gap-2">
+      <SidebarContent className="gap-2 pt-2">
         <Suspense fallback={<NavSkeleton />}>
           <RoleNav />
         </Suspense>
-
-        <SidebarGroup className={`mt-auto pb-3 ${navGroupClass}`}>
-          <SidebarGroupLabel className={navLabelClass}>ISLA</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu className="gap-0.5">
-              <Suspense fallback={<SidebarMenuSkeleton showIcon />}>
-                <NavStore />
-              </Suspense>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip="theisla.org" className={navButtonClass}>
-                  <a href={externalLinks.site} target="_blank" rel="noreferrer">
-                    <ArrowUpRightIcon />
-                    <span>theisla.org</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-sidebar-border px-4 py-3 group-data-[collapsible=icon]:hidden">
-        <p className="text-xs leading-snug text-muted-foreground">
-          Prototype with sample data. Schools and people are fictional.
-        </p>
+      <SidebarFooter className="border-t border-sidebar-border p-3 group-data-[collapsible=icon]:px-2">
+        <SidebarMenu className="gap-0.5">
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild tooltip="Help & support" className={navButtonClass}>
+              <a href={externalLinks.site} target="_blank" rel="noreferrer">
+                <LifeBuoyIcon />
+                <span>Help &amp; support</span>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )
 }
 
+const initials = (name: string) =>
+  name
+    .split(/[\s-]+/)
+    .filter((w) => /^[A-Z]/.test(w))
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("")
+
+function workspaceOf(session: Session): Workspace {
+  return session.role === "isla"
+    ? { mark: "IS", name: "ISLA Staff", role: "Member services" }
+    : { mark: initials(session.organization), name: session.organization, role: "School admin" }
+}
+
+async function SessionWorkspace() {
+  const session = await getSession()
+  return <WorkspaceSwitcher role={session.role} workspace={workspaceOf(session)} />
+}
+
 async function RoleNav() {
   const session = await getSession()
-  return <NavMain role={session.role} />
+  if (session.role === "isla") return <NavMain role="isla" />
+  const { invoices } = await getSchoolBilling(session.schoolId!)
+  const unpaid = invoices.filter((i) => i.status === "open" || i.status === "overdue").length
+  return <NavMain role="school" badges={{ "/billing": unpaid }} />
 }
 
 function NavSkeleton() {

@@ -41,14 +41,17 @@ export function createHttpRepositories(options: HttpClientOptions): Repositories
     },
     jobs: {
       listBySchool: (schoolId) => api.get(`/schools/${encodeURIComponent(schoolId)}/jobs`, z.array(JobSchema)),
-      listOpen: () => api.get("/jobs", z.array(JobSchema), { status: "open" }),
+      listPublished: () => api.get("/jobs", z.array(JobSchema), { status: "open,filled,closed" }),
       create: (schoolId, job) => api.post(`/schools/${encodeURIComponent(schoolId)}/jobs`, JobSchema, job),
+      setStatus: (id, status) => api.patch(`/jobs/${encodeURIComponent(id)}`, JobSchema, { status }),
     },
     billing: {
       getPlan: (schoolId) => api.find(`/schools/${encodeURIComponent(schoolId)}/plan`, PlanSchema),
       updatePlan: (schoolId, patch) => api.patch(`/schools/${encodeURIComponent(schoolId)}/plan`, PlanSchema, patch),
       listInvoices: (schoolId) => api.get(`/schools/${encodeURIComponent(schoolId)}/invoices`, z.array(InvoiceSchema)),
       getOrgSummary: () => api.get("/billing/summary", OrgBillingSummarySchema),
+      payInvoices: (schoolId, ids) =>
+        api.post(`/schools/${encodeURIComponent(schoolId)}/invoices/pay`, z.array(InvoiceSchema), { ids }),
     },
     analytics: {
       compare: (schoolId, peers) =>

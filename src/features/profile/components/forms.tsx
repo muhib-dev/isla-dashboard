@@ -132,7 +132,7 @@ export function LeadershipForm({
       {leaders.map((leader, i) => (
         <fieldset
           key={leader.id}
-          className="relative grid gap-3 rounded-lg border p-3 sm:grid-cols-2"
+          className="relative grid gap-3 rounded-lg border p-4 sm:grid-cols-2"
         >
           <legend className="sr-only">{leader.role || "New role"}</legend>
           <Field
@@ -307,7 +307,7 @@ export function ProgramsForm({
   return (
     <div className="space-y-6">
       <section>
-        <h3 className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+        <h3 className="text-overline font-medium tracking-wide text-muted-foreground uppercase">
           Lunch program
         </h3>
         <div className="divide-y">
@@ -356,7 +356,7 @@ export function ProgramsForm({
       </section>
 
       <section>
-        <h3 className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+        <h3 className="text-overline font-medium tracking-wide text-muted-foreground uppercase">
           Programs
         </h3>
         <div className="divide-y">
@@ -380,7 +380,7 @@ export function ProgramsForm({
       </section>
 
       <section className="space-y-3">
-        <h3 className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+        <h3 className="text-overline font-medium tracking-wide text-muted-foreground uppercase">
           Athletics
         </h3>
         <div className="grid grid-cols-2 gap-2">

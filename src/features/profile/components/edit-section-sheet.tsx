@@ -80,18 +80,18 @@ export function EditSectionSheet<S extends ProfileSection>({
           <PencilIcon /> Edit
         </Button>
       </SheetTrigger>
-      <SheetContent className="gap-0 data-[side=right]:w-full data-[side=right]:sm:max-w-3xl">
+      <SheetContent className="gap-0 data-[side=right]:w-full data-[side=right]:sm:max-w-2xl">
         <form onSubmit={onSubmit} className="flex h-full flex-col">
-          <SheetHeader className="border-b">
-            <SheetTitle>Edit {label.toLowerCase()}</SheetTitle>
+          <SheetHeader className="border-b px-6 py-4 pr-12">
+            <SheetTitle className="text-h4 font-semibold">Edit {label.toLowerCase()}</SheetTitle>
             <SheetDescription>
               Saving also marks this section as verified today.
             </SheetDescription>
           </SheetHeader>
-          <div className="flex-1 overflow-y-auto p-4">
+          <div className="flex-1 overflow-y-auto p-6">
             <Form value={value} onChange={setValue} errors={errors} />
           </div>
-          <SheetFooter className="flex-row justify-end border-t">
+          <SheetFooter className="flex-row justify-between border-t px-6 py-4">
             <Button
               type="button"
               variant="ghost"

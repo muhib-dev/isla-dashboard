@@ -1,6 +1,6 @@
 "use client";
 
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 import {
   ChartContainer,
   ChartTooltip,
@@ -17,7 +17,7 @@ const config = {
 export function ClaimsByPartnerChart({ data }: { data: Row[] }) {
   if (data.length === 0) {
     return (
-      <p className="py-10 text-center text-sm text-muted-foreground">
+      <p className="py-10 text-center text-[15px] text-muted-foreground">
         No claims yet.
       </p>
     );
@@ -38,7 +38,6 @@ export function ClaimsByPartnerChart({ data }: { data: Row[] }) {
         barCategoryGap="28%"
         accessibilityLayer
       >
-        <CartesianGrid horizontal={false} stroke="var(--chart-grid)" />
         <XAxis type="number" hide allowDecimals={false} />
         <YAxis
           type="category"
@@ -46,7 +45,7 @@ export function ClaimsByPartnerChart({ data }: { data: Row[] }) {
           tickLine={false}
           axisLine={false}
           width={170}
-          tick={{ fill: "var(--foreground)", fontSize: 13 }}
+          tick={{ fill: "var(--chart-axis)", fontSize: 13 }}
         />
         <ChartTooltip
           cursor={{ fill: "var(--muted)", opacity: 0.7 }}
@@ -54,7 +53,7 @@ export function ClaimsByPartnerChart({ data }: { data: Row[] }) {
             if (!active || !payload?.length) return null;
             const row = payload[0].payload as (typeof rows)[number];
             return (
-              <div className="grid min-w-44 gap-1.5 rounded-lg border bg-popover px-3 py-2.5 text-sm shadow-lg">
+              <div className="grid min-w-44 gap-1.5 rounded-lg border bg-popover px-3 py-2.5 text-[13px] text-popover-foreground shadow-md">
                 <p className="font-semibold">{row.partner}</p>
                 <div className="flex justify-between gap-6">
                   <span className="text-muted-foreground">Claims</span>
@@ -71,17 +70,14 @@ export function ClaimsByPartnerChart({ data }: { data: Row[] }) {
         <Bar
           dataKey="total"
           fill="var(--color-total)"
-          fillOpacity={0.35}
-          stroke="var(--color-total)"
-          strokeWidth={1.5}
-          radius={[0, 4, 4, 0]}
+          radius={[0, 3, 3, 0]}
           maxBarSize={24}
         >
           <LabelList
             dataKey="total"
             position="right"
             offset={10}
-            className="tabular fill-foreground text-sm font-semibold"
+            className="tabular fill-foreground text-[13px] font-medium"
           />
         </Bar>
       </BarChart>

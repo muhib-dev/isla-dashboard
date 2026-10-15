@@ -68,10 +68,12 @@ function Section({
   hint?: string;
 }) {
   return (
-    <section className="space-y-2.5 border-b px-4 py-4 last:border-b-0">
+    <section className="space-y-3 border-b px-4 py-5 last:border-b-0">
       <div>
-        <h3 className="text-sm font-semibold">{title}</h3>
-        {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+        <h3 className="text-[15px] font-semibold">{title}</h3>
+        {hint && (
+          <p className="text-[13px] text-muted-foreground">{hint}</p>
+        )}
       </div>
       {children}
     </section>
@@ -160,7 +162,7 @@ function Tri({
       <div
         role="radiogroup"
         aria-label={label}
-        className="inline-flex rounded-md ring-1 ring-foreground/15"
+        className="inline-flex gap-0.5 rounded-lg border bg-muted p-[3px]"
       >
         {(["any", "yes", "no"] as const).map((v) => (
           <button
@@ -170,10 +172,10 @@ function Tri({
             aria-checked={value === v}
             onClick={() => onChange(v)}
             className={cn(
-              "px-2.5 py-1 text-xs first:rounded-l-md last:rounded-r-md",
+              "rounded-md border border-transparent px-2.5 py-1 text-[13px] font-medium text-muted-foreground transition-colors",
               value === v
-                ? "bg-primary text-primary-foreground"
-                : "hover:bg-muted",
+                ? "border-border bg-card text-foreground shadow-xs"
+                : "hover:text-foreground",
             )}
           >
             {v === "any" ? "Any" : v === "yes" ? "Yes" : "No"}
@@ -623,7 +625,7 @@ export function FilterPanel({
         <div
           role="radiogroup"
           aria-label="Accreditation"
-          className="inline-flex rounded-md ring-1 ring-foreground/15"
+          className="inline-flex gap-0.5 rounded-lg border bg-muted p-[3px]"
         >
           {(
             [
@@ -639,10 +641,10 @@ export function FilterPanel({
               aria-checked={state.accredited === v}
               onClick={() => onChange({ accredited: v })}
               className={cn(
-                "px-2.5 py-1 text-xs first:rounded-l-md last:rounded-r-md",
+                "rounded-md border border-transparent px-2.5 py-1 text-[13px] font-medium text-muted-foreground transition-colors",
                 state.accredited === v
-                  ? "bg-primary text-primary-foreground"
-                  : "hover:bg-muted",
+                  ? "border-border bg-card text-foreground shadow-xs"
+                  : "hover:text-foreground",
               )}
             >
               {l}

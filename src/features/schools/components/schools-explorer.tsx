@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import {
@@ -74,9 +81,19 @@ import type { SchoolSearchDoc } from "@/features/schools/search/doc";
 import { lookupCode, lookupPlace } from "@/features/schools/search/geo-client";
 import type { Bounds } from "@/features/schools/search/geo";
 import { downloadCsv, resultsToCsv } from "@/features/schools/csv";
+import {
+  REGION_LABELS,
+  REGIONS,
+  SCHOOL_TYPE_LABELS,
+  SCHOOL_TYPES,
+  type MembershipStatus,
+} from "@/features/schools/schema";
+import { cn } from "@/lib/utils";
+import { FacetFilter, StatusTabs } from "./explorer-toolbar";
 import { FilterPanel } from "./filter-panel";
 import { SavedSearchesDialog } from "./saved-searches-menu";
-import { SchoolDetailSheet } from "./school-detail-sheet";
+import { SchoolDetailDialog } from "./school-detail-dialog";
+import { SchoolResultList } from "./school-result-list";
 import { SchoolsMapLoader } from "./schools-map-loader";
 import { SchoolsTable } from "./schools-table";
 import { SearchBar } from "./search-bar";
@@ -110,21 +127,53 @@ const OPERATOR_HELP: [string, string][] = [
 
 const MAX_URL_QS = 1800;
 
+const REGION_OPTIONS = REGIONS.map((v) => ({ value: v, label: REGION_LABELS[v] }));
+const TYPE_OPTIONS = SCHOOL_TYPES.map((v) => ({
+  value: v,
+  label: SCHOOL_TYPE_LABELS[v],
+}));
+/** Public docs only distinguish members from everyone else. */
+const PUBLIC_STATUSES: MembershipStatus[] = ["active", "non_member"];
+const ALL_STATUSES: MembershipStatus[] = [
+  "active",
+  "grace",
+  "lapsed",
+  "non_member",
+];
+const STATUS_CHIP_LABEL: Record<MembershipStatus, string> = {
+  active: "Active",
+  grace: "Grace",
+  lapsed: "Lapsed",
+  non_member: "Not a member",
+};
+const STATUS_CHIP_DOT: Record<MembershipStatus, string> = {
+  active: "bg-member-active",
+  grace: "bg-member-grace",
+  lapsed: "bg-member-lapsed",
+  non_member: "border-[1.5px] border-member-none",
+};
+
 /**
  * `list` mode (staff dashboard) shows the filterable data table and no map.
- * `map` mode (public map page) shows the map only, no list, sort or CSV.
+ * `map` mode (public map page) is a full-bleed split: result list panel + map, no sort or CSV.
  */
 export function SchoolsExplorer({
   docs,
   geoSeed,
   mode = "list",
   audience = "staff",
+  title = "Map",
+  actions,
 }: {
   docs: SchoolSearchDoc[];
   geoSeed: GeoContext;
   mode?: "list" | "map";
   /** "public" hides everything staff-only: CSV and staff-only filters and sorts. */
   audience?: "staff" | "public";
+  /** Map mode: heading of the list panel. */
+  title?: ReactNode;
+  /** Map mode: extra buttons at the foot of the list panel. */
+  actions?: ReactNode;
 }) {
   const staff = audience === "staff";
   const pathname = usePathname();
@@ -132,7 +181,12 @@ export function SchoolsExplorer({
   const paramString = params.toString();
   const urlState = useMemo(() => {
     const parsed = parseSearchState(new URLSearchParams(paramString));
-    return staff ? parsed : stripStaffFilters(parsed);
+    if (staff) return parsed;
+    // Public docs only say "member" or "not a member", so that much of the status filter is safe.
+    return {
+      ...stripStaffFilters(parsed),
+      status: parsed.status.filter((s) => PUBLIC_STATUSES.includes(s)),
+    };
   }, [paramString, staff]);
 
   // --- geo lookups: seeded by the server, completed here when the URL names a ZIP/place we haven't resolved
@@ -209,7 +263,14 @@ export function SchoolsExplorer({
 
   // --- map selection / hover
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [hoverId, setHoverId] = useState<string | null>(null);
+  // Clicking a pin or list row selects the school and opens its details in a modal over the map.
+  const [detailOpen, setDetailOpen] = useState(false);
   const [fitSignal, setFitSignal] = useState(0);
+  const openSchool = useCallback((id: string) => {
+    setSelectedId(id);
+    setDetailOpen(true);
+  }, []);
   const selectedRow = result.rows.find((r) => r.doc.id === selectedId) ?? null;
 
   // Map position lives in the URL without adding history entries.
@@ -279,14 +340,36 @@ export function SchoolsExplorer({
     [empty, docs, state.q],
   );
   const unmapped = result.rows.filter((r) => r.doc.lat === null).length;
-  const approx = result.rows.filter(
-    (r) => r.doc.lat !== null && r.doc.precision !== "rooftop",
-  ).length;
   const currentQs = serializeSearchState({ ...state, map: null }).toString();
   const unit = result.center?.unit ?? state.unit;
-  const filterCount = result.chips.filter(
+  // Status tab counts: the current search with the status filter cleared.
+  const showTabs = staff && !mapOnly;
+  const statusCounts = useMemo(() => {
+    if (!showTabs) return null;
+    const c: Record<MembershipStatus | "all", number> = {
+      all: 0,
+      active: 0,
+      grace: 0,
+      lapsed: 0,
+      non_member: 0,
+    };
+    for (const r of runSearch(docs, { ...urlState, status: [] }, ctx).rows) {
+      c[r.doc.membership.status]++;
+      c.all++;
+    }
+    return c;
+  }, [showTabs, docs, urlState, ctx]);
+  // Map mode shows the status filter as its own chips, so it isn't repeated as removable chips.
+  const isStatusChip = (c: Chip) => mapOnly && c.id.startsWith("status:");
+  const filterChips = result.chips.filter((c) => !isStatusChip(c));
+  const filterCount = filterChips.filter(
     (c) => !c.id.startsWith("part:") && c.id !== "center" && c.id !== "bounds",
   ).length;
+  // Only offer statuses this audience's docs actually carry (public: member / not a member).
+  const statusOptions = useMemo(() => {
+    const present = new Set(docs.map((d) => d.membership.status));
+    return ALL_STATUSES.filter((s) => present.has(s));
+  }, [docs]);
 
   function exportCsv() {
     downloadCsv(
@@ -298,155 +381,268 @@ export function SchoolsExplorer({
     );
   }
 
-  return (
-    <div className="space-y-4">
-      {/* One compact row; everything secondary lives in the ⋯ menu. */}
-      <div className="flex flex-wrap items-center justify-end gap-2">
-        <div className="w-full sm:w-auto">
-          <SearchBar
-            value={qInput}
-            onChange={setQInput}
-            onClear={() => {
-              setQInput("");
-              sentQ.current = "";
-              navigate({ ...urlState, q: "" }, "replace");
-            }}
-            onPlace={(c) => {
-              setQInput("");
-              sentQ.current = "";
-              navigate({ ...state, q: "", center: c, bounds: null, map: null });
-            }}
-            allowLookup={empty && staff}
-            inputProps={{
-              "aria-label": "Search schools",
-              placeholder: "Search name, city, ZIP, leader…",
-              maxLength: 200,
-              enterKeyHint: "search",
-              onCompositionStart: () => {
-                composing.current = true;
-              },
-              onCompositionEnd: (e) => {
-                composing.current = false;
-                setQInput(e.currentTarget.value);
-              },
-            }}
-          />
-        </div>
-        <Button variant="outline" onClick={locate} aria-label="Schools near me">
-          <LocateIcon /> <span className="hidden md:inline">Near me</span>
+  const searchBar = (
+    <SearchBar
+      className={
+        mapOnly ? "sm:w-full [&>svg:first-child]:size-[18px]" : "sm:w-[280px]"
+      }
+      inputClassName={mapOnly ? undefined : "h-9"}
+      value={qInput}
+      onChange={setQInput}
+      onClear={() => {
+        setQInput("");
+        sentQ.current = "";
+        navigate({ ...urlState, q: "" }, "replace");
+      }}
+      onPlace={(c) => {
+        setQInput("");
+        sentQ.current = "";
+        navigate({ ...state, q: "", center: c, bounds: null, map: null });
+      }}
+      allowLookup={empty && staff}
+      inputProps={{
+        "aria-label": "Search schools",
+        placeholder: mapOnly
+          ? "Search a school or city"
+          : "Search name, city, ZIP, leader…",
+        maxLength: 200,
+        enterKeyHint: "search",
+        onCompositionStart: () => {
+          composing.current = true;
+        },
+        onCompositionEnd: (e) => {
+          composing.current = false;
+          setQInput(e.currentTarget.value);
+        },
+      }}
+    />
+  );
+
+  const controlSize = "sm";
+  const nearControls = (
+    <>
+      <Button
+        variant="outline"
+        size={controlSize}
+        onClick={locate}
+        aria-label="Schools near me"
+      >
+        <LocateIcon /> <span className="hidden md:inline">Near me</span>
+      </Button>
+      {result.center && (
+        <>
+          {/* within: in the query wins over these controls, so show its value and lock them. */}
+          <Select
+            value={String(result.center.radius)}
+            onValueChange={(v) => patch({ radius: Number(v) })}
+            disabled={!!result.parsed.within}
+          >
+            <SelectTrigger
+              size={controlSize}
+              className="w-auto min-w-24"
+              aria-label="Radius"
+              title={
+                result.parsed.within
+                  ? "Set by within: in the search box"
+                  : undefined
+              }
+            >
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {[...new Set([5, 10, 25, 50, 100, 250, result.center.radius])]
+                .sort((a, b) => a - b)
+                .map((r) => (
+                  <SelectItem key={r} value={String(r)}>
+                    {r} {result.center!.unit}
+                  </SelectItem>
+                ))}
+            </SelectContent>
+          </Select>
+          <Select
+            value={result.center.unit}
+            onValueChange={(v) => patch({ unit: v as "mi" | "km" })}
+            disabled={!!result.parsed.within}
+          >
+            <SelectTrigger
+              size={controlSize}
+              className="w-auto min-w-16"
+              aria-label="Distance unit"
+            >
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="mi">mi</SelectItem>
+              <SelectItem value="km">km</SelectItem>
+            </SelectContent>
+          </Select>
+        </>
+      )}
+    </>
+  );
+
+  const filtersButton = (
+    <Button
+      variant="outline"
+      size={controlSize}
+      className={cn(!mapOnly && "border-dashed")}
+      onClick={() => setPanelOpen(true)}
+    >
+      <SlidersHorizontalIcon /> {mapOnly ? "Filters" : "More filters"}
+      {filterCount > 0 && (
+        <span className="tabular rounded-sm bg-secondary px-1.5 text-[13px] font-medium text-secondary-foreground">
+          {filterCount}
+        </span>
+      )}
+    </Button>
+  );
+
+  const moreMenu = (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="outline"
+          size="icon-sm"
+          aria-label="More options"
+          title="More options"
+        >
+          <MoreHorizontalIcon />
         </Button>
-        {result.center && (
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-56">
+        {!mapOnly && (
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <ArrowDownUpIcon /> Sort by
+            </DropdownMenuSubTrigger>
+            <DropdownMenuSubContent>
+              <DropdownMenuRadioGroup
+                value={result.sort}
+                onValueChange={(v) => patch({ sort: v as SortKey })}
+              >
+                {SORT_KEYS.filter(
+                  (k) =>
+                    (staff || !STAFF_ONLY_SORTS.includes(k)) &&
+                    (k !== "distance" || result.center) &&
+                    (k !== "relevance" || atoms.length),
+                ).map((k) => (
+                  <DropdownMenuRadioItem key={k} value={k}>
+                    {SORT_LABELS[k]}
+                  </DropdownMenuRadioItem>
+                ))}
+              </DropdownMenuRadioGroup>
+            </DropdownMenuSubContent>
+          </DropdownMenuSub>
+        )}
+        <DropdownMenuItem onSelect={() => setSavedOpen(true)}>
+          <BookmarkIcon /> Saved searches
+        </DropdownMenuItem>
+        <DropdownMenuItem onSelect={() => setTipsOpen(true)}>
+          <HelpCircleIcon /> Search tips
+        </DropdownMenuItem>
+        {mapOnly && !empty && (
           <>
-            {/* within: in the query wins over these controls, so show its value and lock them. */}
-            <Select
-              value={String(result.center.radius)}
-              onValueChange={(v) => patch({ radius: Number(v) })}
-              disabled={!!result.parsed.within}
-            >
-              <SelectTrigger
-                className="w-auto min-w-24"
-                aria-label="Radius"
-                title={
-                  result.parsed.within
-                    ? "Set by within: in the search box"
-                    : undefined
-                }
-              >
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {[...new Set([5, 10, 25, 50, 100, 250, result.center.radius])]
-                  .sort((a, b) => a - b)
-                  .map((r) => (
-                    <SelectItem key={r} value={String(r)}>
-                      {r} {result.center!.unit}
-                    </SelectItem>
-                  ))}
-              </SelectContent>
-            </Select>
-            <Select
-              value={result.center.unit}
-              onValueChange={(v) => patch({ unit: v as "mi" | "km" })}
-              disabled={!!result.parsed.within}
-            >
-              <SelectTrigger
-                className="w-auto min-w-16"
-                aria-label="Distance unit"
-              >
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="mi">mi</SelectItem>
-                <SelectItem value="km">km</SelectItem>
-              </SelectContent>
-            </Select>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onSelect={() => setFitSignal((n) => n + 1)}>
+              <LocateFixedIcon /> Fit map to results
+            </DropdownMenuItem>
           </>
         )}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 
-        <div className="flex items-center gap-2">
-          <Button variant="outline" onClick={() => setPanelOpen(true)}>
-            <SlidersHorizontalIcon /> Filters
-            {filterCount > 0 && (
-              <span className="tabular ml-1 rounded-full bg-primary px-1.5 text-xs text-primary-foreground">
-                {filterCount}
-              </span>
-            )}
-          </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="icon" aria-label="More options">
-                <MoreHorizontalIcon />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              {!mapOnly && (
-                <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>
-                    <ArrowDownUpIcon /> Sort by
-                  </DropdownMenuSubTrigger>
-                  <DropdownMenuSubContent>
-                    <DropdownMenuRadioGroup
-                      value={result.sort}
-                      onValueChange={(v) => patch({ sort: v as SortKey })}
-                    >
-                      {SORT_KEYS.filter(
-                        (k) =>
-                          (staff || !STAFF_ONLY_SORTS.includes(k)) &&
-                          (k !== "distance" || result.center) &&
-                          (k !== "relevance" || atoms.length),
-                      ).map((k) => (
-                        <DropdownMenuRadioItem key={k} value={k}>
-                          {SORT_LABELS[k]}
-                        </DropdownMenuRadioItem>
-                      ))}
-                    </DropdownMenuRadioGroup>
-                  </DropdownMenuSubContent>
-                </DropdownMenuSub>
-              )}
-              <DropdownMenuItem onSelect={() => setSavedOpen(true)}>
-                <BookmarkIcon /> Saved searches
-              </DropdownMenuItem>
-              <DropdownMenuItem onSelect={() => setTipsOpen(true)}>
-                <HelpCircleIcon /> Search tips
-              </DropdownMenuItem>
-              {mapOnly && !empty && (
-                <DropdownMenuItem onSelect={() => setFitSignal((n) => n + 1)}>
-                  <LocateFixedIcon /> Fit map to results
-                </DropdownMenuItem>
-              )}
-              {staff && !mapOnly && result.rows.length > 0 && (
-                <>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onSelect={exportCsv}>
-                    <DownloadIcon /> Export CSV
-                  </DropdownMenuItem>
-                </>
-              )}
-            </DropdownMenuContent>
-          </DropdownMenu>
+  const resultCount = `${result.rows.length.toLocaleString("en-US")} ${result.rows.length === 1 ? "school" : "schools"}`;
+  // Extra context next to the count; the table footer carries the count itself in list mode.
+  const countDetails = [
+    mapOnly && unmapped > 0 && `${unmapped} not on map`,
+    result.unlocated.length > 0 &&
+      `${result.unlocated.length} without a location left out`,
+  ].filter(Boolean);
+
+  const messages = (
+    <>
+      {filterChips.length > 0 && (
+        <div
+          className="flex flex-wrap items-center gap-1.5"
+          aria-label="Active filters"
+        >
+          {filterChips.map((chip) => (
+            <button
+              key={chip.id}
+              type="button"
+              onClick={() => onChip(chip)}
+              className="inline-flex h-7 items-center gap-1 rounded-sm border bg-secondary px-2 text-[13px] font-medium text-secondary-foreground transition-colors hover:bg-surface-3"
+              aria-label={`Remove filter ${chip.label}`}
+            >
+              {chip.label} <XIcon className="size-3.5 text-muted-foreground" />
+            </button>
+          ))}
+          {mapOnly && (
+            <Button
+              variant="link"
+              size="sm"
+              className="h-7 px-1"
+              onClick={clearAll}
+            >
+              Clear all
+            </Button>
+          )}
         </div>
-      </div>
+      )}
+      {currentQs.length > MAX_URL_QS && (
+        <p role="status" className="text-[13px] text-warning">
+          This search is very long and its link may not open everywhere. Use
+          “Saved” to keep it.
+        </p>
+      )}
+      {!mapOnly && (
+        <p aria-live="polite" className="tabular text-[13px] text-muted-foreground empty:hidden">
+          {result.pending.length > 0
+            ? "Finding that place…"
+            : countDetails.join(" · ")}
+        </p>
+      )}
+      {mapOnly && result.pending.length === 0 && countDetails.length > 0 && (
+        <p className="tabular text-[13px] text-muted-foreground">
+          {countDetails.join(" · ")}
+        </p>
+      )}
+      {result.notes.length > 0 && !empty && (
+        <p className="text-[13px] text-warning">{result.notes.join(" · ")}</p>
+      )}
+      {result.ambiguous.length > 0 && (
+        <p className="text-[13px] text-muted-foreground">
+          “{result.center?.label}” is ambiguous. Also try:{" "}
+          {result.ambiguous
+            .slice(0, 4)
+            .map((p) => `${p.name}, ${p.state}`)
+            .join(" · ")}
+        </p>
+      )}
+    </>
+  );
+  const hasMessages =
+    filterChips.length > 0 ||
+    currentQs.length > MAX_URL_QS ||
+    result.pending.length > 0 ||
+    countDetails.length > 0 ||
+    (result.notes.length > 0 && !empty) ||
+    result.ambiguous.length > 0;
 
+  const zeroResults = (
+    <ZeroResults
+      fixes={fixes}
+      suggestion={suggestion}
+      notes={result.notes}
+      onApply={onChip}
+      onSuggest={(q) => navigate({ ...state, q })}
+      onClear={clearAll}
+    />
+  );
+
+  const overlays = (
+    <>
       <SavedSearchesDialog
         open={savedOpen}
         onOpenChange={setSavedOpen}
@@ -459,22 +655,25 @@ export function SchoolsExplorer({
             <DialogTitle>Search tips</DialogTitle>
             <DialogDescription>Combine words and operators.</DialogDescription>
           </DialogHeader>
-          <dl className="space-y-1.5 text-sm">
+          <dl className="divide-y rounded-lg border text-sm">
             {OPERATOR_HELP.map(([op, desc]) => (
-              <div key={op} className="flex justify-between gap-3">
-                <dt className="font-mono text-xs">{op}</dt>
+              <div
+                key={op}
+                className="flex justify-between gap-3 px-3 py-2"
+              >
+                <dt className="text-[13px] font-medium">{op}</dt>
                 <dd className="text-right text-muted-foreground">{desc}</dd>
               </div>
             ))}
           </dl>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-[13px] text-muted-foreground">
             Spelling doesn’t need to be exact: “al nur”, “alnoor” and “Al-Noor”
             all match.
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-[13px] text-muted-foreground">
             Place data ©{" "}
             <a
-              className="underline"
+              className="text-link underline-offset-3 hover:underline"
               href="https://www.geonames.org"
               target="_blank"
               rel="noreferrer"
@@ -486,106 +685,16 @@ export function SchoolsExplorer({
         </DialogContent>
       </Dialog>
 
-      {result.chips.length > 0 && (
-        <div
-          className="flex flex-wrap items-center gap-2"
-          aria-label="Active filters"
-        >
-          {result.chips.map((chip) => (
-            <button
-              key={chip.id}
-              type="button"
-              onClick={() => onChip(chip)}
-              className="inline-flex items-center gap-1 rounded-full bg-secondary px-2.5 py-1 text-xs hover:bg-secondary/70"
-              aria-label={`Remove filter ${chip.label}`}
-            >
-              {chip.label} <XIcon className="size-3" />
-            </button>
-          ))}
-          <Button variant="ghost" size="sm" onClick={clearAll}>
-            Clear all
-          </Button>
-        </div>
-      )}
-      {currentQs.length > MAX_URL_QS && (
-        <p role="status" className="text-xs text-warning-foreground">
-          This search is very long and its link may not open everywhere. Use
-          “Saved” to keep it.
-        </p>
-      )}
-
-      <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
-        <p aria-live="polite" className="tabular">
-          {result.pending.length > 0 ? (
-            "Finding that place…"
-          ) : (
-            <>
-              {result.rows.length}{" "}
-              {result.rows.length === 1 ? "school" : "schools"}
-              {mapOnly && unmapped > 0 && ` · ${unmapped} not on map`}
-              {mapOnly && approx > 0 && ` · ${approx} approximate`}
-              {result.unlocated.length > 0 &&
-                ` · ${result.unlocated.length} without a location left out`}
-            </>
-          )}
-        </p>
-      </div>
-      {result.notes.length > 0 && !empty && (
-        <p className="text-sm text-warning-foreground">
-          {result.notes.join(" · ")}
-        </p>
-      )}
-      {result.ambiguous.length > 0 && (
-        <p className="text-sm text-muted-foreground">
-          “{result.center?.label}” is ambiguous. Also try:{" "}
-          {result.ambiguous
-            .slice(0, 4)
-            .map((p) => `${p.name}, ${p.state}`)
-            .join(" · ")}
-        </p>
-      )}
-
-      {empty ? (
-        <ZeroResults
-          fixes={fixes}
-          suggestion={suggestion}
-          notes={result.notes}
-          onApply={onChip}
-          onSuggest={(q) => navigate({ ...state, q })}
-          onClear={clearAll}
-        />
-      ) : mapOnly ? (
-        <div className="h-[calc(100svh-19rem)] min-h-112">
-          <SchoolsMapLoader
-            rows={result.rows}
-            center={result.center}
-            selectedId={selectedId}
-            hoverId={null}
-            initialView={state.map}
-            onSelect={setSelectedId}
-            onViewChange={onViewChange}
-            fitSignal={fitSignal}
-            autoFit={!state.bounds}
-            boundsActive={!!state.bounds}
-            onSearchArea={searchArea}
-            editing={null}
-            onEditMove={() => {}}
-          />
-        </div>
-      ) : (
-        <SchoolsTable rows={result.rows.map((r) => r.doc)} />
-      )}
-
-      <SchoolDetailSheet
-        row={selectedRow}
+      <SchoolDetailDialog
+        row={detailOpen ? selectedRow : null}
         unit={unit}
         audience={audience}
-        onClose={() => setSelectedId(null)}
+        onClose={() => setDetailOpen(false)}
       />
 
       <Sheet open={panelOpen} onOpenChange={setPanelOpen}>
         <SheetContent className="w-full gap-0 overflow-y-auto p-0 sm:max-w-md">
-          <SheetHeader className="border-b">
+          <SheetHeader className="border-b px-4 py-4">
             <SheetTitle>Filters</SheetTitle>
             <SheetDescription>
               {result.rows.length}{" "}
@@ -602,7 +711,7 @@ export function SchoolsExplorer({
               onChange={(p) => patch(p, "replace")}
             />
           )}
-          <SheetFooter className="sticky bottom-0 flex-row justify-between border-t bg-background">
+          <SheetFooter className="sticky bottom-0 flex-row justify-between border-t bg-popover">
             <Button variant="ghost" onClick={clearAll}>
               Clear all
             </Button>
@@ -613,6 +722,179 @@ export function SchoolsExplorer({
           </SheetFooter>
         </SheetContent>
       </Sheet>
+    </>
+  );
+
+  if (mapOnly) {
+    const toggleStatus = (s: MembershipStatus) =>
+      patch(
+        {
+          status: state.status.includes(s)
+            ? state.status.filter((v) => v !== s)
+            : [...state.status, s],
+        },
+        "replace",
+      );
+    return (
+      // The layout sets --app-header to its top bar height (public header 56px, dashboard 60px).
+      <div className="flex flex-col md:h-[calc(100svh_-_var(--app-header,56px))] md:flex-row">
+        <aside className="flex shrink-0 flex-col border-b bg-card md:min-h-0 md:w-[400px] md:border-r md:border-b-0">
+          <div className="flex flex-col gap-3 border-b p-5 pb-3">
+            <div className="flex items-baseline justify-between gap-3">
+              <h1 className="text-h2 font-semibold tracking-[-0.01em]">
+                {title}
+              </h1>
+              <p
+                aria-live="polite"
+                className="tabular shrink-0 text-[15px] text-muted-foreground"
+              >
+                {result.pending.length > 0 ? "Finding that place…" : resultCount}
+              </p>
+            </div>
+            {searchBar}
+            {statusOptions.length > 1 && (
+              <div
+                role="group"
+                aria-label="Membership status"
+                className="flex flex-wrap gap-1.5"
+              >
+                {statusOptions.map((s) => {
+                  const on = state.status.includes(s);
+                  return (
+                    <button
+                      key={s}
+                      type="button"
+                      aria-pressed={on}
+                      onClick={() => toggleStatus(s)}
+                      className={cn(
+                        "inline-flex h-8 items-center gap-2 rounded-md border px-2.5 text-[14px] font-medium transition-colors focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:outline-none",
+                        on
+                          ? "border-primary bg-[color-mix(in_oklch,var(--primary)_8%,var(--card))] text-foreground"
+                          : "border-input text-muted-foreground hover:bg-surface-2 hover:text-foreground",
+                      )}
+                    >
+                      <span
+                        aria-hidden
+                        className={cn(
+                          "size-2 shrink-0 rounded-full",
+                          STATUS_CHIP_DOT[s],
+                        )}
+                      />
+                      {STATUS_CHIP_LABEL[s]}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+            <div className="flex flex-wrap items-center gap-2">
+              {nearControls}
+              {filtersButton}
+              <div className="ml-auto">{moreMenu}</div>
+            </div>
+            {hasMessages && <div className="space-y-2">{messages}</div>}
+          </div>
+          <div className="max-h-[50svh] overflow-y-auto md:max-h-none md:min-h-0 md:flex-1">
+            {empty ? (
+              zeroResults
+            ) : (
+              <SchoolResultList
+                rows={result.rows}
+                atoms={atoms}
+                unit={unit}
+                selectedId={selectedId}
+                hoverId={hoverId}
+                onSelect={openSchool}
+                onHover={setHoverId}
+              />
+            )}
+          </div>
+          {actions && (
+            <div className="flex flex-wrap gap-2 border-t px-5 py-3">
+              {actions}
+            </div>
+          )}
+        </aside>
+
+        <div className="relative h-[70svh] min-h-112 bg-surface-2 md:h-auto md:min-w-0 md:flex-1">
+          <SchoolsMapLoader
+            rows={result.rows}
+            center={result.center}
+            selectedId={selectedId}
+            hoverId={hoverId}
+            initialView={state.map}
+            onSelect={openSchool}
+            onViewChange={onViewChange}
+            fitSignal={fitSignal}
+            autoFit={!state.bounds}
+            boundsActive={!!state.bounds}
+            onSearchArea={searchArea}
+            editing={null}
+            onEditMove={() => {}}
+            legendStatuses={statusOptions}
+          />
+
+        </div>
+        {overlays}
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      {statusCounts && (
+        <StatusTabs
+          value={state.status}
+          counts={statusCounts}
+          onChange={(status) => patch({ status })}
+        />
+      )}
+
+      <div className="rounded-lg border bg-card">
+        <div className="flex flex-wrap items-center gap-2 border-b px-4 py-3">
+          {searchBar}
+          {nearControls}
+          <FacetFilter
+            label="Region"
+            options={REGION_OPTIONS}
+            selected={state.region}
+            onChange={(region) => patch({ region }, "replace")}
+          />
+          <FacetFilter
+            label="Type"
+            options={TYPE_OPTIONS}
+            selected={state.type}
+            onChange={(type) => patch({ type }, "replace")}
+          />
+          {filtersButton}
+          {result.chips.length > 0 && (
+            <Button variant="ghost" size="sm" onClick={clearAll}>
+              Reset <XIcon />
+            </Button>
+          )}
+          <div className="ml-auto flex items-center gap-2">
+            {staff && result.rows.length > 0 && (
+              <Button variant="outline" size="sm" onClick={exportCsv}>
+                <DownloadIcon /> Export
+              </Button>
+            )}
+            {moreMenu}
+          </div>
+        </div>
+        {hasMessages && (
+          <div className="space-y-2 border-b px-4 py-3">{messages}</div>
+        )}
+
+        {empty ? (
+          zeroResults
+        ) : (
+          <SchoolsTable
+            rows={result.rows.map((r) => r.doc)}
+            total={docs.length}
+            pageKey={currentQs}
+          />
+        )}
+      </div>
+      {overlays}
     </div>
   );
 }

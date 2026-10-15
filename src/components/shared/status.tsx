@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 type Tone = "neutral" | "brand" | "success" | "warning" | "danger";
 
 const TONE: Record<Tone, string> = {
-  neutral: "bg-muted-foreground/50",
+  neutral: "border-[1.5px] border-member-none",
   brand: "bg-primary",
   success: "bg-success",
   warning: "bg-warning",
@@ -17,20 +17,23 @@ export function StatusDot({
   tone,
   children,
   className,
+  dotClassName,
 }: {
   tone: Tone;
   children: React.ReactNode;
   className?: string;
+  /** Overrides the tone's dot, e.g. membership colors. */
+  dotClassName?: string;
 }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 text-sm whitespace-nowrap",
+        "inline-flex items-center gap-2 text-[15px] whitespace-nowrap",
         className,
       )}
     >
       <span
-        className={cn("size-2 shrink-0 rounded-full", TONE[tone])}
+        className={cn("size-2 shrink-0 rounded-full", dotClassName ?? TONE[tone])}
         aria-hidden
       />
       {children}
@@ -45,9 +48,26 @@ const MEMBERSHIP: Record<MembershipStatus, [Tone, string]> = {
   non_member: ["neutral", "Not a member"],
 };
 
-export function MembershipStatusDot({ status }: { status: MembershipStatus }) {
+const MEMBER_DOT: Record<MembershipStatus, string> = {
+  active: "bg-member-active",
+  grace: "bg-member-grace",
+  lapsed: "bg-member-lapsed",
+  non_member: "border-[1.5px] border-member-none",
+};
+
+export function MembershipStatusDot({
+  status,
+  className,
+}: {
+  status: MembershipStatus;
+  className?: string;
+}) {
   const [tone, label] = MEMBERSHIP[status];
-  return <StatusDot tone={tone}>{label}</StatusDot>;
+  return (
+    <StatusDot tone={tone} dotClassName={MEMBER_DOT[status]} className={className}>
+      {label}
+    </StatusDot>
+  );
 }
 
 const FRESHNESS: Record<Freshness, [Tone, string]> = {

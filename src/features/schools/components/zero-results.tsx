@@ -1,5 +1,6 @@
 "use client";
 
+import { SearchXIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Chip } from "@/features/schools/search";
 
@@ -19,19 +20,30 @@ export function ZeroResults({
   onClear: () => void;
 }) {
   return (
-    <div className="space-y-4 rounded-xl px-6 py-12 text-center ring-1 ring-foreground/10">
-      <p className="font-medium">No schools match.</p>
-      {notes.map((n) => (
-        <p key={n} className="text-sm text-muted-foreground">
-          {n}
-        </p>
-      ))}
+    <div className="flex flex-col items-center gap-4 px-6 py-12 text-center">
+      <span className="grid size-14 place-items-center rounded-lg border bg-surface-2 text-muted-foreground">
+        <SearchXIcon className="size-7" strokeWidth={1.5} aria-hidden />
+      </span>
+      <div className="space-y-1">
+        <p className="font-semibold">No schools match.</p>
+        {notes.length > 0 ? (
+          notes.map((n) => (
+            <p key={n} className="text-[15px] text-muted-foreground">
+              {n}
+            </p>
+          ))
+        ) : (
+          <p className="text-[15px] text-muted-foreground">
+            Try fewer words or remove a filter.
+          </p>
+        )}
+      </div>
       {suggestion && (
-        <p className="text-sm">
+        <p className="text-[15px]">
           Did you mean{" "}
           <button
             type="button"
-            className="font-medium underline underline-offset-2"
+            className="font-medium text-link underline-offset-3 hover:underline"
             onClick={() => onSuggest(suggestion)}
           >
             {suggestion}
@@ -54,7 +66,7 @@ export function ZeroResults({
           ))}
         </div>
       )}
-      <Button variant="ghost" size="sm" onClick={onClear}>
+      <Button variant="outline" size="sm" onClick={onClear}>
         Clear all
       </Button>
     </div>

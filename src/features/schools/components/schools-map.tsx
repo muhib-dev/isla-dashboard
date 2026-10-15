@@ -21,23 +21,40 @@ import {
   useMap,
   useMapEvents,
 } from "react-leaflet";
-import { LocateFixedIcon } from "lucide-react";
+import { useTheme } from "next-themes";
+import { LocateFixedIcon, MinusIcon, PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import type { MembershipStatus } from "@/features/schools/schema";
 import type { Bounds } from "@/features/schools/search/geo";
 import type { MapView, ResultRow } from "@/features/schools/search";
 
+/** Design-token colors, resolved by the browser (pins are inline SVG in the page). */
 const STATUS_COLOR: Record<MembershipStatus, string> = {
-  active: "#16a34a",
-  grace: "#d97706",
-  lapsed: "#dc2626",
-  non_member: "#6b7280",
+  active: "var(--member-active)",
+  grace: "var(--member-grace)",
+  lapsed: "var(--member-lapsed)",
+  non_member: "var(--member-none)",
+};
+const ALL_STATUSES = Object.keys(STATUS_COLOR) as MembershipStatus[];
+const STATUS_BG: Record<MembershipStatus, string> = {
+  active: "bg-member-active",
+  grace: "bg-member-grace",
+  lapsed: "bg-member-lapsed",
+  non_member: "",
 };
 const STATUS_LABEL: Record<MembershipStatus, string> = {
-  active: "Active member",
-  grace: "Grace period",
+  active: "Active",
+  grace: "Grace",
   lapsed: "Lapsed",
   non_member: "Not a member",
+};
+
+/** Esri's quiet gray canvas basemaps, one per theme, so pins and clusters carry the color. */
+const TILE_URL = {
+  light:
+    "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+  dark: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
 };
 
 const US_CENTER: [number, number] = [39.5, -96];
@@ -81,55 +98,51 @@ if (!mapProto.__patched) {
   mapProto.__patched = true;
 }
 
-/** White glyph per status (lucide paths, 24-unit grid) so pins read without relying on color. */
-const STATUS_GLYPH: Record<MembershipStatus, string> = {
-  active: `<path d="M20 6 9 17l-5-5"/>`,
-  grace: `<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`,
-  lapsed: `<path d="M18 6 6 18M6 6l12 12"/>`,
-  non_member: `<path d="M6 12h12"/>`,
-};
-
-/** Teardrop pin: status color, white rim, drop shadow, glyph. Dashed and faded = approximate location. */
-function pinSvg(
-  status: MembershipStatus,
-  opts: { approximate: boolean; active: boolean; width: number },
-) {
-  const h = Math.round(opts.width * (36 / 28));
-  const rim = opts.active
-    ? `stroke="#111" stroke-width="2"`
-    : `stroke="#fff" stroke-width="2"${opts.approximate ? ` stroke-dasharray="3 2"` : ""}`;
-  return `<svg width="${opts.width}" height="${h}" viewBox="0 0 28 36" aria-hidden="true" style="display:block;overflow:visible;filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.45))"><path d="M14 1.5C7.1 1.5 1.5 6.9 1.5 13.6 1.5 22.6 14 34.5 14 34.5S26.5 22.6 26.5 13.6C26.5 6.9 20.9 1.5 14 1.5Z" fill="${STATUS_COLOR[status]}" fill-opacity="${opts.approximate ? 0.75 : 1}" ${rim}/><g transform="translate(6.5 6) scale(0.625)" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">${STATUS_GLYPH[status]}</g></svg>`;
+/**
+ * Round dot in the member color with a card-colored rim; the selected pin is larger with a focus
+ * ring. Non-members are hollow: card fill with a member-none ring drawn as an inset shadow.
+ */
+function pinHtml(status: MembershipStatus, size: number, selected: boolean) {
+  const rim = selected ? 4 : 3;
+  const shadow = selected
+    ? "0 0 0 3px var(--ring),0 1px 4px rgba(0,0,0,.35)"
+    : "0 1px 4px rgba(0,0,0,.35)";
+  const fill =
+    status === "non_member"
+      ? `background:var(--card);box-shadow:inset 0 0 0 3px var(--member-none),${shadow}`
+      : `background:${STATUS_COLOR[status]};box-shadow:${shadow}`;
+  return `<span aria-hidden="true" style="display:block;box-sizing:border-box;width:${size}px;height:${size}px;border-radius:9999px;border:${rim}px solid var(--card);${fill}"></span>`;
 }
 
 const iconCache = new Map<string, L.DivIcon>();
 
-function pin(
-  status: MembershipStatus,
-  opts: { approximate: boolean; active: boolean },
-) {
-  const key = `${status}:${opts.approximate}:${opts.active}`;
+function pin(status: MembershipStatus, mode: "rest" | "hover" | "selected") {
+  const key = `${status}:${mode}`;
   let icon = iconCache.get(key);
   if (!icon) {
-    const w = opts.active ? 34 : 26;
-    const h = Math.round(w * (36 / 28));
+    const size = mode === "selected" ? 28 : mode === "hover" ? 24 : 20;
     icon = L.divIcon({
       className: "",
-      iconSize: [w, h],
-      iconAnchor: [w / 2, h - 1], // the tip sits on the location
-      html: pinSvg(status, { ...opts, width: w }),
+      iconSize: [size, size],
+      iconAnchor: [size / 2, size / 2],
+      html: pinHtml(status, size, mode === "selected"),
     });
     iconCache.set(key, icon);
   }
   return icon;
 }
 
+/** Navy circle with a soft 5px halo and the count in 600. */
+const CLUSTER_STYLE =
+  "border-radius:9999px;display:grid;place-items:center;background:var(--primary);color:var(--primary-foreground);font-weight:600;font-size:14px;line-height:1;box-shadow:0 0 0 5px color-mix(in oklch, var(--primary) 22%, transparent),0 2px 6px rgba(0,0,0,.2)";
+
 function clusterIcon(cluster: L.MarkerCluster) {
   const n = cluster.getChildCount();
-  const size = n < 10 ? 34 : n < 100 ? 40 : 46;
+  const size = n > 100 ? 52 : n > 50 ? 44 : 38;
   return L.divIcon({
     className: "",
     iconSize: [size, size],
-    html: `<div style="width:${size}px;height:${size}px;border-radius:9999px;display:grid;place-items:center;background:#1e3a8a;color:#fff;font:600 13px system-ui;border:3px solid rgba(255,255,255,.9);box-shadow:0 1px 4px rgba(0,0,0,.35)">${n}</div>`,
+    html: `<div style="width:${size}px;height:${size}px;${CLUSTER_STYLE}">${n}</div>`,
   });
 }
 
@@ -297,7 +310,7 @@ function EditPin({
   return (
     <Marker
       position={[editing.lat, editing.lng]}
-      icon={pin(editing.status, { approximate: false, active: true })}
+      icon={pin(editing.status, "selected")}
       draggable
       zIndexOffset={1000}
       title="Drag to the exact location"
@@ -338,6 +351,8 @@ export type SchoolsMapProps = {
     status: MembershipStatus;
   } | null;
   onEditMove: (lat: number, lng: number) => void;
+  /** Statuses to explain in the legend (the public map only has members and non-members). */
+  legendStatuses?: MembershipStatus[];
 };
 
 export default function SchoolsMap({
@@ -354,7 +369,10 @@ export default function SchoolsMap({
   onSearchArea,
   editing,
   onEditMove,
+  legendStatuses = ALL_STATUSES,
 }: SchoolsMapProps) {
+  const { resolvedTheme } = useTheme();
+  const [map, setMap] = useState<L.Map | null>(null);
   const [moved, setMoved] = useState<Bounds | null>(null);
   // On-map "Recenter" adds to the parent's fit signal (the ⋯ menu's "Fit map to results").
   const [recenter, setRecenter] = useState(0);
@@ -396,14 +414,16 @@ export default function SchoolsMap({
     : 0;
 
   return (
-    <div className="relative isolate z-0 size-full min-h-72 overflow-hidden rounded-xl ring-1 ring-foreground/10">
+    <div className="relative isolate z-0 size-full min-h-72 overflow-hidden">
       <MapContainer
+        ref={setMap}
         center={initialView ? [initialView.lat, initialView.lng] : US_CENTER}
         zoom={initialView?.zoom ?? 4}
         minZoom={2}
+        maxZoom={16}
         scrollWheelZoom
         className="size-full"
-        zoomControl
+        zoomControl={false}
         // Animations keep running after React unmounts the map (switching views, leaving the page)
         // and throw from inside Leaflet. Instant moves are also friendlier to reduced-motion users.
         zoomAnimation={false}
@@ -413,9 +433,9 @@ export default function SchoolsMap({
       >
         <StopOnUnmount />
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-          maxZoom={19}
+          attribution="Tiles &copy; Esri"
+          url={TILE_URL[resolvedTheme === "dark" ? "dark" : "light"]}
+          maxZoom={16}
           eventHandlers={{
             tileerror: () => setTilesFailed(true),
             tileload: () => setTilesFailed(false),
@@ -434,7 +454,12 @@ export default function SchoolsMap({
           <Circle
             center={[center.lat, center.lng]}
             radius={radiusMeters}
-            pathOptions={{ color: "#1e3a8a", weight: 1.5, fillOpacity: 0.06 }}
+            // Token colors via CSS classes; they override Leaflet's stroke/fill attributes.
+            pathOptions={{
+              className: "stroke-primary fill-primary",
+              weight: 1.5,
+              fillOpacity: 0.06,
+            }}
           />
         )}
         <MarkerClusterGroup
@@ -450,10 +475,15 @@ export default function SchoolsMap({
             <Marker
               key={doc.id}
               position={[doc.lat!, doc.lng!]}
-              icon={pin(doc.membership.status, {
-                approximate: doc.precision !== "rooftop",
-                active: doc.id === selectedId || doc.id === hoverId,
-              })}
+              icon={pin(
+                doc.membership.status,
+                doc.id === selectedId
+                  ? "selected"
+                  : doc.id === hoverId
+                    ? "hover"
+                    : "rest",
+              )}
+              zIndexOffset={doc.id === selectedId ? 1000 : 0}
               title={`${doc.name}, ${doc.city}, ${doc.state}`}
               alt={`${doc.name}, ${doc.city}`}
               eventHandlers={{
@@ -468,46 +498,77 @@ export default function SchoolsMap({
         </MarkerClusterGroup>
       </MapContainer>
 
-      <div className="pointer-events-none absolute right-2 bottom-6 z-1000 hidden flex-col gap-1 rounded-lg bg-background/90 px-2.5 py-2 text-xs shadow ring-1 ring-foreground/10 sm:flex">
-        {(Object.keys(STATUS_COLOR) as MembershipStatus[]).map((s) => (
-          <span key={s} className="flex items-center gap-1.5">
+      <div
+        className={cn(
+          "pointer-events-none absolute bottom-6 left-4 z-1000 hidden flex-wrap items-center gap-x-4 gap-y-1.5 rounded-md border bg-card px-3 py-2 text-[13px] font-medium shadow-sm sm:flex",
+        )}
+      >
+        <span className="flex items-center gap-2">
+          <span
+            aria-hidden
+            className="grid size-4.5 shrink-0 place-items-center rounded-full bg-primary text-[10px] leading-none font-semibold text-primary-foreground"
+          >
+            12
+          </span>
+          Cluster
+        </span>
+        {legendStatuses.map((s) => (
+          <span key={s} className="flex items-center gap-2">
             <span
-              className="shrink-0"
-              dangerouslySetInnerHTML={{
-                __html: pinSvg(s, {
-                  approximate: false,
-                  active: false,
-                  width: 14,
-                }),
-              }}
+              aria-hidden
+              className={cn(
+                "size-2.5 shrink-0 rounded-full",
+                s === "non_member"
+                  ? "border-[1.5px] border-member-none"
+                  : STATUS_BG[s],
+              )}
             />
             {STATUS_LABEL[s]}
           </span>
         ))}
-        <span className="mt-0.5 border-t pt-1 text-muted-foreground">
-          Faded, dashed pin = approximate location
-        </span>
       </div>
 
-      {/* Sits under Leaflet's zoom buttons (top-left, 10px inset) and matches their size. */}
-      <Button
-        type="button"
-        variant="outline"
-        size="icon"
-        className="absolute top-20.5 left-2.5 z-1000 size-8.5 rounded-sm bg-background shadow-sm"
-        aria-label="Recenter map on results"
-        title="Recenter on results"
-        onClick={() => setRecenter((n) => n + 1)}
-      >
-        <LocateFixedIcon />
-      </Button>
+      <div className="absolute top-4 right-4 z-1000 flex flex-col gap-2">
+        <div className="flex flex-col overflow-hidden rounded-md border bg-card shadow-sm">
+          <button
+            type="button"
+            className="grid size-10 place-items-center text-foreground transition-colors hover:bg-accent disabled:opacity-50"
+            aria-label="Zoom in"
+            title="Zoom in"
+            disabled={!map}
+            onClick={() => map?.zoomIn()}
+          >
+            <PlusIcon className="size-4.5" />
+          </button>
+          <span aria-hidden className="h-px bg-border" />
+          <button
+            type="button"
+            className="grid size-10 place-items-center text-foreground transition-colors hover:bg-accent disabled:opacity-50"
+            aria-label="Zoom out"
+            title="Zoom out"
+            disabled={!map}
+            onClick={() => map?.zoomOut()}
+          >
+            <MinusIcon className="size-4.5" />
+          </button>
+        </div>
+        <button
+          type="button"
+          className="grid size-10 place-items-center rounded-md border bg-card text-foreground shadow-sm transition-colors hover:bg-accent"
+          aria-label="Recenter map on results"
+          title="Recenter on results"
+          onClick={() => setRecenter((n) => n + 1)}
+        >
+          <LocateFixedIcon className="size-4.5" />
+        </button>
+      </div>
 
       {moved && (
         <div className="absolute top-3 left-1/2 z-1000 -translate-x-1/2">
           <Button
             type="button"
             size="sm"
-            className="shadow"
+            className="shadow-md"
             onClick={() => {
               onSearchArea(moved);
               setMoved(null);
@@ -521,7 +582,7 @@ export default function SchoolsMap({
       {tilesFailed && (
         <div
           role="status"
-          className="absolute inset-x-2 top-2 z-1000 rounded-lg bg-warning/15 px-3 py-2 text-sm ring-1 ring-warning/40"
+          className="absolute top-4 right-18 left-4 z-1000 rounded-lg border border-[color-mix(in_oklch,var(--warning)_25%,var(--border))] bg-warning-subtle px-3 py-2 text-sm"
         >
           Map tiles couldn’t load. Check your connection — the list still works.
         </div>

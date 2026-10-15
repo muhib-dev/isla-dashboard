@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { PageBody, PageHeader } from "@/components/layout/page-header";
 import { PageSkeleton } from "@/components/shared/skeletons";
+import {
+  ExportBenchmarks,
+  RangeControl,
+} from "@/features/analytics/components/analytics-actions";
 import { PeerFilterControls } from "@/features/analytics/components/peer-filter";
+import { parseRange } from "@/features/analytics/components/range";
 import { RegionOverview } from "@/features/analytics/components/region-overview";
+import { describePeers } from "@/features/analytics/components/peer-summary";
 import { SchoolComparison } from "@/features/analytics/components/school-comparison";
+import { compareSchool } from "@/features/analytics/queries";
 import { PeerFilterSchema } from "@/features/analytics/schema";
 import { getSchool, listSchools } from "@/features/schools/queries";
 import { getSession } from "@/server/session";
@@ -42,20 +49,34 @@ async function Analytics({
   const peerFilter = peers.success
     ? peers.data
     : { region: "all" as const, size: "any" as const };
+  const years = parseRange(params.years);
 
   if (session.role === "school") {
+    const comparison = await compareSchool(schoolId!, peerFilter);
     return (
       <>
         <PageHeader
           title="Analytics"
-          description="See how your school compares with similar schools. Pick a region and size to change the comparison."
+          description={describePeers(comparison.peerCount, peerFilter)}
+          actions={
+            <>
+              <RangeControl value={years} />
+              <PeerFilterControls value={{ ...peerFilter, school: schoolId! }} />
+              {school && comparison.peerCount > 0 && (
+                <ExportBenchmarks comparison={comparison} schoolName={school.name} />
+              )}
+            </>
+          }
         />
-        <SchoolComparison schoolId={schoolId!} peers={peerFilter} />
+        <SchoolComparison schoolId={schoolId!} peers={peerFilter} years={years} />
       </>
     );
   }
 
-  const schools = await listSchools({});
+  const [schools, comparison] = await Promise.all([
+    listSchools({}),
+    school ? compareSchool(school.id, peerFilter) : null,
+  ]);
   const options = schools.map((s) => ({ id: s.id, name: s.name }));
 
   return (
@@ -63,17 +84,29 @@ async function Analytics({
       <PageHeader
         title="Analytics"
         description="Compare regions across the network, or pick a school to compare it with its peers."
+        actions={
+          <>
+            {school && <RangeControl value={years} />}
+            <PeerFilterControls
+              value={
+                school
+                  ? { ...peerFilter, school: school.id }
+                  : { region: "all", size: "any" }
+              }
+              schools={options}
+            />
+            {school && comparison && comparison.peerCount > 0 && (
+              <ExportBenchmarks comparison={comparison} schoolName={school.name} />
+            )}
+          </>
+        }
       />
-      {school ? (
+      {school && (
         <SchoolComparison
           schoolId={school.id}
           peers={peerFilter}
-          schoolOptions={options}
-        />
-      ) : (
-        <PeerFilterControls
-          value={{ region: "all", size: "any" }}
-          schools={options}
+          years={years}
+          showHeading
         />
       )}
       <RegionOverview />

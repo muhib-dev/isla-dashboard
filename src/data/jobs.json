@@ -6,8 +6,9 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-09-22",
-    "applicants": 14
+    "postedOn": "2026-08-21",
+    "applicants": 14,
+    "views": 381
   },
   {
     "id": "job_302",
@@ -16,8 +17,10 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
+    "featured": true,
     "postedOn": "2026-09-30",
-    "applicants": 9
+    "applicants": 9,
+    "views": 467
   },
   {
     "id": "job_303",
@@ -27,7 +30,8 @@
     "type": "part_time",
     "status": "open",
     "postedOn": "2026-10-03",
-    "applicants": 4
+    "applicants": 4,
+    "views": 153
   },
   {
     "id": "job_304",
@@ -37,7 +41,8 @@
     "type": "full_time",
     "status": "filled",
     "postedOn": "2026-05-12",
-    "applicants": 22
+    "applicants": 22,
+    "views": 930
   },
   {
     "id": "job_305",
@@ -46,8 +51,9 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-02-18",
-    "applicants": 17
+    "postedOn": "2026-09-19",
+    "applicants": 17,
+    "views": 364
   },
   {
     "id": "job_306",
@@ -56,8 +62,9 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-07-14",
-    "applicants": 27
+    "postedOn": "2026-09-18",
+    "applicants": 27,
+    "views": 710
   },
   {
     "id": "job_307",
@@ -67,7 +74,8 @@
     "type": "part_time",
     "status": "filled",
     "postedOn": "2026-05-27",
-    "applicants": 4
+    "applicants": 4,
+    "views": 133
   },
   {
     "id": "job_308",
@@ -76,8 +84,9 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-07-25",
-    "applicants": 18
+    "postedOn": "2026-09-16",
+    "applicants": 18,
+    "views": 658
   },
   {
     "id": "job_309",
@@ -86,8 +95,10 @@
     "category": "teaching",
     "type": "part_time",
     "status": "open",
-    "postedOn": "2026-07-04",
-    "applicants": 5
+    "featured": true,
+    "postedOn": "2026-09-15",
+    "applicants": 5,
+    "views": 346
   },
   {
     "id": "job_310",
@@ -97,7 +108,8 @@
     "type": "full_time",
     "status": "filled",
     "postedOn": "2026-08-27",
-    "applicants": 13
+    "applicants": 13,
+    "views": 286
   },
   {
     "id": "job_311",
@@ -106,8 +118,9 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-07-04",
-    "applicants": 18
+    "postedOn": "2026-08-23",
+    "applicants": 18,
+    "views": 482
   },
   {
     "id": "job_312",
@@ -116,8 +129,9 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-03-10",
-    "applicants": 21
+    "postedOn": "2026-08-22",
+    "applicants": 21,
+    "views": 666
   },
   {
     "id": "job_313",
@@ -126,8 +140,9 @@
     "category": "student_services",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-04-11",
-    "applicants": 0
+    "postedOn": "2026-08-21",
+    "applicants": 0,
+    "views": 16
   },
   {
     "id": "job_314",
@@ -137,7 +152,8 @@
     "type": "part_time",
     "status": "filled",
     "postedOn": "2026-03-28",
-    "applicants": 24
+    "applicants": 24,
+    "views": 1001
   },
   {
     "id": "job_315",
@@ -146,8 +162,9 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-08-15",
-    "applicants": 12
+    "postedOn": "2026-08-19",
+    "applicants": 12,
+    "views": 258
   },
   {
     "id": "job_316",
@@ -157,7 +174,8 @@
     "type": "full_time",
     "status": "open",
     "postedOn": "2026-05-05",
-    "applicants": 3
+    "applicants": 3,
+    "views": 94
   },
   {
     "id": "job_317",
@@ -166,8 +184,9 @@
     "category": "student_services",
     "type": "part_time",
     "status": "open",
-    "postedOn": "2026-05-18",
-    "applicants": 16
+    "postedOn": "2026-10-13",
+    "applicants": 16,
+    "views": 480
   },
   {
     "id": "job_318",
@@ -176,8 +195,9 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-06-06",
-    "applicants": 3
+    "postedOn": "2026-10-12",
+    "applicants": 3,
+    "views": 106
   },
   {
     "id": "job_319",
@@ -186,8 +206,9 @@
     "category": "student_services",
     "type": "part_time",
     "status": "open",
-    "postedOn": "2026-03-17",
-    "applicants": 24
+    "postedOn": "2026-10-11",
+    "applicants": 24,
+    "views": 962
   },
   {
     "id": "job_320",
@@ -196,8 +217,9 @@
     "category": "leadership",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-06-10",
-    "applicants": 29
+    "postedOn": "2026-09-19",
+    "applicants": 29,
+    "views": 584
   },
   {
     "id": "job_321",
@@ -207,7 +229,8 @@
     "type": "full_time",
     "status": "filled",
     "postedOn": "2026-06-09",
-    "applicants": 30
+    "applicants": 30,
+    "views": 755
   },
   {
     "id": "job_322",
@@ -216,8 +239,9 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-07-28",
-    "applicants": 8
+    "postedOn": "2026-09-17",
+    "applicants": 8,
+    "views": 246
   },
   {
     "id": "job_323",
@@ -226,8 +250,10 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
+    "featured": true,
     "postedOn": "2026-09-03",
-    "applicants": 20
+    "applicants": 20,
+    "views": 1131
   },
   {
     "id": "job_324",
@@ -236,8 +262,9 @@
     "category": "teaching",
     "type": "part_time",
     "status": "open",
-    "postedOn": "2026-01-11",
-    "applicants": 17
+    "postedOn": "2026-09-15",
+    "applicants": 17,
+    "views": 688
   },
   {
     "id": "job_325",
@@ -247,7 +274,8 @@
     "type": "full_time",
     "status": "filled",
     "postedOn": "2026-04-22",
-    "applicants": 1
+    "applicants": 1,
+    "views": 54
   },
   {
     "id": "job_326",
@@ -256,8 +284,9 @@
     "category": "leadership",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-07-25",
-    "applicants": 22
+    "postedOn": "2026-09-13",
+    "applicants": 22,
+    "views": 538
   },
   {
     "id": "job_327",
@@ -266,8 +295,9 @@
     "category": "leadership",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-01-16",
-    "applicants": 12
+    "postedOn": "2026-09-12",
+    "applicants": 12,
+    "views": 359
   },
   {
     "id": "job_328",
@@ -277,7 +307,8 @@
     "type": "full_time",
     "status": "filled",
     "postedOn": "2026-05-14",
-    "applicants": 1
+    "applicants": 1,
+    "views": 46
   },
   {
     "id": "job_329",
@@ -287,7 +318,8 @@
     "type": "part_time",
     "status": "open",
     "postedOn": "2026-06-28",
-    "applicants": 2
+    "applicants": 2,
+    "views": 91
   },
   {
     "id": "job_330",
@@ -296,8 +328,9 @@
     "category": "teaching",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-02-26",
-    "applicants": 10
+    "postedOn": "2026-08-19",
+    "applicants": 10,
+    "views": 465
   },
   {
     "id": "job_331",
@@ -307,7 +340,8 @@
     "type": "part_time",
     "status": "filled",
     "postedOn": "2026-03-24",
-    "applicants": 24
+    "applicants": 24,
+    "views": 592
   },
   {
     "id": "job_332",
@@ -316,8 +350,9 @@
     "category": "operations",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-04-17",
-    "applicants": 3
+    "postedOn": "2026-10-13",
+    "applicants": 3,
+    "views": 104
   },
   {
     "id": "job_333",
@@ -326,8 +361,9 @@
     "category": "leadership",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-03-21",
-    "applicants": 11
+    "postedOn": "2026-10-12",
+    "applicants": 11,
+    "views": 392
   },
   {
     "id": "job_334",
@@ -336,8 +372,9 @@
     "category": "leadership",
     "type": "full_time",
     "status": "open",
-    "postedOn": "2026-01-25",
-    "applicants": 24
+    "postedOn": "2026-10-11",
+    "applicants": 24,
+    "views": 955
   },
   {
     "id": "job_335",
@@ -346,7 +383,871 @@
     "category": "teaching",
     "type": "part_time",
     "status": "open",
-    "postedOn": "2026-07-14",
-    "applicants": 4
+    "postedOn": "2026-10-10",
+    "applicants": 4,
+    "views": 176
+  },
+  {
+    "id": "job_336",
+    "schoolId": "riverbend-islamic-school",
+    "title": "Head of School",
+    "category": "leadership",
+    "type": "part_time",
+    "status": "open",
+    "postedOn": "2026-10-02",
+    "applicants": 31,
+    "views": 714
+  },
+  {
+    "id": "job_337",
+    "schoolId": "riverbend-islamic-school",
+    "title": "Admissions Officer",
+    "category": "operations",
+    "type": "full_time",
+    "status": "open",
+    "featured": true,
+    "postedOn": "2026-10-08",
+    "applicants": 44,
+    "views": 1974
+  },
+  {
+    "id": "job_338",
+    "schoolId": "riverbend-islamic-school",
+    "title": "English Language Arts Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-10-07",
+    "applicants": 11,
+    "views": 366
+  },
+  {
+    "id": "job_339",
+    "schoolId": "nasr-academy",
+    "title": "Elementary Teacher (Grade 3)",
+    "category": "teaching",
+    "type": "part_time",
+    "status": "open",
+    "postedOn": "2026-10-06",
+    "applicants": 28,
+    "views": 1068
+  },
+  {
+    "id": "job_340",
+    "schoolId": "nasr-academy",
+    "title": "Elementary Teacher (Grade 3)",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-07-04",
+    "applicants": 26,
+    "views": 1150
+  },
+  {
+    "id": "job_341",
+    "schoolId": "oasis-learning-academy",
+    "title": "Head of School",
+    "category": "leadership",
+    "type": "part_time",
+    "status": "filled",
+    "postedOn": "2026-05-01",
+    "applicants": 42,
+    "views": 973
+  },
+  {
+    "id": "job_342",
+    "schoolId": "oasis-learning-academy",
+    "title": "Arabic Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-12",
+    "applicants": 13,
+    "views": 372
+  },
+  {
+    "id": "job_343",
+    "schoolId": "hudson-valley-islamic-academy",
+    "title": "Quran & Islamic Studies Teacher",
+    "category": "teaching",
+    "type": "part_time",
+    "status": "open",
+    "postedOn": "2026-09-11",
+    "applicants": 50,
+    "views": 1659
+  },
+  {
+    "id": "job_344",
+    "schoolId": "hudson-valley-islamic-academy",
+    "title": "Quran & Islamic Studies Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-12",
+    "applicants": 55,
+    "views": 2100
+  },
+  {
+    "id": "job_345",
+    "schoolId": "hudson-valley-islamic-academy",
+    "title": "High School Science Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "closed",
+    "postedOn": "2026-09-04",
+    "applicants": 30,
+    "views": 1301
+  },
+  {
+    "id": "job_346",
+    "schoolId": "garden-state-prep",
+    "title": "Admissions Officer",
+    "category": "operations",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-05",
+    "applicants": 14,
+    "views": 320
+  },
+  {
+    "id": "job_347",
+    "schoolId": "garden-state-prep",
+    "title": "Middle School Math Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-08-14",
+    "applicants": 6,
+    "views": 175
+  },
+  {
+    "id": "job_348",
+    "schoolId": "garden-state-prep",
+    "title": "Front Office Coordinator",
+    "category": "operations",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-04",
+    "applicants": 5,
+    "views": 174
+  },
+  {
+    "id": "job_349",
+    "schoolId": "liberty-crescent-school",
+    "title": "Head of School",
+    "category": "leadership",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-07-05",
+    "applicants": 32,
+    "views": 1199
+  },
+  {
+    "id": "job_350",
+    "schoolId": "liberty-crescent-school",
+    "title": "Elementary Teacher (Grade 3)",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-07-09",
+    "applicants": 49,
+    "views": 2124
+  },
+  {
+    "id": "job_351",
+    "schoolId": "liberty-crescent-school",
+    "title": "Arabic Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-08-08",
+    "applicants": 25,
+    "views": 568
+  },
+  {
+    "id": "job_352",
+    "schoolId": "lakefront-academy",
+    "title": "Head of School",
+    "category": "leadership",
+    "type": "part_time",
+    "status": "open",
+    "postedOn": "2026-09-07",
+    "applicants": 50,
+    "views": 1369
+  },
+  {
+    "id": "job_353",
+    "schoolId": "pioneer-valley-school",
+    "title": "English Language Arts Teacher",
+    "category": "teaching",
+    "type": "part_time",
+    "status": "open",
+    "postedOn": "2026-10-07",
+    "applicants": 2,
+    "views": 64
+  },
+  {
+    "id": "job_354",
+    "schoolId": "pioneer-valley-school",
+    "title": "Learning Support Assistant",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "closed",
+    "postedOn": "2026-10-11",
+    "applicants": 34,
+    "views": 1259
+  },
+  {
+    "id": "job_355",
+    "schoolId": "charter-oak-islamic-school",
+    "title": "Admissions Officer",
+    "category": "operations",
+    "type": "full_time",
+    "status": "open",
+    "featured": true,
+    "postedOn": "2026-10-05",
+    "applicants": 9,
+    "views": 608
+  },
+  {
+    "id": "job_356",
+    "schoolId": "charter-oak-islamic-school",
+    "title": "Middle School Math Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-09",
+    "applicants": 49,
+    "views": 1032
+  },
+  {
+    "id": "job_357",
+    "schoolId": "three-rivers-academy",
+    "title": "Front Office Coordinator",
+    "category": "operations",
+    "type": "part_time",
+    "status": "filled",
+    "postedOn": "2026-10-03",
+    "applicants": 53,
+    "views": 1382
+  },
+  {
+    "id": "job_358",
+    "schoolId": "chesapeake-crescent-school",
+    "title": "Elementary Teacher (Grade 3)",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-10-02",
+    "applicants": 50,
+    "views": 1555
+  },
+  {
+    "id": "job_359",
+    "schoolId": "chesapeake-crescent-school",
+    "title": "Arabic Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-10-01",
+    "applicants": 12,
+    "views": 438
+  },
+  {
+    "id": "job_360",
+    "schoolId": "chesapeake-crescent-school",
+    "title": "English Language Arts Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-09",
+    "applicants": 31,
+    "views": 1310
+  },
+  {
+    "id": "job_361",
+    "schoolId": "james-river-academy",
+    "title": "High School Science Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-08",
+    "applicants": 6,
+    "views": 135
+  },
+  {
+    "id": "job_362",
+    "schoolId": "james-river-academy",
+    "title": "Head of School",
+    "category": "leadership",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-07",
+    "applicants": 10,
+    "views": 270
+  },
+  {
+    "id": "job_363",
+    "schoolId": "magnolia-school",
+    "title": "School Counselor",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "closed",
+    "postedOn": "2026-06-13",
+    "applicants": 55,
+    "views": 1716
+  },
+  {
+    "id": "job_364",
+    "schoolId": "gulf-coast-academy",
+    "title": "School Counselor",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-07-02",
+    "applicants": 30,
+    "views": 1092
+  },
+  {
+    "id": "job_365",
+    "schoolId": "first-coast-islamic-school",
+    "title": "Learning Support Assistant",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-05-10",
+    "applicants": 12,
+    "views": 505
+  },
+  {
+    "id": "job_366",
+    "schoolId": "first-coast-islamic-school",
+    "title": "English Language Arts Teacher",
+    "category": "teaching",
+    "type": "part_time",
+    "status": "open",
+    "postedOn": "2026-09-03",
+    "applicants": 22,
+    "views": 454
+  },
+  {
+    "id": "job_367",
+    "schoolId": "triangle-prep",
+    "title": "Learning Support Assistant",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-02",
+    "applicants": 38,
+    "views": 965
+  },
+  {
+    "id": "job_368",
+    "schoolId": "triangle-prep",
+    "title": "Special Education Coordinator",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-07-04",
+    "applicants": 45,
+    "views": 1366
+  },
+  {
+    "id": "job_369",
+    "schoolId": "bluff-city-academy",
+    "title": "Arabic Teacher",
+    "category": "teaching",
+    "type": "part_time",
+    "status": "open",
+    "postedOn": "2026-09-03",
+    "applicants": 19,
+    "views": 682
+  },
+  {
+    "id": "job_370",
+    "schoolId": "bluegrass-crescent-school",
+    "title": "PE Coach",
+    "category": "teaching",
+    "type": "part_time",
+    "status": "closed",
+    "postedOn": "2026-09-05",
+    "applicants": 56,
+    "views": 2315
+  },
+  {
+    "id": "job_371",
+    "schoolId": "bluegrass-crescent-school",
+    "title": "Learning Support Assistant",
+    "category": "student_services",
+    "type": "part_time",
+    "status": "open",
+    "featured": true,
+    "postedOn": "2026-10-04",
+    "applicants": 37,
+    "views": 1184
+  },
+  {
+    "id": "job_372",
+    "schoolId": "crescent-city-academy",
+    "title": "Assistant Principal",
+    "category": "leadership",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-10-03",
+    "applicants": 4,
+    "views": 101
+  },
+  {
+    "id": "job_373",
+    "schoolId": "crescent-city-academy",
+    "title": "High School Science Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-10-02",
+    "applicants": 4,
+    "views": 122
+  },
+  {
+    "id": "job_374",
+    "schoolId": "crescent-city-academy",
+    "title": "Learning Support Assistant",
+    "category": "student_services",
+    "type": "part_time",
+    "status": "open",
+    "postedOn": "2026-10-01",
+    "applicants": 33,
+    "views": 1158
+  },
+  {
+    "id": "job_375",
+    "schoolId": "lake-erie-school",
+    "title": "Special Education Coordinator",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-07-07",
+    "applicants": 5,
+    "views": 204
+  },
+  {
+    "id": "job_376",
+    "schoolId": "lake-erie-school",
+    "title": "Front Office Coordinator",
+    "category": "operations",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-07-01",
+    "applicants": 14,
+    "views": 635
+  },
+  {
+    "id": "job_377",
+    "schoolId": "circle-city-academy",
+    "title": "Special Education Coordinator",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-28",
+    "applicants": 2,
+    "views": 54
+  },
+  {
+    "id": "job_378",
+    "schoolId": "brew-city-islamic-school",
+    "title": "PE Coach",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-09-01",
+    "applicants": 20,
+    "views": 587
+  },
+  {
+    "id": "job_379",
+    "schoolId": "brew-city-islamic-school",
+    "title": "Elementary Teacher (Grade 3)",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-26",
+    "applicants": 27,
+    "views": 926
+  },
+  {
+    "id": "job_380",
+    "schoolId": "brew-city-islamic-school",
+    "title": "PE Coach",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-08-06",
+    "applicants": 3,
+    "views": 130
+  },
+  {
+    "id": "job_381",
+    "schoolId": "heartland-crescent-school",
+    "title": "High School Science Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-03",
+    "applicants": 20,
+    "views": 911
+  },
+  {
+    "id": "job_382",
+    "schoolId": "heartland-crescent-school",
+    "title": "Front Office Coordinator",
+    "category": "operations",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-02",
+    "applicants": 5,
+    "views": 132
+  },
+  {
+    "id": "job_383",
+    "schoolId": "heartland-crescent-school",
+    "title": "Admissions Officer",
+    "category": "operations",
+    "type": "part_time",
+    "status": "closed",
+    "postedOn": "2026-08-09",
+    "applicants": 34,
+    "views": 999
+  },
+  {
+    "id": "job_384",
+    "schoolId": "golden-gate-islamic-school",
+    "title": "Assistant Principal",
+    "category": "leadership",
+    "type": "part_time",
+    "status": "open",
+    "postedOn": "2026-08-31",
+    "applicants": 54,
+    "views": 1850
+  },
+  {
+    "id": "job_385",
+    "schoolId": "wasatch-academy",
+    "title": "PE Coach",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-08-30",
+    "applicants": 2,
+    "views": 93
+  },
+  {
+    "id": "job_386",
+    "schoolId": "aloha-crescent-school",
+    "title": "Assistant Principal",
+    "category": "leadership",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-07-08",
+    "applicants": 49,
+    "views": 2172
+  },
+  {
+    "id": "job_387",
+    "schoolId": "aloha-crescent-school",
+    "title": "Assistant Principal",
+    "category": "leadership",
+    "type": "part_time",
+    "status": "open",
+    "featured": true,
+    "postedOn": "2026-10-09",
+    "applicants": 47,
+    "views": 1757
+  },
+  {
+    "id": "job_388",
+    "schoolId": "northern-lights-school",
+    "title": "Arabic Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-08-27",
+    "applicants": 36,
+    "views": 1026
+  },
+  {
+    "id": "job_389",
+    "schoolId": "peel-crescent-academy",
+    "title": "Assistant Principal",
+    "category": "leadership",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-06-13",
+    "applicants": 21,
+    "views": 712
+  },
+  {
+    "id": "job_390",
+    "schoolId": "peel-crescent-academy",
+    "title": "High School Science Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-30",
+    "applicants": 2,
+    "views": 79
+  },
+  {
+    "id": "job_391",
+    "schoolId": "steeltown-academy",
+    "title": "High School Science Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "closed",
+    "postedOn": "2026-06-01",
+    "applicants": 14,
+    "views": 618
+  },
+  {
+    "id": "job_392",
+    "schoolId": "forest-city-prep",
+    "title": "English Language Arts Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-14",
+    "applicants": 52,
+    "views": 1199
+  },
+  {
+    "id": "job_393",
+    "schoolId": "forest-city-prep",
+    "title": "School Counselor",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-27",
+    "applicants": 9,
+    "views": 256
+  },
+  {
+    "id": "job_394",
+    "schoolId": "vieux-port-academy",
+    "title": "School Counselor",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-26",
+    "applicants": 37,
+    "views": 1226
+  },
+  {
+    "id": "job_395",
+    "schoolId": "river-valley-school",
+    "title": "Front Office Coordinator",
+    "category": "operations",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-07-03",
+    "applicants": 2,
+    "views": 82
+  },
+  {
+    "id": "job_396",
+    "schoolId": "river-valley-school",
+    "title": "PE Coach",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-24",
+    "applicants": 30,
+    "views": 1297
+  },
+  {
+    "id": "job_397",
+    "schoolId": "river-valley-school",
+    "title": "English Language Arts Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-23",
+    "applicants": 25,
+    "views": 558
+  },
+  {
+    "id": "job_398",
+    "schoolId": "coastal-crescent-academy",
+    "title": "Assistant Principal",
+    "category": "leadership",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-22",
+    "applicants": 31,
+    "views": 846
+  },
+  {
+    "id": "job_399",
+    "schoolId": "coastal-crescent-academy",
+    "title": "High School Science Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-21",
+    "applicants": 46,
+    "views": 1482
+  },
+  {
+    "id": "job_400",
+    "schoolId": "fraser-academy",
+    "title": "High School Science Teacher",
+    "category": "teaching",
+    "type": "part_time",
+    "status": "closed",
+    "postedOn": "2026-05-12",
+    "applicants": 54,
+    "views": 2325
+  },
+  {
+    "id": "job_401",
+    "schoolId": "red-river-islamic-school",
+    "title": "Middle School Math Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-07-07",
+    "applicants": 53,
+    "views": 1170
+  },
+  {
+    "id": "job_402",
+    "schoolId": "bridge-city-academy",
+    "title": "Elementary Teacher (Grade 3)",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-06-08",
+    "applicants": 10,
+    "views": 275
+  },
+  {
+    "id": "job_403",
+    "schoolId": "bridge-city-academy",
+    "title": "Assistant Principal",
+    "category": "leadership",
+    "type": "full_time",
+    "status": "filled",
+    "postedOn": "2026-10-11",
+    "applicants": 9,
+    "views": 294
+  },
+  {
+    "id": "job_404",
+    "schoolId": "queen-city-crescent-school",
+    "title": "High School Science Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "featured": true,
+    "postedOn": "2026-09-07",
+    "applicants": 20,
+    "views": 1195
+  },
+  {
+    "id": "job_405",
+    "schoolId": "harbourview-academy",
+    "title": "Learning Support Assistant",
+    "category": "student_services",
+    "type": "part_time",
+    "status": "closed",
+    "postedOn": "2026-05-03",
+    "applicants": 52,
+    "views": 2192
+  },
+  {
+    "id": "job_406",
+    "schoolId": "harbourview-academy",
+    "title": "Elementary Teacher (Grade 3)",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-09-26",
+    "applicants": 23,
+    "views": 492
+  },
+  {
+    "id": "job_407",
+    "schoolId": "harbourview-academy",
+    "title": "Middle School Math Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "closed",
+    "postedOn": "2026-05-03",
+    "applicants": 55,
+    "views": 1440
+  },
+  {
+    "id": "job_408",
+    "schoolId": "al-noor-academy",
+    "title": "Learning Support Assistant",
+    "category": "student_services",
+    "type": "part_time",
+    "status": "draft",
+    "postedOn": "2026-10-13",
+    "applicants": 0,
+    "views": 0
+  },
+  {
+    "id": "job_409",
+    "schoolId": "al-noor-academy",
+    "title": "Arabic Language Teacher",
+    "category": "teaching",
+    "type": "contract",
+    "status": "open",
+    "postedOn": "2026-06-03",
+    "applicants": 19,
+    "views": 696
+  },
+  {
+    "id": "job_410",
+    "schoolId": "al-noor-academy",
+    "title": "Grade 2 Homeroom Teacher",
+    "category": "teaching",
+    "type": "full_time",
+    "status": "open",
+    "postedOn": "2026-10-08",
+    "applicants": 11,
+    "views": 476
+  },
+  {
+    "id": "job_411",
+    "schoolId": "bayan-preparatory",
+    "title": "Admissions Coordinator",
+    "category": "operations",
+    "type": "full_time",
+    "status": "draft",
+    "postedOn": "2026-10-10",
+    "applicants": 0,
+    "views": 0
+  },
+  {
+    "id": "job_412",
+    "schoolId": "hikmah-academy",
+    "title": "Art Teacher",
+    "category": "teaching",
+    "type": "contract",
+    "status": "draft",
+    "postedOn": "2026-10-14",
+    "applicants": 0,
+    "views": 0
+  },
+  {
+    "id": "job_413",
+    "schoolId": "furqan-academy",
+    "title": "School Counselor",
+    "category": "student_services",
+    "type": "full_time",
+    "status": "draft",
+    "postedOn": "2026-10-06",
+    "applicants": 0,
+    "views": 0
   }
 ]

@@ -107,10 +107,10 @@ export function OfferFormSheet({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="gap-0 data-[side=right]:w-full data-[side=right]:sm:max-w-2xl">
+      <SheetContent className="gap-0 data-[side=right]:w-full data-[side=right]:sm:max-w-[600px]">
         <form onSubmit={onSubmit} className="flex h-full flex-col">
-          <SheetHeader className="border-b">
-            <SheetTitle>{offer ? "Edit offer" : "New partner offer"}</SheetTitle>
+          <SheetHeader className="border-b px-6 py-4 pr-12">
+            <SheetTitle className="text-h4 font-semibold">{offer ? "Edit offer" : "New partner offer"}</SheetTitle>
             <SheetDescription>
               {offer
                 ? "Changes show to schools right away."
@@ -118,7 +118,7 @@ export function OfferFormSheet({
             </SheetDescription>
           </SheetHeader>
 
-          <div className="flex-1 space-y-6 overflow-y-auto p-4">
+          <div className="flex-1 space-y-6 overflow-y-auto p-6">
             <section className="grid gap-4 sm:grid-cols-2">
               <Field id="partnerName" label="Partner" error={errors.partnerName}>
                 <Input
@@ -278,7 +278,7 @@ export function OfferFormSheet({
                   >
                     <Input
                       id="code"
-                      className="font-mono uppercase"
+                      className="tracking-wider uppercase"
                       value={value.code}
                       onChange={(e) => set("code", e.target.value.toUpperCase())}
                     />
@@ -372,7 +372,7 @@ export function OfferFormSheet({
             </div>
           </div>
 
-          <SheetFooter className="flex-row justify-end border-t">
+          <SheetFooter className="flex-row justify-between border-t px-6 py-4">
             <Button
               type="button"
               variant="ghost"

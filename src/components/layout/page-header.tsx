@@ -19,7 +19,7 @@ export function PageHeader({
       )}
     >
       <div className="min-w-0 space-y-1">
-        <h1 className="text-[1.75rem] leading-tight font-semibold tracking-tight text-balance">
+        <h1 className="text-h1 font-semibold tracking-[-0.015em] text-balance">
           {title}
         </h1>
         {description && (
@@ -29,7 +29,7 @@ export function PageHeader({
         )}
       </div>
       {actions && (
-        <div className="flex shrink-0 items-center gap-2">{actions}</div>
+        <div className="flex flex-wrap items-center gap-2 max-sm:w-full">{actions}</div>
       )}
     </div>
   );
@@ -44,7 +44,7 @@ export function PageBody({
 }) {
   return (
     <div
-      className={cn("w-full space-y-6 px-4 py-6 md:px-8 md:py-8", className)}
+      className={cn("w-full space-y-6 px-4 py-6 md:px-6 xl:p-8", className)}
     >
       {children}
     </div>

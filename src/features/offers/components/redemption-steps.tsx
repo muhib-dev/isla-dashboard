@@ -28,10 +28,10 @@ export function RedemptionSteps({
   return (
     <div className="grid gap-4">
       {method === "code" && code && (
-        <div className="flex items-center justify-between gap-3 rounded-lg border border-dashed px-4 py-3">
+        <div className="flex items-center justify-between gap-3 rounded-lg border border-dashed bg-surface-2 px-4 py-3">
           <div>
-            <p className="text-sm text-muted-foreground">Promo code</p>
-            <p className="font-mono text-lg font-semibold tracking-wider select-all">
+            <p className="text-[13px] font-medium text-muted-foreground">Promo code</p>
+            <p className="text-h4 font-semibold tracking-wider select-all">
               {code}
             </p>
           </div>
@@ -41,12 +41,12 @@ export function RedemptionSteps({
         </div>
       )}
       {method === "email" && email && (
-        <div className="rounded-lg border px-4 py-3">
-          <p className="text-sm text-muted-foreground">Email the partner</p>
+        <div className="rounded-lg border bg-surface-2 px-4 py-3">
+          <p className="text-[13px] font-medium text-muted-foreground">Email the partner</p>
           <p className="font-medium break-all">{email}</p>
         </div>
       )}
-      <p className="text-sm text-pretty">{instructions}</p>
+      <p className="text-[15px] text-pretty">{instructions}</p>
       <div className="flex flex-wrap gap-2">
         {method === "email" && email && (
           <Button asChild>

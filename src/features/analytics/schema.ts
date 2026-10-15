@@ -42,7 +42,29 @@ export const SchoolComparisonSchema = z.object({
   distribution: z.record(MetricKeySchema, DistributionSchema),
   /** Share of peers (0–1) with a lower value than this school, per metric. */
   percentile: MetricValues,
-  enrollmentTrend: z.array(z.object({ year: z.number().int(), school: z.number(), peerMedian: z.number() })),
+  enrollmentTrend: z.array(
+    z.object({
+      year: z.number().int(),
+      school: z.number(),
+      peerMedian: z.number(),
+      /** Middle-50% band of peers. Optional so older backends still validate. */
+      peerP25: z.number().optional(),
+      peerP75: z.number().optional(),
+    }),
+  ),
+  /** Teacher turnover (1 − retention) per year vs. peers. Optional: needs retention history. */
+  turnoverTrend: z
+    .array(z.object({ year: z.number().int(), school: z.number(), peerMedian: z.number() }))
+    .optional(),
+  /** Applicants per job posting vs. peers. Optional: absent when the school has posted no jobs. */
+  applicationsPerVacancy: z
+    .object({
+      school: z.number(),
+      peerMedian: z.number(),
+      distribution: DistributionSchema,
+      percentile: z.number(),
+    })
+    .optional(),
 })
 export type SchoolComparison = z.infer<typeof SchoolComparisonSchema>
 

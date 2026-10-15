@@ -41,13 +41,13 @@ export function ProfileView({
   initialSection?: ProfileSection;
 }) {
   return (
-    <div className="space-y-5">
-      <div className="flex items-center gap-4 rounded-xl bg-card px-4 py-3 ring-1 ring-foreground/10">
-        <p className="text-sm font-medium whitespace-nowrap">
+    <div className="space-y-6">
+      <div className="flex items-center gap-4 rounded-lg border bg-card px-5 py-4">
+        <p className="text-[15px] font-medium whitespace-nowrap">
           Profile {health.score}% complete
         </p>
         <Progress value={health.score} className="h-1.5 max-w-xs" />
-        <p className="ml-auto hidden text-sm text-muted-foreground sm:block">
+        <p className="ml-auto hidden text-[13px] text-muted-foreground sm:block">
           Last updated {fmt.date(school.updatedAt)}
         </p>
       </div>
@@ -62,7 +62,7 @@ export function ProfileView({
               <TabsTrigger
                 key={section}
                 value={section}
-                className="flex-none px-2.5"
+                className="flex-none px-2.5 py-2.5 text-[15px] after:bg-primary"
               >
                 {SECTION_LABELS[section]}
                 {health.freshness[section] === "stale" && (
@@ -77,7 +77,7 @@ export function ProfileView({
         </div>
 
         {PROFILE_SECTIONS.map((section) => (
-          <TabsContent key={section} value={section} className="pt-3">
+          <TabsContent key={section} value={section} className="pt-4">
             <SectionCard
               school={school}
               section={section}
@@ -105,14 +105,14 @@ function SectionCard({
 }) {
   const values = sectionValues(school, section);
   return (
-    <Card>
-      <CardHeader className="border-b">
+    <Card className="gap-0 py-0">
+      <CardHeader className="border-b px-6 py-4">
         <CardTitle>{SECTION_LABELS[section]}</CardTitle>
         <CardDescription className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <FreshnessDot freshness={freshness} />
           <span>Verified {fmt.date(school.verifiedAt[section])}</span>
         </CardDescription>
-        <CardAction className="flex gap-1">
+        <CardAction className="flex gap-2">
           {freshness !== "fresh" && (
             <ConfirmSectionButton
               schoolId={school.id}
@@ -127,7 +127,7 @@ function SectionCard({
           />
         </CardAction>
       </CardHeader>
-      <CardContent>{children}</CardContent>
+      <CardContent className="px-6 py-5">{children}</CardContent>
     </Card>
   );
 }
@@ -166,7 +166,7 @@ function SectionBody({
           {school.leadership.map((leader) => (
             <li
               key={leader.id}
-              className="grid gap-1 py-3 text-sm sm:grid-cols-[12rem_1fr_auto] sm:items-center sm:gap-4"
+              className="grid gap-1 py-3 text-[15px] sm:grid-cols-[12rem_1fr_auto] sm:items-center sm:gap-4"
             >
               <span className="text-muted-foreground">{leader.role}</span>
               <span
@@ -261,10 +261,10 @@ function Details({ items }: { items: [string, React.ReactNode][] }) {
     <dl className="grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
       {items.map(([label, value]) => (
         <div key={label} className="space-y-1">
-          <dt className="text-sm text-muted-foreground">{label}</dt>
+          <dt className="text-[13px] font-medium text-muted-foreground">{label}</dt>
           <dd
             className={cn(
-              "text-base",
+              "text-[15px]",
               value == null && "text-muted-foreground italic",
             )}
           >

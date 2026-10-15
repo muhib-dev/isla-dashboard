@@ -35,6 +35,8 @@ export function SearchBar({
   onPlace,
   allowLookup,
   inputProps,
+  className,
+  inputClassName,
 }: {
   value: string;
   onChange: (v: string) => void;
@@ -43,6 +45,9 @@ export function SearchBar({
   /** Offer the "look up on the map" fallback only when the text matched no school. */
   allowLookup: boolean;
   inputProps?: React.ComponentProps<typeof Input>;
+  /** Wrapper width, e.g. a fixed toolbar width or full width in a side panel. */
+  className?: string;
+  inputClassName?: string;
 }) {
   const listId = useId();
   const [open, setOpen] = useState(false);
@@ -130,8 +135,8 @@ export function SearchBar({
 
   const showList = open && (items.length > 0 || !!error);
   return (
-    <div className="relative w-full sm:w-80">
-      <SearchIcon className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
+    <div className={cn("relative w-full sm:w-80", className)}>
+      <SearchIcon className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
       <Input
         {...inputProps}
         role="combobox"
@@ -166,12 +171,12 @@ export function SearchBar({
             void pick(items[active]);
           } else if (e.key === "Escape") setOpen(false);
         }}
-        className="pr-8 pl-8"
+        className={cn("pr-9 pl-9", inputClassName)}
       />
       {value && (
         <button
           type="button"
-          className="absolute top-1/2 right-2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+          className="absolute top-1/2 right-2.5 -translate-y-1/2 rounded-sm text-muted-foreground hover:text-foreground"
           aria-label="Clear search"
           onClick={onClear}
         >
@@ -182,7 +187,7 @@ export function SearchBar({
         <ul
           id={listId}
           role="listbox"
-          className="absolute top-full right-0 left-0 z-50 mt-1 overflow-hidden rounded-lg bg-popover py-1 text-sm shadow-md ring-1 ring-foreground/10"
+          className="absolute top-full right-0 left-0 z-50 mt-1 overflow-hidden rounded-lg border bg-popover p-1 text-sm shadow-md"
         >
           {items.map((s, i) => (
             <li
@@ -198,8 +203,8 @@ export function SearchBar({
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => void pick(s)}
                 className={cn(
-                  "flex w-full items-center gap-2 px-3 py-2 text-left hover:bg-muted",
-                  i === active && "bg-muted",
+                  "flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left hover:bg-accent",
+                  i === active && "bg-accent",
                 )}
               >
                 <MapPinIcon className="size-4 shrink-0 text-muted-foreground" />{" "}

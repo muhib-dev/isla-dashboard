@@ -25,9 +25,10 @@ export const fmt = {
   },
 }
 
-export function formatMetric(value: number, format: "number" | "currency" | "percent" | "ratio") {
+export function formatMetric(value: number, format: "number" | "currency" | "percent" | "ratio" | "decimal") {
   if (format === "currency") return fmt.currency(value)
   if (format === "percent") return fmt.percent(value)
   if (format === "ratio") return fmt.ratio(value)
+  if (format === "decimal") return value.toFixed(1)
   return fmt.number(Math.round(value))
 }

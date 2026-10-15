@@ -9,7 +9,7 @@ import type { SchoolsMapProps } from "./schools-map";
 // Leaflet touches `window` on import, so it only ever loads in the browser.
 const SchoolsMap = dynamic(() => import("./schools-map"), {
   ssr: false,
-  loading: () => <Skeleton className="size-full min-h-72 rounded-xl" />,
+  loading: () => <Skeleton className="size-full min-h-72 rounded-none" />,
 });
 
 /** Starts downloading the map code before it's needed, so the first click on "Map" is instant. */
@@ -34,7 +34,7 @@ class MapBoundary extends Component<BoundaryProps, { error: Error | null }> {
     return (
       <div
         role="alert"
-        className="grid size-full min-h-72 place-items-center rounded-xl p-6 text-center ring-1 ring-foreground/10"
+        className="grid size-full min-h-72 place-items-center bg-surface-2 p-6 text-center"
       >
         <div className="max-w-md space-y-3">
           <p className="text-sm text-muted-foreground">
@@ -84,7 +84,7 @@ export function SchoolsMapLoader(props: SchoolsMapProps) {
   // Bumping the key also re-runs the map's one-time setup after "Try again".
   const [attempt, setAttempt] = useState(0);
   if (mount === null)
-    return <Skeleton className="size-full min-h-72 rounded-xl" />;
+    return <Skeleton className="size-full min-h-72 rounded-none" />;
   return (
     <MapBoundary onRetry={() => setAttempt((n) => n + 1)}>
       <SchoolsMap key={`${mount}:${attempt}`} {...props} />

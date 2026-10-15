@@ -29,7 +29,7 @@ export function OfferImage({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-lg bg-muted ring-1 ring-foreground/5",
+        "relative overflow-hidden rounded-lg border bg-surface-2",
         className,
       )}
     >

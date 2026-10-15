@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { CircleCheckIcon } from "lucide-react";
+import { CircleCheckIcon, TicketPercentIcon } from "lucide-react";
 import { toast } from "sonner";
 import { Field } from "@/components/shared/field";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,9 @@ import { availOffer } from "@/features/offers/actions";
 import type { PublicOffer } from "@/features/offers/queries";
 import type { PublicClaim, Redemption } from "@/features/offers/schema";
 import { Honeypot } from "@/features/schools/components/submission-forms";
-import { OfferPhaseDot, redeemWindow } from "./offer-bits";
+import { cn } from "@/lib/utils";
+import { FeaturedBadge, OfferPhaseDot, redeemWindow } from "./offer-bits";
+import { OfferEmpty } from "./offer-empty";
 import { OfferImage } from "./offer-image";
 import { RedemptionSteps } from "./redemption-steps";
 
@@ -44,9 +46,11 @@ export function PublicOfferList({
 
   if (offers.length === 0) {
     return (
-      <p className="rounded-xl py-16 text-center text-muted-foreground ring-1 ring-foreground/10">
-        No offers right now. Check back soon.
-      </p>
+      <OfferEmpty
+        icon={TicketPercentIcon}
+        title="No offers right now"
+        hint="Check back soon."
+      />
     );
   }
 
@@ -58,7 +62,11 @@ export function PublicOfferList({
           return (
             <article
               key={offer.id}
-              className="grid min-w-0 gap-6 rounded-xl bg-card p-4 ring-1 ring-foreground/10 sm:p-6 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)]"
+              className={cn(
+                "grid min-w-0 gap-6 rounded-lg border bg-card p-4 sm:p-6",
+                offer.image && "md:grid-cols-[minmax(0,300px)_minmax(0,1fr)]",
+                offer.featured && "bg-highlight-subtle",
+              )}
             >
               {offer.image && (
                 <OfferImage
@@ -70,10 +78,13 @@ export function PublicOfferList({
                 />
               )}
               <div className="flex min-w-0 flex-col">
-                <p className="text-sm font-medium text-muted-foreground">
-                  {offer.partner.name}
-                </p>
-                <h2 className="mt-1 text-xl font-semibold text-balance">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <p className="text-[15px] font-medium text-muted-foreground">
+                    {offer.partner.name}
+                  </p>
+                  {offer.featured && <FeaturedBadge />}
+                </div>
+                <h2 className="mt-1 text-h3 font-semibold text-balance">
                   {offer.title}
                 </h2>
                 <p className="mt-3 text-pretty text-muted-foreground">
@@ -81,7 +92,7 @@ export function PublicOfferList({
                 </p>
                 <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
                   <p>
-                    <span className="font-semibold">Redeem by:</span>{" "}
+                    <span className="font-medium">Redeem by:</span>{" "}
                     <span className="tabular">{redeemWindow(offer)}</span>
                   </p>
                   <OfferPhaseDot
@@ -115,7 +126,7 @@ export function PublicOfferList({
                     </Button>
                   )}
                   {offer.blocker && !claimed && offer.phase !== "upcoming" && (
-                    <span className="text-sm text-muted-foreground">
+                    <span className="text-[15px] text-muted-foreground">
                       {offer.blocker}
                     </span>
                   )}

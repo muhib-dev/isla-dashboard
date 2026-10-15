@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon, CircleCheckIcon } from "lucide-react";
 import { Suspense } from "react";
 import { PageBody, PageHeader } from "@/components/layout/page-header";
 import { TableSkeleton } from "@/components/shared/skeletons";
 import { Button } from "@/components/ui/button";
-import { Stat, StatGroup } from "@/components/shared/stat";
+import { KpiGrid, KpiTile } from "@/components/shared/kpi-tile";
 import {
   Card,
   CardContent,
@@ -86,20 +86,20 @@ async function StaffOffers() {
           </>
         }
       />
-      <StatGroup>
-        <Stat label="Live offers" value={stats.live} />
-        <Stat
+      <KpiGrid>
+        <KpiTile label="Live offers" value={stats.live} />
+        <KpiTile
           label="Claims"
           value={fmt.number(stats.claims)}
-          hint={`${stats.last30} in the last 30 days`}
+          footer={`${stats.last30} in the last 30 days`}
         />
-        <Stat label="Schools reached" value={stats.schools} />
-        <Stat
+        <KpiTile label="Schools reached" value={stats.schools} />
+        <KpiTile
           label="Redeemed"
           value={stats.claims ? fmt.percent(stats.redeemed / stats.claims) : "–"}
-          hint={`${stats.redeemed} of ${stats.claims} claims`}
+          footer={`${stats.redeemed} of ${stats.claims} claims`}
         />
-      </StatGroup>
+      </KpiGrid>
 
       <div className="grid gap-4 lg:grid-cols-3">
         <Card className="lg:col-span-2">
@@ -113,39 +113,40 @@ async function StaffOffers() {
             <ClaimsByPartnerChart data={byPartner} />
           </CardContent>
         </Card>
-        <Card>
-          <CardHeader>
+        <Card className="gap-0 py-0">
+          <CardHeader className="border-b px-6 py-4">
             <CardTitle>Needs attention</CardTitle>
             <CardDescription>
               Offers ending soon and drafts waiting to publish.
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            {attention.length === 0 ? (
-              <p className="text-sm text-muted-foreground">All clear.</p>
-            ) : (
-              <ul className="divide-y">
-                {attention.map((r) => (
-                  <li key={r.id} className="py-2.5 first:pt-0 last:pb-0">
-                    <Link
-                      href={`/offers/${r.id}`}
-                      className="font-medium hover:underline"
-                    >
-                      {r.title}
-                    </Link>
-                    <p className="flex flex-wrap items-center gap-x-2 text-sm text-muted-foreground">
-                      {r.partner.name}
-                      <OfferPhaseDot
-                        phase={r.phase}
-                        daysLeft={r.daysLeft}
-                        startsOn={r.startsOn}
-                      />
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </CardContent>
+          {attention.length === 0 ? (
+            <p className="flex items-center gap-2 px-6 py-4 text-[15px] text-muted-foreground">
+              <CircleCheckIcon className="size-4 text-success" aria-hidden />
+              All clear.
+            </p>
+          ) : (
+            <ul className="divide-y">
+              {attention.map((r) => (
+                <li key={r.id} className="px-6 py-3">
+                  <Link
+                    href={`/offers/${r.id}`}
+                    className="text-[15px] font-medium hover:underline"
+                  >
+                    {r.title}
+                  </Link>
+                  <p className="flex flex-wrap items-center gap-x-2 text-[13px] text-muted-foreground">
+                    {r.partner.name}
+                    <OfferPhaseDot
+                      phase={r.phase}
+                      daysLeft={r.daysLeft}
+                      startsOn={r.startsOn}
+                    />
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
         </Card>
       </div>
 

@@ -1,4 +1,6 @@
+import { StarIcon } from "lucide-react";
 import { StatusDot } from "@/components/shared/status";
+import { Badge } from "@/components/ui/badge";
 import type { OfferPhase } from "@/features/offers/lib";
 import type { Offer } from "@/features/offers/schema";
 import { fmt } from "@/lib/format";
@@ -62,7 +64,7 @@ export function PartnerMark({
     <span
       aria-hidden
       className={cn(
-        "grid size-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-sm font-semibold text-primary",
+        "grid size-10 shrink-0 place-items-center rounded-md bg-surface-2 text-[13px] font-semibold text-primary",
         className,
       )}
     >
@@ -79,13 +81,17 @@ export function ValueTag({
   className?: string;
 }) {
   return (
-    <span
-      className={cn(
-        "shrink-0 rounded-md bg-primary/10 px-2 py-1 text-sm font-semibold whitespace-nowrap text-primary",
-        className,
-      )}
-    >
+    <Badge variant="secondary" className={cn("tabular", className)}>
       {label}
-    </span>
+    </Badge>
+  );
+}
+
+/** Gold "Featured" marker for promoted offers. */
+export function FeaturedBadge({ className }: { className?: string }) {
+  return (
+    <Badge variant="highlight" className={className}>
+      <StarIcon aria-hidden /> Featured
+    </Badge>
   );
 }

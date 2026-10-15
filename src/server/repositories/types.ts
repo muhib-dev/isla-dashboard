@@ -47,8 +47,10 @@ export interface SchoolRepository {
 
 export interface JobRepository {
   listBySchool(schoolId: string): Promise<Job[]>
-  listOpen(): Promise<Job[]>
+  /** Every published post across the network (live, expired, filled, closed), newest first. Drafts are private to the school. */
+  listPublished(): Promise<Job[]>
   create(schoolId: string, job: NewJob): Promise<Job>
+  setStatus(id: string, status: Job["status"]): Promise<Job | null>
 }
 
 export interface BillingRepository {
@@ -56,6 +58,8 @@ export interface BillingRepository {
   updatePlan(schoolId: string, patch: Pick<Plan, "autoRenew">): Promise<Plan>
   listInvoices(schoolId: string): Promise<Invoice[]>
   getOrgSummary(): Promise<OrgBillingSummary>
+  /** Settles the school's open/overdue invoices with these ids using its card on file. Returns the paid invoices. */
+  payInvoices(schoolId: string, ids: string[]): Promise<Invoice[]>
 }
 
 export interface AnalyticsRepository {

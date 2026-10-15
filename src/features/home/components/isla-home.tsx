@@ -1,146 +1,395 @@
 import Link from "next/link";
-import { ArrowRightIcon } from "lucide-react";
-import { PageHeader } from "@/components/layout/page-header";
-import { Stat, StatGroup } from "@/components/shared/stat";
-import { FreshnessDot, MembershipStatusDot } from "@/components/shared/status";
-import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  AlertCircleIcon,
+  BarChart3Icon,
+  CircleCheckIcon,
+  ClockAlertIcon,
+  FlagIcon,
+  HourglassIcon,
+  PencilLineIcon,
+  PlusIcon,
+  ReceiptIcon,
+  TriangleAlertIcon,
+} from "lucide-react";
+import { PageHeader } from "@/components/layout/page-header";
+import { KpiGrid, KpiTile, Sparkline } from "@/components/shared/kpi-tile";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   getNetworkOverview,
   getRegionStats,
 } from "@/features/analytics/queries";
-import { listSchools } from "@/features/schools/queries";
+import { GRACE_DAYS } from "@/features/billing/components/invoice-status";
+import { getOrgBilling } from "@/features/billing/queries";
+import { AddSchoolDialog } from "@/features/schools/components/submission-forms";
+import { listSchoolReports, listSchools } from "@/features/schools/queries";
 import { REGION_LABELS } from "@/features/schools/schema";
 import { fmt } from "@/lib/format";
+import { cn } from "@/lib/utils";
+import {
+  ActivityIcon,
+  daysSince,
+  greeting,
+  HomeEmpty,
+  ListCardHeader,
+  MembershipBar,
+  MEMBERSHIP_LABELS,
+  MembershipLegend,
+  membershipSummary,
+  QuickActionList,
+  RegionMembershipList,
+  relativeDay,
+  requestTime,
+  TextLink,
+  todayLabel,
+} from "./home-bits";
+import { ExportCsvButton, RemindAllButton, RemindLink } from "./home-actions";
 
-export async function IslaHome() {
-  const [overview, regions, schools] = await Promise.all([
+const MEMBER_STATUSES = ["active", "grace", "lapsed"] as const;
+
+export async function IslaHome({ firstName }: { firstName: string }) {
+  const [overview, regions, schools, org, reports] = await Promise.all([
     getNetworkOverview(),
     getRegionStats(),
     listSchools({}),
+    getOrgBilling(),
+    listSchoolReports(),
   ]);
+  const now = await requestTime();
+  const year = new Date(now).getFullYear();
 
-  const attention = schools
-    .filter(
-      (s) =>
-        s.freshness === "stale" ||
-        s.membership.status === "lapsed" ||
-        s.membership.status === "grace",
-    )
-    .sort((a, b) => a.oldestVerifiedAt.localeCompare(b.oldestVerifiedAt))
-    .slice(0, 6);
-  const maxSchools = Math.max(...regions.map((r) => r.schools));
+  // KPIs
+  const { active, grace, lapsed } = overview.membership;
+  const members = schools.filter((s) => s.membership.status !== "non_member");
+  const joinedThisYear = members.filter(
+    (s) => s.membership.memberSince === year,
+  ).length;
+  // Current members by the year they joined, cumulative over eight years.
+  const memberTrend = Array.from({ length: 8 }, (_, i) => year - 7 + i).map(
+    (y) => members.filter((s) => s.membership.memberSince <= y).length,
+  );
+  const renewalRate = members.length ? active / members.length : 0;
+  const overdue = org.unpaid.filter((i) => i.status === "overdue");
+  const open = org.unpaid.filter((i) => i.status === "open");
+
+  // Grace period: each school's unpaid membership invoice, fewest days left first.
+  const unpaidBySchool = new Map(
+    org.unpaid
+      .filter((i) => i.kind === "membership")
+      .map((i) => [i.schoolId, i]),
+  );
+  const inGrace = schools
+    .filter((s) => s.membership.status === "grace")
+    .map((s) => {
+      const invoice = unpaidBySchool.get(s.id);
+      return {
+        school: s,
+        invoice,
+        daysLeft: invoice?.dueOn
+          ? Math.max(0, GRACE_DAYS - daysSince(invoice.dueOn, now))
+          : null,
+      };
+    })
+    .sort((a, b) => (a.daysLeft ?? Infinity) - (b.daysLeft ?? Infinity));
+
+  const dayAfter = (iso: string, days: number) =>
+    new Date(Date.parse(iso) + days * 86_400_000).toISOString().slice(0, 10);
+  const today = new Date(now).toISOString().slice(0, 10);
+
+  // Recent activity, newest first: payments, grace and lapse events, map reports and profile edits.
+  const activity = [
+    ...(org.recentPayments ?? []).map((i) => ({
+      id: `paid-${i.id}`,
+      date: i.paidOn!,
+      icon: CircleCheckIcon,
+      tone: "text-success",
+      href: `/schools/${i.schoolId}`,
+      name: i.schoolName,
+      text: `paid ${i.number} · ${fmt.currency(i.amount)}`,
+    })),
+    ...org.unpaid
+      .filter((i) => i.kind === "membership" && i.dueOn)
+      .map((i) =>
+        i.status === "overdue"
+          ? {
+              id: `lapsed-${i.id}`,
+              date: dayAfter(i.dueOn!, GRACE_DAYS),
+              icon: AlertCircleIcon,
+              tone: "text-destructive",
+              href: `/schools/${i.schoolId}`,
+              name: i.schoolName,
+              text: "membership lapsed",
+            }
+          : {
+              id: `grace-${i.id}`,
+              date: dayAfter(i.dueOn!, 1),
+              icon: TriangleAlertIcon,
+              tone: "text-warning",
+              href: `/schools/${i.schoolId}`,
+              name: i.schoolName,
+              text: "entered its grace period",
+            },
+      ),
+    ...reports
+      .filter((r) => r.status === "pending")
+      .map((r) => ({
+        id: `report-${r.id}`,
+        date: r.createdAt,
+        icon: FlagIcon,
+        tone: "text-info",
+        href: "/reports",
+        name: r.schoolName,
+        text: r.kind === "new" ? "was suggested as a new school" : "has a reported change",
+      })),
+    ...schools.map((s) => ({
+      id: `profile-${s.id}`,
+      date: s.updatedAt,
+      icon: PencilLineIcon,
+      tone: "text-primary",
+      href: `/schools/${s.id}`,
+      name: s.name,
+      text: "updated their profile",
+    })),
+  ]
+    .filter((item) => item.date <= today)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 5);
+
+  const exportRows = schools.map((s) => ({
+    id: s.id,
+    name: s.name,
+    city: s.city,
+    state: s.state,
+    region: REGION_LABELS[s.region],
+    membership: MEMBERSHIP_LABELS[s.membership.status],
+    member_since: s.membership.memberSince,
+  }));
+
+  const pendingReports = reports.filter((r) => r.status === "pending").length;
 
   return (
     <>
       <PageHeader
-        title="Network overview"
-        description={`${overview.schools} schools across ${regions.length} regions.`}
+        title={greeting(firstName, new Date(now))}
+        description={`${todayLabel(new Date(now))} · ${grace} ${grace === 1 ? "school is" : "schools are"} in their grace period`}
+        actions={
+          <>
+            <ExportCsvButton filename="isla-schools.csv" rows={exportRows} />
+            <AddSchoolDialog
+              trigger={
+                <Button>
+                  <PlusIcon /> Add school
+                </Button>
+              }
+            />
+          </>
+        }
       />
 
-      <StatGroup>
-        <Stat label="Schools" value={fmt.number(overview.schools)} />
-        <Stat label="Students" value={fmt.number(overview.students)} />
-        <Stat
-          label="Active members"
-          value={fmt.number(overview.membership.active)}
-          hint={`${overview.membership.grace} in grace · ${overview.membership.lapsed} lapsed`}
-        />
-        <Stat
-          label="Out-of-date profiles"
-          value={fmt.number(overview.staleProfiles)}
-          hint="Not verified in 12 months"
-        />
-      </StatGroup>
+      <KpiGrid>
+        <KpiTile
+          label="Member schools"
+          value={fmt.number(members.length)}
+          footer={
+            <span>
+              Active + grace + lapsed · {joinedThisYear} joined this year
+            </span>
+          }
+        >
+          <Sparkline values={memberTrend} />
+        </KpiTile>
+        <KpiTile
+          label="Renewal rate"
+          info="Share of member schools whose membership is active (not in grace or lapsed). The trend shows the share paid up on their latest dues at each month-end."
+          value={fmt.percent(renewalRate)}
+          footer={
+            <span>
+              {grace} in grace · {lapsed} lapsed
+            </span>
+          }
+        >
+          {org.trends ? (
+            <Sparkline values={org.trends.renewalRate} />
+          ) : (
+            <div className="flex h-9 items-center">
+              <MembershipBar
+                counts={overview.membership}
+                statuses={MEMBER_STATUSES}
+                label={`Members: ${membershipSummary(overview.membership, MEMBER_STATUSES)}`}
+                className="h-2 w-full"
+              />
+            </div>
+          )}
+        </KpiTile>
+        <KpiTile
+          label="Revenue year to date"
+          info="Paid invoices issued since the fiscal year began on July 1. The trend is cumulative by week."
+          value={fmt.compactCurrency(org.collected)}
+          footer={
+            <>
+              <span>{org.fiscalYear}</span>
+              <span>{fmt.compactCurrency(org.outstanding)} outstanding</span>
+            </>
+          }
+        >
+          {org.trends && <Sparkline values={org.trends.revenueYtd} />}
+        </KpiTile>
+        <KpiTile
+          label="Overdue invoices"
+          value={fmt.number(overdue.length)}
+          footer={
+            <>
+              <span className={cn(overdue.length > 0 && "text-destructive")}>
+                {fmt.currency(org.overdue)} overdue · {open.length} open
+              </span>
+              <TextLink href="/billing" className="text-[13px]">
+                Review
+              </TextLink>
+            </>
+          }
+        >
+          {org.trends && <Sparkline values={org.trends.overdue} />}
+        </KpiTile>
+      </KpiGrid>
 
-      <div className="grid gap-4 lg:grid-cols-3">
-        <Card className="lg:col-span-2">
-          <CardHeader>
-            <CardTitle>Needs attention</CardTitle>
-            <CardDescription>
-              Out-of-date profiles and memberships that need follow-up.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="px-0">
-            <ul className="divide-y border-y text-sm">
-              {attention.map((s) => (
-                <li key={s.id}>
-                  <Link
-                    href={`/schools/${s.id}`}
-                    className="group grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 px-4 py-3 hover:bg-muted/50 sm:grid-cols-[1fr_8rem_8rem_auto]"
-                  >
-                    <span className="min-w-0">
-                      <span className="block truncate font-medium">
-                        {s.name}
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        {s.city}, {s.state}
-                      </span>
+      <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
+        <Card className="gap-0 py-0">
+          <ListCardHeader
+            title="Membership by region"
+            description={`${fmt.number(overview.schools)} schools · ${fmt.number(overview.students)} students · as of today`}
+            action={
+              <div className="hidden sm:block">
+                <MembershipLegend />
+              </div>
+            }
+          />
+          <CardContent className="space-y-3 px-6 py-5">
+            <div className="sm:hidden">
+              <MembershipLegend />
+            </div>
+            <RegionMembershipList regions={regions} />
+          </CardContent>
+        </Card>
+
+        <Card className="gap-0 py-0">
+          <ListCardHeader title="Quick actions" />
+          <CardContent className="px-6 py-4">
+            <QuickActionList
+              actions={[
+                {
+                  href: "/schools?fresh=stale",
+                  icon: ClockAlertIcon,
+                  label: "Review out-of-date profiles",
+                  sub: `${overview.staleProfiles} not verified in 12 months`,
+                },
+                {
+                  href: "/reports",
+                  icon: FlagIcon,
+                  label: "Review map reports",
+                  sub:
+                    pendingReports === 0
+                      ? "Nothing waiting for review"
+                      : `${pendingReports} waiting for review`,
+                },
+                {
+                  href: "/billing",
+                  icon: ReceiptIcon,
+                  label: "Follow up on invoices",
+                  sub: `${overdue.length} overdue · ${open.length} open`,
+                },
+                {
+                  href: "/analytics",
+                  icon: BarChart3Icon,
+                  label: "Compare regions",
+                  sub: `Benchmarks across ${regions.length} regions`,
+                },
+              ]}
+            />
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-2">
+        <Card className="gap-0 py-0">
+          <ListCardHeader
+            title="Recent activity"
+            action={<TextLink href="/schools">View all</TextLink>}
+          />
+          <ul>
+            {activity.map((item) => (
+              <li key={item.id} className="border-b last:border-b-0">
+                <Link
+                  href={item.href}
+                  className="flex gap-3 px-6 py-3 transition-colors hover:bg-surface-2"
+                >
+                  <ActivityIcon icon={item.icon} className={item.tone} />
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[15px]">
+                      <span className="font-medium">{item.name}</span>{" "}
+                      {item.text}
                     </span>
-                    <FreshnessDot
-                      freshness={s.freshness}
-                      className="hidden sm:inline-flex"
-                    />
-                    <span className="hidden sm:block">
-                      <MembershipStatusDot status={s.membership.status} />
+                    <span className="block text-[13px] text-muted-foreground">
+                      {relativeDay(item.date, now)}
                     </span>
-                    <ArrowRightIcon className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Card>
+
+        <Card className="gap-0 py-0">
+          <ListCardHeader
+            title="Grace period ending soon"
+            action={
+              inGrace.length > 0 && <RemindAllButton count={inGrace.length} />
+            }
+          />
+          {inGrace.length === 0 ? (
+            <HomeEmpty
+              icon={HourglassIcon}
+              title="No schools in grace"
+              hint="Every member school is paid up."
+            />
+          ) : (
+            <ul>
+              {inGrace.slice(0, 5).map(({ school, invoice, daysLeft }) => (
+                <li
+                  key={school.id}
+                  className="grid h-14 grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-x-4 border-b px-6 text-[15px] transition-colors last:border-b-0 hover:bg-surface-2 sm:grid-cols-[minmax(0,1fr)_110px_90px_64px]"
+                >
+                  <Link href={`/schools/${school.id}`} className="min-w-0">
+                    <span className="block truncate font-medium">
+                      {school.name}
+                    </span>
+                    <span className="block text-[13px] text-muted-foreground">
+                      {school.city}, {school.state}
+                    </span>
                   </Link>
+                  <span
+                    className={cn(
+                      "font-medium whitespace-nowrap",
+                      daysLeft === null
+                        ? "text-muted-foreground"
+                        : daysLeft <= 7
+                          ? "text-destructive"
+                          : "text-warning",
+                    )}
+                  >
+                    {daysLeft === null
+                      ? "No invoice"
+                      : `${daysLeft} ${daysLeft === 1 ? "day" : "days"} left`}
+                  </span>
+                  <span className="tabular text-right">
+                    {invoice ? fmt.currency(invoice.amount) : "—"}
+                  </span>
+                  <span className="hidden text-right sm:block">
+                    <RemindLink school={school.name} />
+                  </span>
                 </li>
               ))}
             </ul>
-          </CardContent>
-          <CardFooter className="py-3">
-            <Button asChild variant="outline">
-              <Link href="/schools?freshness=stale">
-                See all out-of-date schools
-              </Link>
-            </Button>
-          </CardFooter>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Schools by region</CardTitle>
-            <CardDescription>
-              Share of each region that are active members.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {regions.map((r) => (
-              <div key={r.region} className="space-y-1.5">
-                <div className="flex items-baseline justify-between text-sm">
-                  <span>{REGION_LABELS[r.region]}</span>
-                  <span className="tabular text-sm text-muted-foreground">
-                    {r.activeMembers} of {r.schools}
-                  </span>
-                </div>
-                <div
-                  className="relative h-2.5 rounded-full bg-muted"
-                  style={{ width: `${(r.schools / maxSchools) * 100}%` }}
-                >
-                  <div
-                    className="absolute inset-y-0 left-0 rounded-full border-[1.5px] border-chart-1 bg-chart-1/35"
-                    style={{
-                      width: `${r.schools ? (r.activeMembers / r.schools) * 100 : 0}%`,
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </CardContent>
-          <CardFooter className="py-3">
-            <Button asChild variant="outline">
-              <Link href="/analytics">Compare regions</Link>
-            </Button>
-          </CardFooter>
+          )}
         </Card>
       </div>
     </>
