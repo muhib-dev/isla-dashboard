@@ -33,18 +33,18 @@ export default function PublicMapPage({ searchParams }: PageProps<"/map">) {
   );
 }
 
-/** Mirrors the explorer's split: list panel left, map right. */
+/** Mirrors the explorer's layout: search header over the map on phones, list panel left of it on desktop. */
 function MapSkeleton() {
   return (
-    <div className="flex flex-col md:h-[calc(100svh-var(--app-header,56px))] md:flex-row">
-      <div className="space-y-3 border-b bg-card p-5 md:w-100 md:border-r md:border-b-0">
+    <div className="flex h-[calc(100svh-var(--app-header,56px))] flex-col md:flex-row">
+      <div className="space-y-3 border-b bg-card p-3 md:w-100 md:border-r md:border-b-0 md:p-5">
         <Skeleton className="h-8 w-40" />
         <Skeleton className="h-10 w-full" />
         <Skeleton className="h-8 w-64" />
-        <Skeleton className="h-16 w-full" />
-        <Skeleton className="h-16 w-full" />
+        <Skeleton className="hidden h-16 w-full md:block" />
+        <Skeleton className="hidden h-16 w-full md:block" />
       </div>
-      <Skeleton className="h-[70svh] min-h-112 rounded-none md:h-auto md:flex-1" />
+      <Skeleton className="min-h-0 flex-1 rounded-none" />
     </div>
   );
 }

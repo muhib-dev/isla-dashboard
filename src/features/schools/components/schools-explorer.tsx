@@ -88,6 +88,7 @@ import {
   SCHOOL_TYPES,
   type MembershipStatus,
 } from "@/features/schools/schema";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { FacetFilter, StatusTabs } from "./explorer-toolbar";
 import { FilterPanel } from "./filter-panel";
@@ -332,6 +333,19 @@ export function SchoolsExplorer({
   );
 
   const mapOnly = mode === "map";
+  // Phones get the map alone (no result list), so matching schools are offered in the search dropdown.
+  const isMobile = useIsMobile();
+  const schoolSuggestions = useMemo(
+    () =>
+      mapOnly && isMobile && qInput.trim()
+        ? result.rows.slice(0, 8).map((r) => ({
+            id: r.doc.id,
+            label: r.doc.name,
+            detail: `${r.doc.city}, ${r.doc.state}`,
+          }))
+        : [],
+    [mapOnly, isMobile, qInput, result.rows],
+  );
   const atoms = useMemo(() => result.parsed.items.flat(), [result.parsed]);
   const empty = result.rows.length === 0 && result.pending.length === 0;
   const fixes = useMemo(
@@ -401,6 +415,8 @@ export function SchoolsExplorer({
         navigate({ ...state, q: "", center: c, bounds: null, map: null });
       }}
       allowLookup={empty && staff}
+      schools={schoolSuggestions}
+      onSchool={openSchool}
       inputProps={{
         "aria-label": "Search schools",
         placeholder: mapOnly
@@ -741,11 +757,12 @@ export function SchoolsExplorer({
       );
     return (
       // The layout sets --app-header to its top bar height (public header 56px, dashboard 60px).
-      <div className="flex flex-col md:h-[calc(100svh-var(--app-header,56px))] md:flex-row">
-        <aside className="flex shrink-0 flex-col border-b bg-card md:min-h-0 md:w-100 md:border-r md:border-b-0">
-          <div className="flex flex-col gap-3 border-b p-5 pb-3">
+      // Phones: compact search header over a full-height map; desktop: list panel left, map right.
+      <div className="flex h-[calc(100svh-var(--app-header,56px))] flex-col md:flex-row">
+        <aside className="relative z-10 flex shrink-0 flex-col border-b bg-card md:z-auto md:min-h-0 md:w-100 md:border-r md:border-b-0">
+          <div className="flex flex-col gap-2.5 p-3 md:gap-3 md:border-b md:p-5 md:pb-3">
             <div className="flex items-baseline justify-between gap-3">
-              <h1 className="text-h2 font-semibold tracking-[-0.01em]">
+              <h1 className="text-lg font-semibold tracking-[-0.01em] md:text-h2">
                 {title}
               </h1>
               <p
@@ -799,7 +816,13 @@ export function SchoolsExplorer({
             </div>
             {hasMessages && <div className="space-y-2">{messages}</div>}
           </div>
-          <div className="max-h-[50svh] overflow-y-auto md:max-h-none md:min-h-0 md:flex-1">
+          {/* Phones only show why nothing matched; the school list is desktop only. */}
+          <div
+            className={cn(
+              "max-h-[40svh] overflow-y-auto border-t md:block md:max-h-none md:min-h-0 md:flex-1 md:border-t-0",
+              !empty && "hidden",
+            )}
+          >
             {empty ? (
               zeroResults
             ) : (
@@ -815,13 +838,13 @@ export function SchoolsExplorer({
             )}
           </div>
           {actions && (
-            <div className="flex flex-wrap gap-2 border-t px-5 py-3">
+            <div className="hidden flex-wrap gap-2 border-t px-5 py-3 md:flex">
               {actions}
             </div>
           )}
         </aside>
 
-        <div className="relative h-[70svh] min-h-112 bg-surface-2 md:h-auto md:min-w-0 md:flex-1">
+        <div className="relative min-h-0 flex-1 bg-surface-2 md:min-w-0">
           <SchoolsMapLoader
             rows={result.rows}
             center={result.center}
@@ -839,6 +862,11 @@ export function SchoolsExplorer({
             legendStatuses={statusOptions}
           />
         </div>
+        {actions && (
+          <div className="flex shrink-0 flex-wrap gap-2 border-t bg-card px-3 py-2 md:hidden">
+            {actions}
+          </div>
+        )}
         {overlays}
       </div>
     );

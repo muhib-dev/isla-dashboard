@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { MapPinIcon, SearchIcon, XIcon } from "lucide-react";
+import { MapPinIcon, SchoolIcon, SearchIcon, XIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { lookupPlaceAction } from "@/features/schools/geo-actions";
@@ -23,6 +23,13 @@ type Suggestion = {
   resolve: () => Promise<Center | null>;
 };
 
+/** A school offered straight from the current results (the mobile map has no result list). */
+export type SchoolSuggestion = { id: string; label: string; detail?: string };
+
+type Option =
+  | ({ kind: "school" } & SchoolSuggestion)
+  | ({ kind: "place" } & Suggestion);
+
 /**
  * Search box with "schools near …" suggestions from the offline ZIP/city lists.
  * Plain typing still searches names; picking a suggestion sets a radius center instead.
@@ -34,6 +41,8 @@ export function SearchBar({
   onClear,
   onPlace,
   allowLookup,
+  schools = [],
+  onSchool,
   inputProps,
   className,
   inputClassName,
@@ -44,6 +53,9 @@ export function SearchBar({
   onPlace: (c: Center) => void;
   /** Offer the "look up on the map" fallback only when the text matched no school. */
   allowLookup: boolean;
+  /** Matching schools listed above the place suggestions; picking one calls onSchool. */
+  schools?: SchoolSuggestion[];
+  onSchool?: (id: string) => void;
   inputProps?: React.ComponentProps<typeof Input>;
   /** Wrapper width, e.g. a fixed toolbar width or full width in a side panel. */
   className?: string;
@@ -57,6 +69,12 @@ export function SearchBar({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const seq = useRef(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const options: Option[] = [
+    ...schools.map((s) => ({ kind: "school" as const, ...s })),
+    ...items.map((s) => ({ kind: "place" as const, ...s })),
+  ];
+  const grouped = schools.length > 0 && items.length > 0;
 
   useEffect(() => {
     const text = value.trim();
@@ -133,12 +151,21 @@ export function SearchBar({
     }
   }
 
-  const showList = open && (items.length > 0 || !!error);
+  function choose(o: Option) {
+    if (o.kind === "place") return void pick(o);
+    onSchool?.(o.id);
+    setOpen(false);
+    // Drop the on-screen keyboard so the school's details aren't half covered.
+    inputRef.current?.blur();
+  }
+
+  const showList = open && (options.length > 0 || !!error);
   return (
     <div className={cn("relative w-full sm:w-80", className)}>
       <SearchIcon className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
       <Input
         {...inputProps}
+        ref={inputRef}
         role="combobox"
         aria-expanded={showList}
         aria-controls={listId}
@@ -159,16 +186,16 @@ export function SearchBar({
         }}
         onBlur={() => setTimeout(() => setOpen(false), 120)}
         onKeyDown={(e) => {
-          if (e.key === "ArrowDown" && items.length) {
+          if (e.key === "ArrowDown" && options.length) {
             e.preventDefault();
             setOpen(true);
-            setActive((a) => (a + 1) % items.length);
-          } else if (e.key === "ArrowUp" && items.length) {
+            setActive((a) => (a + 1) % options.length);
+          } else if (e.key === "ArrowUp" && options.length) {
             e.preventDefault();
-            setActive((a) => (a <= 0 ? items.length - 1 : a - 1));
-          } else if (e.key === "Enter" && active >= 0 && items[active]) {
+            setActive((a) => (a <= 0 ? options.length - 1 : a - 1));
+          } else if (e.key === "Enter" && active >= 0 && options[active]) {
             e.preventDefault();
-            void pick(items[active]);
+            choose(options[active]);
           } else if (e.key === "Escape") setOpen(false);
         }}
         className={cn("pr-9 pl-9", inputClassName)}
@@ -187,28 +214,52 @@ export function SearchBar({
         <ul
           id={listId}
           role="listbox"
-          className="absolute top-full right-0 left-0 z-50 mt-1 overflow-hidden rounded-lg border bg-popover p-1 text-sm shadow-md"
+          className="absolute top-full right-0 left-0 z-50 mt-1 max-h-[min(24rem,60svh)] overflow-y-auto rounded-lg border bg-popover p-1 text-sm shadow-md"
         >
-          {items.map((s, i) => (
+          {options.map((o, i) => (
             <li
-              key={s.id}
+              key={`${o.kind}:${o.id}`}
               id={`${listId}-${i}`}
               role="option"
               aria-selected={i === active}
             >
+              {grouped && (i === 0 || i === schools.length) && (
+                <div
+                  aria-hidden
+                  className="px-2.5 pt-1.5 pb-1 text-[12px] font-medium text-muted-foreground"
+                >
+                  {o.kind === "school" ? "Schools" : "Places"}
+                </div>
+              )}
               <button
                 type="button"
                 tabIndex={-1}
                 disabled={busy}
                 onMouseDown={(e) => e.preventDefault()}
-                onClick={() => void pick(s)}
+                onClick={() => choose(o)}
                 className={cn(
                   "flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left hover:bg-accent",
                   i === active && "bg-accent",
                 )}
               >
-                <MapPinIcon className="size-4 shrink-0 text-muted-foreground" />{" "}
-                {busy && i === active ? "Looking up…" : s.label}
+                {o.kind === "school" ? (
+                  <>
+                    <SchoolIcon className="size-4 shrink-0 text-muted-foreground" />
+                    <span className="flex min-w-0 flex-col">
+                      <span className="truncate font-medium">{o.label}</span>
+                      {o.detail && (
+                        <span className="truncate text-[13px] text-muted-foreground">
+                          {o.detail}
+                        </span>
+                      )}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <MapPinIcon className="size-4 shrink-0 text-muted-foreground" />{" "}
+                    {busy && i === active ? "Looking up…" : o.label}
+                  </>
+                )}
               </button>
             </li>
           ))}
