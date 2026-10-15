@@ -11007,5 +11007,85 @@
     "social": {
       "instagram": "albayan_academy101"
     }
+  },
+  {
+    "id": "al-iman-learning-center-plano",
+    "name": "Al-Iman Learning Center",
+    "region": "southwest",
+    "address": {
+      "street": "2401 Coit Rd",
+      "city": "Plano",
+      "state": "TX",
+      "postalCode": "75075",
+      "country": "US",
+      "geo": {
+        "lat": 33.0198,
+        "lng": -96.6989,
+        "precision": "city",
+        "source": "gazetteer",
+        "updatedAt": "2026-10-13"
+      }
+    },
+    "phone": "(972) 555-0148",
+    "email": "admin@alimanlc.example.org",
+    "website": "https://alimanlc.example.org",
+    "founded": 2025,
+    "gradesFrom": "PK",
+    "gradesTo": "5",
+    "accreditation": [],
+    "metrics": {
+      "enrollment": 0,
+      "teachers": 0,
+      "tuition": 0,
+      "avgTeacherSalary": 0,
+      "retentionRate": 0,
+      "enrollmentHistory": []
+    },
+    "leadership": [
+      {
+        "id": "l1",
+        "name": "Yusuf Haddad",
+        "role": "Head of School",
+        "email": "",
+        "since": null
+      }
+    ],
+    "schedule": {
+      "startTime": "08:00",
+      "endTime": "15:00",
+      "firstDay": "2026-10-13",
+      "lastDay": "2026-10-13",
+      "fridayEarlyRelease": false,
+      "note": ""
+    },
+    "programs": {
+      "lunch": {
+        "offered": false,
+        "provider": "",
+        "allHalal": false,
+        "freeReducedAvailable": false
+      },
+      "transportation": false,
+      "quran": false,
+      "arabic": false,
+      "afterCare": false,
+      "athletics": []
+    },
+    "membership": {
+      "status": "non_member",
+      "memberSince": 2026
+    },
+    "verifiedAt": {
+      "overview": "2026-10-13",
+      "leadership": "2026-10-13",
+      "schedule": "2026-10-13",
+      "programs": "2026-10-13",
+      "contacts": "2026-10-13"
+    },
+    "updatedAt": "2026-10-13",
+    "type": "standard",
+    "listing": "pending",
+    "features": [],
+    "social": {}
   }
 ]

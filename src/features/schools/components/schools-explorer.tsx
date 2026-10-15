@@ -127,7 +127,10 @@ const OPERATOR_HELP: [string, string][] = [
 
 const MAX_URL_QS = 1800;
 
-const REGION_OPTIONS = REGIONS.map((v) => ({ value: v, label: REGION_LABELS[v] }));
+const REGION_OPTIONS = REGIONS.map((v) => ({
+  value: v,
+  label: REGION_LABELS[v],
+}));
 const TYPE_OPTIONS = SCHOOL_TYPES.map((v) => ({
   value: v,
   label: SCHOOL_TYPE_LABELS[v],
@@ -383,9 +386,7 @@ export function SchoolsExplorer({
 
   const searchBar = (
     <SearchBar
-      className={
-        mapOnly ? "sm:w-full [&>svg:first-child]:size-[18px]" : "sm:w-[280px]"
-      }
+      className={mapOnly ? "sm:w-full [&>svg:first-child]:size-4.5" : "sm:w-70"}
       inputClassName={mapOnly ? undefined : "h-9"}
       value={qInput}
       onChange={setQInput}
@@ -421,14 +422,17 @@ export function SchoolsExplorer({
   const controlSize = "sm";
   const nearControls = (
     <>
-      <Button
-        variant="outline"
-        size={controlSize}
-        onClick={locate}
-        aria-label="Schools near me"
-      >
-        <LocateIcon /> <span className="hidden md:inline">Near me</span>
-      </Button>
+      {/* "Near me" is for families finding a school; staff search by place instead. */}
+      {!staff && (
+        <Button
+          variant="outline"
+          size={controlSize}
+          onClick={locate}
+          aria-label="Schools near me"
+        >
+          <LocateIcon /> <span className="hidden md:inline">Near me</span>
+        </Button>
+      )}
       {result.center && (
         <>
           {/* within: in the query wins over these controls, so show its value and lock them. */}
@@ -597,7 +601,10 @@ export function SchoolsExplorer({
         </p>
       )}
       {!mapOnly && (
-        <p aria-live="polite" className="tabular text-[13px] text-muted-foreground empty:hidden">
+        <p
+          aria-live="polite"
+          className="tabular text-[13px] text-muted-foreground empty:hidden"
+        >
           {result.pending.length > 0
             ? "Finding that place…"
             : countDetails.join(" · ")}
@@ -657,10 +664,7 @@ export function SchoolsExplorer({
           </DialogHeader>
           <dl className="divide-y rounded-lg border text-sm">
             {OPERATOR_HELP.map(([op, desc]) => (
-              <div
-                key={op}
-                className="flex justify-between gap-3 px-3 py-2"
-              >
+              <div key={op} className="flex justify-between gap-3 px-3 py-2">
                 <dt className="text-[13px] font-medium">{op}</dt>
                 <dd className="text-right text-muted-foreground">{desc}</dd>
               </div>
@@ -737,8 +741,8 @@ export function SchoolsExplorer({
       );
     return (
       // The layout sets --app-header to its top bar height (public header 56px, dashboard 60px).
-      <div className="flex flex-col md:h-[calc(100svh_-_var(--app-header,56px))] md:flex-row">
-        <aside className="flex shrink-0 flex-col border-b bg-card md:min-h-0 md:w-[400px] md:border-r md:border-b-0">
+      <div className="flex flex-col md:h-[calc(100svh-var(--app-header,56px))] md:flex-row">
+        <aside className="flex shrink-0 flex-col border-b bg-card md:min-h-0 md:w-100 md:border-r md:border-b-0">
           <div className="flex flex-col gap-3 border-b p-5 pb-3">
             <div className="flex items-baseline justify-between gap-3">
               <h1 className="text-h2 font-semibold tracking-[-0.01em]">
@@ -748,7 +752,9 @@ export function SchoolsExplorer({
                 aria-live="polite"
                 className="tabular shrink-0 text-[15px] text-muted-foreground"
               >
-                {result.pending.length > 0 ? "Finding that place…" : resultCount}
+                {result.pending.length > 0
+                  ? "Finding that place…"
+                  : resultCount}
               </p>
             </div>
             {searchBar}
@@ -832,7 +838,6 @@ export function SchoolsExplorer({
             onEditMove={() => {}}
             legendStatuses={statusOptions}
           />
-
         </div>
         {overlays}
       </div>

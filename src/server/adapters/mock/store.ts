@@ -4,7 +4,7 @@ import { InvoiceSchema, PlanSchema } from "@/features/billing/schema"
 import { JobSchema } from "@/features/jobs/schema"
 import { ClaimSchema, OfferSchema } from "@/features/offers/schema"
 import { SchoolSchema } from "@/features/schools/schema"
-import type { SchoolReport } from "@/features/schools/submissions"
+import { SchoolReportSchema } from "@/features/schools/submissions"
 import { ProductSchema } from "@/features/store/schema"
 import claims from "@/data/claims.json"
 import invoices from "@/data/invoices.json"
@@ -12,6 +12,7 @@ import jobs from "@/data/jobs.json"
 import offers from "@/data/offers.json"
 import plans from "@/data/plans.json"
 import products from "@/data/products.json"
+import reports from "@/data/reports.json"
 import schools from "@/data/schools.json"
 
 /**
@@ -28,7 +29,7 @@ function seed() {
     products: z.array(ProductSchema).parse(products),
     offers: z.array(OfferSchema).parse(offers),
     claims: z.array(ClaimSchema).parse(claims),
-    reports: [] as SchoolReport[],
+    reports: z.array(SchoolReportSchema).parse(reports),
     /** Contact-form messages relayed to schools (mock: kept in memory, newest first). */
     messages: [] as { id: string; schoolId: string; name: string; email: string; message: string; at: string }[],
   }

@@ -422,7 +422,10 @@ describe("geo", () => {
       { ...EMPTY_STATE, q: "near:75201 within:30mi" },
       ctx,
     );
-    expect(r.rows.map((x) => x.doc.id)).toEqual(["iqra-learning-center"]);
+    expect(r.rows.map((x) => x.doc.id)).toEqual([
+      "iqra-learning-center",
+      "al-iman-learning-center-plano",
+    ]);
   });
 
   it("bounds handle the antimeridian", () => {
@@ -541,7 +544,10 @@ describe("facets", () => {
     expect(f({ listing: ["open", "pending", "closed"] })).toHaveLength(
       docs.length,
     );
-    expect(f({ listing: ["pending"] })).toEqual(["maple-crescent-school"]);
+    expect(f({ listing: ["pending"] }).sort()).toEqual([
+      "al-iman-learning-center-plano",
+      "maple-crescent-school",
+    ]);
   });
 
   it("filters by type, country and listing together", () => {

@@ -37,11 +37,13 @@ export function StatusTabs({
   onChange: (next: MembershipStatus[]) => void;
 }) {
   const current = value.length === 0 ? null : value.length === 1 ? value[0] : undefined;
+  // Baseline is an inset shadow, not a border the tabs overlap with -mb-px: any overflow on the
+  // y axis turns `overflow-x-auto` into a vertical scrollbar.
   return (
     <div
       role="group"
       aria-label="Membership status"
-      className="flex gap-6 overflow-x-auto border-b"
+      className="flex gap-6 overflow-x-auto overflow-y-hidden shadow-[inset_0_-1px_0_var(--border)] scrollbar-none"
     >
       {TABS.map(([status, label]) => {
         const selected = current === status;
@@ -52,7 +54,7 @@ export function StatusTabs({
             aria-pressed={selected}
             onClick={() => onChange(status ? [status] : [])}
             className={cn(
-              "-mb-px inline-flex shrink-0 items-center gap-2 border-b-2 py-2.5 text-[15px] font-medium whitespace-nowrap transition-colors -outline-offset-2 focus-visible:outline-2",
+              "inline-flex shrink-0 items-center gap-2 border-b-2 py-2.5 text-[15px] font-medium whitespace-nowrap transition-colors -outline-offset-2 focus-visible:outline-2",
               selected
                 ? "border-primary text-foreground"
                 : "border-transparent text-muted-foreground hover:text-foreground",

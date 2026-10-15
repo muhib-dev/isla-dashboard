@@ -4,6 +4,10 @@ import { useState, useTransition } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { CheckIcon, InboxIcon, XIcon } from "lucide-react";
+import {
+  TablePagination,
+  usePagination,
+} from "@/components/shared/table-pagination";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,6 +32,7 @@ const HINT: Partial<Record<SchoolReport["kind"], string>> = {
 export function ReportsTable({ reports }: { reports: SchoolReport[] }) {
   const [busy, setBusy] = useState<string | null>(null);
   const [, start] = useTransition();
+  const pager = usePagination(reports);
 
   function resolve(id: string, decision: "approved" | "dismissed") {
     setBusy(id);
@@ -68,7 +73,7 @@ export function ReportsTable({ reports }: { reports: SchoolReport[] }) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {reports.map((r) => (
+          {pager.rows.map((r) => (
             <TableRow key={r.id}>
               <TableCell className="pl-4 whitespace-normal font-medium">
                 {REPORT_KIND_LABELS[r.kind]}
@@ -146,6 +151,7 @@ export function ReportsTable({ reports }: { reports: SchoolReport[] }) {
           ))}
         </TableBody>
       </Table>
+      <TablePagination pager={pager} />
     </div>
   );
 }

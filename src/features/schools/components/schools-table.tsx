@@ -5,13 +5,15 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
   ExternalLinkIcon,
   MailIcon,
   MoreHorizontalIcon,
 } from "lucide-react";
 import { FreshnessDot, MembershipStatusDot } from "@/components/shared/status";
+import {
+  TablePagination,
+  usePagination,
+} from "@/components/shared/table-pagination";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -20,13 +22,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -53,8 +48,6 @@ type Row = SchoolSummary & {
   enrollmentBand?: EnrollmentBand | null;
 };
 
-const PAGE_SIZES = [25, 50, 100];
-
 export function SchoolsTable({
   rows,
   total,
@@ -69,20 +62,10 @@ export function SchoolsTable({
   const router = useRouter();
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [pending, startTransition] = useTransition();
-  const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
-  const [page, setPage] = useState(0);
-  const [lastKey, setLastKey] = useState(pageKey);
-  if (pageKey !== lastKey) {
-    setLastKey(pageKey);
-    setPage(0);
-  }
+  const pager = usePagination(rows, pageKey);
+  const pageRows = pager.rows;
   const visibleSelected = rows.filter((r) => selected.has(r.id));
   const allChecked = rows.length > 0 && visibleSelected.length === rows.length;
-
-  const pageCount = Math.max(1, Math.ceil(rows.length / pageSize));
-  const current = Math.min(page, pageCount - 1);
-  const start = current * pageSize;
-  const pageRows = rows.slice(start, start + pageSize);
 
   function toggle(id: string, checked: boolean) {
     setSelected((prev) => {
@@ -269,61 +252,7 @@ export function SchoolsTable({
         </TableBody>
       </Table>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 border-t px-4 py-3 text-[13px] text-muted-foreground">
-        <p className="tabular" aria-live="polite">
-          Showing {fmt.number(start + 1)}–
-          {fmt.number(start + pageRows.length)} of {fmt.number(rows.length)}
-          {total !== undefined && total !== rows.length && (
-            <> · filtered from {fmt.number(total)}</>
-          )}
-        </p>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <span className="hidden sm:inline">Rows per page</span>
-            <Select
-              value={String(pageSize)}
-              onValueChange={(v) => {
-                setPageSize(Number(v));
-                setPage(0);
-              }}
-            >
-              <SelectTrigger size="sm" aria-label="Rows per page">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {PAGE_SIZES.map((n) => (
-                  <SelectItem key={n} value={String(n)}>
-                    {n}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <span className="tabular">
-            Page {current + 1} of {pageCount}
-          </span>
-          <div className="flex items-center gap-1">
-            <Button
-              variant="outline"
-              size="icon-sm"
-              aria-label="Previous page"
-              disabled={current === 0}
-              onClick={() => setPage(current - 1)}
-            >
-              <ChevronLeftIcon />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon-sm"
-              aria-label="Next page"
-              disabled={current >= pageCount - 1}
-              onClick={() => setPage(current + 1)}
-            >
-              <ChevronRightIcon />
-            </Button>
-          </div>
-        </div>
-      </div>
+      <TablePagination pager={pager} unfiltered={total} />
     </div>
   );
 }

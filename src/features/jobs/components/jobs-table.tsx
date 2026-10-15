@@ -4,8 +4,6 @@ import { useMemo, useState, useTransition } from "react";
 import {
   BriefcaseBusinessIcon,
   CheckCircle2Icon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
   CircleXIcon,
   ExternalLinkIcon,
   MoreHorizontalIcon,
@@ -16,6 +14,10 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { StatusDot } from "@/components/shared/status";
+import {
+  TablePagination,
+  usePagination,
+} from "@/components/shared/table-pagination";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,13 +29,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -56,8 +51,6 @@ import { fmt } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const EXPIRES_SOON_DAYS = 7;
-const PAGE_SIZES = [10, 25, 50];
-const PAGINATE_OVER = 25;
 
 type JobType = Job["type"];
 
@@ -236,8 +229,6 @@ export function JobsTable({
   const [query, setQuery] = useState("");
   const [statuses, setStatuses] = useState<JobDisplayStatus[]>([]);
   const [types, setTypes] = useState<JobType[]>([]);
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(25);
 
   const statusOptions = useMemo(() => {
     const present = new Set(jobs.map((j) => jobDisplayStatus(j, today)));
@@ -262,18 +253,17 @@ export function JobsTable({
     );
   }, [jobs, query, statuses, types, today]);
 
-  const paginate = jobs.length > PAGINATE_OVER;
-  const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
-  const current = Math.min(page, pageCount - 1);
-  const start = paginate ? current * pageSize : 0;
-  const rows = paginate ? filtered.slice(start, start + pageSize) : filtered;
+  const pager = usePagination(
+    filtered,
+    JSON.stringify([query, statuses, types]),
+  );
+  const rows = pager.rows;
 
   const filtering = query !== "" || statuses.length > 0 || types.length > 0;
   const reset = () => {
     setQuery("");
     setStatuses([]);
     setTypes([]);
-    setPage(0);
   };
 
   if (jobs.length === 0) {
@@ -302,10 +292,7 @@ export function JobsTable({
           <Input
             type="search"
             value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setPage(0);
-            }}
+            onChange={(e) => setQuery(e.target.value)}
             placeholder={showSchool ? "Search roles or schools" : "Search roles"}
             aria-label="Search jobs"
             className="h-9 pl-9"
@@ -315,19 +302,13 @@ export function JobsTable({
           label="Status"
           options={statusOptions}
           selected={statuses}
-          onChange={(next) => {
-            setStatuses(next);
-            setPage(0);
-          }}
+          onChange={setStatuses}
         />
         <FilterMenu
           label="Type"
           options={JOB_TYPE_LABELS}
           selected={types}
-          onChange={(next) => {
-            setTypes(next);
-            setPage(0);
-          }}
+          onChange={setTypes}
         />
         {filtering && (
           <Button variant="ghost" size="sm" onClick={reset}>
@@ -433,64 +414,7 @@ export function JobsTable({
         </Table>
       )}
 
-      <div className="flex flex-wrap items-center justify-between gap-3 border-t px-4 py-3 text-[13px] text-muted-foreground">
-        <p className="tabular" aria-live="polite">
-          {paginate && filtered.length > 0
-            ? `Showing ${fmt.number(start + 1)}–${fmt.number(start + rows.length)} of ${fmt.number(filtered.length)}`
-            : `${fmt.number(filtered.length)} ${filtered.length === 1 ? "job" : "jobs"}`}
-          {filtering && filtered.length !== jobs.length && (
-            <> · filtered from {fmt.number(jobs.length)}</>
-          )}
-        </p>
-        {paginate && (
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <span className="hidden sm:inline">Rows per page</span>
-              <Select
-                value={String(pageSize)}
-                onValueChange={(v) => {
-                  setPageSize(Number(v));
-                  setPage(0);
-                }}
-              >
-                <SelectTrigger size="sm" aria-label="Rows per page">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {PAGE_SIZES.map((n) => (
-                    <SelectItem key={n} value={String(n)}>
-                      {n}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <span className="tabular">
-              Page {current + 1} of {pageCount}
-            </span>
-            <div className="flex items-center gap-1">
-              <Button
-                variant="outline"
-                size="icon-sm"
-                aria-label="Previous page"
-                disabled={current === 0}
-                onClick={() => setPage(current - 1)}
-              >
-                <ChevronLeftIcon />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon-sm"
-                aria-label="Next page"
-                disabled={current >= pageCount - 1}
-                onClick={() => setPage(current + 1)}
-              >
-                <ChevronRightIcon />
-              </Button>
-            </div>
-          </div>
-        )}
-      </div>
+      <TablePagination pager={pager} unfiltered={jobs.length} />
     </div>
   );
 }

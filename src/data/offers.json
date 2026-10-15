@@ -1,13 +1,20 @@
 [
   {
     "id": "offer_wiser_pd",
-    "partner": { "name": "WISER USA", "website": "https://wiser-usa.org", "initials": "WU" },
+    "partner": {
+      "name": "WISER USA",
+      "website": "https://wiser-usa.org",
+      "initials": "WU"
+    },
     "title": "WISER USA – Get $100 Off Weekend School Training!",
     "summary": "Invite WISER to provide a customized PD training for your Islamic weekend school.",
     "details": "WISER School Membership has many benefits, but as Allah is The Most Generous, we wanted to offer your Islamic Weekend School a Generous Offer too! With a WISER School Membership, you can invite us to provide a customized PD Training for your school. Create your School Membership and email us at info@wiser-usa.org. We'll be happy to discuss how WISER can help professionalize your school.",
     "image": "https://theisla.org/wp-content/uploads/2026/10/ISLA-Promo-Offer-WISER-1-791x1024.png",
     "category": "pd_training",
-    "value": { "kind": "amount", "label": "$100 off" },
+    "value": {
+      "kind": "amount",
+      "label": "$100 off"
+    },
     "redemption": {
       "method": "email",
       "email": "info@wiser-usa.org",
@@ -23,13 +30,20 @@
   },
   {
     "id": "offer_hidayah_workshops",
-    "partner": { "name": "Hidayah Services", "website": "https://hidayahservices.com", "initials": "HS" },
+    "partner": {
+      "name": "Hidayah Services",
+      "website": "https://hidayahservices.com",
+      "initials": "HS"
+    },
     "title": "Workshops for Schools, Masajid & Community Centers",
     "summary": "Interactive workshops that help Muslim students navigate the college admissions process with confidence.",
     "details": "Hidayah Services provides interactive workshops that help Muslim students navigate the college admissions process with confidence. Our workshops provide comprehensive resources and practical strategies covering essential areas of college admissions, including college applications, essay writing, interview preparation, resume building, and financial aid. With extensive experience guiding Muslim students through the college application process, our team brings a perspective that understands the unique considerations Muslim students and families may have as they prepare for higher education. Explore our workshop topics and learn more about bringing a session to your community.",
     "image": "https://theisla.org/wp-content/uploads/2026/08/WORKSHOPS-Flyer-Instagram-Post-45-819x1024.png",
     "category": "college_prep",
-    "value": { "kind": "perk", "label": "Workshops" },
+    "value": {
+      "kind": "perk",
+      "label": "Workshops"
+    },
     "redemption": {
       "method": "link",
       "url": "https://hidayahservices.com/workshops-2/",
@@ -44,13 +58,20 @@
   },
   {
     "id": "offer_iqraa_bookfair",
-    "partner": { "name": "Iqraa Bookshop", "website": "https://iqraabookshop.com", "initials": "IB" },
+    "partner": {
+      "name": "Iqraa Bookshop",
+      "website": "https://iqraabookshop.com",
+      "initials": "IB"
+    },
     "title": "Iqraa Bookshop — Islamic & Arabic Books | Free Digital Islamic Bookfairs for Schools",
     "summary": "A fully branded online bookfair with no upfront cost. Your school earns 15% commission on every sale.",
     "details": "Iqraa Bookshop is an online Islamic and Arabic educational bookstore serving schools, teachers, and families. Through our Digital Bookfair program, schools get a fully branded online bookfair, no upfront cost, no inventory to manage, and earn 15% commission on every sale from their community. Vendors and publishers can also partner with us to reach the Islamic school market directly. Interested in a bookfair for your school? Reach out to get started.",
     "image": "https://theisla.org/wp-content/uploads/2026/07/book-fair-iqraa-post-1024x1024.png",
     "category": "books",
-    "value": { "kind": "free", "label": "Free + 15% back" },
+    "value": {
+      "kind": "free",
+      "label": "Free + 15% back"
+    },
     "redemption": {
       "method": "link",
       "url": "https://iqraabookshop.com",
@@ -62,5 +83,60 @@
     "featured": false,
     "status": "active",
     "createdAt": "2026-07-28"
+  },
+  {
+    "id": "offer_brightpath_sat",
+    "partner": {
+      "name": "BrightPath Tutoring",
+      "website": "https://brightpath.example.org",
+      "initials": "BP"
+    },
+    "title": "20% Off SAT & PSAT Prep for Member Schools",
+    "summary": "Small-group SAT and PSAT prep, online or on campus, at a member discount.",
+    "details": "BrightPath runs eight-week SAT and PSAT prep cohorts led by certified teachers. Member schools get 20% off group pricing for cohorts of 8 or more students, plus a free diagnostic test for every student.",
+    "category": "college_prep",
+    "value": {
+      "kind": "percent",
+      "label": "20% off"
+    },
+    "redemption": {
+      "method": "code",
+      "code": "ISLA20",
+      "url": "https://brightpath.example.org/schools",
+      "instructions": "Enter code ISLA20 when booking a school cohort on the BrightPath site."
+    },
+    "startsOn": "2026-11-01",
+    "endsOn": "2027-05-31",
+    "membersOnly": true,
+    "featured": false,
+    "status": "draft",
+    "createdAt": "2026-10-12"
+  },
+  {
+    "id": "offer_ledgerwise_audit",
+    "partner": {
+      "name": "LedgerWise Nonprofit Accounting",
+      "website": "https://ledgerwise.example.org",
+      "initials": "LW"
+    },
+    "title": "Free Financial Health Check for Islamic Schools",
+    "summary": "A free one-hour review of your school budget, payroll and 990 filing readiness.",
+    "details": "LedgerWise works with faith-based nonprofits. Member schools can book a free one-hour financial health check covering budgeting, payroll compliance and Form 990 readiness, with a written summary of recommendations.",
+    "category": "finance",
+    "value": {
+      "kind": "free",
+      "label": "Free review"
+    },
+    "redemption": {
+      "method": "email",
+      "email": "schools@ledgerwise.example.org",
+      "instructions": "Email schools@ledgerwise.example.org from your school address and mention the ISLA member offer."
+    },
+    "startsOn": "2026-06-01",
+    "endsOn": "2026-12-31",
+    "membersOnly": true,
+    "featured": false,
+    "status": "paused",
+    "createdAt": "2026-05-20"
   }
 ]
